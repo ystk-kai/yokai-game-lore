@@ -5,6 +5,7 @@ characters:
   - id: captain-cuttlefish
     name: アタリメ司令
     name_en: Cap'n Cuttlefish
+    image: { thumb: captain-cuttlefish-face }
     kind: ally
     role: New!カラストンビ部隊の司令。かつての大ナワバリバトルの英雄
     looks: 年老いたイカ。長いひげと軍服
@@ -17,6 +18,7 @@ characters:
     autolink: false
     aliases: [3号（スプラトゥーン）]
     name_en: Agent 3
+    image: { thumb: agent3-face }
     kind: protagonist
     role: 『スプラトゥーン』のヒーローモードの主人公。New!カラストンビ部隊の3号
     first_seen: スプラトゥーン（ヒーローモード）
@@ -26,6 +28,7 @@ characters:
   - id: agent4
     name: 4号
     name_en: Agent 4
+    image: { thumb: agent4-face }
     kind: protagonist
     role: 『スプラトゥーン2』のヒーローモードの主人公
     first_seen: スプラトゥーン2（ヒーローモード）
@@ -35,6 +38,7 @@ characters:
   - id: agent8
     name: 8号
     name_en: Agent 8
+    image: { thumb: agent8-face }
     kind: protagonist
     role: オクト・エキスパンションとサイド・オーダーの主人公。記憶を失ったタコ
     first_seen: オクト・エキスパンション
@@ -44,6 +48,7 @@ characters:
   - id: new-agent3
     name: 新3号
     name_en: Agent 3 (Splatoon 3)
+    image: { thumb: new-agent3-face }
     kind: protagonist
     role: 『スプラトゥーン3』のヒーローモードの主人公。過去作の3号とは別人
     first_seen: スプラトゥーン3（ヒーローモード）
@@ -53,6 +58,7 @@ characters:
   - id: callie
     name: アオリ
     name_en: Callie
+    image: { thumb: callie-face }
     kind: ally
     role: シオカラーズの1人。New!カラストンビ部隊の1号
     first_seen: スプラトゥーン
@@ -63,6 +69,7 @@ characters:
   - id: marie
     name: ホタル
     name_en: Marie
+    image: { thumb: marie-face }
     kind: ally
     role: シオカラーズの1人。New!カラストンビ部隊の2号
     first_seen: スプラトゥーン
@@ -72,6 +79,7 @@ characters:
   - id: dj-octavio
     name: DJタコワサ将軍
     name_en: DJ Octavio
+    image: { thumb: dj-octavio-face }
     kind: other
     role: タコ（オクタリアン）の軍を率いる将軍
     first_seen: スプラトゥーン（ヒーローモード）
@@ -82,6 +90,7 @@ characters:
   - id: pearl
     name: ヒメ
     name_en: Pearl
+    image: { thumb: pearl-face }
     kind: ally
     role: テンタクルズの1人
     first_seen: スプラトゥーン2
@@ -92,6 +101,7 @@ characters:
   - id: marina
     name: イイダ
     name_en: Marina
+    image: { thumb: marina-face }
     kind: ally
     role: テンタクルズの1人。タコ（オクタリアン）出身
     first_seen: スプラトゥーン2
@@ -101,6 +111,7 @@ characters:
   - id: shiver
     name: フウカ
     name_en: Shiver
+    image: { thumb: shiver-face }
     kind: ally
     role: すりみ連合の1人
     first_seen: スプラトゥーン3
@@ -110,6 +121,7 @@ characters:
   - id: frye
     name: ウツホ
     name_en: Frye
+    image: { thumb: frye-face }
     kind: ally
     role: すりみ連合の1人
     first_seen: スプラトゥーン3
@@ -119,6 +131,7 @@ characters:
   - id: big-man
     name: マンタロー
     name_en: Big Man
+    image: { thumb: big-man-face }
     kind: ally
     role: すりみ連合の1人
     first_seen: スプラトゥーン3
@@ -131,6 +144,7 @@ characters:
     # 会社名「クマサン商会」の中では当てない
     link_patterns: ["(?<![ァ-ヶー])クマサン(?!商会)"]
     name_en: Mr. Grizz
+    image: { thumb: mr-grizz-face }
     kind: other
     role: クマサン商会の社長。『スプラトゥーン3』のヒーローモードの黒幕
     first_seen: スプラトゥーン2（サーモンラン）
@@ -140,6 +154,7 @@ characters:
   - id: commander-tartar
     name: タルタル総帥
     name_en: Commander Tartar
+    image: { thumb: commander-tartar-face }
     kind: other
     role: オクト・エキスパンションの黒幕。深海メトロの「デンワ」の正体
     first_seen: オクト・エキスパンション
@@ -152,6 +167,7 @@ characters:
     # ボスとしての姿「オーダコ」と、倒されたあとの小さな姿「コダコ」も同じ人物としてリンクする
     aliases: [オーダコ, コダコ]
     name_en: Order
+    image: { thumb: order-face }
     kind: other
     role: サイド・オーダーの黒幕。仮想世界「ネリバース」を乗っ取った人工知能
     first_seen: サイド・オーダー
@@ -162,6 +178,7 @@ characters:
   - id: salmonarch
     name: サルモン王
     name_en: Salmonarch
+    image: { thumb: salmonarch-face }
     kind: other
     role: スプラトゥーン レイダースの本編のラスボス
     first_seen: スプラトゥーン レイダース

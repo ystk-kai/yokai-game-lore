@@ -15,3 +15,140 @@ assets:
     source_name: Nintendo
     source_url: "https://www.nintendo.com/jp/switch/av5ja/"
     credit: "© Nintendo"
+
+  - id: captain-cuttlefish-face
+    file: characters/captain-cuttlefish-face.png
+    alt: アタリメ司令の顔
+    kind: render
+    self_captured: false
+    source_name: Inkipedia
+    source_url: "https://splatoonwiki.org/wiki/File:S_Cap%27n_Cuttlefish_render_2.png"
+    credit: "© Nintendo。画像: Inkipedia（英語のファン wiki）、アップロード: Skua。顔の部分を切り抜いて縮小"
+  - id: agent3-face
+    file: characters/agent3-face.png
+    alt: 3号の顔
+    kind: render
+    self_captured: false
+    source_name: Inkipedia
+    source_url: "https://splatoonwiki.org/wiki/File:RotM_render_Captain.png"
+    credit: "© Nintendo。画像: Inkipedia（英語のファン wiki）、アップロード: Driftin Soul。顔の部分を切り抜いて縮小"
+  - id: agent4-face
+    file: characters/agent4-face.png
+    alt: 4号の顔
+    kind: render
+    self_captured: false
+    source_name: Inkipedia
+    source_url: "https://splatoonwiki.org/wiki/File:OC_Agent_4_render.png"
+    credit: "© Nintendo。画像: Inkipedia（英語のファン wiki）、アップロード: Skua。顔の部分を切り抜いて縮小"
+  - id: agent8-face
+    file: characters/agent8-face.png
+    alt: 8号の顔
+    kind: render
+    self_captured: false
+    source_name: Inkipedia
+    source_url: "https://splatoonwiki.org/wiki/File:OE_Agent_8_Polaroid_render.png"
+    credit: "© Nintendo。画像: Inkipedia（英語のファン wiki）、アップロード: Anemoia。顔の部分を切り抜いて縮小"
+  - id: new-agent3-face
+    file: characters/new-agent3-face.png
+    alt: 新3号の顔
+    kind: render
+    self_captured: false
+    source_name: Inkipedia
+    source_url: "https://splatoonwiki.org/wiki/File:RotM_render_New_Agent_3_Hero_Suit_2.png"
+    credit: "© Nintendo。画像: Inkipedia（英語のファン wiki）、アップロード: Skua。顔の部分を切り抜いて縮小"
+  - id: callie-face
+    file: characters/callie-face.png
+    alt: アオリの顔
+    kind: render
+    self_captured: false
+    source_name: Inkipedia
+    source_url: "https://splatoonwiki.org/wiki/File:S_Callie_render_2.png"
+    credit: "© Nintendo。画像: Inkipedia（英語のファン wiki）、アップロード: GX 64。顔の部分を切り抜いて縮小"
+  - id: marie-face
+    file: characters/marie-face.png
+    alt: ホタルの顔
+    kind: render
+    self_captured: false
+    source_name: Inkipedia
+    source_url: "https://splatoonwiki.org/wiki/File:S_Marie_render_2.png"
+    credit: "© Nintendo。画像: Inkipedia（英語のファン wiki）、アップロード: GX 64。顔の部分を切り抜いて縮小"
+  - id: dj-octavio-face
+    file: characters/dj-octavio-face.png
+    alt: DJタコワサ将軍の顔
+    kind: screenshot
+    self_captured: false
+    source_name: Inkipedia
+    source_url: "https://splatoonwiki.org/wiki/File:RotM_DJ_Octavio.png"
+    credit: "© Nintendo。画像: Inkipedia（英語のファン wiki）、アップロード: Driftin Soul。顔の部分を切り抜いて縮小"
+  - id: pearl-face
+    file: characters/pearl-face.png
+    alt: ヒメの顔
+    kind: render
+    self_captured: false
+    source_name: Inkipedia
+    source_url: "https://splatoonwiki.org/wiki/File:S2_Pearl_render.png"
+    credit: "© Nintendo。画像: Inkipedia（英語のファン wiki）、アップロード: It's moon。顔の部分を切り抜いて縮小"
+  - id: marina-face
+    file: characters/marina-face.png
+    alt: イイダの顔
+    kind: render
+    self_captured: false
+    source_name: Inkipedia
+    source_url: "https://splatoonwiki.org/wiki/File:S2_Marina_render.png"
+    credit: "© Nintendo。画像: Inkipedia（英語のファン wiki）、アップロード: It's moon。顔の部分を切り抜いて縮小"
+  - id: shiver-face
+    file: characters/shiver-face.png
+    alt: フウカの顔
+    kind: render
+    self_captured: false
+    source_name: Inkipedia
+    source_url: "https://splatoonwiki.org/wiki/File:Raiders_render_Shiver.png"
+    credit: "© Nintendo。画像: Inkipedia（英語のファン wiki）、アップロード: CodingAsteroid。顔の部分を切り抜いて縮小"
+  - id: frye-face
+    file: characters/frye-face.png
+    alt: ウツホの顔
+    kind: render
+    self_captured: false
+    source_name: Inkipedia
+    source_url: "https://splatoonwiki.org/wiki/File:Raiders_render_Frye.png"
+    credit: "© Nintendo。画像: Inkipedia（英語のファン wiki）、アップロード: CodingAsteroid。顔の部分を切り抜いて縮小"
+  - id: big-man-face
+    file: characters/big-man-face.png
+    alt: マンタローの顔
+    kind: render
+    self_captured: false
+    source_name: Inkipedia
+    source_url: "https://splatoonwiki.org/wiki/File:Raiders_render_Big_Man_2.png"
+    credit: "© Nintendo。画像: Inkipedia（英語のファン wiki）、アップロード: Stink182。顔の部分を切り抜いて縮小"
+  - id: mr-grizz-face
+    file: characters/mr-grizz-face.png
+    alt: クマサンの顔
+    kind: render
+    self_captured: false
+    source_name: Inkipedia
+    source_url: "https://splatoonwiki.org/wiki/File:SR_Mr_Grizz_render.png"
+    credit: "© Nintendo。画像: Inkipedia（英語のファン wiki）、アップロード: Cackle。顔の部分を切り抜いて縮小"
+  - id: commander-tartar-face
+    file: characters/commander-tartar-face.png
+    alt: タルタル総帥の顔
+    kind: render
+    self_captured: false
+    source_name: Inkipedia
+    source_url: "https://splatoonwiki.org/wiki/File:OE_Commander_Tartar_Model.png"
+    credit: "© Nintendo。画像: Inkipedia（英語のファン wiki）、アップロード: Gulliblepikmin。顔の部分を切り抜いて縮小"
+  - id: order-face
+    file: characters/order-face.png
+    alt: オーダの顔
+    kind: screenshot
+    self_captured: false
+    source_name: Inkipedia
+    source_url: "https://splatoonwiki.org/wiki/File:SO_Order_face.png"
+    credit: "© Nintendo。画像: Inkipedia（英語のファン wiki）、アップロード: Mikethepug。顔の部分を切り抜いて縮小"
+  - id: salmonarch-face
+    file: characters/salmonarch-face.png
+    alt: サルモン王の顔
+    kind: screenshot
+    self_captured: false
+    source_name: Inkipedia
+    source_url: "https://splatoonwiki.org/wiki/File:Raiders_Salmonarch.jpg"
+    credit: "© Nintendo。画像: Inkipedia（英語のファン wiki）、アップロード: Shiver101。顔の部分を切り抜いて縮小"
