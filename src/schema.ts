@@ -38,6 +38,8 @@ const flowNode = z.object({
   /** カードの見出し。2行に収まる長さ。あらすじは detail に（カードに6行まで出る） */
   label: z.string().max(20, '見出しは20字まで。あらすじは detail に'),
   sub: z.string().max(12).optional(),
+  /** 俯瞰の地図に出す短い名前（8字まで）。無ければ label を使う */
+  short: z.string().max(8).optional(),
   detail: z.string().optional(),
   at: z.tuple([z.number().int().min(0), z.number().int().min(0)]),
   lane: z.string(),
