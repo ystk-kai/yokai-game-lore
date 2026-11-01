@@ -101,7 +101,7 @@ const thumbOf = (nid: string) => { const a = assetMap.get(chars.get(nid)?.image?
     <summary>関係を文章で読む</summary>
     <ul>
       {edges.map((e) => (
-        <li>{nodeOf.get(e.from)!.label} {e.directed ? '→' : '—'} {nodeOf.get(e.to)!.label}: {e.label}（{kindName[e.kind]}{e.evidence === 'speculation' ? '・推測' : ''}）</li>
+        <li>{e.directed ? `${nodeOf.get(e.from)!.label}から${nodeOf.get(e.to)!.label}へ` : `${nodeOf.get(e.from)!.label}と${nodeOf.get(e.to)!.label}`}: {e.label}（{kindName[e.kind]}{e.evidence === 'speculation' ? '・推測' : ''}）</li>
       ))}
     </ul>
   </details>

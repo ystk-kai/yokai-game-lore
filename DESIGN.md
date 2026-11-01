@@ -144,6 +144,7 @@ components:
 - Don't: カードや一覧の左端・上端に色帯を付けない（AI 生成の典型。sloplint gate 3）。色は小さな四角か枠線で示す
 - Don't: 見出しの上の小さなラベル（eyebrow）、字間を空けたラベル、中黒でつないだ説明（「第2章 · 対決」）を使わない（gate 54・67・63）
 - Don't: 13px 未満の文字を使わない（日本語は 12px で読みにくい）
+- Don't: 図の矢印に文字の記号（↓ → など）を使わない。書体で形と太さが変わり、ほかの図の矢印とそろわない。矢印は SVG（2px の `muted` の線と三角の矢じり、推測は破線）で描き、文章で読む欄では「AからBへ」と言葉で書く
 - Do: 見出しには `text-wrap: balance` と `word-break: auto-phrase` をかけ、1字だけの折り返しを防ぐ
 - Do: 見た目を変えたら `node <hallmark>/scripts/sloplint.mjs src --scope app` で FAIL・REFLEX が0件であることを確かめる
 
