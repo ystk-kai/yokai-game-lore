@@ -1,6 +1,6 @@
 # 掲載している画像。権利はすべて TARSIER STUDIOS AB / THQ Nordic GmbH に帰属する。
 # 掲載の根拠は game.yaml の rights.official_assets_note（規約上の許可ではなく運営者の判断）。
-# 顔のサムネイルは REANIMAL Wiki (Fandom) の VoxelotlAgain が作ったレンダー（2026-11-02 取得）。
+# 顔のサムネイルは REANIMAL Wiki (Fandom) の画像（2026-11-02 取得）。多くは VoxelotlAgain のレンダー。少年・フード・スニッファーは Virus3000 がアップロードしたもので作者の記載が無い。
 # 横長の「見た目」画像は kamigame・公式サイト・Fandom のゲーム画面。
 assets:
   - id: boy-render
@@ -8,7 +8,7 @@ assets:
     alt: 少年の顔（頭に袋をかぶった姿）
     kind: official
     source_url: "https://reanimal.fandom.com/wiki/File:The_Boy.png"
-    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。レンダー: VoxelotlAgain（REANIMAL Wiki / Fandom）"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。画像: REANIMAL Wiki (Fandom)、アップロード: Virus3000（作者の記載なし）"
   - id: boy-look
     file: characters/boy-look.jpg
     alt: 少年の見た目
@@ -32,7 +32,7 @@ assets:
     alt: フードの顔
     kind: official
     source_url: "https://reanimal.fandom.com/wiki/File:Hood_render.png"
-    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。レンダー: VoxelotlAgain（REANIMAL Wiki / Fandom）"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。画像: REANIMAL Wiki (Fandom)、アップロード: Virus3000（作者の記載なし）"
   - id: hood-look
     file: characters/hood-look.jpg
     alt: フードの見た目
@@ -68,7 +68,7 @@ assets:
     alt: スニッファーの顔
     kind: official
     source_url: "https://reanimal.fandom.com/wiki/File:Sniffer.png"
-    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。レンダー: VoxelotlAgain（REANIMAL Wiki / Fandom）"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。画像: REANIMAL Wiki (Fandom)、アップロード: Virus3000（作者の記載なし）"
   - id: sniffer-look
     file: characters/sniffer-look.jpg
     alt: アイスクリームトラックを運転するスニッファー
@@ -125,7 +125,7 @@ assets:
     credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
   - id: sheep-render
     file: characters/sheep-render.png
-    alt: 羊の顔
+    alt: 羊の顔（少女が吐き出した直後の子羊の姿）
     kind: official
     source_url: "https://reanimal.fandom.com/wiki/File:Lamb.png"
     credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。レンダー: VoxelotlAgain（REANIMAL Wiki / Fandom）"
