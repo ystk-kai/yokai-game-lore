@@ -13,7 +13,7 @@ characters:
     evidence: ingame
     looks_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
     looks_label: kamigame
-    image: { thumb: boy-face, wide: boy-look }
+    image: { thumb: boy-render, wide: boy-look }
     sources:
       - { label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }
       - { label: kamigame 登場キャラ一覧と考察, url: "https://kamigame.jp/reanimal/page/409383509522651637.html" }
@@ -30,7 +30,7 @@ characters:
     evidence: ingame
     looks_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
     looks_label: kamigame
-    image: { thumb: girl-face, wide: girl-look }
+    image: { thumb: girl-render, wide: girl-look }
     sources:
       - { label: THQ Nordic 公式（brother & sister）, url: "https://reanimal.thqnordic.com" }
       - { label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }
@@ -46,7 +46,7 @@ characters:
     evidence: ingame
     looks_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
     looks_label: kamigame
-    image: { thumb: hood-face, wide: hood-look }
+    image: { thumb: hood-render, wide: hood-look }
     sources:
       - { label: kamigame 登場キャラ一覧と考察, url: "https://kamigame.jp/reanimal/page/409383509522651637.html" }
   - id: bandage
@@ -62,7 +62,7 @@ characters:
     evidence: ingame
     looks_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
     looks_label: kamigame
-    image: { thumb: bandage-face, wide: bandage-look }
+    image: { thumb: bandage-render, wide: bandage-look }
     sources:
       - { label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }
       - { label: kamigame 登場キャラ一覧と考察, url: "https://kamigame.jp/reanimal/page/409383509522651637.html" }
@@ -79,7 +79,7 @@ characters:
     evidence: ingame
     looks_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
     looks_label: kamigame
-    image: { thumb: bucket-face, wide: bucket-look }
+    image: { thumb: bucket-render, wide: bucket-look }
     sources:
       - { label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }
       - { label: kamigame 登場キャラ一覧と考察, url: "https://kamigame.jp/reanimal/page/409383509522651637.html" }
@@ -93,6 +93,8 @@ characters:
     first_seen: 第2章
     appears_in: [main]
     evidence: ingame
+    image: { thumb: sniffer-render, wide: sniffer-look }
+    looks_label: REANIMAL Wiki (Fandom)
     sources:
       - { label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }
       - { label: gamerch チャプター2 攻略チャート, url: "https://gamerch.com/reanimal/964981" }
@@ -105,6 +107,8 @@ characters:
     first_seen: 第3章
     appears_in: [main]
     evidence: ingame
+    image: { thumb: pelican-render, wide: pelican-look }
+    looks_label: REANIMAL Wiki (Fandom)
     sources:
       - { label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }
   - id: mother
@@ -119,7 +123,7 @@ characters:
     evidence: ingame
     looks_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
     looks_label: kamigame
-    image: { thumb: mother-face, wide: mother-look }
+    image: { thumb: mother-render, wide: mother-look }
     sources:
       - { label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }
       - { label: kamigame 登場キャラ一覧と考察, url: "https://kamigame.jp/reanimal/page/409383509522651637.html" }
@@ -134,7 +138,7 @@ characters:
     evidence: ingame
     looks_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
     looks_label: kamigame
-    image: { thumb: whale-face, wide: whale-look }
+    image: { thumb: whale-render, wide: whale-look }
     sources:
       - { label: kamigame 登場キャラ一覧と考察, url: "https://kamigame.jp/reanimal/page/409383509522651637.html" }
   - id: horse
@@ -148,7 +152,7 @@ characters:
     evidence: ingame
     looks_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
     looks_label: kamigame
-    image: { thumb: horse-face, wide: horse-look }
+    image: { thumb: horse-render, wide: horse-look }
     sources:
       - { label: kamigame 登場キャラ一覧と考察, url: "https://kamigame.jp/reanimal/page/409383509522651637.html" }
   - id: sheep
@@ -162,6 +166,8 @@ characters:
     secret: 少女から生まれ、バケット・バンデージ・少年・少女の順に呑み込む
     appears_in: [main]
     evidence: ingame
+    image: { thumb: sheep-render, wide: sheep-look }
+    looks_label: REANIMAL Wiki (Fandom)
     sources:
       - { label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }
   - id: soldiers
@@ -174,7 +180,7 @@ characters:
     evidence: ingame
     looks_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
     looks_label: kamigame
-    image: { thumb: soldiers-face, wide: soldiers-look }
+    image: { thumb: soldiers-render, wide: soldiers-look }
     sources:
       - { label: gamerch チャプター7 攻略チャート, url: "https://gamerch.com/reanimal/965663" }
   - id: prisoner
@@ -189,7 +195,7 @@ characters:
     evidence: official
     looks_url: "https://reanimal.thqnordic.com"
     looks_label: THQ Nordic 公式サイト
-    image: { wide: dlc-the-prisoner }
+    image: { thumb: prisoner-render, wide: dlc-the-prisoner }
     sources:
       - { label: THQ Nordic 公式サイト, url: "https://reanimal.thqnordic.com" }
       - { label: "AUTOMATON「大型DLC第1弾ついに配信」", url: "https://automaton-media.com/articles/newsjp/20260810-459465/" }
@@ -205,7 +211,7 @@ characters:
     evidence: official
     looks_url: "https://reanimal.thqnordic.com"
     looks_label: THQ Nordic 公式サイト
-    image: { wide: dlc-the-prisoner }
+    image: { thumb: soldier-dlc-render, wide: dlc-the-prisoner }
     sources:
       - { label: THQ Nordic 公式サイト, url: "https://reanimal.thqnordic.com" }
       - { label: "AUTOMATON「大型DLC第1弾ついに配信」", url: "https://automaton-media.com/articles/newsjp/20260810-459465/" }
@@ -217,6 +223,8 @@ characters:
     first_seen: DLC「The Prisoner」
     appears_in: [dlc1]
     evidence: ingame
+    image: { thumb: flamethrower-render, wide: flamethrower-look }
+    looks_label: REANIMAL Wiki (Fandom)
     sources:
       - { label: "Waytoomany Games「DLC Review – Reanimal: The Prisoner」", url: "https://waytoomany.games/2026/08/07/dlc-review-reanimal-the-prisoner/" }
   - id: piggy
@@ -230,7 +238,7 @@ characters:
     evidence: ingame
     looks_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
     looks_label: kamigame
-    image: { thumb: piggy-face, wide: piggy-look }
+    image: { thumb: piggy-render, wide: piggy-look }
     sources:
       - { label: kamigame 登場キャラ一覧と考察, url: "https://kamigame.jp/reanimal/page/409383509522651637.html" }
   - id: skin
@@ -244,6 +252,6 @@ characters:
     evidence: ingame
     looks_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
     looks_label: kamigame
-    image: { thumb: skin-face, wide: skin-look }
+    image: { thumb: skin-render, wide: skin-look }
     sources:
       - { label: kamigame 登場キャラ一覧と考察, url: "https://kamigame.jp/reanimal/page/409383509522651637.html" }

@@ -1,138 +1,200 @@
 # 掲載している画像。権利はすべて TARSIER STUDIOS AB / THQ Nordic GmbH に帰属する。
-# 掲載の根拠は game.yaml の rights.official_assets_note（規約上の許可ではなく運営者の判断）
+# 掲載の根拠は game.yaml の rights.official_assets_note（規約上の許可ではなく運営者の判断）。
+# 顔のサムネイルは REANIMAL Wiki (Fandom) の VoxelotlAgain が作ったレンダー（2026-11-02 取得）。
+# 横長の「見た目」画像は kamigame・公式サイト・Fandom のゲーム画面。
 assets:
-  - id: boy-face
-    file: characters/boy-face.png
-    alt: 少年の顔
+  - id: boy-render
+    file: characters/boy-render.png
+    alt: 少年の顔（頭に袋をかぶった姿）
     kind: official
-    source_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
-    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
+    source_url: "https://reanimal.fandom.com/wiki/File:The_Boy.png"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。レンダー: VoxelotlAgain（REANIMAL Wiki / Fandom）"
   - id: boy-look
     file: characters/boy-look.jpg
     alt: 少年の見た目
     kind: official
     source_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
     credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
-  - id: girl-face
-    file: characters/girl-face.png
-    alt: 少女の顔
+  - id: girl-render
+    file: characters/girl-render.png
+    alt: 少女の顔（ウサギの仮面）
     kind: official
-    source_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
-    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
+    source_url: "https://reanimal.fandom.com/wiki/File:TheGirl.png"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。レンダー: VoxelotlAgain（REANIMAL Wiki / Fandom）"
   - id: girl-look
     file: characters/girl-look.jpg
     alt: 少女の見た目
     kind: official
     source_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
     credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
-  - id: hood-face
-    file: characters/hood-face.png
+  - id: hood-render
+    file: characters/hood-render.png
     alt: フードの顔
     kind: official
-    source_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
-    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
+    source_url: "https://reanimal.fandom.com/wiki/File:Hood_render.png"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。レンダー: VoxelotlAgain（REANIMAL Wiki / Fandom）"
   - id: hood-look
     file: characters/hood-look.jpg
     alt: フードの見た目
     kind: official
     source_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
     credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
-  - id: bandage-face
-    file: characters/bandage-face.png
+  - id: bandage-render
+    file: characters/bandage-render.png
     alt: バンデージの顔
     kind: official
-    source_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
-    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
+    source_url: "https://reanimal.fandom.com/wiki/File:BandageRender.png"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。レンダー: VoxelotlAgain（REANIMAL Wiki / Fandom）"
   - id: bandage-look
     file: characters/bandage-look.jpg
     alt: バンデージの見た目
     kind: official
     source_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
     credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
-  - id: bucket-face
-    file: characters/bucket-face.png
+  - id: bucket-render
+    file: characters/bucket-render.png
     alt: バケットの顔
     kind: official
-    source_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
-    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
+    source_url: "https://reanimal.fandom.com/wiki/File:BucketRender.png"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。レンダー: VoxelotlAgain（REANIMAL Wiki / Fandom）"
   - id: bucket-look
     file: characters/bucket-look.jpg
     alt: バケットの見た目
     kind: official
     source_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
     credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
-  - id: mother-face
-    file: characters/mother-face.png
-    alt: マザーの顔
+  - id: sniffer-render
+    file: characters/sniffer-render.png
+    alt: スニッファーの顔
     kind: official
-    source_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
-    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
+    source_url: "https://reanimal.fandom.com/wiki/File:Sniffer.png"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。レンダー: VoxelotlAgain（REANIMAL Wiki / Fandom）"
+  - id: sniffer-look
+    file: characters/sniffer-look.jpg
+    alt: アイスクリームトラックを運転するスニッファー
+    kind: official
+    source_url: "https://reanimal.fandom.com/wiki/File:Sniffer_ice_cream_truck.png"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: REANIMAL Wiki (Fandom)（ゲーム画面）"
+  - id: pelican-render
+    file: characters/pelican-render.png
+    alt: 巨大な鳥の顔
+    kind: official
+    source_url: "https://reanimal.fandom.com/wiki/File:ThePelican.png"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。レンダー: VoxelotlAgain（REANIMAL Wiki / Fandom）"
+  - id: pelican-look
+    file: characters/pelican-look.jpg
+    alt: 洞窟にいる巨大な鳥
+    kind: official
+    source_url: "https://reanimal.fandom.com/wiki/File:Boy_Girl_Bandage_Pelican.png"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: REANIMAL Wiki (Fandom)（ゲーム画面）"
+  - id: mother-render
+    file: characters/mother-render.png
+    alt: マザーの姿
+    kind: official
+    source_url: "https://reanimal.fandom.com/wiki/File:TheMother.png"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。レンダー: VoxelotlAgain（REANIMAL Wiki / Fandom）"
   - id: mother-look
     file: characters/mother-look.jpg
     alt: マザーの見た目
     kind: official
     source_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
     credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
-  - id: whale-face
-    file: characters/whale-face.png
-    alt: クジラの顔
+  - id: whale-render
+    file: characters/whale-render.png
+    alt: クジラの姿
     kind: official
-    source_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
-    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
+    source_url: "https://reanimal.fandom.com/wiki/File:SpiralWhale.png"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。レンダー: VoxelotlAgain（REANIMAL Wiki / Fandom）"
   - id: whale-look
     file: characters/whale-look.jpg
     alt: クジラの見た目
     kind: official
     source_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
     credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
-  - id: horse-face
-    file: characters/horse-face.png
+  - id: horse-render
+    file: characters/horse-render.png
     alt: 馬の顔
     kind: official
-    source_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
-    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
+    source_url: "https://reanimal.fandom.com/wiki/File:BrookHorse.png"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。レンダー: VoxelotlAgain（REANIMAL Wiki / Fandom）"
   - id: horse-look
     file: characters/horse-look.jpg
     alt: 馬の見た目
     kind: official
     source_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
     credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
-  - id: soldiers-face
-    file: characters/soldiers-face.png
+  - id: sheep-render
+    file: characters/sheep-render.png
+    alt: 羊の顔
+    kind: official
+    source_url: "https://reanimal.fandom.com/wiki/File:Lamb.png"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。レンダー: VoxelotlAgain（REANIMAL Wiki / Fandom）"
+  - id: sheep-look
+    file: characters/sheep-look.jpg
+    alt: 戦場の羊と戦車
+    kind: official
+    source_url: "https://reanimal.fandom.com/wiki/File:Sheep_Beast_tank_theater.png"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: REANIMAL Wiki (Fandom)（ゲーム画面）"
+  - id: soldiers-render
+    file: characters/soldiers-render.png
     alt: 兵士の顔
     kind: official
-    source_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
-    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
+    source_url: "https://reanimal.fandom.com/wiki/File:Soldier.png"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。レンダー: VoxelotlAgain（REANIMAL Wiki / Fandom）"
   - id: soldiers-look
     file: characters/soldiers-look.jpg
     alt: 兵士の見た目
     kind: official
     source_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
     credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
+  - id: prisoner-render
+    file: characters/prisoner-render.png
+    alt: DLC「The Prisoner」の囚人の顔
+    kind: official
+    source_url: "https://reanimal.fandom.com/wiki/File:ThePrisoner.png"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。レンダー: VoxelotlAgain（REANIMAL Wiki / Fandom）"
+  - id: soldier-dlc-render
+    file: characters/soldier-dlc-render.png
+    alt: DLC「The Prisoner」の兵士の顔
+    kind: official
+    source_url: "https://reanimal.fandom.com/wiki/File:TheSoldier.png"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。レンダー: VoxelotlAgain（REANIMAL Wiki / Fandom）"
   - id: dlc-the-prisoner
     file: characters/dlc-the-prisoner.jpg
     alt: DLC「The Prisoner」の兵士と囚人
     kind: official
     source_url: "https://reanimal.thqnordic.com"
-    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: REANIMAL 公式サイト"
-  - id: piggy-face
-    file: characters/piggy-face.png
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: REANIMAL 公式サイト（キービジュアルの一部を切り出し）"
+  - id: flamethrower-render
+    file: characters/flamethrower-render.png
+    alt: 火炎放射器の兵士の顔
+    kind: official
+    source_url: "https://reanimal.fandom.com/wiki/File:FlameThrower.png"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。レンダー: VoxelotlAgain（REANIMAL Wiki / Fandom）"
+  - id: flamethrower-look
+    file: characters/flamethrower-look.jpg
+    alt: 火を放つ火炎放射器の兵士
+    kind: official
+    source_url: "https://reanimal.fandom.com/wiki/File:Flame_Thrower_debut.png"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: REANIMAL Wiki (Fandom)（ゲーム画面）"
+  - id: piggy-render
+    file: characters/piggy-render.png
     alt: ピギーの顔
     kind: official
-    source_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
-    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
+    source_url: "https://reanimal.fandom.com/wiki/File:TheHog.png"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。レンダー: VoxelotlAgain（REANIMAL Wiki / Fandom）"
   - id: piggy-look
     file: characters/piggy-look.jpg
     alt: ピギーの見た目
     kind: official
     source_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
     credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
-  - id: skin-face
-    file: characters/skin-face.png
+  - id: skin-render
+    file: characters/skin-render.png
     alt: スキンの顔
     kind: official
-    source_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
-    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
+    source_url: "https://reanimal.fandom.com/wiki/File:SkinRender.png"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。レンダー: VoxelotlAgain（REANIMAL Wiki / Fandom）"
   - id: skin-look
     file: characters/skin-look.jpg
     alt: スキンの見た目
