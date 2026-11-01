@@ -2,15 +2,15 @@
 type: flow
 layout: grid
 compact: true
-title: 「The Prisoner」は本編のいつか
+title: 第1章「The Prisoner」は本編のいつか
 caption: 上の段が本編、下の段が DLC。破線の矢印が、レビューごとの読み（2通り）
 lanes:
   - { id: main, label: 本編の戦場（第7〜9章）, color: l1, icon: gi:barbed-wire }
   - { id: dlc, label: DLC 第1章, color: l5, icon: gi:photo-camera }
   - { id: next, label: DLC 第2・3章, color: l3 }
 nodes:
-  - { id: m7, label: 戦利品・監視者, short: 第7〜8章, sub: 本編 第7〜8章, at: [0, 0], lane: main, icon: gi:barbed-wire }
-  - { id: m9, label: 戦車で脱出, sub: 本編 第9章, at: [2, 0], lane: main, icon: gi:great-war-tank }
+  - { id: m7, label: 第7〜8章の戦場, short: 第7〜8章, sub: 本編 第7〜8章, at: [0, 0], lane: main, icon: gi:barbed-wire }
+  - { id: m9, label: 戦車を奪って進む, sub: 本編 第9章, at: [2, 0], lane: main, icon: gi:great-war-tank }
   - id: p
     label: The Prisoner
     sub: DLC 第1章
@@ -18,13 +18,13 @@ nodes:
     lane: dlc
     icon: gi:photo-camera
     evidence: official
-    detail: 兵士と囚人が、戦争で荒れた「かつて馴染み深かった場所」を生き延び、運命を変える穴に落ちる（公式の説明）。結末は描かれず、続く章への布石になっている
+    detail: 兵士と囚人が「戦争で荒れた、かつて馴染み深かった場所」を生き延び、運命を変える穴に落ちていく（公式の説明）
     sources:
       - { label: THQ Nordic 公式サイト, url: "https://reanimal.thqnordic.com" }
       - { label: "Waytoomany Games のレビュー", url: "https://waytoomany.games/2026/08/07/dlc-review-reanimal-the-prisoner/" }
-  - { id: c2, label: 第2・3章（未配信）, sub: DLC, at: [1, 2], lane: next, icon: gi:hourglass, evidence: speculation, detail: 内容は未発表（2026-11-01 時点） }
+  - { id: c2, label: 第2・3章（未配信）, sub: DLC, at: [1, 2], lane: next, icon: gi:hourglass, evidence: official, detail: 内容は未発表（2026-11-01 時点） }
 edges:
   - { from: m7, to: m9 }
   - { from: m7, to: p, label: 同じ時期, evidence: speculation }
-  - { from: m9, to: p, label: 本編の後, evidence: speculation }
+  - { from: m9, to: p, label: 第9章の後, evidence: speculation }
   - { from: p, to: c2 }

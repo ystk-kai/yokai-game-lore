@@ -9,7 +9,7 @@ characters:
     role: 主人公。1人プレイで操作する
     looks: 頭に袋をかぶり、首に縄を巻いている（kamigame は「マフラー」と書く）
     first_seen: 冒頭・第1章（小舟の上で目を覚ます）
-    secret: 第9章で羊に呑み込まれる。首を吊られた過去があるのでは、という考察がある（棺桶の映像から）
+    secret: 第9章で羊に呑み込まれる
     appears_in: [main]
     evidence: ingame
     looks_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
@@ -27,7 +27,7 @@ characters:
     role: 少年の相棒。1人プレイでは自動で動く
     looks: ウサギの仮面。ほかの子より質素な服で素足
     first_seen: 第1章（海に浮かんでいるところを少年が引き上げる）
-    secret: 第6章で羊を吐き出す。最後は4人の少年に井戸へ投げ込まれる
+    secret: 第6章で羊を吐き出す。最後は、少年と仲間3人に井戸へ投げ込まれる
     appears_in: [main]
     evidence: ingame
     looks_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
@@ -63,7 +63,7 @@ characters:
     role: 仲間。少女を気づかう様子がある
     looks: 顔に包帯を巻いている
     first_seen: 第3章（ホテルで巨大な鳥にさらわれる）
-    secret: のちに羊に呑み込まれる。火事で亡くなったのでは、という考察がある
+    secret: のちに羊に呑み込まれる
     appears_in: [main]
     evidence: ingame
     looks_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
@@ -80,7 +80,7 @@ characters:
     role: 仲間。こもった声
     looks: 頭にバケツをかぶった、少しふくよかな男の子
     first_seen: 第4〜5章（孤児院の穴に下ろされる）
-    secret: 羊に最初に呑み込まれる。崖から落とされたのでは、という考察がある
+    secret: 羊に最初に呑み込まれる
     appears_in: [main]
     evidence: ingame
     looks_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
@@ -212,7 +212,7 @@ characters:
       - { label: THQ Nordic 公式サイト, url: "https://reanimal.thqnordic.com" }
       - { label: "AUTOMATON「大型DLC第1弾ついに配信」", url: "https://automaton-media.com/articles/newsjp/20260810-459465/" }
   - id: soldier-dlc
-    name: 兵士（DLC）
+    name: 兵士（DLC の主人公）
     autolink: false
     name_en: The Soldier
     kind: protagonist
@@ -278,7 +278,7 @@ characters:
     role: DLC 第1章でたびたび姿を見せる、謎の子ども
     looks: 鳥のくちばしのような形の暗い緑のフードで頭を覆い、血のしみのついた白い服を着ている
     first_seen: DLC「The Prisoner」
-    secret: 最後に、気を失った兵士のそばで囚人に「2人だけの秘密」を問いかけ、兵士が目を覚ます前に消える
+    secret: 最後に、気を失った兵士のそばで、囚人に「彼女は知っているのか」と問いかけ、兵士が目を覚ます前に消える
     appears_in: [dlc1]
     evidence: ingame
     image: { thumb: second-prisoner-render }

@@ -24,7 +24,7 @@ events:
   - id: season
     lane: dlc
     date: "2026-02-11"
-    label: DLC 3章を告知
+    label: DLC 全3章を告知
     detail: シーズンパスに3つの章を含むと告知。第1章は2026年夏の予定とされた
     sources:
       - { label: "Blue's News「REANIMAL DLC Plans」", url: "https://www.bluesnews.com/s/294412/reanimal-dlc-plans" }
@@ -32,7 +32,7 @@ events:
     lane: dlc
     date: "2026-08-07"
     date_label: 2026-08-07（日本 08-08）
-    label: 第1章 Prisoner
+    label: 第1章 The Prisoner
     detail: 新しい主人公「兵士」と「囚人」の物語。予告なしの配信で、遊ぶ時間は1〜2時間ほど
     sources:
       - { label: "Gematsu", url: "https://www.gematsu.com/2026/08/reanimal-dlc-the-prisoner-now-available" }

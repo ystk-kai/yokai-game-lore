@@ -2,7 +2,7 @@
 # 上から下へ1本で読む（layout: list）。at は grid のときだけ使う
 type: flow
 title: 本編の流れ（全9章）
-caption: 上から順に読む。四角の色と名前は舞台
+caption: 上から順に読む。色の四角とその横の名前が舞台
 lanes:
   - { id: well, label: 井戸（始まりと結末）, color: l6, icon: gi:well }
   - { id: sea, label: 海と水没した町, color: l2, icon: gi:boat-fishing }
@@ -27,7 +27,7 @@ nodes:
     at: [1, 0]
     lane: sea
     icon: gi:boat-fishing
-    detail: 小舟で機雷の海を抜け、海に浮かぶ少女を引き上げる。砂浜から施設（巨大なファン・下水道）、中庭と倉庫、線路と列車を経て森の町へ。途中でフードの子と再会する。
+    detail: 小舟で機雷の海を抜け、海に浮かぶ少女を引き上げる。砂浜から施設（巨大なファン・下水道）、中庭と倉庫、線路と列車を経て森の町へ。途中でフードと再会する。
     sources:
       - { label: gamerch チャプター1 攻略チャート, url: "https://gamerch.com/reanimal/964699" }
       - { label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }
@@ -74,7 +74,7 @@ nodes:
       - { label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }
   - id: ch6
     label: 誰も置き去りにしない
-    short: 置き去りにしない
+    short: 誰も置き去りに
     sub: 第6章
     at: [0, 2]
     lane: sea
@@ -109,30 +109,30 @@ nodes:
     lane: war
     kind: boss
     icon: gi:sheep
-    detail: 奪った戦車で進むと、巨大になった羊が現れる。少年が呑み込まれ、操作は少女に移るが、少女も呑まれる。羊の体内で、少女は小屋で死んだ白いウサギを見つける。
+    detail: 奪った戦車で進むと、巨大になった羊が現れる。少年が呑み込まれ、操作は少女に移るが、少女も呑まれる。羊の体内で、少女は過去の記憶を見る。その中で、小屋で死んでいる白いウサギを見つける。
     sources:
       - { label: gamerch チャプター9 攻略チャート, url: "https://gamerch.com/reanimal/966038" }
       - { label: "Into Indie Games「Chapter 9 - All Consuming Past」", url: "https://intoindiegames.com/walkthroughs/reanimal-walkthrough-chapter-9-all-consuming-past/" }
   - id: ending
     label: 通常エンディング
-    short: 通常の結末
+    short: 通常エンディング
     sub: 結末
     at: [1, 3]
     lane: well
     kind: ending
     icon: gi:well
-    detail: 4人の少年が少女を袋に入れて井戸まで引きずり、投げ込む。井戸があふれる。
+    detail: 少年と仲間3人が、少女を袋に入れて井戸まで引きずり、投げ込む。井戸があふれる。
     sources:
       - { label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }
   - id: hidden
     label: 隠しエンディング
-    short: 隠しの結末
+    short: 隠しエンディング
     sub: 結末
     at: [0, 3]
     lane: well
     kind: ending
     icon: gi:coffin
-    detail: 各章に散らばる棺桶5つをすべて確認すると、通常エンディングに映像が加わる。白い仮面の黒い影たちが、井戸の底の少女に静かに近づく。1周目でも条件を満たせる。
+    detail: 章のあちこちにある5つの棺桶をすべて確かめておくと、通常エンディングに映像が加わる。白い仮面の黒い影たちが、井戸の底の少女に静かに近づく。1周目でも条件を満たせる。
     sources:
       - { label: kamigame 隠しエンディングの解放条件, url: "https://kamigame.jp/reanimal/page/409554313107497530.html" }
       - { label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }

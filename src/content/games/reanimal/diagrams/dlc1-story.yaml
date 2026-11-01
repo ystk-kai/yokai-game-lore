@@ -2,7 +2,7 @@
 # 出典は REANIMAL Wiki の章と各部分のページ（MediaWiki API で取得、~/research/reanimal-story/sources/）
 type: flow
 title: DLC 第1章「The Prisoner」の流れ
-caption: 上から順に読む。四角の色と名前は舞台。第1部〜第3部は章の中の3つの部分
+caption: 上から順に読む。色の四角とその横の名前が舞台。第1部〜第3部は章の中の3つの部分
 lanes:
   - { id: cell, label: 牢と輸送機, color: l3, icon: gi:prisoner }
   - { id: warzone, label: 戦場の街, color: l1, icon: gi:barbed-wire }
@@ -28,7 +28,7 @@ nodes:
     at: [1, 0]
     lane: cell
     icon: gi:parachute
-    detail: 2人は兵士たちの死体にまぎれて輸送機に潜んでいた。撃たれた兵士のパラシュートを奪い、銃撃の中を戦場の街へ降りる。
+    detail: 2人は軍人たちの死体にまぎれて輸送機に潜んでいた。撃たれた軍人のパラシュートを奪い、銃撃の中を戦場の街へ降りる。
     sources: [{ label: "REANIMAL Wiki「The Slow Descent」", url: "https://reanimal.fandom.com/wiki/The_Slow_Descent" }]
   - id: street
     label: 戦場の街を抜ける
@@ -37,7 +37,7 @@ nodes:
     at: [2, 0]
     lane: warzone
     icon: gi:barbed-wire
-    detail: 壊れた車と対戦車障害物の通りを、銃撃と兵士を避けて進む。罠の線をくぐった先で、火炎放射器の兵士が初めて姿を見せる。
+    detail: 壊れた車と対戦車障害物の通りを、銃撃と軍人を避けて進む。罠の線をくぐった先で、火炎放射器の兵士が初めて姿を見せる。
     sources: [{ label: "REANIMAL Wiki「The Slow Descent」", url: "https://reanimal.fandom.com/wiki/The_Slow_Descent" }]
   - id: mall
     label: モールと写真館
@@ -59,7 +59,7 @@ nodes:
     sources: [{ label: "REANIMAL Wiki「The Slow Descent」", url: "https://reanimal.fandom.com/wiki/The_Slow_Descent" }]
   - id: horse1
     label: 豚を食べる馬
-    short: 馬と出会う
+    short: 豚を食べる馬
     sub: 第1部
     at: [5, 0]
     lane: warzone
@@ -83,7 +83,7 @@ nodes:
     lane: warzone
     kind: boss
     icon: gi:flamethrower-soldier
-    detail: 死んだ兵士の手からピストルを取り、背中の燃料タンクを撃ち抜いて倒す。
+    detail: 死んだ軍人の手からピストルを取り、背中の燃料タンクを撃ち抜いて倒す。
     sources: [{ label: "REANIMAL Wiki「Scorched Earth」", url: "https://reanimal.fandom.com/wiki/Scorched_Earth" }, { label: "REANIMAL Wiki「The Flame Thrower」", url: "https://reanimal.fandom.com/wiki/The_Flame_Thrower" }]
   - id: bomb
     label: 馬と爆撃
@@ -127,7 +127,7 @@ nodes:
     sub: 第3部
     at: [12, 0]
     lane: sand
-    kind: boss
+    kind: scene
     icon: gi:long-legged-spider
     detail: トンネルの先で、マザーが馬を呑み込んでいる。マザーに追われて地下鉄を走り抜け、谷を跳び越えた先で転倒する。マザーは谷を越えずに引き返す。
     sources: [{ label: "REANIMAL Wiki「By Your Side」", url: "https://reanimal.fandom.com/wiki/By_Your_Side" }, { label: "REANIMAL Wiki「The Mother」", url: "https://reanimal.fandom.com/wiki/The_Mother" }]
@@ -137,7 +137,7 @@ nodes:
     sub: 第3部
     at: [13, 0]
     lane: tower
-    kind: ending
+    kind: scene
     icon: gi:bird-mask
     detail: 兵士が気を失っているあいだに、もう1人の囚人が現れ、「彼女は知っているのか」と囚人に問う。囚人は「知ったら死んでしまう」と答え、相手は「彼女にはその報いがある、おまえにも」と言って、兵士が目を覚ます前に消える。
     sources: [{ label: "REANIMAL Wiki「By Your Side」", url: "https://reanimal.fandom.com/wiki/By_Your_Side" }, { label: "REANIMAL Wiki「The Second Prisoner」", url: "https://reanimal.fandom.com/wiki/The_Second_Prisoner" }]
@@ -147,7 +147,7 @@ nodes:
     sub: 第3部
     at: [14, 0]
     lane: tower
-    kind: ending
+    kind: scene
     icon: gi:tower-flag
     detail: 兵士が誰と話していたのかを尋ね、囚人は「誰とも」と答える。2人は目の前の巨大な建物を見つめる。第2章へ続く。
     sources: [{ label: "REANIMAL Wiki「By Your Side」", url: "https://reanimal.fandom.com/wiki/By_Your_Side" }]
