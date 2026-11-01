@@ -234,6 +234,11 @@ export const charactersFile = z.object({
       autolink: z.boolean().default(true),
       /** name 以外にリンクにする呼び方（autolink に関係なくリンクにする） */
       aliases: z.array(z.string()).default([]),
+      /**
+       * 前後の文字で人物名かどうかを見分けてリンクにする正規表現（JavaScript の書き方。前後の条件は先読み・後読みで書く）。
+       * 一般の言葉と重なる名前を、人物を指すときだけリンクにする。例: フードは (?<![のい])フード(?=[・のとがはをに（、」]|$)
+       */
+      link_patterns: z.array(z.string()).default([]),
       name_en: z.string().optional(),
       kind: z.enum(['protagonist', 'ally', 'creature', 'other']),
       icon: iconRef.optional(),

@@ -40,6 +40,8 @@ characters:
     name: フード
     autolink: false
     aliases: [フードの子]
+    # 人物名として使われるときだけリンクにする（「緑のフード」「フードで頭を覆う」はかぶり物なので除く）
+    link_patterns: ["(?<![のい])フード(?=[・のとがはをに（、」]|$)"]
     name_en: Hood
     kind: ally
     icon: gi:hood

@@ -100,6 +100,14 @@ for (const game of targetGames) {
     }
   }
 
+  // 4b. 名鑑の link_patterns が正しい正規表現か（壊れているとビルドの途中で分かりにくい失敗をする）
+  const charFile = join(dir, 'characters.yaml');
+  if (existsSync(charFile)) for (const c of readYaml(charFile)?.characters ?? []) {
+    for (const src of c.link_patterns ?? []) {
+      try { new RegExp(src); } catch (e) { err(charFile, `${c.id}: link_patterns の正規表現が壊れている: ${src}（${(e as Error).message}）`); }
+    }
+  }
+
   // 5. ページ: <Diagram> の id が実在する
   const pageDir = join(dir, 'pages');
   if (existsSync(pageDir)) for (const name of readdirSync(pageDir)) {
