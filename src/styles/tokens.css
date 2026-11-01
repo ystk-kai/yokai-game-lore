@@ -1,20 +1,21 @@
 /* デザイントークン。値の出所と使い分けは DESIGN.md。ここ以外に色・書体を直書きしない */
 :root {
-  /* 地と文字（地は無彩色寄りの冷たいグレー。クリームにしない） */
-  --color-bg: #f4f5f7;
-  --color-surface: #ffffff;
-  --color-ink: #191c22;      /* bg 比 15.6 */
-  --color-muted: #535a68;    /* bg 比 6.3 */
-  --color-rule: #c9cdd5;     /* 罫線・未選択の線（装飾。情報を載せない） */
-  --color-accent: #c2361c;   /* 朱。リンクと強調だけに使う（bg 比 5.0） */
+  color-scheme: dark;
+  /* 地と文字（ダークテーマ。地は青みのある墨色で、純黒にしない） */
+  --color-bg: #111318;
+  --color-surface: #1a1d24;  /* 図・カードの面 */
+  --color-ink: #e8eaef;      /* bg 比 15.4 */
+  --color-muted: #a3aab8;    /* bg 比 8.0 */
+  --color-rule: #363b47;     /* 罫線・未選択の線（装飾。情報を載せない） */
+  --color-accent: #ff7a5c;   /* 朱。リンクと強調だけに使う（bg 比 7.3） */
 
-  /* 系統色（路線の色）。どれも白地・bg 地で 4.5:1 以上 */
-  --lane-l1: #c2361c; /* 朱 */
-  --lane-l2: #1d63c8; /* 藍 */
-  --lane-l3: #0b7a52; /* 緑 */
-  --lane-l4: #9a5b00; /* 黄土 */
-  --lane-l5: #7a3bbf; /* 菫 */
-  --lane-l6: #0a6e7a; /* 青緑 */
+  /* 系統色（路線の色）。どれも bg・surface 地で 6.5:1 以上、系統色の面に surface 色の文字を載せても 6.5:1 以上 */
+  --lane-l1: #ff7a5c; /* 朱 */
+  --lane-l2: #6aa6ff; /* 藍 */
+  --lane-l3: #45c993; /* 緑 */
+  --lane-l4: #e3a640; /* 黄土 */
+  --lane-l5: #bb93ff; /* 菫 */
+  --lane-l6: #44c6d1; /* 青緑 */
 
   /* 書体（ui-design/japanese-web-typography のスタック。system-ui を先頭に置かない） */
   --font-body: -apple-system, "Segoe UI", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic Medium", YuGothic, Meiryo, "Noto Sans JP", sans-serif;
