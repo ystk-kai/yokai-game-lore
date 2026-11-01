@@ -49,6 +49,9 @@ const kindLabel = { protagonist: '主人公', ally: '仲間', creature: 'クリ�
 </ul>
 <style>
   .cards { list-style: none; padding: 0; margin: var(--space-6) 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: var(--space-4); }
+  /* 相関図から移ってきたカードを示す。サイドメニューのタブ（スマホ）に隠れないよう上に余白 */
+  .card { scroll-margin-top: var(--space-16); }
+  .card:target { border-color: var(--color-accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 35%, transparent); }
   .card { overflow: hidden; background: var(--color-surface); border: 1px solid var(--color-rule); border-radius: var(--radius); padding: var(--space-4); font-size: var(--text-small); line-height: 1.65; }
   .kind-protagonist { --k: var(--lane-l2); } .kind-ally { --k: var(--lane-l3); } .kind-creature { --k: var(--lane-l1); } .kind-other { --k: var(--color-muted); }
   .head { display: flex; gap: var(--space-3); align-items: center; margin-bottom: var(--space-2); }

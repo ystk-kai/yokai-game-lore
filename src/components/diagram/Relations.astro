@@ -4,7 +4,8 @@ import type { z } from 'astro/zod';
 import type { relationsDiagram } from '../../schema';
 import { getEntry } from 'astro:content';
 import Icon from '../Icon.astro';
-import { file } from '../../lib/url';
+import { file, url } from '../../lib/url';
+import { getCollection } from 'astro:content';
 
 interface Props { data: z.infer<typeof relationsDiagram>; game: string; id: string }
 const { data, game, id } = Astro.props;
@@ -45,6 +46,9 @@ const anchor = id.replace('/', '-');
 // characters.yaml の同じ id の人物に顔の画像があれば、アイコンの代わりに使う
 const chars = new Map(((await getEntry('characters', game))?.data.characters ?? []).map((c) => [c.id, c]));
 const assetMap = new Map(((await getEntry('assets', game))?.data.assets ?? []).map((a) => [a.id, a]));
+// 名鑑（<Characters> を置いたページ）の該当カードへのリンク。名鑑に無い人物はリンクにしない
+const charPage = (await getCollection('pages', (p) => p.id.startsWith(`${game}/`) && p.body?.includes('<Characters'))).at(0);
+const hrefOf = (nid: string) => (charPage && chars.has(nid) ? `${url(`games/${charPage.id}`)}#ch-${nid}` : undefined);
 const thumbOf = (nid: string) => { const a = assetMap.get(chars.get(nid)?.image?.thumb ?? ''); return a ? file(`games/${game}/${a.file}`) : undefined; };
 ---
 <figure class="rel">
@@ -79,14 +83,16 @@ const thumbOf = (nid: string) => { const a = assetMap.get(chars.get(nid)?.image?
       {data.nodes.map((n) => {
         const p = pos(n.at);
         const g = n.group ? groupOf.get(n.group) : undefined;
+        const Tag = hrefOf(n.id) ? 'a' : 'div';
         return (
-          <div class:list={['person', g && `lane-${g.color}`]} style={`left:${p.x}px;top:${p.y}px;width:${W}px;height:${H}px`}>
+          <Tag href={hrefOf(n.id)} class:list={['person', g && `lane-${g.color}`, hrefOf(n.id) && 'is-link']} style={`left:${p.x}px;top:${p.y}px;width:${W}px;height:${H}px`}
+               aria-label={hrefOf(n.id) ? `${n.label}の説明へ` : undefined}>
             <div class="p-body">
               {thumbOf(n.id) ? <img class="portrait-img" src={thumbOf(n.id)} alt={n.label} /> : n.icon ? <Icon icon={n.icon} game={game} size="2.5em" class="portrait" label={n.label} /> : <span class="portrait-empty" aria-hidden="true"></span>}
               <span class="name">{n.label}</span>
               {n.role && <span class="role">{n.role}</span>}
             </div>
-          </div>
+          </Tag>
         );
       })}
     </div>
@@ -123,6 +129,9 @@ const thumbOf = (nid: string) => { const a = assetMap.get(chars.get(nid)?.image?
   .group > span { position: absolute; top: 2px; left: 10px; font-size: 0.8125rem; line-height: 1.4; color: var(--lane); font-weight: 700; }
   .link-label { position: absolute; transform: translate(-50%, -50%); z-index: 2; background: var(--color-surface); color: var(--color-ink);
     border: 1px solid var(--k); border-radius: 4px; padding: 0 var(--space-1); font-size: 0.8125rem; line-height: 1.5; white-space: nowrap; }
+  .person.is-link { text-decoration: none; color: var(--color-ink); cursor: pointer; }
+  .person.is-link:hover { border-color: var(--color-accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 30%, transparent); }
+  .person.is-link:hover .name { color: var(--color-accent); }
   .person { position: absolute; z-index: 3; background: var(--color-surface); border: 2px solid var(--lane, var(--color-ink)); border-radius: var(--radius); }
   .p-body { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: var(--space-1); text-align: center; }
   :global(.portrait) { color: var(--lane, var(--color-ink)); }
