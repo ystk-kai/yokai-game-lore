@@ -11,7 +11,7 @@ interface Props { data: z.infer<typeof flowDiagram>; game: string; id: string; b
 const { data, game, id, bare = false } = Astro.props;
 
 // カードの横の間（COL - W）は矢印のラベル用に 96px 空ける。横の矢印のラベルは2行まで、縦の矢印のラベルは1行
-const [COL, ROW, W, H] = data.compact ? [304, 208, 232, 160] : [352, 296, 256, 240];
+const [COL, ROW, W, H] = data.compact ? [304, 256, 232, 188] : [352, 296, 256, 240];
 const PAD = 24;
 const isGrid = data.layout === 'grid';
 const isStrip = data.layout === 'strip';
@@ -36,8 +36,15 @@ const edges = data.edges.map((e) => {
     const y1 = down ? p.y + H : p.y, y2 = down ? q.y - 2 : q.y + H + 2;
     d = `M${x},${y1} L${x},${y2}`; mid = { x, y: (y1 + y2) / 2 };
     return { ...e, d, mid, vertical: true };
+  } else if (a.at[1] !== b.at[1]) {
+    // 段も列も違う: 出どころの下端（上の段へ戻るときは上端）から出て、行き先の上端（下端）に入る。
+    // 横の矢印（同じ段の流れ）と出入り口を分け、どの矢印がどこから来たかを見分けられるようにする
+    const down = q.y > p.y;
+    const x1 = p.x + W / 2, y1 = down ? p.y + H : p.y, x2 = q.x + W / 2, y2 = down ? q.y - 2 : q.y + H + 2, cy = (y1 + y2) / 2;
+    d = `M${x1},${y1} C${x1},${cy} ${x2},${cy} ${x2},${y2}`;
+    mid = { x: (x1 + x2) / 2, y: cy };
   } else {
-    // 右へ進むときは右端→左端、左へ戻るとき（折り返しの段）は左端→右端
+    // 同じ段: 右へ進むときは右端→左端、左へ戻るときは左端→右端
     const right = q.x > p.x;
     const x1 = right ? p.x + W : p.x, y1 = p.y + H / 2, x2 = right ? q.x - 2 : q.x + W + 2, y2 = q.y + H / 2, cx = (x1 + x2) / 2;
     d = y1 === y2 ? `M${x1},${y1} L${x2},${y2}` : `M${x1},${y1} C${cx},${y1} ${cx},${y2} ${x2},${y2}`;

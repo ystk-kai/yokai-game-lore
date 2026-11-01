@@ -140,7 +140,35 @@ export const orderDiagram = z.object({
     .min(2),
 });
 
-export const diagram = z.discriminatedUnion('type', [flowDiagram, relationsDiagram, timelineDiagram, orderDiagram]);
+/** 配信・発売のスケジュール。横軸を実際の時間に比例させ、系統ごとに行を分ける */
+export const scheduleDiagram = z.object({
+  type: z.literal('schedule'),
+  title: z.string(),
+  caption: z.string().optional(),
+  /** 「現在」の線を引く日（調べた日）。"YYYY-MM-DD" */
+  now: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
+  lanes: z.array(lane).min(1),
+  events: z
+    .array(
+      z.object({
+        id: z.string(),
+        lane: z.string(),
+        /** 位置を決める日付。"YYYY-MM" か "YYYY-MM-DD" */
+        date: z.string().regex(/^\d{4}-\d{2}(-\d{2})?$/, 'date は "YYYY-MM" か "YYYY-MM-DD"'),
+        /** 図に出す日付の書き方（「2026-08-07（日本 8-08）」など）。無ければ date */
+        date_label: z.string().optional(),
+        label: z.string().max(14, '図のラベルは14字まで。説明は detail に'),
+        detail: z.string().optional(),
+        /** まだ起きていない予定。破線の白抜きで描く */
+        planned: z.boolean().default(false),
+        evidence: evidence.default('official'),
+        sources: z.array(source).default([]),
+      }),
+    )
+    .min(1),
+});
+
+export const diagram = z.discriminatedUnion('type', [flowDiagram, relationsDiagram, timelineDiagram, orderDiagram, scheduleDiagram]);
 export type Diagram = z.infer<typeof diagram>;
 
 /* ---------- ゲーム・素材・考察 ---------- */

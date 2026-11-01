@@ -1,0 +1,119 @@
+---
+// 配信・発売のスケジュール。横軸は実際の時間に比例させ、系統（本編・DLC など）ごとに行を分ける。
+// 済んだ出来事は塗りつぶしの点、予定は破線の白抜きの点。調べた日に「現在」の縦線を引く。
+// 位置は割合（%）で決めるので、画面幅が変わっても崩れない。狭い画面では横にスクロールする
+import type { z } from 'astro/zod';
+import type { scheduleDiagram } from '../../schema';
+import Icon from '../Icon.astro';
+import Evidence from '../Evidence.astro';
+import Sources from '../Sources.astro';
+
+interface Props { data: z.infer<typeof scheduleDiagram>; game: string; id: string; bare?: boolean }
+const { data, game, id, bare = false } = Astro.props;
+const anchor = id.replace('/', '-');
+
+// 月単位の通し番号（日付は月の中の割合で足す）
+const toM = (d: string) => { const [y, m, day] = d.split('-').map(Number); return y * 12 + (m - 1) + ((day ?? 15) - 1) / 31; };
+const points = data.events.map((e) => toM(e.date)).concat(data.now ? [toM(data.now)] : []);
+const start = Math.floor(Math.min(...points)) - 2, end = Math.ceil(Math.max(...points)) + 2;
+const pct = (m: number) => ((m - start) / (end - start)) * 100;
+const years = Array.from({ length: Math.floor(end / 12) - Math.ceil(start / 12) + 1 }, (_, i) => Math.ceil(start / 12) + i).filter((y) => y * 12 >= start && y * 12 <= end);
+const laneOf = new Map(data.lanes.map((l) => [l.id, l]));
+const sorted = [...data.events].sort((a, b) => toM(a.date) - toM(b.date));
+const number = new Map(sorted.map((e, i) => [e.id, i + 1]));
+// 同じ行で近い出来事のラベルが重ならないよう、行ごとに上下を交互にする
+const side = new Map<string, 'up' | 'down'>();
+for (const l of data.lanes) data.events.filter((e) => e.lane === l.id).sort((a, b) => toM(a.date) - toM(b.date)).forEach((e, i) => side.set(e.id, i % 2 ? 'up' : 'down'));
+---
+<figure class="sched">
+  {(!bare || data.caption) && (
+    <figcaption>
+      {!bare && <span class="title">{data.title}</span>}
+      {data.caption && <span class="caption">{data.caption}</span>}
+      <span class="keys"><span class="key done" aria-hidden="true"></span>配信・発表済み<span class="key planned" aria-hidden="true"></span>予定</span>
+    </figcaption>
+  )}
+  <div class="scroller" tabindex="0" aria-label={`${data.title}（横にスクロールできます）`}>
+    <div class="chart">
+      {data.lanes.map((l) => (
+        <div class={`row lane-${l.color}`}>
+          <div class="row-label">{l.icon && <Icon icon={l.icon} game={game} size="1.1rem" />}{l.label}</div>
+          <div class="track">
+            <span class="line" aria-hidden="true"></span>
+            {data.events.filter((e) => e.lane === l.id).map((e) => (
+              <a href={`#${anchor}-${e.id}`} class:list={['ev', side.get(e.id), e.planned && 'is-planned']} style={`left:${pct(toM(e.date))}%`}>
+                <span class="dot num">{number.get(e.id)}</span>
+                <span class="ev-text"><span class="ev-date num">{e.date}</span><span class="ev-label">{e.label}</span></span>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+      <div class="axis">
+        <div class="row-label" aria-hidden="true"></div>
+        <div class="track">
+          {years.map((y) => <span class="tick num" style={`left:${pct(y * 12)}%`}>{y}</span>)}
+        </div>
+      </div>
+      {data.now && (
+        <div class="now-wrap" aria-hidden="true"><div class="row-label"></div><div class="track"><span class="now" style={`left:${pct(toM(data.now))}%`}><span>現在（{data.now}）</span></span></div></div>
+      )}
+    </div>
+  </div>
+  <ol class="notes">
+    {sorted.map((e) => (
+      <li id={`${anchor}-${e.id}`} class:list={[`lane-${laneOf.get(e.lane)!.color}`, e.planned && 'is-planned']}>
+        <span class="dot num">{number.get(e.id)}</span>
+        <div>
+          <div class="n-head"><span class="num n-date">{e.date_label ?? e.date}</span><strong>{e.label}</strong>{e.planned && <span class="tag">予定</span>}<Evidence level={e.evidence} /></div>
+          {e.detail && <p>{e.detail}</p>}
+          <Sources sources={e.sources} />
+        </div>
+      </li>
+    ))}
+  </ol>
+</figure>
+
+<style>
+  .sched { margin: var(--space-8) 0; }
+  figcaption { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2) var(--space-4); margin-bottom: var(--space-3); }
+  .title { font-weight: 700; font-size: var(--text-h3); }
+  .caption { color: var(--color-muted); font-size: var(--text-small); }
+  .keys { display: inline-flex; align-items: center; gap: var(--space-2); font-size: var(--text-small); color: var(--color-muted); }
+  .key { width: 0.9em; height: 0.9em; border-radius: 50%; margin-left: var(--space-2); }
+  .key.done { background: var(--color-ink); }
+  .key.planned { border: 2px dashed var(--color-muted); }
+
+  .scroller { overflow-x: auto; background: var(--color-surface); border: 1px solid var(--color-rule); border-radius: var(--radius); }
+  .chart { position: relative; min-width: 56rem; padding: var(--space-4) var(--space-12) var(--space-2) var(--space-6); }
+  .row, .axis, .now-wrap { display: grid; grid-template-columns: 11rem minmax(0, 1fr); }
+  .now-wrap { position: absolute; inset: 0 var(--space-12) 0 var(--space-6); pointer-events: none; z-index: 0; }
+  .row-label { display: flex; align-items: center; gap: var(--space-2); font-size: var(--text-small); font-weight: 700; color: var(--lane, var(--color-muted)); padding-right: var(--space-3); }
+  .track { position: relative; min-height: 8.5rem; }
+  .axis .track { min-height: 1.75rem; border-top: 1px solid var(--color-rule); }
+  .line { position: absolute; left: 0; right: 0; top: 50%; height: 4px; margin-top: -2px; border-radius: 2px; background: color-mix(in srgb, var(--lane) 35%, transparent); }
+  .tick { position: absolute; top: 0; transform: translateX(-50%); font-size: 0.8125rem; color: var(--color-muted); padding-top: var(--space-1); }
+  .tick::before { content: ""; position: absolute; left: 50%; top: -5px; width: 1px; height: 5px; background: var(--color-rule); }
+  .now { position: absolute; top: 0; bottom: 1.75rem; border-left: 2px dashed var(--color-accent); }
+  .now span { position: absolute; left: 6px; top: 0; font-size: 0.8125rem; color: var(--color-accent); white-space: nowrap; }
+
+  /* 出来事: 点は行の中央。ラベルは上下に交互に置く */
+  .ev { z-index: 1; position: absolute; top: 50%; transform: translate(-50%, -50%); display: grid; place-items: center; color: var(--color-ink); text-decoration: none; }
+  .dot { width: 26px; height: 26px; display: grid; place-items: center; border-radius: 50%; background: var(--lane, var(--color-ink)); color: var(--color-accent-ink); font-size: 0.8125rem; font-weight: 700; flex: none; }
+  .is-planned .dot { background: var(--color-surface); color: var(--color-ink); border: 2px dashed var(--lane, var(--color-muted)); }
+  .ev-text { position: absolute; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; text-align: center; white-space: nowrap; line-height: 1.35; background: var(--color-surface); padding: 0 var(--space-1); border-radius: 4px; }
+  .ev.down .ev-text { top: calc(100% + 6px); }
+  .ev.up .ev-text { bottom: calc(100% + 6px); }
+  .ev-date { font-size: 0.8125rem; color: var(--color-muted); }
+  .ev-label { font-size: var(--text-small); font-weight: 700; }
+  .ev:hover .ev-label { color: var(--color-accent); text-decoration: underline; text-underline-offset: 0.2em; }
+  .is-planned .ev-label { font-weight: 400; color: var(--color-muted); }
+
+  .notes { list-style: none; margin: var(--space-4) 0 0; padding: 0; display: grid; gap: var(--space-3) var(--space-8); grid-template-columns: repeat(auto-fill, minmax(min(100%, 26rem), 1fr)); }
+  .notes li { display: flex; gap: var(--space-3); align-items: flex-start; font-size: var(--text-small); line-height: 1.7; }
+  .notes li .dot { margin-top: 2px; }
+  .n-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-1) var(--space-2); }
+  .n-date { color: var(--color-muted); }
+  .tag { font-size: 0.8125rem; border: 1px dashed var(--color-muted); border-radius: 4px; padding: 0 var(--space-1); color: var(--color-muted); }
+  .notes p { margin: 0; color: var(--color-muted); line-break: strict; }
+</style>
