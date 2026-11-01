@@ -102,14 +102,14 @@ const kindTag = (n: (typeof data.nodes)[number]) => (kindLabel[n.kind] && kindLa
     </div>
   </div>}
   {!isGrid && (
-    <nav class="overview" aria-label={`${data.title}の全体`}>
+    <nav class:list={['overview', isStrip && data.edges.some((e) => e.label) && 'has-edge-labels']} aria-label={`${data.title}の全体`}>
       <ol style={`--count:${data.nodes.length}`}>
         {data.nodes.map((n, i) => {
           const lane = laneOf.get(n.lane)!;
           const inEdge = i > 0 ? edgeBetween(data.nodes[i - 1].id, n.id) : undefined;
           return (
             <li class:list={[`lane-${lane.color}`, `kind-${n.kind}`, n.evidence === 'speculation' && 'is-spec', inEdge?.evidence === 'speculation' && 'in-spec']}>
-              {inEdge?.label && <span class="ov-edge">{inEdge.label}</span>}
+              {isStrip && inEdge?.label && <span class="ov-edge">{inEdge.label}</span>}
               <a href={`#${anchor}-${n.id}`} title={`${n.sub ?? ''} ${n.label}`}>
                 <span class="ov-dot num">{number.get(n.id)}</span>
                 {n.icon && <Icon icon={n.icon} game={game} size="1.25rem" class="ov-icon" />}
@@ -253,11 +253,12 @@ const kindTag = (n: (typeof data.nodes)[number]) => (kindLabel[n.kind] && kindLa
   .overview li { position: relative; }
   .overview li + li::before { content: ""; position: absolute; left: -50%; right: 50%; top: 13px; height: 2px; background: var(--color-muted); }
   .overview li.in-spec::before { background: repeating-linear-gradient(90deg, var(--color-muted) 0 6px, transparent 6px 11px); }
-  .ov-edge { position: absolute; left: 0; top: 18px; transform: translateX(-50%); z-index: 2; font-size: 0.8125rem; line-height: 1.3; padding: 1px 6px; white-space: nowrap;
+  /* 矢印のラベル（strip だけ）: 線の上の専用の段に置き、丸と重ならないよう列の幅の 8 割で折り返す */
+  .has-edge-labels { padding-top: calc(var(--space-4) + 2.75rem); }
+  .ov-edge { position: absolute; left: 0; bottom: calc(100% + 4px); transform: translateX(-50%); z-index: 2; width: max-content; max-width: 80%; text-align: center; font-size: 0.8125rem; line-height: 1.3; padding: 1px 6px; word-break: auto-phrase;
              background: var(--color-surface); border: 1px solid var(--color-rule); border-radius: 4px; color: var(--color-ink); }
   .overview li.in-spec .ov-edge { border-style: dashed; }
   .overview .is-spec .ov-dot { border-style: dashed; }
-  .overview li:has(.ov-edge) a { padding-top: 0; }
   .overview a { position: relative; display: flex; flex-direction: column; align-items: center; gap: var(--space-1); padding: 0 var(--space-1); text-align: center; color: var(--color-ink); text-decoration: none; height: 100%; }
   .overview a:hover .ov-label { color: var(--color-accent); text-decoration: underline; text-underline-offset: 0.2em; }
   .ov-dot { position: relative; z-index: 1; width: 28px; height: 28px; display: grid; place-items: center; border-radius: 50%; background: var(--color-surface); border: 3px solid var(--lane); font-size: 0.8125rem; font-weight: 700; }
