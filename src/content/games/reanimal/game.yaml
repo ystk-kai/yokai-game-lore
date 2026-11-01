@@ -1,0 +1,18 @@
+title: REANIMAL
+title_ja: リアニマル
+order: 1
+developer: Tarsier Studios
+publisher: THQ Nordic
+released: "2026-02-13"
+summary: 『リトルナイトメア』1・2 の開発元が手がける協力型ホラーアドベンチャー。兄と妹が、行方不明の友だちを救うために地獄のような島を進む。
+icon: gi:rabbit-head
+color: l1
+rights:
+  holder: TARSIER STUDIOS AB（開発）/ THQ Nordic GmbH（発売）
+  guideline_url: https://thqnordic.com/legal/terms
+  guideline_quote: "The Material and all other content on this Site may not otherwise be copied, reproduced, republished, downloaded, posted, transmitted, distributed or used in any way unless specifically authorized by THQ NORDIC."
+  # THQ Nordic の Video Policy は動画だけが対象で、ファンサイトの画像利用を認める規約は見つからなかった（2026-11-01）。
+  # そのため公式画像・スクリーンショットは載せず、汎用アイコンと文章で描く。手元の参照画像は refs/（git 管理外）に置く
+  official_assets: false
+  notice: "©2026 TARSIER STUDIOS™ AB. REANIMAL™ is developed by TARSIER STUDIOS™ AB and published by THQ Nordic™ GmbH. このページは非公式のファン考察で、権利者の承認・後援を受けていません。"
+  checked_at: "2026-11-01"

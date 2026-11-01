@@ -1,0 +1,15 @@
+---
+interface Props { sources: { label: string; url?: string; where?: string }[] }
+const { sources } = Astro.props;
+---
+{sources.length > 0 && (
+  <ul class="sources">
+    {sources.map((s) => (
+      <li>{s.url ? <a href={s.url} rel="noopener">{s.label}</a> : s.label}{s.where && <span class="where">（{s.where}）</span>}</li>
+    ))}
+  </ul>
+)}
+<style>
+  .sources { list-style: none; padding: 0; margin: var(--space-1) 0 0; font-size: var(--text-small); color: var(--color-muted); }
+  .sources li::before { content: "出典: "; }
+</style>

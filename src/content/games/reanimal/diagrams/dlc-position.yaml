@@ -1,0 +1,28 @@
+# DLC 第1章が本編のどの時点に当たるかは公式に示されておらず、レビューと wiki で読みが分かれる。破線は推測
+type: flow
+title: 「The Prisoner」は本編のいつか
+caption: 公式の説明は「かつて馴染み深かった、戦争で荒廃した街」まで。時期の読みは2通りある
+lanes:
+  - { id: main, label: 本編の戦場（第7〜9章）, color: l1, icon: gi:barbed-wire }
+  - { id: dlc, label: DLC 第1章, color: l5, icon: gi:photo-camera }
+  - { id: next, label: DLC 第2・3章, color: l3 }
+nodes:
+  - { id: m7, label: 戦利品・監視者, sub: 本編 第7〜8章, at: [0, 0], lane: main, icon: gi:barbed-wire }
+  - { id: m9, label: 戦車で脱出, sub: 本編 第9章, at: [1, 0], lane: main, icon: gi:great-war-tank }
+  - id: p
+    label: The Prisoner
+    sub: DLC 第1章
+    at: [1, 1]
+    lane: dlc
+    icon: gi:photo-camera
+    evidence: official
+    detail: 兵士と囚人が、戦争で荒れた「かつて馴染み深かった場所」を生き延び、運命を変える穴に落ちる（公式の説明）。結末は描かれず、続く章への布石になっている
+    sources:
+      - { label: THQ Nordic 公式サイト, url: "https://reanimal.thqnordic.com" }
+      - { label: "Waytoomany Games のレビュー", url: "https://waytoomany.games/2026/08/07/dlc-review-reanimal-the-prisoner/" }
+  - { id: c2, label: 第2・3章（未配信）, sub: DLC, at: [2, 1], lane: next, icon: gi:hourglass, evidence: speculation, detail: 内容は未発表（2026-11-01 時点） }
+edges:
+  - { from: m7, to: m9 }
+  - { from: m7, to: p, label: 同じ時期？, evidence: speculation }
+  - { from: m9, to: p, label: 本編の後？, evidence: speculation }
+  - { from: p, to: c2 }

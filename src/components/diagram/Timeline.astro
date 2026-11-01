@@ -1,0 +1,87 @@
+---
+// 年表。出来事を書いた順に縦へ並べ、系統（lanes）ごとに列を分ける。fork は分岐元の出来事 id。
+// 行の高さは中身に合わせて伸びる CSS grid で、路線の縦線もセルごとに描くので文字幅を推定しない。
+import type { z } from 'astro/zod';
+import type { timelineDiagram } from '../../schema';
+import Icon from '../Icon.astro';
+import Evidence from '../Evidence.astro';
+import Sources from '../Sources.astro';
+import Spoiler from '../Spoiler.astro';
+
+interface Props { data: z.infer<typeof timelineDiagram>; game: string; id: string }
+const { data, game, id } = Astro.props;
+const laneIndex = new Map(data.lanes.map((l, i) => [l.id, i]));
+const rowOf = new Map(data.events.map((e, i) => [e.id, i]));
+// 各系統が何行目から何行目まで走るか（分岐する系統は分岐元の行から始まる）
+const spans = data.lanes.map((l) => {
+  const rows = data.events.filter((e) => e.lane === l.id).map((e) => rowOf.get(e.id)!);
+  if (!rows.length) throw new Error(`${id}: 系統 ${l.id} に出来事が無い`);
+  const forkRow = l.fork !== undefined ? rowOf.get(l.fork) : undefined;
+  if (l.fork !== undefined && forkRow === undefined) throw new Error(`${id}: fork ${l.fork} が無い`);
+  const forkLane = l.fork ? laneIndex.get(data.events[forkRow!].lane)! : undefined;
+  return { lane: l, from: forkRow ?? Math.min(...rows), to: Math.max(...rows), forkRow, forkLane };
+});
+---
+<figure class="tl">
+  <figcaption>
+    <span class="title">{data.title}</span>
+    {data.caption && <span class="caption">{data.caption}</span>}
+  </figcaption>
+  <div class="scroller" tabindex="0">
+    <div class="grid" style={`grid-template-columns: repeat(${data.lanes.length}, minmax(15rem, 1fr)); grid-template-rows: auto repeat(${data.events.length}, auto);`}>
+      {data.lanes.map((l, i) => (
+        <div class={`head lane-${l.color}`} style={`grid-column:${i + 1};grid-row:1`}>
+          {l.icon && <Icon icon={l.icon} game={game} size="1.25em" />}{l.label}
+        </div>
+      ))}
+      {spans.flatMap((s, li) =>
+        Array.from({ length: s.to - s.from + 1 }, (_, k) => s.from + k).map((r) => (
+          <div class:list={['rail', `lane-${s.lane.color}`, r === s.from && 'first', r === s.to && 'last', r === s.forkRow && 'forked']}
+               style={`grid-column:${li + 1};grid-row:${r + 2}`} aria-hidden="true"></div>
+        )))}
+      {spans.filter((s) => s.forkRow !== undefined).map((s) => {
+        const li = laneIndex.get(s.lane.id)!, a = Math.min(li, s.forkLane!), b = Math.max(li, s.forkLane!);
+        return <div class={`fork lane-${s.lane.color}`} style={`grid-column:${a + 1} / ${b + 2};grid-row:${s.forkRow! + 2};--n:${b - a + 1}`} aria-hidden="true"></div>;
+      })}
+      {data.events.map((e, r) => {
+        const l = data.lanes[laneIndex.get(e.lane)!];
+        if (!l) throw new Error(`${id}: 出来事 ${e.id} の系統「${e.lane}」が無い`);
+        return (
+          <div class:list={['event', `lane-${l.color}`, e.evidence === 'speculation' && 'is-spec']} style={`grid-column:${laneIndex.get(e.lane)! + 1};grid-row:${r + 2}`}>
+            <span class="dot" aria-hidden="true"></span>
+            <Spoiler scope={e.spoiler}>
+              {e.when && <div class="when num">{e.when}</div>}
+              <div class="ev-head">{e.icon && <Icon icon={e.icon} game={game} size="1.25em" />}<strong>{e.label}</strong><Evidence level={e.evidence} /></div>
+              {e.detail && <p>{e.detail}</p>}
+              <Sources sources={e.sources} />
+            </Spoiler>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</figure>
+<style>
+  .tl { margin: var(--space-8) 0; }
+  figcaption { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-4); align-items: baseline; margin-bottom: var(--space-3); }
+  .title { font-weight: 700; font-size: var(--text-h3); }
+  .caption { color: var(--color-muted); font-size: var(--text-small); }
+  .scroller { overflow-x: auto; background: var(--color-surface); border: 1px solid var(--color-rule); border-radius: var(--radius); padding: var(--space-4) var(--space-2); }
+  .grid { display: grid; position: relative; }
+  .head { display: flex; gap: var(--space-2); align-items: center; font-weight: 700; color: var(--lane); padding: 0 var(--space-2) var(--space-3) var(--space-2); font-size: var(--text-small); }
+  .rail { position: relative; pointer-events: none; }
+  .rail::before { content: ""; position: absolute; left: 20px; top: 0; bottom: 0; width: var(--line-route); background: var(--lane); }
+  .rail.first::before { top: 20px; }
+  .rail.last::before { bottom: auto; height: 20px; }
+  .rail.first.last::before { display: none; }
+  .fork { position: relative; pointer-events: none; }
+  /* 分岐: 分岐元の列の縦線から、分かれた系統の列の縦線まで横に結ぶ（列は等幅） */
+  .fork::before { content: ""; position: absolute; left: 20px; right: calc(100% / var(--n) - 26px); top: 20px; height: var(--line-route); background: var(--lane); }
+  .event { position: relative; z-index: 1; padding: var(--space-2) var(--space-3) var(--space-4) 44px; min-width: 0; }
+  .dot { position: absolute; left: 13px; top: 13px; width: 20px; height: 20px; border-radius: 50%; background: var(--color-surface); border: 5px solid var(--lane); }
+  .is-spec .dot { border-style: dashed; }
+  .when { font-size: var(--text-small); color: var(--color-muted); line-height: 1.3; }
+  .ev-head { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-2); align-items: center; line-height: 1.4; color: var(--color-ink); }
+  .ev-head :global(.icon) { color: var(--lane); }
+  .event p { margin: var(--space-1) 0 0; font-size: var(--text-small); line-height: 1.6; line-break: strict; }
+</style>

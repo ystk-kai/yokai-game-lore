@@ -1,0 +1,48 @@
+---
+// 人物・クリーチャーの名鑑。<Characters game="reanimal" kind="creature" /> のように種類で絞れる
+import { getEntry } from 'astro:content';
+import Icon from './Icon.astro';
+import Evidence from './Evidence.astro';
+import Sources from './Sources.astro';
+import Spoiler from './Spoiler.astro';
+
+interface Props { game: string; kind?: 'protagonist' | 'ally' | 'creature' | 'other'; only?: string[] }
+const { game, kind, only } = Astro.props;
+const entry = await getEntry('characters', game);
+if (!entry) throw new Error(`characters.yaml が無い: ${game}`);
+const list = entry.data.characters.filter((c) => (!kind || c.kind === kind) && (!only || only.includes(c.id)));
+const kindLabel = { protagonist: '主人公', ally: '仲間', creature: 'クリーチャー', other: 'その他' } as const;
+---
+<ul class="cards">
+  {list.map((c) => (
+    <li class={`card kind-${c.kind}`} id={`ch-${c.id}`}>
+      <div class="head">
+        {c.icon ? <Icon icon={c.icon} game={game} size="3.5rem" class="pic" label={c.name} /> : <span class="pic-empty" aria-hidden="true"></span>}
+        <div>
+          <div class="kind">{kindLabel[c.kind]}</div>
+          <h3>{c.name}{c.name_en && <span class="en">{c.name_en}</span>}</h3>
+          <div class="role">{c.role}</div>
+        </div>
+      </div>
+      {c.looks && <p><span class="k">見た目</span>{c.looks}</p>}
+      {c.first_seen && <p><span class="k">初登場</span>{c.first_seen}</p>}
+      {c.secret && <Spoiler scope={c.spoiler}><p><span class="k">正体・結末</span>{c.secret}</p></Spoiler>}
+      <div class="foot"><Evidence level={c.evidence} /><Sources sources={c.sources} /></div>
+    </li>
+  ))}
+</ul>
+<style>
+  .cards { list-style: none; padding: 0; margin: var(--space-6) 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: var(--space-4); }
+  .card { background: var(--color-surface); border: 1px solid var(--color-rule); border-top: 6px solid var(--k); border-radius: var(--radius); padding: var(--space-4); font-size: var(--text-small); line-height: 1.65; }
+  .kind-protagonist { --k: var(--lane-l2); } .kind-ally { --k: var(--lane-l3); } .kind-creature { --k: var(--lane-l1); } .kind-other { --k: var(--color-muted); }
+  .head { display: flex; gap: var(--space-3); align-items: center; margin-bottom: var(--space-2); }
+  :global(.pic) { color: var(--k); }
+  .pic-empty { width: 3.5rem; height: 3.5rem; border-radius: 50%; border: 2px dashed var(--color-rule); flex: none; }
+  .kind { font-size: 0.75rem; color: var(--k); font-weight: 700; }
+  h3 { margin: 0; font-size: var(--text-body); line-height: 1.35; }
+  .en { margin-left: var(--space-2); font-weight: 400; color: var(--color-muted); font-size: var(--text-small); }
+  .role { color: var(--color-muted); }
+  p { margin: var(--space-1) 0; line-break: strict; }
+  .k { display: inline-block; font-weight: 700; margin-right: var(--space-2); color: var(--color-muted); }
+  .foot { margin-top: var(--space-2); display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: baseline; }
+</style>

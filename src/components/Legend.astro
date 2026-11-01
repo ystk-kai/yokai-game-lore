@@ -1,0 +1,12 @@
+---
+import Evidence from './Evidence.astro';
+---
+<div class="legend" aria-label="図の読み方">
+  <span><Evidence level="official" /> 公式の資料・発表</span>
+  <span><Evidence level="ingame" /> 作中の描写・テキスト</span>
+  <span><Evidence level="speculation" /> 推測（破線で描く）</span>
+</div>
+<style>
+  .legend { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-6); font-size: var(--text-small); color: var(--color-muted); margin: var(--space-3) 0; }
+  .legend > span { display: inline-flex; gap: var(--space-2); align-items: center; }
+</style>

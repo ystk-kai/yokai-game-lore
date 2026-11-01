@@ -1,0 +1,148 @@
+---
+// 物語の流れ（路線図）。駅（場面）を格子に置き、路線（系統色の太線）で結ぶ。
+// 座標は固定の格子なので、文字幅を推定しない: 駅の札は幅固定・2行まで、全文は下の一覧に出す。
+import type { z } from 'astro/zod';
+import type { flowDiagram } from '../../schema';
+import Icon from '../Icon.astro';
+import Evidence from '../Evidence.astro';
+import Sources from '../Sources.astro';
+import Spoiler from '../Spoiler.astro';
+
+interface Props { data: z.infer<typeof flowDiagram>; game: string; id: string }
+const { data, game, id } = Astro.props;
+
+// 駅どうしの横の間（COL - W）は線ラベル用に 96px 空ける。ラベルは2行まで折り返す
+const COL = 260, ROW = 124, W = 164, H = 76, PAD = 20;
+const cols = Math.max(...data.nodes.map((n) => n.at[0])) + 1;
+const rows = Math.max(...data.nodes.map((n) => n.at[1])) + 1;
+const width = PAD * 2 + (cols - 1) * COL + W;
+const height = PAD * 2 + (rows - 1) * ROW + H;
+const pos = (at: [number, number]) => ({ x: PAD + at[0] * COL, y: PAD + at[1] * ROW });
+const laneOf = new Map(data.lanes.map((l) => [l.id, l]));
+const nodeOf = new Map(data.nodes.map((n) => [n.id, n]));
+const number = new Map(data.nodes.map((n, i) => [n.id, i + 1]));
+
+const edges = data.edges.map((e) => {
+  const a = nodeOf.get(e.from), b = nodeOf.get(e.to);
+  if (!a || !b) throw new Error(`${id}: edge ${e.from}→${e.to} の駅が無い`);
+  const p = pos(a.at), q = pos(b.at);
+  const sameCol = a.at[0] === b.at[0];
+  let d: string, mid: { x: number; y: number };
+  if (sameCol) {
+    // 縦に下りる（同じ列）
+    const x = p.x + W / 2, y1 = (q.y > p.y ? p.y + H : p.y), y2 = (q.y > p.y ? q.y : q.y + H);
+    d = `M${x},${y1} L${x},${y2}`; mid = { x, y: (y1 + y2) / 2 };
+  } else {
+    // 右へ進むときは右端→左端、左へ戻るとき（折り返しの段）は左端→右端
+    const right = q.x > p.x;
+    const x1 = right ? p.x + W : p.x, y1 = p.y + H / 2, x2 = right ? q.x : q.x + W, y2 = q.y + H / 2, cx = (x1 + x2) / 2;
+    d = y1 === y2 ? `M${x1},${y1} L${x2},${y2}` : `M${x1},${y1} C${cx},${y1} ${cx},${y2} ${x2},${y2}`;
+    mid = { x: cx, y: (y1 + y2) / 2 };
+  }
+  const lane = laneOf.get(b.lane) ?? laneOf.get(a.lane)!;
+  return { ...e, d, mid, color: lane.color, sameCol };
+});
+const kindLabel = { scene: '', start: '始まり', boss: '対決', ending: '結末', branch: '分岐' } as const;
+---
+<figure class="flow" id={`d-${id.replace('/', '-')}`}>
+  <figcaption>
+    <span class="title">{data.title}</span>
+    {data.caption && <span class="caption">{data.caption}</span>}
+    <span class="lanes">
+      {data.lanes.map((l) => <span class={`lane-chip lane-${l.color}`}><span class="swatch" aria-hidden="true"></span>{l.label}</span>)}
+    </span>
+  </figcaption>
+  <div class="scroller" tabindex="0" aria-label={`${data.title}（横にスクロールできます）`}>
+    <div class="canvas" style={`width:${width}px;height:${height}px`}>
+      <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} aria-hidden="true">
+        {edges.map((e) => (
+          <path d={e.d} class:list={['route', `lane-${e.color}`, e.evidence === 'speculation' && 'is-spec']} />
+        ))}
+      </svg>
+      {edges.filter((e) => e.label).map((e) => (
+        <span class={`edge-label lane-${e.color}`} style={`left:${e.mid.x}px;top:${e.mid.y}px`}>{e.label}</span>
+      ))}
+      {data.nodes.map((n) => {
+        const p = pos(n.at);
+        const lane = laneOf.get(n.lane);
+        if (!lane) throw new Error(`${id}: 駅 ${n.id} の lane「${n.lane}」が無い`);
+        return (
+          <div class:list={['station', `lane-${lane.color}`, `kind-${n.kind}`, n.evidence === 'speculation' && 'is-spec']}
+             style={`left:${p.x}px;top:${p.y}px;width:${W}px;height:${H}px`}>
+            <a class="no num" href={`#${id.replace('/', '-')}-${n.id}`} aria-label={`${number.get(n.id)}: 説明へ`}>{number.get(n.id)}</a>
+            <Spoiler scope={n.spoiler}>
+              {n.icon && <Icon icon={n.icon} game={game} size="2em" class="st-icon" />}
+              <span class="st-text">
+                {(n.sub || kindLabel[n.kind]) && <span class="st-sub">{n.sub}{n.sub && kindLabel[n.kind] && ' · '}{kindLabel[n.kind]}</span>}
+                <span class="st-label">{n.label}</span>
+              </span>
+            </Spoiler>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+  <details class="stops" open>
+    <summary>駅ごとの説明と出典</summary>
+    <ol>
+      {data.nodes.map((n) => (
+        <li id={`${id.replace('/', '-')}-${n.id}`} class={`lane-${laneOf.get(n.lane)!.color}`}>
+          <Spoiler scope={n.spoiler}>
+            <div class="stop-head"><span class="no num">{number.get(n.id)}</span><strong>{n.label}</strong><Evidence level={n.evidence} /></div>
+            {n.detail && <p>{n.detail}</p>}
+            <Sources sources={n.sources} />
+          </Spoiler>
+        </li>
+      ))}
+    </ol>
+  </details>
+</figure>
+
+<style>
+  .flow { margin: var(--space-8) 0; }
+  figcaption { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2) var(--space-4); margin-bottom: var(--space-3); }
+  .title { font-weight: 700; font-size: var(--text-h3); }
+  .caption { color: var(--color-muted); font-size: var(--text-small); }
+  .lanes { display: flex; flex-wrap: wrap; gap: var(--space-3); font-size: var(--text-small); }
+  .lane-chip { display: inline-flex; align-items: center; gap: var(--space-1); }
+  .swatch { width: 1.5em; height: 6px; border-radius: 3px; background: var(--lane); }
+
+  .scroller { overflow-x: auto; background: var(--color-surface); border: 1px solid var(--color-rule); border-radius: var(--radius); }
+  .canvas { position: relative; }
+  svg { position: absolute; inset: 0; max-width: none; }
+  .route { fill: none; stroke: var(--lane); stroke-width: var(--line-route); stroke-linecap: round; }
+  .route.is-spec { stroke-dasharray: 2 12; }
+
+  .edge-label {
+    position: absolute; transform: translate(-50%, -50%); z-index: 1;
+    background: var(--color-surface); border: 2px solid var(--lane); border-radius: 999px;
+    padding: 0 var(--space-2); font-size: 0.8125rem; line-height: 1.4; max-width: 88px; text-align: center; word-break: auto-phrase;
+  }
+  .station {
+    position: absolute; z-index: 1; display: block; color: var(--color-ink); text-decoration: none;
+    background: var(--color-surface); border: 3px solid var(--lane); border-radius: var(--radius);
+  }
+  .station:has(a:hover) { box-shadow: 0 0 0 3px color-mix(in srgb, var(--lane) 25%, transparent); }
+  .station > :global(.spoiler-veil), .station > :global(.spoiler-body) { height: 100%; }
+  .station :global(.spoiler-body) { display: flex; align-items: center; gap: var(--space-2); height: 100%; padding: var(--space-1) var(--space-2) var(--space-1) var(--space-3); }
+  .st-text { display: flex; flex-direction: column; min-width: 0; }
+  .station.is-spec { border-style: dashed; }
+  .station :global(.spoiler-open) { font-size: 0.75rem; line-height: 1.25; }
+  .station.kind-ending, .station.kind-start { background: var(--lane); color: var(--color-surface); }
+  .station.kind-boss { box-shadow: inset 0 0 0 3px var(--color-surface), inset 0 0 0 5px var(--lane); }
+  .no { position: absolute; top: -0.8em; left: -0.8em; min-width: 1.6em; height: 1.6em; display: grid; place-items: center;
+        background: var(--color-ink); color: var(--color-surface); border-radius: 999px; font-size: 0.75rem; line-height: 1; z-index: 3; padding: 0 0.3em; text-decoration: none; }
+  :global(.st-icon) { color: var(--lane); }
+  .kind-ending :global(.st-icon), .kind-start :global(.st-icon) { color: inherit; }
+  .st-label { font-size: var(--text-small); line-height: 1.35; font-weight: 700; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; word-break: auto-phrase; }
+  .st-sub { font-size: 0.75rem; line-height: 1.3; color: var(--color-muted); }
+  .kind-ending .st-sub, .kind-start .st-sub { color: inherit; opacity: .9; }
+
+  .stops { margin-top: var(--space-4); }
+  .stops summary { cursor: pointer; color: var(--color-muted); font-size: var(--text-small); }
+  .stops ol { list-style: none; padding: 0; margin: var(--space-3) 0 0; display: grid; gap: var(--space-3); }
+  .stops li { border-left: 6px solid var(--lane); padding: var(--space-1) 0 var(--space-1) var(--space-4); max-width: var(--measure); }
+  .stop-head { display: flex; align-items: center; gap: var(--space-2); flex-wrap: wrap; }
+  .stops .no { position: static; }
+  .stops p { margin: var(--space-1) 0 0; line-break: strict; }
+</style>

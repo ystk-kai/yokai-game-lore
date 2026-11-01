@@ -1,0 +1,42 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import { gamesSorted, pagesOf, slugOf, kindLabel } from '../lib/content';
+import { url } from '../lib/url';
+const games = await gamesSorted();
+const withPages = await Promise.all(games.map(async (g) => ({ g, pages: await pagesOf(g.id) })));
+---
+<Base title="Yokai Game Lore">
+  <section class="hero">
+    <h1>ゲームの物語を、<br />路線図でたどる。</h1>
+    <p>章の流れは路線図、人物の関係は相関図、配信や作中の時間は年表で描きます。作中の描写と推測は、線の種類で描き分けます。</p>
+  </section>
+  <ul class="games">
+    {withPages.map(({ g, pages }) => (
+      <li class={`game lane-${g.data.color}`}>
+        <a class="title" href={url(`games/${g.id}`)}>
+          <Icon icon={g.data.icon} size="2.5rem" />
+          <span><strong>{g.data.title}</strong>{g.data.title_ja && <span class="ja">{g.data.title_ja}</span>}</span>
+        </a>
+        <p class="summary">{g.data.summary}</p>
+        <ol class="pages">
+          {pages.map((p) => <li><a href={url(`games/${g.id}/${slugOf(p.id)}`)}><span class="kind">{kindLabel[p.data.kind]}</span>{p.data.title}</a></li>)}
+        </ol>
+      </li>
+    ))}
+  </ul>
+</Base>
+<style>
+  .hero { margin: var(--space-8) 0 var(--space-12); }
+  .hero h1 { word-break: auto-phrase; }
+  .hero p { color: var(--color-muted); max-width: var(--measure); margin-top: var(--space-4); }
+  .games { list-style: none; padding: 0; display: grid; gap: var(--space-6); grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr)); }
+  .game { background: var(--color-surface); border: 1px solid var(--color-rule); border-top: 6px solid var(--lane); border-radius: var(--radius); padding: var(--space-6); }
+  .title { display: flex; gap: var(--space-3); align-items: center; color: var(--color-ink); text-decoration: none; font-size: var(--text-h3); }
+  .title :global(.icon) { color: var(--lane); }
+  .ja { display: block; font-size: var(--text-small); color: var(--color-muted); font-weight: 400; }
+  .summary { font-size: var(--text-small); color: var(--color-muted); line-break: strict; }
+  .pages { padding: 0; list-style: none; display: grid; gap: var(--space-2); }
+  .pages a { display: flex; gap: var(--space-2); align-items: baseline; }
+  .kind { font-size: 0.75rem; color: var(--color-muted); min-width: 4.5em; }
+</style>

@@ -1,0 +1,55 @@
+type: timeline
+title: 本編と DLC の配信
+caption: DLC は「The Expanded World」として全3章。日付は報道ごとに1日ずれることがある（時差）
+lanes:
+  - { id: main, label: 本編, color: l2, icon: gi:rabbit-head }
+  - { id: dlc, label: "DLC：The Expanded World", color: l5, icon: gi:photo-camera, fork: season }
+events:
+  - id: reveal
+    lane: main
+    when: "2024-08-20"
+    label: Opening Night Live で発表
+    evidence: official
+    sources:
+      - { label: THQ Nordic ニュース, url: "https://thqnordic.com/news/opening-night-live-reveals-tarsier-s-new-horror-game-reanimal" }
+  - id: release
+    lane: main
+    when: "2026-02-13"
+    label: 本編発売
+    detail: PS5 / Xbox Series X|S / Nintendo Switch 2 / PC
+    evidence: official
+    sources:
+      - { label: THQ Nordic ニュース, url: "https://thqnordic.com/news/reanimal-release-date-confirmed-for-friday-february-13-2026" }
+  - id: season
+    lane: main
+    when: "2026-02"
+    label: DLC 3章の予定を告知
+    detail: シーズンパスに3つの章を含むと告知。第1章は2026年夏の予定とされた
+    evidence: official
+    sources:
+      - { label: "Blue's News「REANIMAL DLC Plans」", url: "https://www.bluesnews.com/s/294412/reanimal-dlc-plans" }
+  - id: prisoner
+    lane: dlc
+    when: 2026-08-07（日本 8-08）
+    label: 第1章「The Prisoner」配信
+    detail: 新しい主人公「兵士」と「囚人」の物語。予告なしの配信で、遊ぶ時間は1〜2時間ほど
+    evidence: official
+    sources:
+      - { label: "Gematsu", url: "https://www.gematsu.com/2026/08/reanimal-dlc-the-prisoner-now-available" }
+      - { label: "AUTOMATON", url: "https://automaton-media.com/articles/newsjp/20260810-459465/" }
+  - id: ch2
+    lane: dlc
+    when: 未配信（2026-11-01 時点）
+    label: 第2章（題名未発表）
+    detail: Switch 2 版の延期告知では 2026-12-31 とされた
+    evidence: official
+    sources:
+      - { label: "AUTOMATON（Switch 2 版 DLC の延期）", url: "https://automaton-media.com/articles/newsjp/20260602-446585/" }
+  - id: ch3
+    lane: dlc
+    when: 未配信
+    label: 第3章（題名未発表）
+    detail: Switch 2 版の延期告知では 2027-03-31 とされた
+    evidence: official
+    sources:
+      - { label: "AUTOMATON（Switch 2 版 DLC の延期）", url: "https://automaton-media.com/articles/newsjp/20260602-446585/" }

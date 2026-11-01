@@ -1,0 +1,27 @@
+{
+  "name": "yokai-game-lore",
+  "type": "module",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "lint:content": "bun scripts/check-content.ts",
+    "check": "bun scripts/check-content.ts && astro check && astro build"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^8.1.2",
+    "@iconify-json/game-icons": "^1.2.4",
+    "@iconify-json/lucide": "^1.2.150",
+    "@iconify/utils": "^3.0.0",
+    "astro": "^7.4.4",
+    "yaml": "^2.9.1"
+  },
+  "devDependencies": {
+    "@astrojs/check": "*",
+    "@iconify/types": "^2.0.0",
+    "@types/bun": "^1.4.4",
+    "typescript": "^5.9.0"
+  }
+}

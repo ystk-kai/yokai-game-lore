@@ -1,0 +1,193 @@
+# 作中に固有名は出ない。少年・少女以外の呼び名はプレイヤーの通称（Into Indie Games / kamigame の表記）
+characters:
+  - id: boy
+    name: 少年
+    name_en: Boy
+    kind: protagonist
+    icon: gi:scarecrow
+    role: 主人公。1人プレイで操作する
+    looks: 頭に袋をかぶり、首に縄を巻いている（kamigame は「マフラー」と書く）
+    first_seen: 冒頭・第1章（小舟の上で目を覚ます）
+    secret: 第9章で羊に呑み込まれる。首を吊られた過去があるのでは、という考察がある（棺桶の映像から）
+    spoiler: 第9章と棺桶の映像
+    appears_in: [main]
+    evidence: ingame
+    sources:
+      - { label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }
+      - { label: kamigame 登場キャラ一覧と考察, url: "https://kamigame.jp/reanimal/page/409383509522651637.html" }
+  - id: girl
+    name: 少女
+    name_en: Girl
+    kind: protagonist
+    icon: gi:rabbit-head
+    role: 少年の相棒。1人プレイでは自動で動く
+    looks: ウサギの仮面。ほかの子より質素な服で素足
+    first_seen: 第1章（海に浮かんでいるところを少年が引き上げる）
+    secret: 第6章で羊を吐き出す。最後は4人の少年に井戸へ投げ込まれる
+    spoiler: 第6章・エンディング
+    appears_in: [main]
+    evidence: ingame
+    sources:
+      - { label: THQ Nordic 公式（brother & sister）, url: "https://reanimal.thqnordic.com" }
+      - { label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }
+  - id: hood
+    name: フード
+    name_en: Hood
+    kind: ally
+    icon: gi:hood
+    role: 仲間。中性的な声
+    looks: フードで顔を隠している
+    first_seen: 第1章
+    appears_in: [main]
+    evidence: ingame
+    sources:
+      - { label: kamigame 登場キャラ一覧と考察, url: "https://kamigame.jp/reanimal/page/409383509522651637.html" }
+  - id: bandage
+    name: バンデージ
+    name_en: Bandage
+    kind: ally
+    icon: gi:bandage-roll
+    role: 仲間。少女を気づかう様子がある
+    looks: 顔に包帯を巻いている
+    first_seen: 第3章（ホテルで巨大な鳥にさらわれる）
+    secret: のちに羊に呑み込まれる。火事で亡くなったのでは、という考察がある
+    spoiler: 第7章以降と棺桶の映像
+    appears_in: [main]
+    evidence: ingame
+    sources:
+      - { label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }
+      - { label: kamigame 登場キャラ一覧と考察, url: "https://kamigame.jp/reanimal/page/409383509522651637.html" }
+  - id: bucket
+    name: バケット
+    name_en: Bucket
+    kind: ally
+    icon: gi:empty-metal-bucket
+    role: 仲間。こもった声
+    looks: 頭にバケツをかぶった、少しふくよかな男の子
+    first_seen: 第4〜5章（孤児院の穴に下ろされる）
+    secret: 羊に最初に呑み込まれる。崖から落とされたのでは、という考察がある
+    spoiler: 第7章以降と棺桶の映像
+    appears_in: [main]
+    evidence: ingame
+    sources:
+      - { label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }
+      - { label: kamigame 登場キャラ一覧と考察, url: "https://kamigame.jp/reanimal/page/409383509522651637.html" }
+  - id: sniffer
+    name: スニッファー
+    name_en: Sniffer
+    kind: creature
+    icon: gi:ice-cream-cone
+    role: 第2章で追ってくる怪物
+    looks: 骨のない関節と溶けたような顔。人の皮を服のように着て、洗ってアイロンをかける
+    first_seen: 第2章
+    appears_in: [main]
+    evidence: ingame
+    sources:
+      - { label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }
+      - { label: gamerch チャプター2 攻略チャート, url: "https://gamerch.com/reanimal/964981" }
+  - id: bird
+    name: 巨大な鳥
+    kind: creature
+    icon: gi:bird-claw
+    role: 第3章でバンデージをさらう
+    looks: ゆがんだペリカンのような巨大な鳥
+    first_seen: 第3章
+    appears_in: [main]
+    evidence: ingame
+    sources:
+      - { label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }
+  - id: mother
+    name: マザー
+    name_en: Mother
+    kind: creature
+    icon: gi:long-legged-spider
+    role: 第5章のボス。孤児院の穴の底にいる
+    looks: 人の腕が混じった巨大な蜘蛛のよう。首から上がない
+    first_seen: 第5章
+    appears_in: [main]
+    evidence: ingame
+    sources:
+      - { label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }
+      - { label: kamigame 登場キャラ一覧と考察, url: "https://kamigame.jp/reanimal/page/409383509522651637.html" }
+  - id: whale
+    name: クジラ
+    kind: creature
+    icon: gi:sperm-whale
+    role: 第6章。沈んだ軍艦の中にいて、襲ってこない
+    looks: 目のない巨大なクジラ
+    first_seen: 第6章
+    appears_in: [main]
+    evidence: ingame
+    sources:
+      - { label: kamigame 登場キャラ一覧と考察, url: "https://kamigame.jp/reanimal/page/409383509522651637.html" }
+  - id: horse
+    name: 馬
+    kind: creature
+    icon: gi:horse-head
+    role: 第6章。海にいる巨大な馬。目を取られる
+    looks: 巨大でやせた馬のような姿
+    first_seen: 第6章
+    appears_in: [main]
+    evidence: ingame
+    sources:
+      - { label: kamigame 登場キャラ一覧と考察, url: "https://kamigame.jp/reanimal/page/409383509522651637.html" }
+  - id: sheep
+    name: 羊
+    name_en: Sheep
+    kind: creature
+    icon: gi:sheep
+    role: 最終章のボス
+    looks: 子どもを呑み込むたびに大きくなり、人の手足が生える
+    first_seen: 第6章（少女が吐き出す）
+    secret: 少女から生まれ、バケット・バンデージ・少年・少女の順に呑み込む
+    spoiler: 第6章〜第9章
+    appears_in: [main]
+    evidence: ingame
+    sources:
+      - { label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }
+  - id: soldiers
+    name: 兵士
+    kind: creature
+    icon: gi:gas-mask
+    role: 第7〜9章の戦場にいる。近づくと自爆する者もいる
+    first_seen: 第7章
+    appears_in: [main]
+    evidence: ingame
+    sources:
+      - { label: gamerch チャプター7 攻略チャート, url: "https://gamerch.com/reanimal/965663" }
+  - id: prisoner
+    name: 囚人
+    name_en: The Prisoner
+    kind: protagonist
+    icon: gi:photo-camera
+    role: DLC「The Prisoner」の主人公の1人
+    looks: カメラを持ち、フラッシュで敵をひるませる
+    first_seen: DLC「The Prisoner」
+    appears_in: [dlc1]
+    evidence: official
+    sources:
+      - { label: THQ Nordic 公式サイト, url: "https://reanimal.thqnordic.com" }
+      - { label: "AUTOMATON「大型DLC第1弾ついに配信」", url: "https://automaton-media.com/articles/newsjp/20260810-459465/" }
+  - id: soldier-dlc
+    name: 兵士（DLC）
+    name_en: The Soldier
+    kind: protagonist
+    icon: gi:battle-axe
+    role: DLC「The Prisoner」の主人公の1人
+    looks: 斧で敵にとどめを刺す
+    first_seen: DLC「The Prisoner」
+    appears_in: [dlc1]
+    evidence: official
+    sources:
+      - { label: THQ Nordic 公式サイト, url: "https://reanimal.thqnordic.com" }
+      - { label: "AUTOMATON「大型DLC第1弾ついに配信」", url: "https://automaton-media.com/articles/newsjp/20260810-459465/" }
+  - id: flamethrower
+    name: 火炎放射器の兵士
+    kind: creature
+    icon: gi:flamethrower-soldier
+    role: DLC「The Prisoner」で追ってくる
+    first_seen: DLC「The Prisoner」
+    appears_in: [dlc1]
+    evidence: ingame
+    sources:
+      - { label: "Waytoomany Games「DLC Review – Reanimal: The Prisoner」", url: "https://waytoomany.games/2026/08/07/dlc-review-reanimal-the-prisoner/" }

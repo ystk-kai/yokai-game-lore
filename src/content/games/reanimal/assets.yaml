@@ -1,0 +1,2 @@
+# 公式素材は載せない（game.yaml の rights.official_assets: false）。自作の図版を足すときは kind: original で登録する
+assets: []

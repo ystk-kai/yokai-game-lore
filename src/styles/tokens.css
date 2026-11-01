@@ -1,0 +1,40 @@
+/* デザイントークン。値の出所と使い分けは DESIGN.md。ここ以外に色・書体を直書きしない */
+:root {
+  /* 地と文字（地は無彩色寄りの冷たいグレー。クリームにしない） */
+  --color-bg: #f4f5f7;
+  --color-surface: #ffffff;
+  --color-ink: #191c22;      /* bg 比 15.6 */
+  --color-muted: #535a68;    /* bg 比 6.3 */
+  --color-rule: #c9cdd5;     /* 罫線・未選択の線（装飾。情報を載せない） */
+  --color-accent: #c2361c;   /* 朱。リンクと強調だけに使う（bg 比 5.0） */
+
+  /* 系統色（路線の色）。どれも白地・bg 地で 4.5:1 以上 */
+  --lane-l1: #c2361c; /* 朱 */
+  --lane-l2: #1d63c8; /* 藍 */
+  --lane-l3: #0b7a52; /* 緑 */
+  --lane-l4: #9a5b00; /* 黄土 */
+  --lane-l5: #7a3bbf; /* 菫 */
+  --lane-l6: #0a6e7a; /* 青緑 */
+
+  /* 書体（ui-design/japanese-web-typography のスタック。system-ui を先頭に置かない） */
+  --font-body: -apple-system, "Segoe UI", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic Medium", YuGothic, Meiryo, "Noto Sans JP", sans-serif;
+  --font-num: "Segoe UI", -apple-system, "Helvetica Neue", Arial, sans-serif;
+
+  --text-body: 1rem;      /* 16px 未満にしない */
+  --text-small: 0.875rem; /* 図のラベルと注記だけ */
+  --text-h1: clamp(1.75rem, 1.2rem + 2.4vw, 2.75rem);
+  --text-h2: 1.5rem;
+  --text-h3: 1.1875rem;
+  --leading-body: 1.75;
+  --leading-tight: 1.4;
+
+  /* 間隔（4 の倍数） */
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
+  --space-6: 24px; --space-8: 32px; --space-12: 48px; --space-16: 64px;
+
+  /* 図の線 */
+  --line-route: 6px;   /* 路線 */
+  --line-link: 2px;    /* 関係線 */
+  --radius: 6px;
+  --measure: 40em;     /* 本文 1 行 */
+}

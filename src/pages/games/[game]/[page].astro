@@ -1,0 +1,46 @@
+---
+import { render } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import RightsNotice from '../../../components/RightsNotice.astro';
+import Diagram from '../../../components/diagram/Diagram.astro';
+import Characters from '../../../components/Characters.astro';
+import Spoiler from '../../../components/Spoiler.astro';
+import Theory from '../../../components/Theory.astro';
+import Icon from '../../../components/Icon.astro';
+import Evidence from '../../../components/Evidence.astro';
+import { gamesSorted, pagesOf, slugOf, kindLabel } from '../../../lib/content';
+import { url } from '../../../lib/url';
+
+export async function getStaticPaths() {
+  const out = [];
+  for (const g of await gamesSorted()) {
+    const pages = await pagesOf(g.id);
+    for (const [i, p] of pages.entries()) out.push({ params: { game: g.id, page: slugOf(p.id) }, props: { g, p, prev: pages[i - 1], next: pages[i + 1] } });
+  }
+  return out;
+}
+const { g, p, prev, next } = Astro.props;
+const { Content } = await render(p);
+---
+<Base title={`${p.data.title} - ${g.data.title}`} description={p.data.description} spoilerToggle>
+  <nav class="crumbs" aria-label="現在地"><a href={url(`games/${g.id}`)}>{g.data.title}</a> / {kindLabel[p.data.kind]}</nav>
+  <h1>{p.data.title}</h1>
+  <p class="scope"><strong>ネタバレの範囲</strong>{p.data.spoiler_scope}</p>
+  <article class="prose-wrap">
+    <Content components={{ Diagram, Characters, Spoiler, Theory, Icon, Evidence }} />
+  </article>
+  <nav class="pager" aria-label="前後のページ">
+    {prev ? <a href={url(`games/${g.id}/${slugOf(prev.id)}`)}>← {prev.data.title}</a> : <span />}
+    {next && <a href={url(`games/${g.id}/${slugOf(next.id)}`)}>{next.data.title} →</a>}
+  </nav>
+  <RightsNotice game={g} />
+</Base>
+<style>
+  .crumbs { font-size: var(--text-small); color: var(--color-muted); margin-bottom: var(--space-2); }
+  .scope { display: inline-flex; gap: var(--space-3); margin: var(--space-4) 0 var(--space-6); padding: var(--space-2) var(--space-4); border: 1px dashed var(--color-muted); border-radius: var(--radius); font-size: var(--text-small); }
+  /* 本文は 1 行を保ち、図は横幅いっぱいに使う */
+  .prose-wrap > :global(p), .prose-wrap > :global(ul), .prose-wrap > :global(ol), .prose-wrap > :global(h2), .prose-wrap > :global(h3) { max-width: var(--measure); line-break: strict; overflow-wrap: anywhere; }
+  .prose-wrap :global(h2) { font-size: var(--text-h2); line-height: var(--leading-tight); margin: var(--space-12) 0 var(--space-4); font-feature-settings: "palt"; }
+  .prose-wrap :global(li) { margin-bottom: var(--space-1); }
+  .pager { display: flex; justify-content: space-between; gap: var(--space-4); margin-top: var(--space-12); font-size: var(--text-small); }
+</style>

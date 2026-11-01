@@ -1,0 +1,61 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { ICON_SETS, iconSvg } from '../lib/icons';
+import { gamesSorted } from '../lib/content';
+
+// 使っているアイコンを、コンテンツと部品のソースから集める（クレジットの出し漏れを防ぐ）
+const raw = import.meta.glob(['/src/content/**/*.{yaml,mdx}', '/src/components/**/*.astro', '/src/layouts/**/*.astro'], { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
+const used = new Map<string, Set<string>>();
+for (const text of Object.values(raw)) {
+  for (const m of text.matchAll(/\b(gi|lucide):([a-z0-9-]+)/g)) {
+    if (!used.has(m[1])) used.set(m[1], new Set());
+    used.get(m[1])!.add(m[2]);
+  }
+}
+const games = await gamesSorted();
+const assets = await getCollection('assets');
+---
+<Base title="クレジット">
+  <h1>クレジット</h1>
+  <section>
+    <h2>アイコン</h2>
+    {[...used.entries()].map(([set, names]) => {
+      const s = ICON_SETS[set as keyof typeof ICON_SETS];
+      return (
+        <div class="set">
+          <p><a href={s.url}>{s.name}</a> ・ ライセンス <a href={s.licenseUrl}>{s.license}</a>
+            {set === 'gi' && <>。Icons made by Lorc, Delapouite and other contributors. Available on <a href="https://game-icons.net">https://game-icons.net</a></>}
+          </p>
+          <ul class="icons">
+            {[...names].sort().map((n) => {
+              let svg = '';
+              try { svg = iconSvg(`${set}:${n}`, '1.5em'); } catch { return null; }
+              return <li title={n}><span set:html={svg} /><span class="n">{n}</span></li>;
+            })}
+          </ul>
+        </div>
+      );
+    })}
+  </section>
+  <section>
+    <h2>ゲームの権利表記</h2>
+    {games.map((g) => {
+      const a = assets.find((x) => x.id === g.id)?.data.assets ?? [];
+      return (
+        <div class="game">
+          <h3>{g.data.title}</h3>
+          <p>{g.data.rights.notice}</p>
+          {a.length ? <ul>{a.map((x) => <li>{x.alt}: {x.credit}{x.source_url && <> (<a href={x.source_url}>出典</a>)</>}</li>)}</ul> : <p class="muted">このゲームのページには公式画像を掲載していません。</p>}
+        </div>
+      );
+    })}
+  </section>
+</Base>
+<style>
+  h2 { margin-top: var(--space-12); } p { max-width: var(--measure); }
+  .icons { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-4); font-size: var(--text-small); color: var(--color-muted); }
+  .icons li { display: inline-flex; gap: var(--space-1); align-items: center; }
+  .icons :global(svg) { color: var(--color-ink); }
+  .muted { color: var(--color-muted); font-size: var(--text-small); }
+</style>

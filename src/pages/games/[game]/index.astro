@@ -1,0 +1,51 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Icon from '../../../components/Icon.astro';
+import RightsNotice from '../../../components/RightsNotice.astro';
+import { gamesSorted, pagesOf, slugOf, kindLabel } from '../../../lib/content';
+import { url } from '../../../lib/url';
+
+export async function getStaticPaths() {
+  return (await gamesSorted()).map((g) => ({ params: { game: g.id }, props: { g } }));
+}
+const { g } = Astro.props;
+const pages = await pagesOf(g.id);
+---
+<Base title={g.data.title} description={g.data.summary}>
+  <header class={`game-head lane-${g.data.color}`}>
+    <Icon icon={g.data.icon} size="3.5rem" />
+    <div>
+      <h1>{g.data.title}</h1>
+      <p class="meta">{g.data.title_ja && `${g.data.title_ja} ・ `}{g.data.developer} / {g.data.publisher} ・ <span class="num">{g.data.released}</span></p>
+    </div>
+  </header>
+  <p class="summary">{g.data.summary}</p>
+  <ol class="route">
+    {pages.map((p, i) => (
+      <li>
+        <a href={url(`games/${g.id}/${slugOf(p.id)}`)}>
+          <span class="no num">{i + 1}</span>
+          <span class="body"><span class="kind">{kindLabel[p.data.kind]}</span><strong>{p.data.title}</strong><span class="desc">{p.data.description}</span></span>
+        </a>
+      </li>
+    ))}
+  </ol>
+  <RightsNotice game={g} />
+</Base>
+<style>
+  .game-head { display: flex; gap: var(--space-4); align-items: center; }
+  .game-head > :global(.icon) { color: var(--lane); }
+  .meta { margin: var(--space-1) 0 0; color: var(--color-muted); font-size: var(--text-small); }
+  .summary { max-width: var(--measure); margin: var(--space-6) 0; line-break: strict; }
+  /* 読む順を路線図の駅として並べる */
+  .route { list-style: none; padding: 0; margin: var(--space-8) 0; max-width: 44rem; position: relative; }
+  .route::before { content: ""; position: absolute; left: 15px; top: 16px; bottom: 16px; width: var(--line-route); background: var(--lane-l1); border-radius: 3px; }
+  .route li { position: relative; margin-bottom: var(--space-4); }
+  .route a { display: flex; gap: var(--space-4); text-decoration: none; color: var(--color-ink); }
+  .no { flex: none; width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--color-surface); border: 5px solid var(--lane-l1); position: relative; z-index: 1; font-size: var(--text-small); font-weight: 700; }
+  .body { display: flex; flex-direction: column; padding: var(--space-1) 0; }
+  .body strong { font-size: var(--text-h3); line-height: var(--leading-tight); }
+  .route a:hover strong { color: var(--color-accent); text-decoration: underline; text-underline-offset: 0.2em; }
+  .kind { font-size: 0.75rem; color: var(--color-muted); }
+  .desc { font-size: var(--text-small); color: var(--color-muted); line-break: strict; }
+</style>

@@ -1,0 +1,50 @@
+---
+// 発売順と作中の時系列の対応（Kim ら 2017 Story Curves の考え方を、2列の対応線にしたもの）
+import type { z } from 'astro/zod';
+import type { orderDiagram } from '../../schema';
+interface Props { data: z.infer<typeof orderDiagram>; id: string }
+const { data } = Astro.props;
+const ROW = 44, LW = 200, GAP = 120, PAD = 12;
+const byRelease = [...data.items].sort((a, b) => a.release - b.release);
+const byStory = [...data.items].sort((a, b) => a.story - b.story);
+const ri = new Map(byRelease.map((x, i) => [x.id, i]));
+const si = new Map(byStory.map((x, i) => [x.id, i]));
+const h = PAD * 2 + data.items.length * ROW;
+const colors = ['l1', 'l2', 'l3', 'l4', 'l5', 'l6'];
+---
+<figure class="order">
+  <figcaption><span class="title">{data.title}</span>{data.caption && <span class="caption">{data.caption}</span>}</figcaption>
+  <div class="scroller" tabindex="0">
+    <div class="canvas" style={`width:${LW * 2 + GAP}px;height:${h + 28}px`}>
+      <div class="colhead" style="left:0">発売順</div>
+      <div class="colhead" style={`left:${LW + GAP}px`}>作中の時系列</div>
+      <svg width={LW * 2 + GAP} height={h} viewBox={`0 0 ${LW * 2 + GAP} ${h}`} style="top:28px" aria-hidden="true">
+        {data.items.map((x, k) => {
+          const y1 = PAD + ri.get(x.id)! * ROW + ROW / 2, y2 = PAD + si.get(x.id)! * ROW + ROW / 2;
+          return <path d={`M${LW},${y1} C${LW + GAP / 2},${y1} ${LW + GAP / 2},${y2} ${LW + GAP},${y2}`} class:list={['link', `lane-${colors[k % 6]}`, x.evidence === 'speculation' && 'is-spec']} />;
+        })}
+      </svg>
+      {data.items.map((x, k) => (
+        <>
+          <div class={`item lane-${colors[k % 6]}`} style={`left:0;top:${28 + PAD + ri.get(x.id)! * ROW}px;width:${LW}px;height:${ROW}px`}><span class="num">{ri.get(x.id)! + 1}</span>{x.label}</div>
+          <div class={`item right lane-${colors[k % 6]}`} style={`left:${LW + GAP}px;top:${28 + PAD + si.get(x.id)! * ROW}px;width:${LW}px;height:${ROW}px`}><span class="num">{si.get(x.id)! + 1}</span>{x.label}</div>
+        </>
+      ))}
+    </div>
+  </div>
+</figure>
+<style>
+  .order { margin: var(--space-8) 0; }
+  figcaption { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-4); align-items: baseline; margin-bottom: var(--space-3); }
+  .title { font-weight: 700; font-size: var(--text-h3); }
+  .caption { color: var(--color-muted); font-size: var(--text-small); }
+  .scroller { overflow-x: auto; background: var(--color-surface); border: 1px solid var(--color-rule); border-radius: var(--radius); padding: var(--space-3); }
+  .canvas { position: relative; }
+  svg { position: absolute; left: 0; max-width: none; }
+  .colhead { position: absolute; top: 0; font-size: var(--text-small); color: var(--color-muted); font-weight: 700; }
+  .link { fill: none; stroke: var(--lane); stroke-width: 3px; }
+  .link.is-spec { stroke-dasharray: 6 5; }
+  .item { position: absolute; display: flex; align-items: center; gap: var(--space-2); font-size: var(--text-small); padding: 0 var(--space-2); border-right: 6px solid var(--lane); }
+  .item.right { border-right: 0; border-left: 6px solid var(--lane); }
+  .item .num { color: var(--color-muted); min-width: 1.4em; }
+</style>

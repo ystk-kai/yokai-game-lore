@@ -1,0 +1,28 @@
+---
+// アイコン1つ。gi:/lucide: は SVG を埋め込み、asset: はそのゲームの assets.yaml から画像を引く
+import { getEntry } from 'astro:content';
+import { iconSvg } from '../lib/icons';
+import { file } from '../lib/url';
+
+interface Props { icon: string; game?: string; size?: string; label?: string; class?: string }
+const { icon, game, size = '1.5em', label, class: cls } = Astro.props;
+let img: { src: string; alt: string } | undefined;
+let svg = '';
+if (icon.startsWith('asset:')) {
+  if (!game) throw new Error(`asset アイコンには game が要る: ${icon}`);
+  const entry = await getEntry('assets', game);
+  const a = entry?.data.assets.find((x) => x.id === icon.slice(6));
+  if (!a) throw new Error(`assets.yaml に無い: ${game} ${icon}`);
+  img = { src: file(`games/${game}/${a.file}`), alt: label ?? a.alt };
+} else {
+  svg = iconSvg(icon, size);
+}
+---
+{img
+  ? <img class:list={['icon', 'icon-img', cls]} src={img.src} alt={img.alt} style={`width:${size};height:${size}`} loading="lazy" decoding="async" />
+  : <span class:list={['icon', cls]} role={label ? 'img' : undefined} aria-label={label} set:html={svg} />}
+<style>
+  .icon { display: inline-flex; flex: none; line-height: 0; }
+  .icon :global(svg) { width: auto; height: 100%; }
+  .icon-img { object-fit: cover; border-radius: 50%; background: var(--color-bg); }
+</style>

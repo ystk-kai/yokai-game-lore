@@ -1,0 +1,21 @@
+---
+// 考察1件。主張・根拠の強さ・支える材料・反する材料を分けて書く
+import type { Evidence as Ev } from '../schema';
+import Evidence from './Evidence.astro';
+import Spoiler from './Spoiler.astro';
+interface Props { title: string; level: Ev; spoiler?: string; who?: string }
+const { title, level, spoiler, who } = Astro.props;
+---
+<section class:list={['theory', `ev-${level}`]}>
+  <header><h3>{title}</h3><Evidence level={level} />{who && <span class="who">{who}</span>}</header>
+  <Spoiler scope={spoiler}><div class="body"><slot /></div></Spoiler>
+</section>
+<style>
+  .theory { background: var(--color-surface); border: 1px solid var(--color-rule); border-left: 6px solid var(--color-ink); border-radius: var(--radius); padding: var(--space-4) var(--space-6); margin: var(--space-6) 0; max-width: 48rem; }
+  .ev-speculation { border-left-style: dashed; border-left-color: var(--color-muted); }
+  header { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-3); margin-bottom: var(--space-2); }
+  h3 { margin: 0; font-size: var(--text-h3); line-height: var(--leading-tight); }
+  .who { font-size: var(--text-small); color: var(--color-muted); }
+  .body :global(p) { margin: 0 0 var(--space-3); line-break: strict; }
+  .body :global(ul) { margin: 0 0 var(--space-3); padding-left: 1.4em; }
+</style>

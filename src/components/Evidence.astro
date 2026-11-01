@@ -1,0 +1,15 @@
+---
+// 根拠の強さの印。形と文字で区別し、色だけに頼らない
+import type { Evidence } from '../schema';
+interface Props { level: Evidence }
+const labels: Record<Evidence, string> = { official: '公式', ingame: '作中', speculation: '推測' };
+const { level } = Astro.props;
+---
+<span class={`ev ev-${level}`} title={`根拠: ${labels[level]}`}><span class="ev-mark" aria-hidden="true"></span>{labels[level]}</span>
+<style>
+  .ev { display: inline-flex; align-items: center; gap: 0.3em; font-size: var(--text-small); line-height: 1; color: var(--color-muted); white-space: nowrap; }
+  .ev-mark { width: 0.8em; height: 0.8em; border-radius: 50%; border: 2px solid var(--color-ink); }
+  .ev-official .ev-mark { background: var(--color-ink); }
+  .ev-ingame .ev-mark { background: var(--color-surface); }
+  .ev-speculation .ev-mark { border-style: dashed; border-color: var(--color-muted); }
+</style>

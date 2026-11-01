@@ -1,0 +1,25 @@
+# 配置: 上2段が子ども、最下段が怪物（グループ枠が重ならないように段で分ける）
+type: relations
+title: 子どもたちと怪物
+caption: 少年・少女以外の呼び名はプレイヤーの通称
+groups:
+  - { id: kids, label: 5人の子ども, color: l2 }
+  - { id: creatures, label: 怪物, color: l1 }
+nodes:
+  - { id: boy, label: 少年, role: 主人公, at: [1, 0], group: kids, icon: gi:scarecrow }
+  - { id: girl, label: 少女, role: 主人公, at: [2, 0], group: kids, icon: gi:rabbit-head }
+  - { id: hood, label: フード, role: 仲間, at: [0, 1], group: kids, icon: gi:hood }
+  - { id: bandage, label: バンデージ, role: 仲間, at: [1, 1], group: kids, icon: gi:bandage-roll }
+  - { id: bucket, label: バケット, role: 仲間, at: [3, 1], group: kids, icon: gi:empty-metal-bucket }
+  - { id: sniffer, label: スニッファー, role: 第2章, at: [0, 2], group: creatures, icon: gi:ice-cream-cone }
+  - { id: bird, label: 巨大な鳥, role: 第3章, at: [1, 2], group: creatures, icon: gi:bird-claw }
+  - { id: sheep, label: 羊, role: 第6〜9章, at: [2, 2], group: creatures, icon: gi:sheep, spoiler: 第6章の終盤 }
+  - { id: mother, label: マザー, role: 第5章, at: [3, 2], group: creatures, icon: gi:long-legged-spider }
+edges:
+  - { from: boy, to: girl, label: 兄と妹, kind: family, evidence: official }
+  - { from: bandage, to: girl, label: 気づかう, kind: bond, directed: true }
+  - { from: sniffer, to: boy, label: 追う, kind: hostile, directed: true }
+  - { from: bird, to: bandage, label: さらう, kind: hostile, directed: true }
+  - { from: mother, to: bucket, label: 穴の底で捕らえる, kind: hostile, directed: true }
+  - { from: girl, to: sheep, label: 吐き出す, kind: unknown, directed: true, spoiler: 第6章の終盤 }
+  - { from: sheep, to: bucket, label: 呑み込む, kind: hostile, directed: true, spoiler: 第7章以降 }

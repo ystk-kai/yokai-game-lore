@@ -1,0 +1,21 @@
+---
+// MDX から <Diagram id="<game>/<name>" /> で呼ぶ。diagrams/<name>.yaml の type で描き分ける
+import { getEntry } from 'astro:content';
+import Flow from './Flow.astro';
+import Relations from './Relations.astro';
+import Timeline from './Timeline.astro';
+import Order from './Order.astro';
+import Legend from '../Legend.astro';
+
+interface Props { id: string; legend?: boolean }
+const { id, legend = true } = Astro.props;
+const entry = await getEntry('diagrams', id);
+if (!entry) throw new Error(`図が無い: src/content/games/${id.split('/')[0]}/diagrams/${id.split('/')[1]}.yaml`);
+const game = id.split('/')[0];
+const data = entry.data;
+---
+{data.type === 'flow' && <Flow data={data} game={game} id={id} />}
+{data.type === 'relations' && <Relations data={data} game={game} id={id} />}
+{data.type === 'timeline' && <Timeline data={data} game={game} id={id} />}
+{data.type === 'order' && <Order data={data} id={id} />}
+{legend && data.type !== 'order' && <Legend />}
