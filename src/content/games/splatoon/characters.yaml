@@ -1,0 +1,168 @@
+# スプラトゥーンの人物。名前は日本語版の表記（日本語版 Wikipedia・攻略サイトで確認）。確かめられなかったものはそう書く
+# appears_in は game.yaml の titles の id。自動リンク: アオリ・ホタル などはカタカナの続き（アオリイカ）を除いて当たる。
+# 「3号」は『1』と『3』で別人なので名前ではリンクしない
+characters:
+  - id: captain-cuttlefish
+    name: アタリメ司令
+    name_en: Cap'n Cuttlefish
+    kind: ally
+    role: New!カラストンビ部隊の司令。かつての大ナワバリバトルの英雄
+    looks: 年老いたイカ。長いひげと軍服
+    first_seen: スプラトゥーン（ヒーローモード）
+    appears_in: [splatoon1, splatoon2, octoexp, splatoon3]
+    evidence: ingame
+    sources: [{ label: "Wikipedia「スプラトゥーン」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B3" }, { label: "Wikipedia「スプラトゥーン3」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B33" }, { label: "Inkipedia「Timeline」（英語のファン wiki）", url: "https://splatoonwiki.org/wiki/Timeline" }]
+  - id: agent3
+    name: 3号
+    autolink: false
+    aliases: [3号（スプラトゥーン）]
+    name_en: Agent 3
+    kind: protagonist
+    role: 『スプラトゥーン』のヒーローモードの主人公。New!カラストンビ部隊の3号
+    first_seen: スプラトゥーン（ヒーローモード）
+    appears_in: [splatoon1, splatoon2, octoexp]
+    evidence: ingame
+    sources: [{ label: "Wikipedia「スプラトゥーン」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B3" }, { label: "Inkipedia「Timeline」（英語のファン wiki）", url: "https://splatoonwiki.org/wiki/Timeline" }]
+  - id: agent4
+    name: 4号
+    name_en: Agent 4
+    kind: protagonist
+    role: 『スプラトゥーン2』のヒーローモードの主人公
+    first_seen: スプラトゥーン2（ヒーローモード）
+    appears_in: [splatoon2]
+    evidence: ingame
+    sources: [{ label: "Wikipedia「スプラトゥーン2」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B32" }]
+  - id: agent8
+    name: 8号
+    name_en: Agent 8
+    kind: protagonist
+    role: オクト・エキスパンションとサイド・オーダーの主人公。記憶を失ったタコ
+    first_seen: オクト・エキスパンション
+    appears_in: [octoexp, sideorder]
+    evidence: ingame
+    sources: [{ label: "Wikipedia「スプラトゥーン2」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B32" }, { label: "Wikipedia「スプラトゥーン3」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B33" }]
+  - id: new-agent3
+    name: 新3号
+    name_en: Agent 3 (Splatoon 3)
+    kind: protagonist
+    role: 『スプラトゥーン3』のヒーローモードの主人公。過去作の3号とは別人
+    first_seen: スプラトゥーン3（ヒーローモード）
+    appears_in: [splatoon3]
+    evidence: ingame
+    sources: [{ label: "Wikipedia「スプラトゥーン3」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B33" }]
+  - id: callie
+    name: アオリ
+    name_en: Callie
+    kind: ally
+    role: シオカラーズの1人。New!カラストンビ部隊の1号
+    first_seen: スプラトゥーン
+    secret: 『スプラトゥーン2』では行方不明になり、DJタコワサ将軍に洗脳されて4号の前に立ちはだかる
+    appears_in: [splatoon1, splatoon2, splatoon3]
+    evidence: ingame
+    sources: [{ label: "Wikipedia「スプラトゥーン2」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B32" }]
+  - id: marie
+    name: ホタル
+    name_en: Marie
+    kind: ally
+    role: シオカラーズの1人。New!カラストンビ部隊の2号
+    first_seen: スプラトゥーン
+    appears_in: [splatoon1, splatoon2, splatoon3]
+    evidence: ingame
+    sources: [{ label: "Wikipedia「スプラトゥーン2」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B32" }]
+  - id: dj-octavio
+    name: DJタコワサ将軍
+    name_en: DJ Octavio
+    kind: other
+    role: タコ（オクタリアン）の軍を率いる将軍
+    first_seen: スプラトゥーン（ヒーローモード）
+    secret: 『スプラトゥーン3』では、オオデンチナマズを奪った犯人と疑われるが、真の黒幕は別にいた。誤解が解け、終盤で3号たちに協力する
+    appears_in: [splatoon1, splatoon2, splatoon3]
+    evidence: ingame
+    sources: [{ label: "Wikipedia「スプラトゥーン2」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B32" }, { label: "Wikipedia「スプラトゥーン3」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B33" }]
+  - id: pearl
+    name: ヒメ
+    name_en: Pearl
+    kind: ally
+    role: テンタクルズの1人
+    first_seen: スプラトゥーン2
+    secret: サイド・オーダーでは、ドローンの姿になって8号に付き添う
+    appears_in: [splatoon2, octoexp, splatoon3, sideorder]
+    evidence: ingame
+    sources: [{ label: "Wikipedia「スプラトゥーン2」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B32" }, { label: "Wikipedia「スプラトゥーン3」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B33" }]
+  - id: marina
+    name: イイダ
+    name_en: Marina
+    kind: ally
+    role: テンタクルズの1人。タコ（オクタリアン）出身
+    first_seen: スプラトゥーン2
+    appears_in: [splatoon2, octoexp, splatoon3, sideorder]
+    evidence: ingame
+    sources: [{ label: "Wikipedia「スプラトゥーン2」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B32" }, { label: "Wikipedia「スプラトゥーン3」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B33" }]
+  - id: shiver
+    name: フウカ
+    name_en: Shiver
+    kind: ally
+    role: すりみ連合の1人
+    first_seen: スプラトゥーン3
+    appears_in: [splatoon3, raiders]
+    evidence: ingame
+    sources: [{ label: "Wikipedia「スプラトゥーン3」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B33" }, { label: "Wikipedia「スプラトゥーン レイダース」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B3_%E3%83%AC%E3%82%A4%E3%83%80%E3%83%BC%E3%82%B9" }]
+  - id: frye
+    name: ウツホ
+    name_en: Frye
+    kind: ally
+    role: すりみ連合の1人
+    first_seen: スプラトゥーン3
+    appears_in: [splatoon3, raiders]
+    evidence: ingame
+    sources: [{ label: "Wikipedia「スプラトゥーン3」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B33" }, { label: "Wikipedia「スプラトゥーン レイダース」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B3_%E3%83%AC%E3%82%A4%E3%83%80%E3%83%BC%E3%82%B9" }]
+  - id: big-man
+    name: マンタロー
+    name_en: Big Man
+    kind: ally
+    role: すりみ連合の1人
+    first_seen: スプラトゥーン3
+    appears_in: [splatoon3, raiders]
+    evidence: ingame
+    sources: [{ label: "Wikipedia「スプラトゥーン3」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B33" }, { label: "Wikipedia「スプラトゥーン レイダース」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B3_%E3%83%AC%E3%82%A4%E3%83%80%E3%83%BC%E3%82%B9" }]
+  - id: mr-grizz
+    name: クマサン
+    autolink: false
+    # 会社名「クマサン商会」の中では当てない
+    link_patterns: ["(?<![ァ-ヶー])クマサン(?!商会)"]
+    name_en: Mr. Grizz
+    kind: other
+    role: クマサン商会の社長。『スプラトゥーン3』のヒーローモードの黒幕
+    first_seen: スプラトゥーン2（サーモンラン）
+    appears_in: [splatoon2, splatoon3]
+    evidence: ingame
+    sources: [{ label: "Wikipedia「スプラトゥーン3」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B33" }, { label: "Inkipedia「Mr. Grizz」（英語のファン wiki）", url: "https://splatoonwiki.org/wiki/Mr._Grizz" }]
+  - id: commander-tartar
+    name: タルタル総帥
+    name_en: Commander Tartar
+    kind: other
+    role: オクト・エキスパンションの黒幕。深海メトロの「デンワ」の正体
+    first_seen: オクト・エキスパンション
+    secret: 人類が残した人工知能。イカとタコの社会に失望し、ネルス像で世界を滅ぼして作り直そうとする
+    appears_in: [octoexp]
+    evidence: ingame
+    sources: [{ label: "Wikipedia「スプラトゥーン2」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B32" }, { label: "Inkipedia「Timeline」（英語のファン wiki）", url: "https://splatoonwiki.org/wiki/Timeline" }]
+  - id: order
+    name: Order
+    name_en: Order
+    kind: other
+    role: サイド・オーダーの黒幕（日本語版の名前は未確認）
+    first_seen: サイド・オーダー
+    secret: イイダが作った仮想世界を乗っ取り、完全な秩序の世界を作ろうとする
+    appears_in: [sideorder]
+    evidence: ingame
+    sources: [{ label: "Inkipedia「Timeline」（英語のファン wiki）", url: "https://splatoonwiki.org/wiki/Timeline" }, { label: "Inkipedia「Side Order」（英語のファン wiki）", url: "https://splatoonwiki.org/wiki/Side_Order" }]
+  - id: salmonarch
+    name: サルモン王
+    name_en: Salmonarch
+    kind: other
+    role: スプラトゥーン レイダースの本編のラスボス
+    first_seen: スプラトゥーン レイダース
+    appears_in: [raiders]
+    evidence: ingame
+    sources: [{ label: "Game8『スプラトゥーン レイダース』", url: "https://game8.jp/splatoon-raiders/801055" }]

@@ -1,0 +1,151 @@
+# 作品ごとの一人用の物語（ヒーローモード・DLC・スピンオフ）を発売順に並べる。
+# 作品の中だけを矢印でつなぎ、作品のあいだはつながない（話は直接続いていない。作中の時系列は world-timeline.yaml）
+type: flow
+title: 作品ごとの一人用の物語（発売順）
+caption: 作品の中は矢印でつながり、作品のあいだは切れている。色の四角とその横の名前が作品。小見出しの「スプラ1」はスプラトゥーン、「オクト」はオクト・エキスパンション、「サイド」はサイド・オーダーの略
+lanes:
+  - { id: s1, label: スプラトゥーン, color: l1, icon: gi:squid }
+  - { id: s2, label: スプラトゥーン2, color: l2, icon: gi:paint-roller }
+  - { id: oe, label: オクト・エキスパンション, color: l3, icon: gi:subway }
+  - { id: s3, label: スプラトゥーン3, color: l4, icon: gi:spray }
+  - { id: so, label: サイド・オーダー, color: l5, icon: gi:tower-flag }
+  - { id: rd, label: スプラトゥーン レイダース, color: l6, icon: gi:treasure-map }
+nodes:
+  - id: s1-hero
+    label: タコツボバレー
+    short: タコツボバレー
+    sub: スプラ1
+    at: [0, 0]
+    lane: s1
+    kind: start
+    icon: gi:squid
+    detail: 3号が、アタリメ司令の指揮のもとで、タコの軍団に奪われた街のシンボル「オオデンチナマズ」を取り返しに向かう
+    sources: [{ label: "Wikipedia「スプラトゥーン」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B3" }]
+  - id: s1-boss
+    label: DJタコワサ将軍との対決
+    short: タコワサ戦
+    sub: スプラ1
+    at: [1, 0]
+    lane: s1
+    kind: boss
+    icon: gi:octopus
+    detail: タコの軍団を率いるDJタコワサ将軍を倒し、オオデンチナマズを取り戻す
+    sources: [{ label: "Wikipedia「スプラトゥーン」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B3" }, { label: "Inkipedia（英語のファン wiki）「Octo Valley」", url: "https://splatoonwiki.org/wiki/Octo_Valley" }]
+  - id: s2-hero
+    label: タコツボキャニオン
+    short: キャニオン
+    sub: スプラ2
+    at: [2, 0]
+    lane: s2
+    kind: start
+    icon: gi:paint-roller
+    detail: 4号が、ホタルとともに、再び消えたオオデンチナマズと行方不明のアオリを追う
+    sources: [{ label: "Wikipedia「スプラトゥーン2」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B32" }]
+  - id: s2-boss
+    label: 洗脳されたアオリとの対決
+    short: アオリ戦
+    sub: スプラ2
+    at: [3, 0]
+    lane: s2
+    kind: boss
+    icon: gi:brain-freeze
+    detail: DJタコワサ将軍が「タコツボキング A-MIX」に乗り、洗脳したアオリとともに4号の前に立ちはだかる
+    sources: [{ label: "Wikipedia「スプラトゥーン2」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B32" }]
+  - id: oe-hero
+    label: 深海メトロ
+    short: 深海メトロ
+    sub: オクト
+    at: [4, 0]
+    lane: oe
+    kind: start
+    icon: gi:subway
+    detail: 記憶を失った8号が、駅に置かれたデンワに導かれ、地上を目指して深海メトロを進む
+    sources: [{ label: "Wikipedia「スプラトゥーン2」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B32" }]
+  - id: oe-boss
+    label: タルタル総帥との対決
+    short: タルタル戦
+    sub: オクト
+    at: [5, 0]
+    lane: oe
+    kind: boss
+    icon: gi:artificial-intelligence
+    detail: デンワの正体はタルタル総帥だった。ネルス像で世界を滅ぼして作り直そうとするのを止める
+    sources: [{ label: "Wikipedia「スプラトゥーン2」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B32" }]
+  - id: s3-hero
+    label: オルタナ
+    short: オルタナ
+    sub: スプラ3
+    at: [6, 0]
+    lane: s3
+    kind: start
+    icon: gi:spray
+    detail: 新3号が、相棒のコジャケとともに、地下空間オルタナで消えたオオデンチナマズを追う
+    sources: [{ label: "Wikipedia「スプラトゥーン3」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B33" }]
+  - id: s3-boss
+    label: クマサンとの対決
+    short: クマサン戦
+    sub: スプラ3
+    at: [7, 0]
+    lane: s3
+    kind: boss
+    icon: gi:bear-face
+    detail: オオデンチナマズを奪った黒幕は、クマサン商会の社長クマサンだった
+    sources: [{ label: "Inkipedia（英語のファン wiki）「Return of the Mammalians」", url: "https://splatoonwiki.org/wiki/Return_of_the_Mammalians" }]
+  - id: so-hero
+    label: 秩序の塔
+    short: 秩序の塔
+    sub: サイド
+    at: [8, 0]
+    lane: so
+    kind: start
+    icon: gi:tower-flag
+    detail: 8号が、色を失った「秩序の街」で目覚め、ドローンになったヒメとともに「秩序の塔」を登る
+    sources: [{ label: "Wikipedia「スプラトゥーン3」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B33" }]
+  - id: so-boss
+    label: Order との対決
+    short: Order 戦
+    sub: サイド
+    at: [9, 0]
+    lane: so
+    kind: boss
+    icon: gi:computer-fan
+    detail: 塔の頂上で、イイダの作った仮想世界を乗っ取った Order を倒す（日本語版の名前は未確認）
+    sources: [{ label: "Inkipedia（英語のファン wiki）「Side Order」", url: "https://splatoonwiki.org/wiki/Side_Order" }]
+  - id: rd-hero
+    label: ウズシオ諸島
+    short: ウズシオ諸島
+    sub: レイダース
+    at: [10, 0]
+    lane: rd
+    kind: start
+    icon: gi:treasure-map
+    detail: メカニックが、すりみ連合とともにウズシオ諸島で宝を探す。シリーズ初のスピンオフ
+    sources: [{ label: "Wikipedia「スプラトゥーン レイダース」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B3_%E3%83%AC%E3%82%A4%E3%83%80%E3%83%BC%E3%82%B9" }]
+  - id: rd-boss
+    label: サルモン王との対決
+    short: サルモン王戦
+    sub: レイダース
+    at: [11, 0]
+    lane: rd
+    kind: boss
+    icon: gi:fish-monster
+    detail: 本編の最後にサルモン王を倒す
+    sources: [{ label: "Game8『スプラトゥーン レイダース』", url: "https://game8.jp/splatoon-raiders/801055" }]
+  - id: rd-true
+    label: 無限食堂の裏ボス
+    short: 真エンディング
+    sub: レイダース
+    at: [12, 0]
+    lane: rd
+    kind: ending
+    icon: gi:crown
+    detail: クリア後に遊べる「無限食堂」の100階で裏ボスを倒すと、真エンディングが見られる
+    sources: [{ label: "Game8『スプラトゥーン レイダース』", url: "https://game8.jp/splatoon-raiders/801055" }]
+edges:
+  - { from: s1-hero, to: s1-boss }
+  - { from: s2-hero, to: s2-boss }
+  - { from: oe-hero, to: oe-boss }
+  - { from: s3-hero, to: s3-boss }
+  - { from: so-hero, to: so-boss }
+  - { from: rd-hero, to: rd-boss }
+  - { from: rd-boss, to: rd-true, label: クリア後 }

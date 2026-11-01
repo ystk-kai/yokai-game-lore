@@ -1,0 +1,64 @@
+# 作中の時系列。Inkipedia の Timeline（英語のファン wiki）による。年数は作中の資料（ザ・ナワバリ・タイムズ、ミステリーファイルなど）を wiki がまとめたもの
+type: timeline
+title: 作中の時系列
+caption: 上から古い順。本編（ヒーローモード）と、DLC・スピンオフを列で分ける
+lanes:
+  - { id: world, label: 世界の歴史, color: l6, icon: gi:ship-wreck }
+  - { id: main, label: 本編のヒーローモード, color: l2, icon: gi:squid }
+  - { id: extra, label: DLC とスピンオフ, color: l5, icon: gi:octopus, fork: s2 }
+events:
+  - id: human-end
+    lane: world
+    when: 約1万2千年前
+    label: 人類の時代が終わる
+    detail: 海面が大きく上がり、世界は戦争にも巻き込まれる。人類は姿を消す
+    sources: [{ label: "Inkipedia「Timeline」（英語のファン wiki）", url: "https://splatoonwiki.org/wiki/Timeline" }]
+  - id: first-turf
+    lane: world
+    when: 約2千年前
+    label: 最初のナワバリバトル
+    detail: 地上に出たイカたちのあいだで、記録に残る最初のナワバリバトルが行われる
+    sources: [{ label: "Inkipedia「Timeline」（英語のファン wiki）", url: "https://splatoonwiki.org/wiki/Timeline" }]
+  - id: great-turf
+    lane: world
+    when: 『スプラトゥーン』の100年以上前
+    label: 大ナワバリバトル
+    detail: イカとタコの戦争。アタリメ司令はこの戦いの英雄として知られる
+    sources: [{ label: "Inkipedia「Timeline」（英語のファン wiki）", url: "https://splatoonwiki.org/wiki/Timeline" }, { label: "Wikipedia「スプラトゥーン」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B3" }]
+  - id: s1
+    lane: main
+    when: 『スプラトゥーン』（2015年発売）
+    label: 3号がオオデンチナマズを取り戻す
+    detail: タコの軍団が街のシンボル「オオデンチナマズ」を奪う。3号がアタリメ司令の指揮のもとで取り返す
+    sources: [{ label: "Wikipedia「スプラトゥーン」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B3" }]
+  - id: s2
+    lane: main
+    when: 『1』の2年後（2017年発売）
+    label: 4号がアオリを捜す
+    detail: 再び消えたオオデンチナマズと、行方不明のアオリを、4号がホタルとともに追う。アタリメ司令と3号は調査の旅に出ていて不在
+    sources: [{ label: "Wikipedia「スプラトゥーン2」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B32" }, { label: "Inkipedia「Timeline」（英語のファン wiki）", url: "https://splatoonwiki.org/wiki/Timeline" }]
+  - id: oe
+    lane: extra
+    when: 『2』と前後（順番は決まっていない）
+    label: 8号が深海メトロを脱出する
+    detail: 記憶を失った8号が、地上を目指して深海メトロを進み、タルタル総帥と対決する。タコツボキャニオンの前とも後とも読めるように作られている
+    sources: [{ label: "Wikipedia「スプラトゥーン2」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B32" }, { label: "Inkipedia「Timeline」（英語のファン wiki）", url: "https://splatoonwiki.org/wiki/Timeline" }]
+  - id: s3
+    lane: main
+    when: 『2』の5年後（2022年発売）
+    label: 新3号がオルタナへ向かう
+    detail: 新3号が、地下空間オルタナで消えたオオデンチナマズを追う。黒幕はクマサン
+    sources: [{ label: "Wikipedia「スプラトゥーン3」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B33" }, { label: "Inkipedia「Timeline」（英語のファン wiki）", url: "https://splatoonwiki.org/wiki/Timeline" }]
+  - id: so
+    lane: extra
+    when: 『3』の時代（2024年配信）
+    label: 8号が秩序の塔に挑む
+    detail: 8号が、イイダの作った仮想世界の「秩序の塔」で目覚め、ドローンになったヒメとともに脱出を目指す
+    sources: [{ label: "Wikipedia「スプラトゥーン3」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B33" }, { label: "Inkipedia「Timeline」（英語のファン wiki）", url: "https://splatoonwiki.org/wiki/Timeline" }]
+  - id: rd
+    lane: extra
+    when: 時期は明示されていない（2026年発売）
+    label: すりみ連合とウズシオ諸島へ
+    detail: メカニックが、すりみ連合とともにウズシオ諸島で宝を探す。すりみ連合の衣装が『3』のフェスにちなむので、『3』の後と考えられる
+    evidence: speculation
+    sources: [{ label: "Wikipedia「スプラトゥーン レイダース」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B3_%E3%83%AC%E3%82%A4%E3%83%80%E3%83%BC%E3%82%B9" }, { label: "Inkipedia「Splatoon Raiders」（英語のファン wiki）", url: "https://splatoonwiki.org/wiki/Splatoon_Raiders" }]
