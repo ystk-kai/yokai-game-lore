@@ -44,7 +44,7 @@ const colors = ['l1', 'l2', 'l3', 'l4', 'l5', 'l6'];
   .colhead { position: absolute; top: 0; font-size: var(--text-small); color: var(--color-muted); font-weight: 700; }
   .link { fill: none; stroke: var(--lane); stroke-width: 3px; }
   .link.is-spec { stroke-dasharray: 6 5; }
-  .item { position: absolute; display: flex; align-items: center; gap: var(--space-2); font-size: var(--text-small); padding: 0 var(--space-2); border-right: 6px solid var(--lane); }
-  .item.right { border-right: 0; border-left: 6px solid var(--lane); }
+  .item { position: absolute; display: flex; align-items: center; gap: var(--space-2); font-size: var(--text-small); padding: 0 var(--space-2);  }
+  .item::before { content: ""; width: 0.75em; height: 0.75em; border-radius: 2px; background: var(--lane); flex: none; }
   .item .num { color: var(--color-muted); min-width: 1.4em; }
 </style>

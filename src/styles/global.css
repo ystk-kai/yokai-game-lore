@@ -1,9 +1,11 @@
+/* Hallmark · theme: custom · idea: "攻略本の巻頭のストーリーチャートを、暗い画面で読む" · vibe: "落ち着いた 暗い 読み物 図解 日本語" · paper: #111318 墨色 / ink: #e8eaef / accent: #ff7a5c 朱（リンクだけ）+ 系統色6色（舞台の色分け、Full palette） · faces: 日本語ゴシックのシステムスタック1種 · posture: Full palette（色は図の分類にだけ使い、面は塗らない） */
 @import './tokens.css';
 
 *, *::before, *::after { box-sizing: border-box; }
-html { font-synthesis: none; -webkit-text-size-adjust: 100%; }
+html { font-synthesis: none; -webkit-text-size-adjust: 100%; overflow-x: clip; scrollbar-color: var(--color-rule) var(--color-bg); }
 body {
   margin: 0;
+  overflow-x: clip;
   background: var(--color-bg);
   color: var(--color-ink);
   font-family: var(--font-body);
@@ -19,9 +21,15 @@ img, svg { display: block; max-width: 100%; }
 .prose h3 { font-size: var(--text-h3); line-height: var(--leading-tight); margin: var(--space-8) 0 var(--space-3); }
 .prose ul, .prose ol { padding-left: 1.4em; margin: 0 0 var(--space-4); }
 h1 { font-size: var(--text-h1); font-weight: 700; line-height: var(--leading-tight); font-feature-settings: "palt"; letter-spacing: 0; margin: 0; }
+/* 見出しは文節で折り返し、行の長さをそろえる（日本語の見出しが1字だけ次の行に落ちるのを防ぐ） */
+h1, h2, h3, h4 { text-wrap: balance; word-break: auto-phrase; }
+/* 括弧・句読点の字面のアキを詰める（対応ブラウザだけ） */
+@supports (text-spacing-trim: normal) { body { text-spacing-trim: normal; } }
+::selection { background: var(--color-accent); color: var(--color-accent-ink); }
 em { font-style: normal; font-weight: 700; } /* 日本語に合成斜体を出さない */
 a { color: var(--color-accent); text-underline-offset: 0.2em; }
 a:hover { text-decoration-thickness: 2px; }
+a:active { opacity: 0.75; }
 code, pre { text-autospace: no-autospace; }
 :focus-visible { outline: 3px solid var(--color-accent); outline-offset: 2px; }
 

@@ -10,8 +10,8 @@ const { title, level, who } = Astro.props;
   <div class="body"><slot /></div>
 </section>
 <style>
-  .theory { background: var(--color-surface); border: 1px solid var(--color-rule); border-left: 6px solid var(--color-ink); border-radius: var(--radius); padding: var(--space-4) var(--space-6); margin: 0; }
-  .ev-speculation { border-left-style: dashed; border-left-color: var(--color-muted); }
+  .theory { background: var(--color-surface); border: 1px solid var(--color-rule); border-radius: var(--radius); padding: var(--space-4) var(--space-6); margin: 0; }
+  .ev-speculation { border-style: dashed; border-color: var(--color-muted); }
   header { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-3); margin-bottom: var(--space-2); }
   h3 { margin: 0; font-weight: 700; font-size: var(--text-h3); line-height: var(--leading-tight); }
   .who { font-size: var(--text-small); color: var(--color-muted); }

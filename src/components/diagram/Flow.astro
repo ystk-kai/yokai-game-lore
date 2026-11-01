@@ -11,7 +11,7 @@ interface Props { data: z.infer<typeof flowDiagram>; game: string; id: string }
 const { data, game, id } = Astro.props;
 
 // カードの横の間（COL - W）は矢印のラベル用に 96px 空ける。横の矢印のラベルは2行まで、縦の矢印のラベルは1行
-const COL = 336, ROW = 256, W = 240, H = 200, PAD = 24;
+const COL = 352, ROW = 296, W = 256, H = 240, PAD = 24;
 const cols = Math.max(...data.nodes.map((n) => n.at[0])) + 1;
 const rows = Math.max(...data.nodes.map((n) => n.at[1])) + 1;
 const width = PAD * 2 + (cols - 1) * COL + W;
@@ -45,7 +45,7 @@ const edges = data.edges.map((e) => {
 const kindLabel = { scene: '', start: '始まり', boss: '対決', ending: '結末', branch: '分岐' } as const;
 // スマホ用の縦の並び: データの順に並べ、隣どうしをつなぐ矢印のラベルを間に出す
 const edgeBetween = (a: string, b: string) => edges.find((e) => e.from === a && e.to === b);
-const subLine = (n: (typeof data.nodes)[number]) => [n.sub, kindLabel[n.kind]].filter((x, i, arr) => x && arr.indexOf(x) === i).join(' · ');
+const kindTag = (n: (typeof data.nodes)[number]) => (kindLabel[n.kind] && kindLabel[n.kind] !== n.sub ? kindLabel[n.kind] : '');
 ---
 <figure class="flow">
   <figcaption>
@@ -80,9 +80,11 @@ const subLine = (n: (typeof data.nodes)[number]) => [n.sub, kindLabel[n.kind]].f
             <header>
               <a class="no num" href={`#${anchor}-${n.id}`} aria-label={`${number.get(n.id)}: 出典へ`}>{number.get(n.id)}</a>
               {n.icon && <Icon icon={n.icon} game={game} size="1.5em" class="sc-icon" />}
-              <span class="sc-sub">{subLine(n)}</span>
+              {n.sub && <span class="sc-sub">{n.sub}</span>}
+              {kindTag(n) && <span class="sc-kind">{kindTag(n)}</span>}
             </header>
             <h4>{n.label}</h4>
+            <p class="sc-lane"><span class="sq" aria-hidden="true"></span>{lane.label}</p>
             {n.detail && <p class="sc-detail">{n.detail}</p>}
           </article>
         );
@@ -101,9 +103,11 @@ const subLine = (n: (typeof data.nodes)[number]) => [n.sub, kindLabel[n.kind]].f
             <header>
               <span class="no num">{number.get(n.id)}</span>
               {n.icon && <Icon icon={n.icon} game={game} size="1.5em" class="sc-icon" />}
-              <span class="sc-sub">{subLine(n)}</span>
+              {n.sub && <span class="sc-sub">{n.sub}</span>}
+              {kindTag(n) && <span class="sc-kind">{kindTag(n)}</span>}
             </header>
             <h4>{n.label}</h4>
+            <p class="sc-lane"><span class="sq" aria-hidden="true"></span>{lane.label}</p>
             {n.detail && <p class="sc-detail">{n.detail}</p>}
             {branches.map((b) => <p class="sc-branch">→ {nodeOf.get(b.to)!.label}{b.label && `（${b.label}）`}</p>)}
           </article>
@@ -152,21 +156,24 @@ const subLine = (n: (typeof data.nodes)[number]) => [n.sub, kindLabel[n.kind]].f
 
   /* 場面のカード: 舞台の色は上辺の帯と見出しの小さな文字だけに使う */
   .scene {
-    position: absolute; z-index: 1; display: flex; flex-direction: column; gap: var(--space-1);
-    background: var(--color-bg); border: 1px solid var(--color-rule); border-top: 5px solid var(--lane); border-radius: var(--radius);
-    padding: var(--space-2) var(--space-3) var(--space-3); overflow: hidden;
+    position: absolute; z-index: 1; display: flex; flex-direction: column; gap: var(--space-2);
+    background: var(--color-bg); border: 1px solid var(--color-rule); border-radius: var(--radius);
+    padding: var(--space-3) var(--space-4) var(--space-4); overflow: hidden;
   }
   .scene.is-spec { border-style: dashed; }
-  .scene.kind-boss { box-shadow: inset 0 0 0 1px var(--lane); }
-  .scene.kind-ending, .scene.kind-start { background: color-mix(in srgb, var(--lane) 14%, var(--color-bg)); }
+  .scene.kind-boss { border-color: var(--lane); }
+  .scene.kind-ending, .scene.kind-start { background: color-mix(in srgb, var(--lane) 12%, var(--color-bg)); border-color: color-mix(in srgb, var(--lane) 50%, var(--color-rule)); }
   header { display: flex; align-items: center; gap: var(--space-2); }
   .no { min-width: 1.6em; height: 1.6em; display: inline-grid; place-items: center; padding: 0 0.3em;
-        background: var(--color-ink); color: var(--color-bg); border-radius: 999px; font-size: 0.75rem; line-height: 1; text-decoration: none; }
+        background: var(--color-ink); color: var(--color-bg); border-radius: 999px; font-size: 0.8125rem; line-height: 1; text-decoration: none; }
   :global(.sc-icon) { color: var(--lane); }
-  .sc-sub { font-size: 0.75rem; color: var(--lane); font-weight: 700; }
-  h4 { margin: 0; font-size: var(--text-body); line-height: 1.35; word-break: auto-phrase; }
-  .sc-detail { margin: 0; font-size: 0.8125rem; line-height: 1.55; color: var(--color-muted); line-break: strict;
-               display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; overflow: hidden; }
+  .sc-sub { font-size: var(--text-small); color: var(--color-muted); }
+  .sc-kind { margin-left: auto; font-size: 0.8125rem; line-height: 1; padding: 4px 8px; border: 1px solid var(--lane); border-radius: 999px; color: var(--color-ink); }
+  .sc-lane { margin: 0; display: flex; align-items: center; gap: var(--space-2); font-size: 0.8125rem; color: var(--color-muted); }
+  .sq { width: 0.7em; height: 0.7em; border-radius: 2px; background: var(--lane); flex: none; }
+  h4 { margin: 0; font-size: 1.0625rem; font-weight: 700; line-height: 1.4; }
+  .sc-detail { margin: 2px 0 0; font-size: 0.875rem; line-height: 1.65; color: var(--color-muted); line-break: strict;
+               display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; }
 
   /* スマホ: キャンバスの代わりに縦1列で並べる */
   .flow-list { display: none; list-style: none; margin: 0; padding: 0; }
@@ -183,7 +190,7 @@ const subLine = (n: (typeof data.nodes)[number]) => [n.sub, kindLabel[n.kind]].f
   .stops { margin-top: var(--space-4); }
   .stops summary { cursor: pointer; color: var(--color-muted); font-size: var(--text-small); }
   .stops ol { list-style: none; padding: 0; margin: var(--space-3) 0 0; display: grid; gap: var(--space-4) var(--space-8); grid-template-columns: repeat(auto-fill, minmax(min(100%, 26rem), 1fr)); }
-  .stops li { border-left: 4px solid var(--lane); padding: var(--space-1) 0 var(--space-1) var(--space-4); }
+  .stops li { padding: var(--space-3) var(--space-4); border: 1px solid var(--color-rule); border-radius: var(--radius); }
   .stop-head { display: flex; align-items: center; gap: var(--space-2); flex-wrap: wrap; }
   .stops p { margin: var(--space-1) 0 0; line-break: strict; }
 </style>
