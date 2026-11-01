@@ -1,0 +1,79 @@
+---
+// 人物の登場作品の表。縦に人物、横に作品（game.yaml の titles の順）を並べ、登場する作品に丸を付ける。
+// シリーズや DLC をまたいで、誰がどこに出るかを一目で見せる。データは characters.yaml の appears_in から組み立てる
+import { getCollection, getEntry } from 'astro:content';
+import Icon from '../Icon.astro';
+import { url } from '../../lib/url';
+
+interface Props { game: string; title?: string; caption?: string; kinds?: ('protagonist' | 'ally' | 'creature' | 'other')[] }
+const { game, title = '人物の登場作品', caption, kinds } = Astro.props;
+const g = await getEntry('games', game);
+const chars = ((await getEntry('characters', game))?.data.characters ?? []).filter((c) => !kinds || kinds.includes(c.kind));
+const titles = g?.data.titles ?? [];
+if (!titles.length) throw new Error(`${game}: game.yaml に titles が無いので登場作品の表を作れない`);
+const kindLabel = { protagonist: '主人公', ally: '仲間', creature: '怪物', other: 'その他' } as const;
+const colors = ['l1', 'l2', 'l3', 'l4', 'l5', 'l6'];
+// 名前は名鑑のカードへのリンクにする（名鑑の無いゲームではリンクにしない）
+const charPage = (await getCollection('pages', (p) => p.id.startsWith(`${game}/`) && !!p.body?.includes('<Characters'))).at(0);
+const hrefOf = (id: string) => (charPage ? `${url(`games/${charPage.id}`)}#ch-${id}` : undefined);
+---
+<figure class="appear">
+  <figcaption><span class="title">{title}</span>{caption && <span class="caption">{caption}</span>}</figcaption>
+  <div class="scroller" tabindex="0" aria-label={`${title}（横にスクロールできます）`}>
+    <table>
+      <thead>
+        <tr>
+          <th scope="col" class="corner">人物</th>
+          {titles.map((t, i) => (
+            <th scope="col" class={`lane-${colors[i % 6]}`}>
+              <span class="t-label">{t.label}</span>
+              {t.released && <span class="t-year num">{t.released.slice(0, 4)}</span>}
+            </th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {chars.map((c) => (
+          <tr>
+            <th scope="row">
+              <a class="who" href={hrefOf(c.id)}>
+                {c.icon && <Icon icon={c.icon} game={game} size="1.1em" />}
+                <span>{c.name}</span>
+              </a>
+              <span class="kind">{kindLabel[c.kind]}</span>
+            </th>
+            {titles.map((t, i) => {
+              const on = c.appears_in.includes(t.id);
+              return (
+                <td class={`lane-${colors[i % 6]}`} aria-label={`${c.name}は${t.label}に${on ? '登場する' : '登場しない'}`}>
+                  {on ? <span class="dot" aria-hidden="true"></span> : <span class="none" aria-hidden="true"></span>}
+                </td>
+              );
+            })}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</figure>
+<style>
+  .appear { margin: var(--space-8) 0; }
+  figcaption { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2) var(--space-4); margin-bottom: var(--space-3); }
+  .title { font-weight: 700; font-size: var(--text-h3); }
+  .caption { color: var(--color-muted); font-size: var(--text-small); }
+  .scroller { overflow-x: auto; background: var(--color-surface); border: 1px solid var(--color-rule); border-radius: var(--radius); }
+  table { border-collapse: collapse; width: 100%; min-width: 40rem; font-size: var(--text-small); }
+  th, td { padding: var(--space-2) var(--space-3); border-bottom: 1px solid var(--color-rule); }
+  thead th { vertical-align: bottom; text-align: center; font-weight: 700; color: var(--lane); border-bottom: 2px solid var(--lane); }
+  thead th.corner { text-align: left; color: var(--color-muted); border-bottom-color: var(--color-rule); }
+  .t-label { display: block; line-height: 1.35; word-break: auto-phrase; }
+  .t-year { display: block; font-weight: 400; color: var(--color-muted); font-size: 0.8125rem; }
+  tbody th { text-align: left; font-weight: 400; white-space: nowrap; }
+  .who { display: inline-flex; align-items: center; gap: var(--space-2); color: var(--color-ink); text-decoration: underline dotted; text-decoration-color: var(--color-accent); text-underline-offset: 0.25em; font-weight: 700; }
+  .who:hover { color: var(--color-accent); }
+  .kind { margin-left: var(--space-2); color: var(--color-muted); font-size: 0.8125rem; }
+  td { text-align: center; }
+  .dot { display: inline-block; width: 14px; height: 14px; border-radius: 50%; background: var(--lane); }
+  .none { display: inline-block; width: 8px; height: 2px; background: var(--color-rule); vertical-align: middle; }
+  tbody tr:hover { background: color-mix(in srgb, var(--color-ink) 4%, transparent); }
+</style>

@@ -1,5 +1,5 @@
 // コンテンツのデータ形。content.config.ts と scripts/check-content.ts の両方がここを読む。
-// 形を変えたら AGENTS.md の「データの形」と DESIGN.md の図解文法も確かめる。
+// 形を変えたら AGENTS.md の「構成」と DESIGN.md の図解文法も確かめる。
 import { z } from 'astro/zod';
 
 /** 根拠の強さ。図では線の種類と枠の形で描き分ける（DESIGN.md「根拠の描き分け」） */
@@ -35,7 +35,7 @@ const lane = z.object({
 /** 物語の流れ（フローチャート）。場面のカードを at:[列, 段] に置き、矢印で結ぶ */
 const flowNode = z.object({
   id: z.string(),
-  /** カードの見出し。2行に収まる長さ。あらすじは detail に（カードに6行まで出る） */
+  /** カードの見出し。2行に収まる長さ。あらすじは detail に（grid のカードでは5行まで、list では全文） */
   label: z.string().max(20, '見出しは20字まで。あらすじは detail に'),
   sub: z.string().max(12).optional(),
   /** 俯瞰の地図に出す短い名前（8字まで）。無ければ label を使う */
@@ -161,7 +161,7 @@ export const scheduleDiagram = z.object({
         date: z.string().regex(/^\d{4}-\d{2}(-\d{2})?$/, 'date は "YYYY-MM" か "YYYY-MM-DD"'),
         /** 図に出す日付の書き方（「2026-08-07（日本 8-08）」など）。無ければ date */
         date_label: z.string().optional(),
-        label: z.string().max(14, '図のラベルは14字まで。説明は detail に'),
+        label: z.string().max(18, '図のラベルは18字まで。説明は detail に'),
         detail: z.string().optional(),
         /** まだ起きていない予定。破線の白抜きで描く */
         planned: z.boolean().default(false),
@@ -184,6 +184,11 @@ export const game = z.object({
   developer: z.string(),
   publisher: z.string(),
   released: z.string(),
+  /**
+   * 作品の一覧（シリーズや DLC を1つのゲームで扱うとき）。名鑑の appears_in はこの id で書く（検査で照合する）。
+   * 例: REANIMAL は main（本編）と dlc1（DLC 第1章）、スプラトゥーンは splatoon1 / splatoon2 / octoexp …
+   */
+  titles: z.array(z.object({ id: z.string().regex(/^[a-z0-9-]+$/), label: z.string(), released: z.string().optional() })).default([]),
   /** トップの一覧に出す一言説明。どんなゲームかが1行で分かるように */
   tagline: z.string().max(40, '一言説明は40字まで'),
   summary: z.string().max(120, '概要は120字まで'),
@@ -208,7 +213,15 @@ export const asset = z.object({
   id: z.string().regex(/^[a-z0-9-]+$/),
   file: z.string(),
   alt: z.string(),
-  kind: z.enum(['official', 'original']),
+  /**
+   * 画像の種類。権利者の許可の範囲は種類ごとに違う（任天堂の許可はゲームから撮ったスクリーンショットだけで、公式イラストや抜き出したモデル画像は含まない）
+   * screenshot: ゲーム画面のキャプチャー / official-art: 公式のイラスト・キービジュアル / render: ファンが作ったモデルの画像（ゲームから抜き出したもの）/ logo: ロゴ / original: このサイトの自作
+   */
+  kind: z.enum(['screenshot', 'official-art', 'render', 'logo', 'original']),
+  /** スクリーンショットを自分で撮ったか（任天堂のように「お客様がキャプチャーした」ものだけを許す権利者のため） */
+  self_captured: z.boolean().default(false),
+  /** 出典の表示名（カードの下に出す。例: kamigame、REANIMAL Wiki (Fandom)） */
+  source_name: z.string().optional(),
   source_url: z.url().optional(),
   credit: z.string(),
 });
@@ -247,7 +260,7 @@ export const charactersFile = z.object({
       first_seen: z.string().optional(),
       /** 正体や結末など */
       secret: z.string().optional(),
-      /** 登場する作品（本編・DLC）の id。pages の chapter と揃える */
+      /** 登場する作品の id。game.yaml の titles の id と揃える（検査で照合する） */
       appears_in: z.array(z.string()).default([]),
       evidence: evidence.default('ingame'),
       sources: z.array(source).default([]),

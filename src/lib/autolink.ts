@@ -7,6 +7,14 @@ import { url } from './url';
 
 const esc = (s: string) => s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
 const escRe = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+// 名前の端が数字やカタカナのときは、続きの文字があれば別の語とみなして当てない
+// （「3号」が「第3号」「13号」に、「ホタル」が「ホタルイカ」に当たるのを防ぐ）
+const DIGIT = /[0-9０-９]/, KATA = /[ァ-ヶー]/;
+const bounded = (name: string) => {
+  const head = DIGIT.test(name[0]) ? '(?<![0-9０-９第])' : KATA.test(name[0]) ? '(?<![ァ-ヶー])' : '';
+  const tail = DIGIT.test(name.at(-1)!) ? '(?![0-9０-９])' : KATA.test(name.at(-1)!) ? '(?![ァ-ヶー])' : '';
+  return head + escRe(name) + tail;
+};
 
 export type Linker = ((text: string, self?: string) => string) & {
   /** HTML の文字の部分だけを置き換える（タグ・既存のリンク・コードの中は触らない）。本文の段落用 */
@@ -19,7 +27,7 @@ export async function makeLinker(game: string): Promise<Linker> {
   // 名前と別名は長い順に、文脈つきの正規表現（link_patterns）はその後ろに並べる。同じ位置では先に書いたものが勝つ
   const terms = [
     ...chars
-      .flatMap((c) => [...(c.autolink ? [c.name] : []), ...c.aliases].map((name) => ({ src: escRe(name), len: name.length, id: c.id, label: c.name })))
+      .flatMap((c) => [...(c.autolink ? [c.name] : []), ...c.aliases].map((name) => ({ src: bounded(name), len: name.length, id: c.id, label: c.name })))
       .sort((a, b) => b.len - a.len),
     ...chars.flatMap((c) => c.link_patterns.map((src) => ({ src, len: 0, id: c.id, label: c.name }))),
   ];

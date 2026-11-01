@@ -110,7 +110,7 @@ const kindTag = (n: (typeof data.nodes)[number]) => (kindLabel[n.kind] && kindLa
           const lane = laneOf.get(n.lane)!;
           const inEdge = i > 0 ? edgeBetween(data.nodes[i - 1].id, n.id) : undefined;
           return (
-            <li class:list={[`lane-${lane.color}`, `kind-${n.kind}`, n.evidence === 'speculation' && 'is-spec', inEdge?.evidence === 'speculation' && 'in-spec']}>
+            <li class:list={[`lane-${lane.color}`, `kind-${n.kind}`, n.evidence === 'speculation' && 'is-spec', inEdge?.evidence === 'speculation' && 'in-spec', i > 0 && !inEdge && 'no-in']}>
               {isStrip && inEdge?.label && <span class="ov-edge">{inEdge.label}</span>}
               <a href={`#${anchor}-${n.id}`} title={`${n.sub ?? ''} ${n.label}`}>
                 <span class="ov-dot num">{number.get(n.id)}</span>
@@ -271,10 +271,12 @@ const kindTag = (n: (typeof data.nodes)[number]) => (kindLabel[n.kind] && kindLa
   .overview ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--count), minmax(4.25rem, 1fr)); position: relative; }
   .overview li { position: relative; }
   .overview li + li::before { content: ""; position: absolute; left: -50%; right: 50%; top: 13px; height: 2px; background: var(--color-muted); }
+  /* 前の場面とつながっていない（作品が変わるなど）ときは線を引かない */
+  .overview li.no-in::before { display: none; }
   .overview li.in-spec::before { background: repeating-linear-gradient(90deg, var(--color-muted) 0 6px, transparent 6px 11px); }
   /* 矢印のラベル（strip だけ）: 線の上の専用の段に置き、丸と重ならないよう列の幅の 8 割で折り返す */
   .has-edge-labels { padding-top: calc(var(--space-4) + 2.75rem); }
-  .ov-edge { position: absolute; left: 0; bottom: calc(100% + 4px); transform: translateX(-50%); z-index: 2; width: max-content; max-width: 80%; text-align: center; font-size: 0.8125rem; line-height: 1.3; padding: 1px 6px; word-break: auto-phrase;
+  .ov-edge { position: absolute; left: 0; bottom: calc(100% + 4px); transform: translateX(-50%); z-index: 2; width: max-content; max-width: 80%; text-align: center; font-size: 0.8125rem; line-height: 1.3; padding: 0 var(--space-2); word-break: auto-phrase;
              background: var(--color-surface); border: 1px solid var(--color-rule); border-radius: 4px; color: var(--color-ink); }
   .overview li.in-spec .ov-edge { border-style: dashed; }
   .overview .is-spec .ov-dot { border-style: dashed; }
@@ -285,7 +287,8 @@ const kindTag = (n: (typeof data.nodes)[number]) => (kindLabel[n.kind] && kindLa
   .kind-boss .ov-dot { box-shadow: 0 0 0 3px var(--color-surface), 0 0 0 5px var(--lane); }
   :global(.ov-icon) { color: var(--lane); margin-top: var(--space-1); }
   .ov-sub { font-size: 0.8125rem; color: var(--color-muted); line-height: 1.3; min-height: 1.3em; }
-  .ov-label { font-size: 0.875rem; font-weight: 700; line-height: 1.4; word-break: auto-phrase; text-wrap: balance; }
+  .ov-label { font-size: 0.875rem; font-weight: 700; line-height: 1.4; word-break: auto-phrase; text-wrap: balance; overflow-wrap: anywhere; min-width: 0; max-width: 100%; }
+  .ov-sub { overflow-wrap: anywhere; max-width: 100%; }
   .ov-bar { margin-top: auto; width: calc(100% - var(--space-2)); height: 6px; border-radius: 3px; background: var(--lane); }
   /* strip の下の短い説明 */
   .notes { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-2) var(--space-8); grid-template-columns: repeat(auto-fill, minmax(min(100%, 24rem), 1fr)); }

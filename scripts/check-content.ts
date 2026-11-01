@@ -1,4 +1,5 @@
-// コンテンツの検査。Astro のスキーマ検査（形）に加えて、形だけでは見つからない約束を確かめる。
+// コンテンツの検査。src/schema.ts のスキーマで形を確かめ（Astro のビルドと同じ定義）、形だけでは見つからない約束も確かめる。
+// hook はこのスクリプトだけを回すので、見出しの長さ・種類の誤りなどもここで見つける。
 //   bun scripts/check-content.ts            … 全部
 //   bun scripts/check-content.ts <file...>  … 指定したファイルを含むゲームだけ（hook から呼ぶ）
 // 失敗すると exit 1。メッセージは「どのファイルの何が・どう直すか」を1行で出す。
@@ -9,6 +10,8 @@ import { getIconData } from '@iconify/utils';
 import gameIcons from '@iconify-json/game-icons/icons.json' with { type: 'json' };
 import lucide from '@iconify-json/lucide/icons.json' with { type: 'json' };
 import type { IconifyJSON } from '@iconify/types';
+import { analysis, assetsFile as assetsSchema, charactersFile, diagram, game as gameSchema } from '../src/schema';
+import type { ZodType } from 'astro/zod';
 
 const ROOT = resolve(import.meta.dir, '..');
 const GAMES = join(ROOT, 'src/content/games');
@@ -17,6 +20,13 @@ const errors: string[] = [];
 const rel = (p: string) => relative(ROOT, p);
 const err = (file: string, msg: string) => errors.push(`${rel(file)}: ${msg}`);
 const readYaml = (p: string) => parse(readFileSync(p, 'utf8'));
+/** スキーマで検査し、問題を「場所: 内容」の形で1件ずつ出す */
+const checkShape = (file: string, schema: ZodType, data: unknown) => {
+  const r = schema.safeParse(data);
+  if (!r.success) for (const i of r.error.issues) err(file, `${i.path.join('.') || '(全体)'}: ${i.message}`);
+};
+/** MDX の先頭の frontmatter を取り出す */
+const frontmatter = (text: string) => { const m = text.match(/^---\n([\s\S]*?)\n---/); return m ? parse(m[1]) : undefined; };
 
 const args = process.argv.slice(2).map((a) => resolve(a));
 const targetGames = new Set(
@@ -35,18 +45,22 @@ for (const game of targetGames) {
   const gameFile = join(dir, 'game.yaml');
   if (!existsSync(gameFile)) { err(dir, 'game.yaml が無い（add-game スキルの手順で作る）'); continue; }
   const g = readYaml(gameFile);
+  checkShape(gameFile, gameSchema, g);
+  const titleIds = new Set<string>((g?.titles ?? []).map((t: { id: string }) => t.id));
+  if (g?.rights?.official_assets && !g?.rights?.official_assets_note) err(gameFile, 'rights.official_assets が true なら official_assets_note（載せる根拠: 規約の許可か、運営者の判断か）を書く');
 
   // 1. 公式素材は、規約を確かめて official_assets: true にしたゲームだけ
   const assetsFile = join(dir, 'assets.yaml');
-  const assets: { id: string; file: string; kind: string; source_url?: string }[] = existsSync(assetsFile) ? readYaml(assetsFile)?.assets ?? [] : [];
+  const assetsRaw = existsSync(assetsFile) ? readYaml(assetsFile) : { assets: [] };
+  if (existsSync(assetsFile)) checkShape(assetsFile, assetsSchema, assetsRaw);
+  const assets: { id: string; file: string; kind: string; source_url?: string }[] = assetsRaw?.assets ?? [];
   const assetIds = new Set(assets.map((a) => a.id));
   for (const a of assets) {
     const f = join(ROOT, 'public/games', game, a.file);
     if (!existsSync(f)) err(assetsFile, `${a.id}: ファイルが無い public/games/${game}/${a.file}`);
-    if (a.kind === 'official') {
-      if (!g?.rights?.official_assets) err(assetsFile, `${a.id}: 公式素材だが game.yaml の rights.official_assets が false。規約を確かめるまで載せない`);
-      if (!g?.rights?.official_assets_note) err(gameFile, 'rights.official_assets_note が無い。公式素材を載せる根拠（規約の許可か、運営者の判断か）を書く');
-      if (!a.source_url) err(assetsFile, `${a.id}: 公式素材には source_url（取得元）が要る`);
+    if (a.kind !== 'original') {
+      if (!g?.rights?.official_assets) err(assetsFile, `${a.id}: 権利者の画像（${a.kind}）だが game.yaml の rights.official_assets が false。規約を確かめるまで載せない`);
+      if (!a.source_url) err(assetsFile, `${a.id}: 権利者の画像には source_url（取得元）が要る`);
     }
   }
   // public/games/<game>/ にあるのに assets.yaml に無いファイル（出所不明の画像）
@@ -77,11 +91,22 @@ for (const game of targetGames) {
     }
   }
 
+  // 3b. 名鑑の形と、登場作品が titles にあるか
+  const charFileForShape = join(dir, 'characters.yaml');
+  if (existsSync(charFileForShape)) {
+    const cd = readYaml(charFileForShape);
+    checkShape(charFileForShape, charactersFile, cd);
+    if (titleIds.size) for (const c of cd?.characters ?? []) for (const t of c.appears_in ?? []) {
+      if (!titleIds.has(t)) err(charFileForShape, `${c.id}: appears_in の「${t}」が game.yaml の titles に無い（${[...titleIds].join(' / ')}）`);
+    }
+  }
+
   // 4. 図の中の参照（駅・人物・系統）がつながっているか
   const diagDir = join(dir, 'diagrams');
   if (existsSync(diagDir)) for (const name of readdirSync(diagDir)) {
     const f = join(diagDir, name);
     const d = readYaml(f);
+    checkShape(f, diagram, d);
     const nodes: { id: string; at?: [number, number]; lane?: string; group?: string }[] = d.nodes ?? d.events ?? d.items ?? [];
     const ids = new Set(nodes.map((n) => n.id));
     if (ids.size !== nodes.length) err(f, 'id が重複している');
@@ -113,6 +138,7 @@ for (const game of targetGames) {
   if (existsSync(pageDir)) for (const name of readdirSync(pageDir)) {
     const f = join(pageDir, name);
     const text = readFileSync(f, 'utf8');
+    checkShape(f, analysis, frontmatter(text));
     for (const m of text.matchAll(/<Diagram id="([^"]+)"/g)) {
       const [gg, dn] = m[1].split('/');
       if (!existsSync(join(GAMES, gg, 'diagrams', `${dn}.yaml`))) err(f, `<Diagram id="${m[1]}"> の YAML が無い`);

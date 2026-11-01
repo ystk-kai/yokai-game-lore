@@ -23,14 +23,14 @@ Bun（1.4 系）を使う。npm・pnpm・yarn は使わない。
 
 ```
 src/content/games/<game>/
-  game.yaml          ゲームの基本情報と権利の扱い（rights）
-  assets.yaml        掲載する画像の登録（公式素材は rights が許すときだけ）
+  game.yaml          ゲームの基本情報、作品の一覧（titles。シリーズや DLC を1つのゲームで扱う）、権利の扱い（rights）
+  assets.yaml        掲載する画像の登録。kind（screenshot / official-art / render / logo / original）と出典を書く
   characters.yaml    人物・怪物の名鑑
-  diagrams/*.yaml    図のデータ（type: flow / relations / timeline / order）
+  diagrams/*.yaml    図のデータ（type: flow / relations / timeline / order / schedule）
   pages/*.mdx        ページ本文。section（story / characters / theory）でサイドメニューの区分を決める。<Diagram id="<game>/<図の名前>" /> で図を置く
 public/games/<game>/ assets.yaml に登録した画像の実体
 src/schema.ts        データの形（Astro の検査と scripts/check-content.ts の両方が使う）
-src/components/      図と部品。MDX では Diagram / Characters / Theory / Icon / Evidence を import なしで使える
+src/components/      図と部品。MDX では Diagram / Characters / Appearances / Theory / Icon / Evidence / Legend を import なしで使える
 refs/                手元だけの参照資料（集めた画像・メモ）。.gitignore 済みで公開しない
 ```
 
@@ -60,7 +60,7 @@ refs/                手元だけの参照資料（集めた画像・メモ）�
 
 ### 図
 
-- 新しい図はまず4種類（flow / relations / timeline / order）で描けないか考える。部品を足すときは DESIGN.md の文法に合わせ、凡例と「文章で読む」一覧を付ける
+- 新しい図はまず5種類（flow / relations / timeline / order / schedule）と、人物の登場作品の表（Appearances）で描けないか考える。部品を足すときは DESIGN.md の文法に合わせ、凡例と「文章で読む」一覧を付ける
 - 色・書体・余白は `src/styles/tokens.css` のトークンだけを使う。部品の中に色を直書きしない
 
 ### 依存とサーバー
