@@ -1,0 +1,11 @@
+---
+// MDX の段落（p）と箇条書きの項目（li）を描く部品。中の文字の人物名を名鑑へのリンクにする（src/lib/autolink.ts）。
+// [page].astro の <Content components={{ p, li }} /> で差し替える。ゲームは URL の game から決める
+import { makeLinker } from '../lib/autolink';
+interface Props { as: 'p' | 'li'; [key: string]: unknown }
+const { as: Tag, ...rest } = Astro.props;
+const game = Astro.params.game as string | undefined;
+const inner = await Astro.slots.render('default');
+const html = game ? (await makeLinker(game)).html(inner) : inner;
+---
+<Tag {...rest} set:html={html} />
