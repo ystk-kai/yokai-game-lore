@@ -53,7 +53,7 @@ events:
     lane: extra
     when: 『3』の時代（2024年配信）
     label: 8号が秩序の塔に挑む
-    detail: 8号が、イイダの作った仮想世界の「秩序の塔」で目覚め、ドローンになったヒメとともに脱出を目指す
+    detail: 8号が、イイダの作った仮想世界「ネリバース」の秩序の街で目覚め、ドローンになったヒメとともに脱出を目指す
     sources: [{ label: "Wikipedia「スプラトゥーン3」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B33" }, { label: "Inkipedia「Timeline」（英語のファン wiki）", url: "https://splatoonwiki.org/wiki/Timeline" }]
   - id: rd
     lane: extra

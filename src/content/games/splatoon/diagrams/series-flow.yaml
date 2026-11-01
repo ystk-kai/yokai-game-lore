@@ -99,18 +99,18 @@ nodes:
     lane: so
     kind: start
     icon: gi:tower-flag
-    detail: 8号が、色を失った「秩序の街」で目覚め、ドローンになったヒメとともに「秩序の塔」を登る
+    detail: 8号が、仮想世界「ネリバース」の色を失った「秩序の街」で目覚め、ドローンになったヒメとともに「秩序の塔」を登る
     sources: [{ label: "Wikipedia「スプラトゥーン3」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B33" }]
   - id: so-boss
-    label: Order との対決
-    short: Order 戦
+    label: オーダコとの対決
+    short: オーダコ戦
     sub: サイド
     at: [9, 0]
     lane: so
     kind: boss
     icon: gi:computer-fan
-    detail: 塔の頂上で、イイダの作った仮想世界を乗っ取った Order を倒す（日本語版の名前は未確認）
-    sources: [{ label: "Inkipedia（英語のファン wiki）「Side Order」", url: "https://splatoonwiki.org/wiki/Side_Order" }]
+    detail: 仮想世界「ネリバース」を乗っ取ったオーダが、秩序の塔の最上階で「オーダコ」の姿になって襲いかかる
+    sources: [{ label: "Wikipedia「スプラトゥーン3」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B33" }, { label: "Inkipedia「Overlorder」（英語のファン wiki。各言語の名前）", url: "https://splatoonwiki.org/wiki/Overlorder" }]
   - id: rd-hero
     label: ウズシオ諸島
     short: ウズシオ諸島

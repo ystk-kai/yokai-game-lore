@@ -148,15 +148,17 @@ characters:
     evidence: ingame
     sources: [{ label: "Wikipedia「スプラトゥーン2」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B32" }, { label: "Inkipedia「Timeline」（英語のファン wiki）", url: "https://splatoonwiki.org/wiki/Timeline" }]
   - id: order
-    name: Order
+    name: オーダ
+    # ボスとしての姿「オーダコ」と、倒されたあとの小さな姿「コダコ」も同じ人物としてリンクする
+    aliases: [オーダコ, コダコ]
     name_en: Order
     kind: other
-    role: サイド・オーダーの黒幕（日本語版の名前は未確認）
+    role: サイド・オーダーの黒幕。仮想世界「ネリバース」を乗っ取った人工知能
     first_seen: サイド・オーダー
-    secret: イイダが作った仮想世界を乗っ取り、完全な秩序の世界を作ろうとする
+    secret: "イイダたちが「変わらない世界」を望んだことから生まれた。ネリバースに「秩序の街」を作り、人々の気力を奪おうとする。秩序の塔の最上階で「オーダコ」（英: Overlorder）の姿になって襲いかかり、倒されると小さな「コダコ」（英: Smollusk）の姿になる"
     appears_in: [sideorder]
     evidence: ingame
-    sources: [{ label: "Inkipedia「Timeline」（英語のファン wiki）", url: "https://splatoonwiki.org/wiki/Timeline" }, { label: "Inkipedia「Side Order」（英語のファン wiki）", url: "https://splatoonwiki.org/wiki/Side_Order" }]
+    sources: [{ label: "Wikipedia「スプラトゥーン3」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B33" }, { label: "Inkipedia「Overlorder」（英語のファン wiki。各言語の名前）", url: "https://splatoonwiki.org/wiki/Overlorder" }]
   - id: salmonarch
     name: サルモン王
     name_en: Salmonarch
