@@ -1,6 +1,6 @@
 # 配置: 上2段が子ども、最下段が怪物（グループ枠が重ならないように段で分ける）
 type: relations
-title: 子どもたちと怪物
+title: 本編の子どもたちと怪物
 caption: 少年・少女以外の呼び名はプレイヤーの通称
 row_height: 232
 groups:

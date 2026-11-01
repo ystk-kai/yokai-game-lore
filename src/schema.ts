@@ -98,6 +98,8 @@ export const relationsDiagram = z.object({
   groups: z.array(lane).default([]),
   /** 段の間隔（px）。段の間の線にラベルが多いときに広げる */
   row_height: z.number().int().min(140).max(320).default(168),
+  /** 列の間隔（px）。横に隣り合う人物の線にラベルを付けるときに広げる（カードの幅は 148px） */
+  col_width: z.number().int().min(180).max(320).default(200),
   nodes: z.array(relNode).min(1),
   edges: z.array(relEdge).default([]),
 });

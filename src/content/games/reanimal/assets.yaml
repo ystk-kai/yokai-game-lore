@@ -201,3 +201,21 @@ assets:
     kind: official
     source_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
     credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
+  - id: second-prisoner-render
+    file: characters/second-prisoner-render.png
+    alt: もう1人の囚人の顔（鳥のくちばしのようなフード）
+    kind: official
+    source_url: "https://reanimal.fandom.com/wiki/File:SecondPrisoner.png"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。レンダー: VoxelotlAgain（REANIMAL Wiki / Fandom）"
+  - id: war-horse-render
+    file: characters/war-horse-render.png
+    alt: 軍馬
+    kind: official
+    source_url: "https://reanimal.fandom.com/wiki/File:WarHorse.png"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。レンダー: VoxelotlAgain（REANIMAL Wiki / Fandom）"
+  - id: spider-kids-render
+    file: characters/spider-kids-render.png
+    alt: スパイダーキッズ
+    kind: official
+    source_url: "https://reanimal.fandom.com/wiki/File:SpiderKids.png"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。レンダー: VoxelotlAgain（REANIMAL Wiki / Fandom）"

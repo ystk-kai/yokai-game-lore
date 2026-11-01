@@ -1,0 +1,26 @@
+# DLC「The Prisoner」（The Expanded World 第1章）の人物と怪物。関係は REANIMAL Wiki の各人物のページによる
+type: relations
+title: DLC「The Prisoner」の人物と怪物
+caption: 上の段が子どもたち、下の段が怪物。マザーとスパイダーキッズは本編にも出る
+row_height: 232
+col_width: 268
+groups:
+  - { id: kids, label: 子どもたち, color: l5 }
+  - { id: creatures, label: 怪物, color: l1 }
+nodes:
+  - { id: second-prisoner, label: もう1人の囚人, role: 謎の子ども, at: [0, 0], group: kids, icon: gi:bird-mask }
+  - { id: prisoner, label: 囚人, role: 主人公, at: [1, 0], group: kids, icon: gi:photo-camera }
+  - { id: soldier-dlc, label: 兵士, role: 主人公, at: [2, 0], group: kids, icon: gi:battle-axe }
+  - { id: war-horse, label: 軍馬, role: 戦場の馬, at: [0, 1], group: creatures, icon: gi:horse-head }
+  - { id: mother, label: マザー, role: 最後の敵, at: [1, 1], group: creatures, icon: gi:long-legged-spider }
+  - { id: spider-kids, label: スパイダーキッズ, role: マザーの子, at: [2, 1], group: creatures, icon: gi:spider-face }
+  - { id: flamethrower, label: 火炎放射器の兵士, role: 中盤の敵, at: [3, 1], group: creatures, icon: gi:flamethrower-soldier }
+edges:
+  - { from: prisoner, to: soldier-dlc, label: 2人で旅をする, kind: bond, evidence: official }
+  - { from: second-prisoner, to: prisoner, label: 秘密を問う, kind: unknown, directed: true }
+  - { from: second-prisoner, to: war-horse, label: なだめる, kind: bond, directed: true, label_at: 0.3 }
+  - { from: mother, to: war-horse, label: 呑み込む, kind: hostile, directed: true }
+  - { from: mother, to: spider-kids, label: 生む, kind: family, directed: true }
+  - { from: mother, to: prisoner, label: 襲う, kind: hostile, directed: true, label_at: 0.35 }
+  - { from: spider-kids, to: soldier-dlc, label: 襲う, kind: hostile, directed: true, label_at: 0.35 }
+  - { from: flamethrower, to: soldier-dlc, label: 追う, kind: hostile, directed: true, label_at: 0.3 }
