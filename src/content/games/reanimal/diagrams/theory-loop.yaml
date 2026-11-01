@@ -1,6 +1,7 @@
 # 結末の考察: ループ説。結末から冒頭へ戻る矢印を推測の破線で描く
 type: flow
 layout: grid
+compact: true
 title: ループ説の流れ
 caption: 破線の矢印が、ループ説が想定する「冒頭へ戻る」つながり
 lanes:

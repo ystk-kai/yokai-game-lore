@@ -57,8 +57,14 @@ const flowEdge = z.object({
 });
 export const flowDiagram = z.object({
   type: z.literal('flow'),
-  /** list: 上から下へ1本で読む（既定。本編の流れ向き）/ grid: at の格子に置く（分岐や比較を並べて見せる図だけ） */
-  layout: z.enum(['list', 'grid']).default('list'),
+  /**
+   * list: 上から下へ1本で読む（既定。本編の流れ向き。上に1行の地図が付く）
+   * strip: 1行の横並びと短い説明だけ（順番だけを見せる考察向き）
+   * grid: at の格子に置く（分岐・循環・比較を並べて見せる図だけ）
+   */
+  layout: z.enum(['list', 'strip', 'grid']).default('list'),
+  /** grid のカードを小さくする（説明が短い図向き） */
+  compact: z.boolean().default(false),
   title: z.string(),
   caption: z.string().optional(),
   lanes: z.array(lane).min(1),

@@ -7,8 +7,8 @@ import Icon from '../Icon.astro';
 import { file, url } from '../../lib/url';
 import { getCollection } from 'astro:content';
 
-interface Props { data: z.infer<typeof relationsDiagram>; game: string; id: string }
-const { data, game, id } = Astro.props;
+interface Props { data: z.infer<typeof relationsDiagram>; game: string; id: string; bare?: boolean }
+const { data, game, id, bare = false } = Astro.props;
 
 const COL = 200, ROW = 168, W = 148, H = 104, PAD = 28;
 const cols = Math.max(...data.nodes.map((n) => n.at[0])) + 1;
@@ -53,7 +53,7 @@ const thumbOf = (nid: string) => { const a = assetMap.get(chars.get(nid)?.image?
 ---
 <figure class="rel">
   <figcaption>
-    <span class="title">{data.title}</span>
+    {!bare && <span class="title">{data.title}</span>}
     {data.caption && <span class="caption">{data.caption}</span>}
     <span class="kinds">{Object.entries(kindName).map(([k, v]) => <span class={`kind kind-${k}`}><span class="swatch" aria-hidden="true"></span>{v}</span>)}</span>
   </figcaption>

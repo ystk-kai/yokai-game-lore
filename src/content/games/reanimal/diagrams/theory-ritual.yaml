@@ -1,18 +1,18 @@
 # 結末の考察: 少女の記憶に出てくる場面の順。作中の場面を実線、「生贄」という読みを破線で添える
 type: flow
-layout: grid
+layout: strip
 title: 少女の記憶に出てくる場面
-caption: 実線は作中の場面。破線は記事の筆者の読み
+caption: 1〜4 は作中の場面。5 は記事の筆者の読み（破線）
 lanes:
   - { id: memory, label: 少女の記憶（第9章・羊の体内）, color: l5, icon: gi:rabbit-head }
   - { id: well, label: 井戸, color: l6, icon: gi:well }
   - { id: reading, label: 読み（推測）, color: l4 }
 nodes:
-  - { id: ritual, label: 4人の少年が血の儀式, at: [0, 0], lane: memory, icon: gi:drop, detail: 少年たちが血を捧げる。床にはウサギが輪になった印, sources: [{ label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }] }
-  - { id: rabbit, label: 白いウサギが殺される, at: [1, 0], lane: memory, icon: gi:rabbit, detail: 少女のウサギ。少女は小屋で死んだウサギを見つけて泣き崩れる, sources: [{ label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }] }
-  - { id: bag, label: 少女を袋に入れて運ぶ, at: [2, 0], lane: memory, icon: gi:knapsack, detail: 4人が少女を袋に入れ、井戸まで引きずる, sources: [{ label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }] }
-  - { id: throw, label: 井戸へ投げ込み、あふれる, at: [2, 1], lane: well, kind: ending, icon: gi:well, detail: 羊のような姿の者たちが集まる中で投げ込まれ、井戸があふれる（通常エンディング）, sources: [{ label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }] }
-  - { id: sacrifice, label: 井戸への生贄？, at: [1, 1], lane: reading, evidence: speculation, icon: gi:sheep, detail: 戦時下で元に戻すための儀式で、少女が「生贄の子羊」にされたという読み。作中に目的は語られない, sources: [{ label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }] }
+  - { id: ritual, label: 4人の少年が血の儀式, short: 血の儀式, at: [0, 0], lane: memory, icon: gi:drop, detail: 少年たちが血を捧げる。床にはウサギが輪になった印, sources: [{ label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }] }
+  - { id: rabbit, label: 白いウサギが殺される, short: ウサギが殺される, at: [1, 0], lane: memory, icon: gi:rabbit, detail: 少女のウサギ。少女は小屋で死んだウサギを見つけて泣き崩れる, sources: [{ label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }] }
+  - { id: bag, label: 少女を袋に入れて運ぶ, short: 袋に入れて運ぶ, at: [2, 0], lane: memory, icon: gi:knapsack, detail: 4人が少女を袋に入れ、井戸まで引きずる, sources: [{ label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }] }
+  - { id: throw, label: 井戸へ投げ込み、あふれる, short: 井戸へ投げ込む, at: [2, 1], lane: well, kind: ending, icon: gi:well, detail: 羊のような姿の者たちが集まる中で投げ込まれ、井戸があふれる（通常エンディング）, sources: [{ label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }] }
+  - { id: sacrifice, label: 井戸への生贄？, short: 生贄？, at: [1, 1], lane: reading, evidence: speculation, icon: gi:sheep, detail: 戦時下で元に戻すための儀式で、少女が「生贄の子羊」にされたという読み。作中に目的は語られない, sources: [{ label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }] }
 edges:
   - { from: ritual, to: rabbit }
   - { from: rabbit, to: bag }
