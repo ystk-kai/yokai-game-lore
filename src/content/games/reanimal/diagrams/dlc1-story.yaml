@@ -1,0 +1,168 @@
+# DLC 第1章「The Prisoner」の流れ。3つの部分（The Slow Descent / Scorched Earth / By Your Side）を上から順に並べる。
+# 出典は REANIMAL Wiki の章と各部分のページ（MediaWiki API で取得、~/research/reanimal-story/sources/）
+type: flow
+title: DLC 第1章「The Prisoner」の流れ
+caption: 上から順に読む。四角の色と名前は舞台。第1部〜第3部は章の中の3つの部分
+lanes:
+  - { id: cell, label: 牢と輸送機, color: l3, icon: gi:prisoner }
+  - { id: warzone, label: 戦場の街, color: l1, icon: gi:barbed-wire }
+  - { id: mall, label: モール, color: l4, icon: gi:shop }
+  - { id: subway, label: 地下鉄, color: l2, icon: gi:steam-locomotive }
+  - { id: sand, label: 砂の町, color: l5, icon: gi:spider-face }
+  - { id: tower, label: 謎の建物, color: l6, icon: gi:tower-flag }
+nodes:
+  - id: cell
+    label: 牢の囚人と兵士
+    short: 牢の囚人
+    sub: 第1部
+    at: [0, 0]
+    lane: cell
+    kind: start
+    icon: gi:prisoner
+    detail: 深い牢の底に座る囚人を、兵士が格子の上からのぞき込み、凍える前に出るよう声をかける（回想）。
+    sources: [{ label: "REANIMAL Wiki「The Slow Descent」", url: "https://reanimal.fandom.com/wiki/The_Slow_Descent" }, { label: "REANIMAL Wiki「The Prisoner (Chapter)」", url: "https://reanimal.fandom.com/wiki/The_Prisoner_(Chapter)" }]
+  - id: drop
+    label: 輸送機から降下する
+    short: 降下
+    sub: 第1部
+    at: [1, 0]
+    lane: cell
+    icon: gi:parachute
+    detail: 2人は兵士たちの死体にまぎれて輸送機に潜んでいた。撃たれた兵士のパラシュートを奪い、銃撃の中を戦場の街へ降りる。
+    sources: [{ label: "REANIMAL Wiki「The Slow Descent」", url: "https://reanimal.fandom.com/wiki/The_Slow_Descent" }]
+  - id: street
+    label: 戦場の街を抜ける
+    short: 戦場の街
+    sub: 第1部
+    at: [2, 0]
+    lane: warzone
+    icon: gi:barbed-wire
+    detail: 壊れた車と対戦車障害物の通りを、銃撃と兵士を避けて進む。罠の線をくぐった先で、火炎放射器の兵士が初めて姿を見せる。
+    sources: [{ label: "REANIMAL Wiki「The Slow Descent」", url: "https://reanimal.fandom.com/wiki/The_Slow_Descent" }]
+  - id: mall
+    label: モールと写真館
+    short: モール
+    sub: 第1部
+    at: [3, 0]
+    lane: mall
+    icon: gi:photo-camera
+    detail: 写真館で死体（ブーマー）を撮ると腹が開き、その中を通ると遠く離れた町の服屋に出る。本編第2章の冒頭の服屋と同じ部屋で、そこでポラロイドカメラを手に入れる。
+    sources: [{ label: "REANIMAL Wiki「The Slow Descent」", url: "https://reanimal.fandom.com/wiki/The_Slow_Descent" }, { label: "REANIMAL Wiki「REANIMAL: The Expanded World」", url: "https://reanimal.fandom.com/wiki/REANIMAL:_The_Expanded_World" }]
+  - id: fire
+    label: 燃えるモールの火を消す
+    short: 燃えるモール
+    sub: 第1部
+    at: [4, 0]
+    lane: mall
+    icon: gi:fire
+    detail: 火炎放射器の兵士がモールを焼く。2人はスプリンクラーを動かして火を消し、先へ進む。燃える部屋の手すりの上に、もう1人の囚人の姿が見える。
+    sources: [{ label: "REANIMAL Wiki「The Slow Descent」", url: "https://reanimal.fandom.com/wiki/The_Slow_Descent" }]
+  - id: horse1
+    label: 豚を食べる馬
+    short: 馬と出会う
+    sub: 第1部
+    at: [5, 0]
+    lane: warzone
+    icon: gi:horse-head
+    detail: 外の通りで、馬が豚の死骸を食べている。非常階段のはしごを下ろす音に驚いて、馬は去る。
+    sources: [{ label: "REANIMAL Wiki「The Slow Descent」", url: "https://reanimal.fandom.com/wiki/The_Slow_Descent" }]
+  - id: apartment
+    label: アパートで追われる
+    short: アパート
+    sub: 第2部
+    at: [6, 0]
+    lane: warzone
+    icon: gi:flamethrower-soldier
+    detail: 火炎放射器の兵士が建物を焼きながら追ってくる。2人は台所の冷蔵庫とオーブンに隠れてやり過ごす。
+    sources: [{ label: "REANIMAL Wiki「Scorched Earth」", url: "https://reanimal.fandom.com/wiki/Scorched_Earth" }]
+  - id: flame-boss
+    label: 中庭で火炎放射器の兵士と対決
+    short: 中庭の対決
+    sub: 第2部
+    at: [7, 0]
+    lane: warzone
+    kind: boss
+    icon: gi:flamethrower-soldier
+    detail: 死んだ兵士の手からピストルを取り、背中の燃料タンクを撃ち抜いて倒す。
+    sources: [{ label: "REANIMAL Wiki「Scorched Earth」", url: "https://reanimal.fandom.com/wiki/Scorched_Earth" }, { label: "REANIMAL Wiki「The Flame Thrower」", url: "https://reanimal.fandom.com/wiki/The_Flame_Thrower" }]
+  - id: bomb
+    label: 馬と爆撃
+    short: 馬と爆撃
+    sub: 第2部
+    at: [8, 0]
+    lane: warzone
+    icon: gi:mushroom-cloud
+    detail: もう1人の囚人が馬に「置いていかない」と語りかけた直後、空から爆弾が落ち、あたり一帯が焼ける。
+    sources: [{ label: "REANIMAL Wiki「Scorched Earth」", url: "https://reanimal.fandom.com/wiki/Scorched_Earth" }, { label: "REANIMAL Wiki「The Second Prisoner」", url: "https://reanimal.fandom.com/wiki/The_Second_Prisoner" }]
+  - id: train
+    label: 地下鉄の列車で襲われる
+    short: 地下鉄の列車
+    sub: 第2部
+    at: [9, 0]
+    lane: subway
+    icon: gi:steam-locomotive
+    detail: 地下鉄の駅で斧を手に入れ、列車を動かす。凍える囚人に兵士が上着を貸す。スパイダーキッズに襲われ、カメラのフラッシュでひるませて斧で倒し、非常ブレーキで列車を止める。
+    sources: [{ label: "REANIMAL Wiki「Scorched Earth」", url: "https://reanimal.fandom.com/wiki/Scorched_Earth" }]
+  - id: sand
+    label: 地下から砂の町へ
+    short: 砂の町へ
+    sub: 第3部
+    at: [10, 0]
+    lane: sand
+    icon: gi:spider-face
+    detail: 次の駅でもスパイダーキッズを倒し、制御室で電源を入れて地上の砂の町へ出る。
+    sources: [{ label: "REANIMAL Wiki「By Your Side」", url: "https://reanimal.fandom.com/wiki/By_Your_Side" }]
+  - id: sidecar
+    label: 崩れる橋とサイドカー
+    short: サイドカー
+    sub: 第3部
+    at: [11, 0]
+    lane: sand
+    icon: gi:machine-gun
+    detail: 崩れていく橋を渡り、機関銃付きのサイドカーで襲ってくるスパイダーキッズからその乗り物を奪う。兵士が撃ち、囚人が運転する。
+    sources: [{ label: "REANIMAL Wiki「By Your Side」", url: "https://reanimal.fandom.com/wiki/By_Your_Side" }, { label: "REANIMAL Wiki「Spider Kids」", url: "https://reanimal.fandom.com/wiki/Spider_Kids" }]
+  - id: mother
+    label: マザーの追跡
+    short: マザーの追跡
+    sub: 第3部
+    at: [12, 0]
+    lane: sand
+    kind: boss
+    icon: gi:long-legged-spider
+    detail: トンネルの先で、マザーが馬を呑み込んでいる。マザーに追われて地下鉄を走り抜け、谷を跳び越えた先で転倒する。マザーは谷を越えずに引き返す。
+    sources: [{ label: "REANIMAL Wiki「By Your Side」", url: "https://reanimal.fandom.com/wiki/By_Your_Side" }, { label: "REANIMAL Wiki「The Mother」", url: "https://reanimal.fandom.com/wiki/The_Mother" }]
+  - id: secret
+    label: もう1人の囚人の問いかけ
+    short: 問いかけ
+    sub: 第3部
+    at: [13, 0]
+    lane: tower
+    kind: ending
+    icon: gi:bird-mask
+    detail: 兵士が気を失っているあいだに、もう1人の囚人が現れ、「彼女は知っているのか」と囚人に問う。囚人は「知ったら死んでしまう」と答え、相手は「彼女にはその報いがある、おまえにも」と言って、兵士が目を覚ます前に消える。
+    sources: [{ label: "REANIMAL Wiki「By Your Side」", url: "https://reanimal.fandom.com/wiki/By_Your_Side" }, { label: "REANIMAL Wiki「The Second Prisoner」", url: "https://reanimal.fandom.com/wiki/The_Second_Prisoner" }]
+  - id: building
+    label: 巨大な建物の前に立つ
+    short: 巨大な建物
+    sub: 第3部
+    at: [14, 0]
+    lane: tower
+    kind: ending
+    icon: gi:tower-flag
+    detail: 兵士が誰と話していたのかを尋ね、囚人は「誰とも」と答える。2人は目の前の巨大な建物を見つめる。第2章へ続く。
+    sources: [{ label: "REANIMAL Wiki「By Your Side」", url: "https://reanimal.fandom.com/wiki/By_Your_Side" }]
+edges:
+  - { from: cell, to: drop }
+  - { from: drop, to: street }
+  - { from: street, to: mall }
+  - { from: mall, to: fire, label: 服屋から戻る }
+  - { from: fire, to: horse1 }
+  - { from: horse1, to: apartment }
+  - { from: apartment, to: flame-boss }
+  - { from: flame-boss, to: bomb }
+  - { from: bomb, to: train, label: 穴から地下へ }
+  - { from: train, to: sand }
+  - { from: sand, to: sidecar }
+  - { from: sidecar, to: mother, label: 乗り物で逃げる }
+  - { from: mother, to: secret, label: 転倒して気を失う }
+  - { from: secret, to: building }
