@@ -3,7 +3,7 @@
 // シリーズや DLC をまたいで、誰がどこに出るかを一目で見せる。データは characters.yaml の appears_in から組み立てる
 import { getCollection, getEntry } from 'astro:content';
 import Icon from '../Icon.astro';
-import { url } from '../../lib/url';
+import { url, file } from '../../lib/url';
 
 interface Props { game: string; title?: string; caption?: string; kinds?: ('protagonist' | 'ally' | 'creature' | 'other')[] }
 const { game, title = '人物の登場作品', caption, kinds } = Astro.props;
@@ -11,6 +11,9 @@ const g = await getEntry('games', game);
 const chars = ((await getEntry('characters', game))?.data.characters ?? []).filter((c) => !kinds || kinds.includes(c.kind));
 const titles = g?.data.titles ?? [];
 if (!titles.length) throw new Error(`${game}: game.yaml に titles が無いので登場作品の表を作れない`);
+// 顔の画像（assets.yaml の image.thumb）があれば使い、なければアイコン。名鑑のカード・相関図と同じ画像
+const assets = new Map(((await getEntry('assets', game))?.data.assets ?? []).map((a) => [a.id, a]));
+const faceOf = (thumb?: string) => { const a = thumb ? assets.get(thumb) : undefined; return a ? { src: file(`games/${game}/${a.file}`), alt: a.alt } : undefined; };
 const kindLabel = { protagonist: '主人公', ally: '仲間', creature: '怪物', other: 'その他' } as const;
 const colors = ['l1', 'l2', 'l3', 'l4', 'l5', 'l6'];
 // 名前は名鑑のカードへのリンクにする（名鑑の無いゲームではリンクにしない）
@@ -37,7 +40,9 @@ const hrefOf = (id: string) => (charPage ? `${url(`games/${charPage.id}`)}#ch-${
           <tr>
             <th scope="row">
               <a class="who" href={hrefOf(c.id)}>
-                {c.icon && <Icon icon={c.icon} game={game} size="1.1em" />}
+                {faceOf(c.image?.thumb)
+                  ? <img class="face" src={faceOf(c.image?.thumb)!.src} alt="" width="32" height="32" loading="lazy" />
+                  : c.icon ? <Icon icon={c.icon} game={game} size="1.5rem" class="face-icon" /> : null}
                 <span>{c.name}</span>
               </a>
               <span class="kind">{kindLabel[c.kind]}</span>
@@ -71,6 +76,8 @@ const hrefOf = (id: string) => (charPage ? `${url(`games/${charPage.id}`)}#ch-${
   tbody th { text-align: left; font-weight: 400; white-space: nowrap; }
   .who { display: inline-flex; align-items: center; gap: var(--space-2); color: var(--color-ink); text-decoration: underline dotted; text-decoration-color: var(--color-accent); text-underline-offset: 0.25em; font-weight: 700; }
   .who:hover { color: var(--color-accent); }
+  .face { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; flex: none; background: var(--color-muted); }
+  .who :global(.face-icon) { color: var(--color-muted); }
   .kind { margin-left: var(--space-2); color: var(--color-muted); font-size: 0.8125rem; }
   td { text-align: center; }
   .dot { display: inline-block; width: 14px; height: 14px; border-radius: 50%; background: var(--lane); }

@@ -60,7 +60,7 @@ refs/                手元だけの参照資料（集めた画像・メモ）�
 
 ### 図
 
-- 新しい図はまず5種類（flow / relations / timeline / order / schedule）と、人物の登場作品の表（Appearances）で描けないか考える。部品を足すときは DESIGN.md の文法に合わせ、凡例と「文章で読む」一覧を付ける
+- 新しい図はまず flow / relations / order / schedule と、人物の登場作品の表（Appearances）で描けないか考える。縦の年表（timeline）は使わない（DESIGN.md）。部品を足すときは DESIGN.md の文法に合わせ、凡例と「文章で読む」一覧を付ける
 - 色・書体・余白は `src/styles/tokens.css` のトークンだけを使う。部品の中に色を直書きしない
 
 ### 依存とサーバー

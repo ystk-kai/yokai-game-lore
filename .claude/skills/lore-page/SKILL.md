@@ -11,7 +11,7 @@ description: 既存のゲームの考察ページや図解（流れ図・相関�
 |---|---|---|
 | 章・場面の流れ、分岐、結末 | `flow` | 既定の `layout: list` で上から1本に並ぶ（`at` はデータの順に置くだけ）。分岐を並べて見せるときだけ `layout: grid` で `at: [列, 段]` |
 | 人物・勢力の関係 | `relations` | グループごとに段を分ける（枠が重ならないように） |
-| 年代・配信順・並行する系統 | `timeline` | 出来事を順に並べ、分岐する系統は `fork` |
+| 作中の時系列 | `flow`（list） | 時期は `sub`、次の出来事までの間隔は矢印の `label`。順番が確定しないところは `evidence: speculation` の矢印。縦の年表（`timeline`）は使わない |
 | 発売順と作中の順のずれ | `order` | `release` と `story` に順番の数 |
 | 発売・配信の時期 | `schedule` | `date`（YYYY-MM-DD）と `planned`、`now` に調べた日 |
 
