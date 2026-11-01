@@ -7,10 +7,12 @@ import type { scheduleDiagram } from '../../schema';
 import Icon from '../Icon.astro';
 import Evidence from '../Evidence.astro';
 import Sources from '../Sources.astro';
+import { makeLinker } from '../../lib/autolink';
 
 interface Props { data: z.infer<typeof scheduleDiagram>; game: string; id: string; bare?: boolean }
 const { data, game, id, bare = false } = Astro.props;
 const anchor = id.replace('/', '-');
+const link = await makeLinker(game);
 
 // 月単位の通し番号（日付は月の中の割合で足す）
 const toM = (d: string) => { const [y, m, day] = d.split('-').map(Number); return y * 12 + (m - 1) + ((day ?? 15) - 1) / 31; };
@@ -66,7 +68,7 @@ for (const l of data.lanes) data.events.filter((e) => e.lane === l.id).sort((a, 
         <span class="dot num">{number.get(e.id)}</span>
         <div>
           <div class="n-head"><span class="num n-date">{e.date_label ?? e.date}</span><strong>{e.label}</strong>{e.planned && <span class="tag">予定</span>}<Evidence level={e.evidence} /></div>
-          {e.detail && <p>{e.detail}</p>}
+          {e.detail && <p set:html={link(e.detail)} />}
           <Sources sources={e.sources} />
         </div>
       </li>

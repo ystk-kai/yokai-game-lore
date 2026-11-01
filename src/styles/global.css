@@ -39,3 +39,7 @@ code, pre { text-autospace: no-autospace; }
 /* 系統色のクラス。図とバッジはここから色を引く */
 .lane-l1 { --lane: var(--lane-l1); } .lane-l2 { --lane: var(--lane-l2); } .lane-l3 { --lane: var(--lane-l3); }
 .lane-l4 { --lane: var(--lane-l4); } .lane-l5 { --lane: var(--lane-l5); } .lane-l6 { --lane: var(--lane-l6); }
+
+/* 人物名の自動リンク（src/lib/autolink.ts）。本文の外部リンクと見分けるため、文字色はそのままで点線の下線にする */
+.char-link { color: inherit; text-decoration: underline dotted; text-decoration-color: var(--color-accent); text-underline-offset: 0.25em; }
+.char-link:hover { color: var(--color-accent); text-decoration-style: solid; }

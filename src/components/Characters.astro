@@ -4,11 +4,13 @@ import { getEntry } from 'astro:content';
 import Icon from './Icon.astro';
 import Evidence from './Evidence.astro';
 import Sources from './Sources.astro';
+import { makeLinker } from '../lib/autolink';
 import { file } from '../lib/url';
 
 interface Props { game: string; kind?: 'protagonist' | 'ally' | 'creature' | 'other'; only?: string[]; appearsIn?: string }
 const { game, kind, only, appearsIn } = Astro.props;
 const entry = await getEntry('characters', game);
+const link = await makeLinker(game);
 const assets = new Map(((await getEntry('assets', game))?.data.assets ?? []).map((a) => [a.id, a]));
 // 出典の URL からサイト名を出す（カードの下に短く出すため）
 const siteName = (u: string) => (u.includes('fandom.com') ? 'REANIMAL Wiki (Fandom)' : u.includes('kamigame.jp') ? 'kamigame' : u.includes('thqnordic.com') ? 'THQ Nordic 公式' : new URL(u).hostname);
@@ -37,14 +39,14 @@ const kindLabel = { protagonist: '主人公', ally: '仲間', creature: 'クリ�
             <div class="kind">{kindLabel[c.kind]}</div>
             <h3>{c.name}</h3>
             {c.name_en && <div class="en" lang="en">{c.name_en}</div>}
-            <div class="role">{c.role}</div>
+            <div class="role" set:html={link(c.role, c.id)} />
           </div>
         </div>
-        {c.looks && <p><span class="k">見た目</span>{c.looks}</p>}
+        {c.looks && <p><span class="k">見た目</span><span set:html={link(c.looks, c.id)} /></p>}
         {!wide && thumb?.source && <p class="face-src">顔の画像: <a href={thumb.source} rel="noopener">{siteName(thumb.source)}</a></p>}
         {!wide && c.looks_url && <p class="looks-link"><a href={c.looks_url} rel="noopener" target="_blank">見た目の画像を見る（{c.looks_label ?? '外部サイト'}）↗</a></p>}
         {c.first_seen && <p><span class="k">初登場</span>{c.first_seen}</p>}
-        {c.secret && <p><span class="k">正体・結末</span>{c.secret}</p>}
+        {c.secret && <p><span class="k">正体・結末</span><span set:html={link(c.secret, c.id)} /></p>}
         <div class="foot"><Evidence level={c.evidence} /><Sources sources={c.sources} /></div>
       </li>
     );

@@ -6,6 +6,7 @@ import type { flowDiagram } from '../../schema';
 import Icon from '../Icon.astro';
 import Evidence from '../Evidence.astro';
 import Sources from '../Sources.astro';
+import { makeLinker } from '../../lib/autolink';
 
 interface Props { data: z.infer<typeof flowDiagram>; game: string; id: string; bare?: boolean }
 const { data, game, id, bare = false } = Astro.props;
@@ -24,6 +25,7 @@ const laneOf = new Map(data.lanes.map((l) => [l.id, l]));
 const nodeOf = new Map(data.nodes.map((n) => [n.id, n]));
 const number = new Map(data.nodes.map((n, i) => [n.id, i + 1]));
 const anchor = id.replace('/', '-');
+const link = await makeLinker(game);
 
 const edges = data.edges.map((e) => {
   const a = nodeOf.get(e.from), b = nodeOf.get(e.to);
@@ -95,7 +97,7 @@ const kindTag = (n: (typeof data.nodes)[number]) => (kindLabel[n.kind] && kindLa
             </header>
             <h4>{n.label}</h4>
             <p class="sc-lane"><span class="sq" aria-hidden="true"></span>{lane.label}</p>
-            {n.detail && <p class="sc-detail">{n.detail}</p>}
+            {n.detail && <p class="sc-detail" set:html={link(n.detail)} />}
           </article>
         );
       })}
@@ -129,7 +131,7 @@ const kindTag = (n: (typeof data.nodes)[number]) => (kindLabel[n.kind] && kindLa
       {data.nodes.map((n) => (
         <li id={`${anchor}-${n.id}`} class:list={[`lane-${laneOf.get(n.lane)!.color}`, n.evidence === 'speculation' && 'is-spec']}>
           <span class="no num">{number.get(n.id)}</span>
-          <span><strong>{n.label}</strong>{n.detail && <span class="note-detail">{n.detail}</span>}</span>
+          <span><strong>{n.label}</strong>{n.detail && <span class="note-detail" set:html={link(n.detail)} />}</span>
         </li>
       ))}
     </ol>
@@ -154,7 +156,7 @@ const kindTag = (n: (typeof data.nodes)[number]) => (kindLabel[n.kind] && kindLa
               <p class="sc-lane"><span class="sq" aria-hidden="true"></span>{lane.label}</p>
             </div>
             <div class="sc-body">
-              {n.detail && <p class="sc-detail">{n.detail}</p>}
+              {n.detail && <p class="sc-detail" set:html={link(n.detail)} />}
               {branches.map((b) => <p class="sc-branch"><Icon icon="lucide:corner-down-right" size="1em" class="sc-branch-icon" />{nodeOf.get(b.to)!.label}{b.label && `（${b.label}）`}</p>)}
               {!isGrid && (n.sources.length > 0 || n.evidence !== 'ingame') && (
                 <div class="sc-src"><Evidence level={n.evidence} /><Sources sources={n.sources} /></div>
@@ -182,7 +184,7 @@ const kindTag = (n: (typeof data.nodes)[number]) => (kindLabel[n.kind] && kindLa
       {data.nodes.map((n) => (
         <li id={`${anchor}-${n.id}`} class={`lane-${laneOf.get(n.lane)!.color}`}>
           <div class="stop-head"><span class="no num">{number.get(n.id)}</span><strong>{n.label}</strong><Evidence level={n.evidence} /></div>
-          {n.detail && <p>{n.detail}</p>}
+          {n.detail && <p set:html={link(n.detail)} />}
           <Sources sources={n.sources} />
         </li>
       ))}

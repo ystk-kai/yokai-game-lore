@@ -2,6 +2,7 @@
 characters:
   - id: boy
     name: 少年
+    autolink: false
     name_en: Boy
     kind: protagonist
     icon: gi:scarecrow
@@ -19,6 +20,7 @@ characters:
       - { label: kamigame 登場キャラ一覧と考察, url: "https://kamigame.jp/reanimal/page/409383509522651637.html" }
   - id: girl
     name: 少女
+    autolink: false
     name_en: Girl
     kind: protagonist
     icon: gi:rabbit-head
@@ -36,6 +38,8 @@ characters:
       - { label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }
   - id: hood
     name: フード
+    autolink: false
+    aliases: [フードの子]
     name_en: Hood
     kind: ally
     icon: gi:hood
@@ -144,6 +148,8 @@ characters:
       - { label: kamigame 登場キャラ一覧と考察, url: "https://kamigame.jp/reanimal/page/409383509522651637.html" }
   - id: horse
     name: 馬
+    autolink: false
+    aliases: [馬のような海の怪物]
     kind: creature
     icon: gi:horse-head
     role: 第6章。海にいる巨大な馬。目を取られる
@@ -158,6 +164,7 @@ characters:
       - { label: kamigame 登場キャラ一覧と考察, url: "https://kamigame.jp/reanimal/page/409383509522651637.html" }
   - id: sheep
     name: 羊
+    autolink: false
     name_en: Sheep
     kind: creature
     icon: gi:sheep
@@ -173,6 +180,7 @@ characters:
       - { label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }
   - id: soldiers
     name: 兵士
+    autolink: false
     kind: creature
     icon: gi:gas-mask
     role: 第7〜9章の戦場にいる。近づくと自爆する者もいる
@@ -186,6 +194,7 @@ characters:
       - { label: gamerch チャプター7 攻略チャート, url: "https://gamerch.com/reanimal/965663" }
   - id: prisoner
     name: 囚人
+    autolink: false
     name_en: The Prisoner
     kind: protagonist
     icon: gi:photo-camera
@@ -202,6 +211,7 @@ characters:
       - { label: "AUTOMATON「大型DLC第1弾ついに配信」", url: "https://automaton-media.com/articles/newsjp/20260810-459465/" }
   - id: soldier-dlc
     name: 兵士（DLC）
+    autolink: false
     name_en: The Soldier
     kind: protagonist
     icon: gi:battle-axe

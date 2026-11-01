@@ -230,6 +230,10 @@ export const charactersFile = z.object({
     z.object({
       id: z.string().regex(/^[a-z0-9-]+$/),
       name: z.string(),
+      /** 文章の中の name を名鑑へのリンクにするか。一般の言葉と区別がつかない名前（少年・羊など）は false */
+      autolink: z.boolean().default(true),
+      /** name 以外にリンクにする呼び方（autolink に関係なくリンクにする） */
+      aliases: z.array(z.string()).default([]),
       name_en: z.string().optional(),
       kind: z.enum(['protagonist', 'ally', 'creature', 'other']),
       icon: iconRef.optional(),
