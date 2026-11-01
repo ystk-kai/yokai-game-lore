@@ -55,6 +55,8 @@ const flowEdge = z.object({
 });
 export const flowDiagram = z.object({
   type: z.literal('flow'),
+  /** list: 上から下へ1本で読む（既定。本編の流れ向き）/ grid: at の格子に置く（分岐や比較を並べて見せる図だけ） */
+  layout: z.enum(['list', 'grid']).default('list'),
   title: z.string(),
   caption: z.string().optional(),
   lanes: z.array(lane).min(1),
@@ -77,6 +79,8 @@ const relEdge = z.object({
   label: z.string().max(16),
   kind: z.enum(['bond', 'family', 'hostile', 'unknown']).default('bond'),
   directed: z.boolean().default(false),
+  /** ラベルを置く位置（0=出どころ、1=行き先）。1つの人物から何本も出て重なるときに行き先寄りにする */
+  label_at: z.number().min(0.2).max(0.9).default(0.6),
   evidence: evidence.default('ingame'),
 });
 export const relationsDiagram = z.object({
@@ -151,8 +155,10 @@ export const game = z.object({
     guideline_url: z.url().optional(),
     /** 規約の該当箇所をそのまま写す（言い換えない） */
     guideline_quote: z.string().optional(),
-    /** 公式素材を載せてよいと判断したか。false なら assets.yaml の公開素材は検査で落ちる */
+    /** 公式素材（ゲーム画面・公式画像）を載せるか。false なら assets.yaml の kind: official は検査で落ちる */
     official_assets: z.boolean(),
+    /** 載せる根拠。規約の許可か、規約に許可が無いまま運営者が判断したのかを正直に書く。official_assets: true なら必須 */
+    official_assets_note: z.string().optional(),
     notice: z.string(),
     checked_at: z.string(),
   }),
@@ -199,11 +205,8 @@ export const charactersFile = z.object({
       /** 見た目の画像がある公開ページ（攻略サイト・公式）。公開サイトではこのリンクを出す */
       looks_url: z.url().optional(),
       looks_label: z.string().optional(),
-      /**
-       * 手元の参照画像（refs/<game>/images/ からの相対パス）。dev サーバーでだけ表示し、build には入らない。
-       * thumb は顔のアイコン（正方形）、wide は見た目の横長画像
-       */
-      ref_image: z.object({ thumb: z.string().optional(), wide: z.string().optional() }).optional(),
+      /** 見た目の画像（assets.yaml の id）。thumb は顔のアイコン（正方形）、wide は見た目の横長画像 */
+      image: z.object({ thumb: z.string().optional(), wide: z.string().optional() }).optional(),
     }),
   ),
 });

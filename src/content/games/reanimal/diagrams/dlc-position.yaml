@@ -1,5 +1,6 @@
 # DLC 第1章が本編のどの時点に当たるかは公式に示されておらず、レビューと wiki で読みが分かれる。破線は推測
 type: flow
+layout: grid
 title: 「The Prisoner」は本編のいつか
 caption: 公式の説明は「かつて馴染み深かった、戦争で荒廃した街」まで。時期の読みは2通りある
 lanes:
@@ -23,6 +24,6 @@ nodes:
   - { id: c2, label: 第2・3章（未配信）, sub: DLC, at: [2, 1], lane: next, icon: gi:hourglass, evidence: speculation, detail: 内容は未発表（2026-11-01 時点） }
 edges:
   - { from: m7, to: m9 }
-  - { from: m7, to: p, label: 同じ時期？, evidence: speculation }
-  - { from: m9, to: p, label: 本編の後？, evidence: speculation }
+  - { from: m7, to: p, label: 同じ時期, evidence: speculation }
+  - { from: m9, to: p, label: 本編の後, evidence: speculation }
   - { from: p, to: c2 }

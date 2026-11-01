@@ -6,6 +6,7 @@ const { rights } = Astro.props.game.data;
 <aside class="rights" aria-label="権利表記">
   <p>{rights.notice}</p>
   <p class="meta">権利者: {rights.holder}{rights.guideline_url && <> ・ <a href={rights.guideline_url} rel="noopener">参照した規約</a></>}（{rights.checked_at} 確認）{!rights.official_assets && ' ・ 公式画像は掲載していません'}</p>
+  {rights.official_assets && <p class="meta">掲載画像について: {rights.official_assets_note} 削除のご依頼は <a href="https://github.com/ystk-kai/yokai-game-lore/issues">GitHub の Issue</a> へ。</p>}
 </aside>
 <style>
   .rights { margin-top: var(--space-12); padding-top: var(--space-4); border-top: 1px solid var(--color-rule); font-size: var(--text-small); color: var(--color-muted); }

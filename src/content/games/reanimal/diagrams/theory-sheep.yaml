@@ -1,0 +1,18 @@
+# 結末の考察: 羊が子どもを呑み込む順
+type: flow
+title: 羊が呑み込んでいく順
+caption: 呑み込むたびに羊は大きくなり、人の手足が生える
+lanes:
+  - { id: girl, label: 少女, color: l5, icon: gi:rabbit-head }
+  - { id: sheep, label: 羊, color: l1, icon: gi:sheep }
+nodes:
+  - { id: born, label: 少女が羊を吐き出す, sub: 第6章の終盤, at: [0, 0], lane: girl, kind: start, icon: gi:sheep, detail: 少女が羊を吐き出し、羊は走り去る。少年は少女を背負って進む, sources: [{ label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }] }
+  - { id: e1, label: バケットを呑み込む, sub: 1人目, at: [0, 1], lane: sheep, icon: gi:empty-metal-bucket, sources: [{ label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }] }
+  - { id: e2, label: バンデージを呑み込む, sub: 2人目, at: [0, 2], lane: sheep, icon: gi:bandage-roll, sources: [{ label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }] }
+  - { id: e3, label: 少年を呑み込む, sub: 第9章, at: [0, 3], lane: sheep, kind: boss, icon: gi:scarecrow, detail: 戦車の砲撃で倒れたあと、少年を呑み込み、建物ほどの大きさになる, sources: [{ label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }] }
+  - { id: e4, label: 少女を呑み込む, sub: 第9章, at: [0, 4], lane: sheep, kind: ending, icon: gi:rabbit-head, detail: 少女は羊の体内で過去の記憶を見る, sources: [{ label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }] }
+edges:
+  - { from: born, to: e1 }
+  - { from: e1, to: e2, label: 大きくなる }
+  - { from: e2, to: e3, label: 人の手足が生える }
+  - { from: e3, to: e4 }

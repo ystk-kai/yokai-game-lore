@@ -1,0 +1,18 @@
+# 結末の考察: ループ説。結末から冒頭へ戻る矢印を推測の破線で描く
+type: flow
+layout: grid
+title: ループ説の流れ
+caption: 破線の矢印が、ループ説が想定する「冒頭へ戻る」つながり
+lanes:
+  - { id: well, label: 井戸, color: l6, icon: gi:well }
+  - { id: main, label: 本編, color: l2, icon: gi:boat-fishing }
+nodes:
+  - { id: look, label: 井戸をのぞく5人, sub: 冒頭, at: [0, 0], lane: well, kind: start, icon: gi:well, sources: [{ label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }] }
+  - { id: boat, label: 小舟の上で目を覚ます, sub: 第1章, at: [1, 0], lane: main, icon: gi:boat-fishing, sources: [{ label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }] }
+  - { id: story, label: 友だちを救う旅, sub: 第1〜9章, at: [1, 1], lane: main, icon: gi:sheep, detail: 本編の9章 }
+  - { id: throw, label: 少女が井戸へ投げ込まれる, sub: 結末, at: [0, 1], lane: well, kind: ending, icon: gi:well, detail: 井戸があふれる。あふれる水を羊水とみる読みもある, sources: [{ label: kamigame エンディングの考察, url: "https://kamigame.jp/reanimal/page/409653243870770100.html" }] }
+edges:
+  - { from: look, to: boat }
+  - { from: boat, to: story }
+  - { from: story, to: throw }
+  - { from: throw, to: look, label: 繰り返す, evidence: speculation }

@@ -45,7 +45,7 @@ for (const game of targetGames) {
     if (!existsSync(f)) err(assetsFile, `${a.id}: ファイルが無い public/games/${game}/${a.file}`);
     if (a.kind === 'official') {
       if (!g?.rights?.official_assets) err(assetsFile, `${a.id}: 公式素材だが game.yaml の rights.official_assets が false。規約を確かめるまで載せない`);
-      if (!g?.rights?.guideline_quote) err(gameFile, 'rights.guideline_quote が無い。公式素材を載せる根拠の条文をそのまま写す');
+      if (!g?.rights?.official_assets_note) err(gameFile, 'rights.official_assets_note が無い。公式素材を載せる根拠（規約の許可か、運営者の判断か）を書く');
       if (!a.source_url) err(assetsFile, `${a.id}: 公式素材には source_url（取得元）が要る`);
     }
   }

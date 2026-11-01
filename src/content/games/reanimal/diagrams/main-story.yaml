@@ -1,8 +1,8 @@
 # 本編の流れ（全9章）。章名は gamerch の章別攻略チャートの日本語表記に合わせた
-# 並び: 3列で折り返す（1段目 左→右、2段目 右→左、3段目 左→右、4段目 右→左）。矢印が進む向きを示す
+# 上から下へ1本で読む（layout: list）。at は grid のときだけ使う
 type: flow
 title: 本編の流れ（全9章）
-caption: 番号の順に矢印をたどって読む。四角の色と名前は舞台
+caption: 上から順に読む。四角の色と名前は舞台
 lanes:
   - { id: well, label: 井戸（始まりと結末）, color: l6, icon: gi:well }
   - { id: sea, label: 海と水没した町, color: l2, icon: gi:boat-fishing }

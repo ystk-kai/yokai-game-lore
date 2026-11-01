@@ -1,2 +1,141 @@
-# 公式素材は載せない（game.yaml の rights.official_assets: false）。自作の図版を足すときは kind: original で登録する
-assets: []
+# 掲載している画像。権利はすべて TARSIER STUDIOS AB / THQ Nordic GmbH に帰属する。
+# 掲載の根拠は game.yaml の rights.official_assets_note（規約上の許可ではなく運営者の判断）
+assets:
+  - id: boy-face
+    file: characters/boy-face.png
+    alt: 少年の顔
+    kind: official
+    source_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
+  - id: boy-look
+    file: characters/boy-look.jpg
+    alt: 少年の見た目
+    kind: official
+    source_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
+  - id: girl-face
+    file: characters/girl-face.png
+    alt: 少女の顔
+    kind: official
+    source_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
+  - id: girl-look
+    file: characters/girl-look.jpg
+    alt: 少女の見た目
+    kind: official
+    source_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
+  - id: hood-face
+    file: characters/hood-face.png
+    alt: フードの顔
+    kind: official
+    source_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
+  - id: hood-look
+    file: characters/hood-look.jpg
+    alt: フードの見た目
+    kind: official
+    source_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
+  - id: bandage-face
+    file: characters/bandage-face.png
+    alt: バンデージの顔
+    kind: official
+    source_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
+  - id: bandage-look
+    file: characters/bandage-look.jpg
+    alt: バンデージの見た目
+    kind: official
+    source_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
+  - id: bucket-face
+    file: characters/bucket-face.png
+    alt: バケットの顔
+    kind: official
+    source_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
+  - id: bucket-look
+    file: characters/bucket-look.jpg
+    alt: バケットの見た目
+    kind: official
+    source_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
+  - id: mother-face
+    file: characters/mother-face.png
+    alt: マザーの顔
+    kind: official
+    source_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
+  - id: mother-look
+    file: characters/mother-look.jpg
+    alt: マザーの見た目
+    kind: official
+    source_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
+  - id: whale-face
+    file: characters/whale-face.png
+    alt: クジラの顔
+    kind: official
+    source_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
+  - id: whale-look
+    file: characters/whale-look.jpg
+    alt: クジラの見た目
+    kind: official
+    source_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
+  - id: horse-face
+    file: characters/horse-face.png
+    alt: 馬の顔
+    kind: official
+    source_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
+  - id: horse-look
+    file: characters/horse-look.jpg
+    alt: 馬の見た目
+    kind: official
+    source_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
+  - id: soldiers-face
+    file: characters/soldiers-face.png
+    alt: 兵士の顔
+    kind: official
+    source_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
+  - id: soldiers-look
+    file: characters/soldiers-look.jpg
+    alt: 兵士の見た目
+    kind: official
+    source_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
+  - id: dlc-the-prisoner
+    file: characters/dlc-the-prisoner.jpg
+    alt: DLC「The Prisoner」の兵士と囚人
+    kind: official
+    source_url: "https://reanimal.thqnordic.com"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: REANIMAL 公式サイト"
+  - id: piggy-face
+    file: characters/piggy-face.png
+    alt: ピギーの顔
+    kind: official
+    source_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
+  - id: piggy-look
+    file: characters/piggy-look.jpg
+    alt: ピギーの見た目
+    kind: official
+    source_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
+  - id: skin-face
+    file: characters/skin-face.png
+    alt: スキンの顔
+    kind: official
+    source_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
+  - id: skin-look
+    file: characters/skin-look.jpg
+    alt: スキンの見た目
+    kind: official
+    source_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"

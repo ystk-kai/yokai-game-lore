@@ -1,0 +1,20 @@
+# 結末の考察: 棺桶の映像と子どもの最期（kamigame の読み）。読みは推測の破線
+type: relations
+title: 5つの棺桶と、子どもたちの最期の読み
+caption: 破線は kamigame の考察による読み。少女の棺桶の中身（ウサギ）だけが作中の描写
+groups:
+  - { id: kids, label: 子どもたち, color: l2 }
+  - { id: coffin, label: 棺桶, color: l6 }
+nodes:
+  - { id: coffins, label: 5つの棺桶, role: 各章に散らばる, at: [2, 0], group: coffin, icon: gi:coffin }
+  - { id: boy, label: 少年, role: 主人公, at: [0, 2], group: kids, icon: gi:scarecrow }
+  - { id: bandage, label: バンデージ, role: 仲間, at: [1, 2], group: kids, icon: gi:bandage-roll }
+  - { id: bucket, label: バケット, role: 仲間, at: [2, 2], group: kids, icon: gi:empty-metal-bucket }
+  - { id: hood, label: フード, role: 仲間, at: [3, 2], group: kids, icon: gi:hood }
+  - { id: girl, label: 少女, role: 主人公, at: [4, 2], group: kids, icon: gi:rabbit-head }
+edges:
+  - { from: coffins, to: boy, label: 首を吊られた, kind: unknown, directed: true, evidence: speculation, label_at: 0.8 }
+  - { from: coffins, to: bandage, label: 火事で亡くなった, kind: unknown, directed: true, evidence: speculation, label_at: 0.8 }
+  - { from: coffins, to: bucket, label: 崖から落とされた, kind: unknown, directed: true, evidence: speculation, label_at: 0.8 }
+  - { from: coffins, to: hood, label: 捕虜として崖へ, kind: unknown, directed: true, evidence: speculation, label_at: 0.8 }
+  - { from: coffins, to: girl, label: 中身はウサギ, kind: unknown, directed: true, evidence: ingame, label_at: 0.8 }

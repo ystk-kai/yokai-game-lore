@@ -18,7 +18,8 @@ const spans = data.lanes.map((l) => {
   const forkRow = l.fork !== undefined ? rowOf.get(l.fork) : undefined;
   if (l.fork !== undefined && forkRow === undefined) throw new Error(`${id}: fork ${l.fork} が無い`);
   const forkLane = l.fork ? laneIndex.get(data.events[forkRow!].lane)! : undefined;
-  return { lane: l, from: forkRow ?? Math.min(...rows), to: Math.max(...rows), forkRow, forkLane };
+  // 分岐する系統の縦線は、分岐元の出来事の「下」（次の行）から始める。横線は分岐元の行の下端の余白に引くので、文字に重ならない
+  return { lane: l, from: forkRow !== undefined ? forkRow + 1 : Math.min(...rows), to: Math.max(...rows), forkRow, forkLane };
 });
 ---
 <figure class="tl">
@@ -35,7 +36,7 @@ const spans = data.lanes.map((l) => {
       ))}
       {spans.flatMap((s, li) =>
         Array.from({ length: s.to - s.from + 1 }, (_, k) => s.from + k).map((r) => (
-          <div class:list={['rail', `lane-${s.lane.color}`, r === s.from && 'first', r === s.to && 'last', r === s.forkRow && 'forked']}
+          <div class:list={['rail', `lane-${s.lane.color}`, r === s.from && (s.forkRow !== undefined ? 'from-fork' : 'first'), r === s.to && 'last']}
                style={`grid-column:${li + 1};grid-row:${r + 2}`} aria-hidden="true"></div>
         )))}
       {spans.filter((s) => s.forkRow !== undefined).map((s) => {
@@ -73,9 +74,13 @@ const spans = data.lanes.map((l) => {
   .rail.first::before { top: 20px; }
   .rail.last::before { bottom: auto; height: 20px; }
   .rail.first.last::before { display: none; }
+  .rail.from-fork::before { top: calc(var(--line-route) * -1 - 4px); }
+  .rail.from-fork.last::before { height: calc(20px + var(--line-route) + 4px); }
   .fork { position: relative; pointer-events: none; }
   /* 分岐: 分岐元の列の縦線から、分かれた系統の列の縦線まで横に結ぶ（列は等幅） */
-  .fork::before { content: ""; position: absolute; left: 20px; right: calc(100% / var(--n) - 26px); top: 20px; height: var(--line-route); background: var(--lane); }
+  /* 分岐元の点から下端の横線まで、短い縦線でつなぐ */
+  .fork::after { content: ""; position: absolute; left: 20px; top: 20px; bottom: 4px; width: var(--line-route); background: var(--lane); }
+  .fork::before { content: ""; position: absolute; left: 20px; right: calc(100% / var(--n) - 26px); top: auto; bottom: 4px; height: var(--line-route); background: var(--lane); }
   .event { position: relative; z-index: 1; padding: var(--space-2) var(--space-3) var(--space-4) 44px; min-width: 0; }
   .dot { position: absolute; left: 13px; top: 13px; width: 20px; height: 20px; border-radius: 50%; background: var(--color-surface); border: 5px solid var(--lane); }
   .is-spec .dot { border-style: dashed; }

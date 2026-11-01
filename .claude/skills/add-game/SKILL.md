@@ -11,10 +11,10 @@ description: 考察サイトに新しいゲームを追加するときに使う�
 
 1. **権利を調べる**（公開リポジトリなので最初にやる）
    - 権利者（開発・発売）と、ファンコンテンツ・ファンサイト・画像利用の規約を探す。動画だけのポリシーは画像の根拠にならない
-   - 規約の該当条文を原文のまま `rights.guideline_quote` に写す。掲載を認める条文が無ければ `official_assets: false`
+   - 規約の該当条文を原文のまま `rights.guideline_quote` に写す。画像を載せるかは作者に確かめ、載せるなら根拠（規約の許可／運営者の判断）を `official_assets_note` に書く
    - 権利表記（ストアやサイトの © 行）を `rights.notice` に写し、「非公式で承認を受けていない」旨を足す
 2. **物語を調べる**: 章構成（公式・攻略サイトの章名）、各章の舞台と出来事、結末と分岐条件、人物。`imozuru` が使えるなら原文を `~/research/<game>-story/` に保存してから書く。DLC があれば DLC も同じ深さで調べる
-3. **画像を集めるときは** `refs/<game>/images/` にだけ保存し、`SOURCES.tsv`（file / source_url / page / owner）に1行ずつ記録する。`official_assets: true` のゲームで掲載する画像だけを `public/games/<game>/` に置き、`assets.yaml` に登録する
+3. **画像を集めるときは** まず `refs/<game>/images/` に保存し、`SOURCES.tsv`（file / source_url / page / owner）に1行ずつ記録する。載せる画像だけを `public/games/<game>/` に写して `assets.yaml` に登録し、`characters.yaml` の `image: { thumb, wide }` から参照する
 4. `src/content/games/<game>/` を作る: `game.yaml`（トップに出る一言説明 `tagline` を含む） → `assets.yaml` → `diagrams/main-story.yaml`（type: flow）→ `pages/story.mdx`。既存の `reanimal/` を手本にする
 5. 人物がそろったら `characters.yaml` と `diagrams/relations.yaml`、`pages/characters.mdx`
 6. `bun run check` を通し、`bun run dev` で流れ図を目で確かめる（ラベルのはみ出し・線の重なり）
