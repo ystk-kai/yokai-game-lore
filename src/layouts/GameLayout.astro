@@ -1,0 +1,78 @@
+---
+// ゲームのページ共通の枠。左にサイドメニュー（物語・登場人物・考察）、右に本文。
+// スマホではサイドメニューを画面上部の横スクロールのタブにする
+import type { CollectionEntry } from 'astro:content';
+import Base from './Base.astro';
+import Icon from '../components/Icon.astro';
+import RightsNotice from '../components/RightsNotice.astro';
+import { groupBySection, slugOf } from '../lib/content';
+import { url } from '../lib/url';
+
+interface Props {
+  game: CollectionEntry<'games'>;
+  pages: CollectionEntry<'pages'>[];
+  current?: string;
+  title: string;
+  description?: string;
+}
+const { game, pages, current, title, description } = Astro.props;
+const groups = groupBySection(pages);
+const hubHref = url(`games/${game.id}`);
+---
+<Base title={title} description={description}>
+  <div class={`game-shell lane-${game.data.color}`}>
+    <nav class="side" aria-label={`${game.data.title} のページ`}>
+      <a class:list={['side-game', !current && 'is-current']} href={hubHref} aria-current={!current ? 'page' : undefined}>
+        <Icon icon={game.data.icon} size="1.5rem" />
+        <span>{game.data.title}<small>{game.data.title_ja}</small></span>
+      </a>
+      {groups.map((sec) => (
+        <div class="side-group">
+          <div class="side-label"><Icon icon={sec.icon} size="1rem" />{sec.label}</div>
+          <ul>
+            {sec.pages.map((p) => {
+              const here = slugOf(p.id) === current;
+              return <li><a class:list={[here && 'is-current']} href={url(`games/${game.id}/${slugOf(p.id)}`)} aria-current={here ? 'page' : undefined}>{p.data.title}</a></li>;
+            })}
+          </ul>
+        </div>
+      ))}
+    </nav>
+    <div class="main-col">
+      <slot />
+      <RightsNotice game={game} />
+    </div>
+  </div>
+</Base>
+<style>
+  .game-shell { display: grid; grid-template-columns: 15rem minmax(0, 1fr); gap: var(--space-12); align-items: start; }
+  .side { position: sticky; top: var(--space-6); max-height: calc(100vh - var(--footer-h) - var(--space-12)); overflow-y: auto;
+          display: flex; flex-direction: column; gap: var(--space-6); padding-right: var(--space-2); }
+  .side-game { display: flex; align-items: center; gap: var(--space-3); color: var(--color-ink); text-decoration: none; font-weight: 700; line-height: 1.3;
+               padding: var(--space-2) var(--space-3); border-radius: var(--radius); }
+  .side-game :global(.icon) { color: var(--lane); }
+  .side-game small { display: block; font-weight: 400; font-size: 0.75rem; color: var(--color-muted); }
+  .side-label { display: flex; align-items: center; gap: var(--space-2); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; color: var(--color-muted); padding: 0 var(--space-3) var(--space-2); }
+  .side ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+  .side li a { display: block; padding: var(--space-2) var(--space-3); border-radius: var(--radius); color: var(--color-ink); text-decoration: none; font-size: var(--text-small); line-height: 1.5; border-left: 3px solid transparent; }
+  .side a:hover { background: var(--color-surface); }
+  .side a.is-current { background: var(--color-surface); border-left-color: var(--lane); font-weight: 700; }
+  .side-game.is-current { border-left: 3px solid var(--lane); }
+
+  /* スマホ・狭い画面: サイドメニューを上部の横スクロールのタブにする */
+  @media (max-width: 60rem) {
+    :global(main) { padding-top: 0; }
+    .game-shell { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
+    .side { position: sticky; top: 0; z-index: 15; max-height: none; flex-direction: row; align-items: stretch; gap: var(--space-1);
+            overflow-x: auto; overflow-y: hidden; margin: 0 calc(var(--page-pad) * -1); padding: var(--space-2) var(--page-pad);
+            background: var(--color-bg); border-bottom: 1px solid var(--color-rule); scrollbar-width: none; }
+    .side::-webkit-scrollbar { display: none; }
+    .side-game small { display: none; }
+    .side-label { flex: none; align-self: center; padding: 0 var(--space-1) 0 var(--space-3); margin-left: var(--space-2); border-left: 1px solid var(--color-rule); letter-spacing: 0; }
+    .side-label :global(.icon) { display: none; }
+    .side-group, .side ul { display: contents; }
+    .side-game, .side li a { flex: none; white-space: nowrap; padding: var(--space-2) var(--space-3); border-left: 0; border-bottom: 3px solid transparent; border-radius: var(--radius) var(--radius) 0 0; }
+    .side a.is-current, .side-game.is-current { border-left: 0; border-bottom-color: var(--lane); }
+    .side li { display: contents; }
+  }
+</style>

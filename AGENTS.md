@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Yokai Game Lore は、ゲームの物語と考察を図解（路線図・相関図・年表）で整理する、非公式のファンサイト。Astro の静的サイトで、GitHub Pages に公開する（リポジトリは public）。Claude Code と Codex の共通規約はこのファイルが正本で、`CLAUDE.md` は `@AGENTS.md` で読み込む。見た目の規約は [DESIGN.md](DESIGN.md) にある。
+Yokai Game Lore は、ゲームの物語と考察を図解（流れ図・相関図・年表）で整理する、非公式のファンサイト。Astro の静的サイトで、GitHub Pages に公開する（リポジトリは public）。Claude Code と Codex の共通規約はこのファイルが正本で、`CLAUDE.md` は `@AGENTS.md` で読み込む。見た目の規約は [DESIGN.md](DESIGN.md) にある。
 
 ## 応答と文章
 
@@ -27,10 +27,10 @@ src/content/games/<game>/
   assets.yaml        掲載する画像の登録（公式素材は rights が許すときだけ）
   characters.yaml    人物・怪物の名鑑
   diagrams/*.yaml    図のデータ（type: flow / relations / timeline / order）
-  pages/*.mdx        ページ本文。<Diagram id="<game>/<図の名前>" /> で図を置く
+  pages/*.mdx        ページ本文。section（story / characters / theory）でサイドメニューの区分を決める。<Diagram id="<game>/<図の名前>" /> で図を置く
 public/games/<game>/ assets.yaml に登録した画像の実体
 src/schema.ts        データの形（Astro の検査と scripts/check-content.ts の両方が使う）
-src/components/      図と部品。MDX では Diagram / Characters / Spoiler / Theory / Icon / Evidence を import なしで使える
+src/components/      図と部品。MDX では Diagram / Characters / Theory / Icon / Evidence を import なしで使える
 refs/                手元だけの参照資料（集めた画像・メモ）。.gitignore 済みで公開しない
 ```
 
@@ -46,7 +46,9 @@ refs/                手元だけの参照資料（集めた画像・メモ）�
 
 ### 考察の書き方
 
-- 図の駅・人物・出来事・関係には `evidence` を付ける: `official`（公式の資料・発表）/ `ingame`（作中の描写・テキスト）/ `speculation`（推測）。迷ったら弱いほうにする
+- 物語の本筋（本編・DLC のあらすじ、`section: story`）と考察（`section: theory`）は別のページに分ける（作者の決定）。本筋のページには、解釈や推測の図・文を置かない
+
+- 図の場面・人物・出来事・関係には `evidence` を付ける: `official`（公式の資料・発表）/ `ingame`（作中の描写・テキスト）/ `speculation`（推測）。迷ったら弱いほうにする
 - 推測には、誰の推測かを書く（`<Theory who="...">`、または本文で出典を示す）
 - 事実の文には出典（`sources`、または本文のリンク）を付ける。攻略サイトの記述を作中の描写として使うときは、攻略サイトを出典にする
 - 出典どうしが食い違うときは、どちらかを選ばずに両方を書く（図では推測の破線を2本引く）
@@ -54,9 +56,7 @@ refs/                手元だけの参照資料（集めた画像・メモ）�
 
 ### ネタバレ
 
-- ページの題名（`title`）と説明（`description`）にネタバレを入れない。一覧やリンク先の表示に出るため
-- ページごとに `spoiler_scope`（どこまで遊んだ人向けか）を書く
-- 重要な展開・正体・結末は `<Spoiler scope="…">` か、図の `spoiler:` で覆う。scope には範囲（「第6章の終盤」）を書く
+- ネタバレは隠さない。結末・正体・展開もそのまま書き、図にも描く（作者の決定。解説サイトなので伏せる必要がない）。覆い・範囲表示の仕組みは作らない
 
 ### 図
 
@@ -71,5 +71,5 @@ refs/                手元だけの参照資料（集めた画像・メモ）�
 ## 完了前の検証
 
 - どの変更でも `bun run check` が通ること
-- コンテンツを変えたら、`bun run dev` で該当ページを開き、図が崩れていないか（ラベルのはみ出し・重なり・覆いの位置）を確かめる。Claude Code では `.claude/hooks/check-content.sh` がコンテンツの編集ごとに検査を走らせる
+- コンテンツを変えたら、`bun run dev` で該当ページを開き、図が崩れていないか（ラベルのはみ出し・重なり）を確かめる。Claude Code では `.claude/hooks/check-content.sh` がコンテンツの編集ごとに検査を走らせる
 - 権利に関わる変更（`assets.yaml`・`rights`・`public/games/`）は、作業報告で根拠の条文を示す

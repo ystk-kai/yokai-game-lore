@@ -2,8 +2,9 @@
 // 相関図。人物を格子に置き、関係を線で結ぶ。線の色＝関係の種類、破線＝推測。
 import type { z } from 'astro/zod';
 import type { relationsDiagram } from '../../schema';
+import { getEntry } from 'astro:content';
 import Icon from '../Icon.astro';
-import Spoiler from '../Spoiler.astro';
+import { refUrl } from '../../lib/refs';
 
 interface Props { data: z.infer<typeof relationsDiagram>; game: string; id: string }
 const { data, game, id } = Astro.props;
@@ -40,6 +41,9 @@ const groupBoxes = data.groups.map((g) => {
   return { ...g, x: x1, y: y1, w: x2 - x1, h: y2 - y1 };
 }).filter((g) => g !== null);
 const anchor = id.replace('/', '-');
+// dev では、characters.yaml の同じ id の人物に手元の参照画像があれば顔に使う
+const chars = new Map(((await getEntry('characters', game))?.data.characters ?? []).map((c) => [c.id, c]));
+const thumbOf = (nid: string) => refUrl(game, chars.get(nid)?.ref_image?.thumb);
 ---
 <figure class="rel">
   <figcaption>
@@ -61,13 +65,13 @@ const anchor = id.replace('/', '-');
           ))}
         </defs>
         {edges.map((e) => (
-          <line x1={e.s.x} y1={e.s.y} x2={e.t.x} y2={e.t.y} class:list={['link', `kind-${e.kind}`, e.evidence === 'speculation' && 'is-spec', e.spoiler && 'is-spoiler']}
+          <line x1={e.s.x} y1={e.s.y} x2={e.t.x} y2={e.t.y} class:list={['link', `kind-${e.kind}`, e.evidence === 'speculation' && 'is-spec']}
                 marker-end={e.directed ? `url(#arrow-${anchor}-${e.kind})` : undefined} />
         ))}
       </svg>
       {edges.map((e) => (
         <span class={`link-label kind-${e.kind}`} style={`left:${e.mid.x}px;top:${e.mid.y}px`}>
-          <Spoiler scope={e.spoiler} inline>{e.evidence === 'speculation' ? `${e.label}？` : e.label}</Spoiler>
+          {e.evidence === 'speculation' ? `${e.label}？` : e.label}
         </span>
       ))}
       {data.nodes.map((n) => {
@@ -75,11 +79,11 @@ const anchor = id.replace('/', '-');
         const g = n.group ? groupOf.get(n.group) : undefined;
         return (
           <div class:list={['person', g && `lane-${g.color}`]} style={`left:${p.x}px;top:${p.y}px;width:${W}px;height:${H}px`}>
-            <Spoiler scope={n.spoiler}>
-              {n.icon ? <Icon icon={n.icon} game={game} size="2.5em" class="portrait" label={n.label} /> : <span class="portrait-empty" aria-hidden="true"></span>}
+            <div class="p-body">
+              {thumbOf(n.id) ? <img class="portrait-img" src={thumbOf(n.id)} alt={n.label} /> : n.icon ? <Icon icon={n.icon} game={game} size="2.5em" class="portrait" label={n.label} /> : <span class="portrait-empty" aria-hidden="true"></span>}
               <span class="name">{n.label}</span>
               {n.role && <span class="role">{n.role}</span>}
-            </Spoiler>
+            </div>
           </div>
         );
       })}
@@ -89,7 +93,7 @@ const anchor = id.replace('/', '-');
     <summary>関係を文章で読む</summary>
     <ul>
       {edges.map((e) => (
-        <li><Spoiler scope={e.spoiler}>{nodeOf.get(e.from)!.label} {e.directed ? '→' : '—'} {nodeOf.get(e.to)!.label}: {e.label}（{kindName[e.kind]}{e.evidence === 'speculation' ? '・推測' : ''}）</Spoiler></li>
+        <li>{nodeOf.get(e.from)!.label} {e.directed ? '→' : '—'} {nodeOf.get(e.to)!.label}: {e.label}（{kindName[e.kind]}{e.evidence === 'speculation' ? '・推測' : ''}）</li>
       ))}
     </ul>
   </details>
@@ -118,11 +122,10 @@ const anchor = id.replace('/', '-');
   .link-label { position: absolute; transform: translate(-50%, -50%); z-index: 2; background: var(--color-surface); color: var(--color-ink);
     border: 1px solid var(--k); border-radius: 4px; padding: 0 var(--space-1); font-size: 0.8125rem; line-height: 1.5; white-space: nowrap; }
   .person { position: absolute; z-index: 3; background: var(--color-surface); border: 2px solid var(--lane, var(--color-ink)); border-radius: var(--radius); }
-  .person :global(.spoiler-veil), .person :global(.spoiler-body) { height: 100%; }
-  .person :global(.spoiler-body) { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: var(--space-1); text-align: center; }
+  .p-body { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: var(--space-1); text-align: center; }
   :global(.portrait) { color: var(--lane, var(--color-ink)); }
+  .portrait-img { width: 2.75em; height: 2.75em; border-radius: 50%; object-fit: cover; border: 2px solid var(--lane, var(--color-ink)); }
   .portrait-empty { width: 2.5em; height: 2.5em; border-radius: 50%; border: 2px dashed var(--color-rule); }
-  .person :global(.spoiler-open) { font-size: 0.75rem; line-height: 1.25; }
   .name { font-weight: 700; font-size: var(--text-small); line-height: 1.3; }
   .role { font-size: 0.75rem; line-height: 1.3; color: var(--color-muted); }
   .list { margin-top: var(--space-3); font-size: var(--text-small); }

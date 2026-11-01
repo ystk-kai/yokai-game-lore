@@ -1,12 +1,11 @@
 ---
 // 年表。出来事を書いた順に縦へ並べ、系統（lanes）ごとに列を分ける。fork は分岐元の出来事 id。
-// 行の高さは中身に合わせて伸びる CSS grid で、路線の縦線もセルごとに描くので文字幅を推定しない。
+// 行の高さは中身に合わせて伸びる CSS grid で、系統の縦線もセルごとに描くので文字幅を推定しない。
 import type { z } from 'astro/zod';
 import type { timelineDiagram } from '../../schema';
 import Icon from '../Icon.astro';
 import Evidence from '../Evidence.astro';
 import Sources from '../Sources.astro';
-import Spoiler from '../Spoiler.astro';
 
 interface Props { data: z.infer<typeof timelineDiagram>; game: string; id: string }
 const { data, game, id } = Astro.props;
@@ -49,12 +48,12 @@ const spans = data.lanes.map((l) => {
         return (
           <div class:list={['event', `lane-${l.color}`, e.evidence === 'speculation' && 'is-spec']} style={`grid-column:${laneIndex.get(e.lane)! + 1};grid-row:${r + 2}`}>
             <span class="dot" aria-hidden="true"></span>
-            <Spoiler scope={e.spoiler}>
+            <div>
               {e.when && <div class="when num">{e.when}</div>}
               <div class="ev-head">{e.icon && <Icon icon={e.icon} game={game} size="1.25em" />}<strong>{e.label}</strong><Evidence level={e.evidence} /></div>
               {e.detail && <p>{e.detail}</p>}
               <Sources sources={e.sources} />
-            </Spoiler>
+            </div>
           </div>
         );
       })}

@@ -9,9 +9,11 @@ characters:
     looks: 頭に袋をかぶり、首に縄を巻いている（kamigame は「マフラー」と書く）
     first_seen: 冒頭・第1章（小舟の上で目を覚ます）
     secret: 第9章で羊に呑み込まれる。首を吊られた過去があるのでは、という考察がある（棺桶の映像から）
-    spoiler: 第9章と棺桶の映像
     appears_in: [main]
     evidence: ingame
+    looks_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
+    looks_label: kamigame
+    ref_image: { thumb: kamigame/03-少年.png, wide: kamigame/16-少年.png }
     sources:
       - { label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }
       - { label: kamigame 登場キャラ一覧と考察, url: "https://kamigame.jp/reanimal/page/409383509522651637.html" }
@@ -24,9 +26,11 @@ characters:
     looks: ウサギの仮面。ほかの子より質素な服で素足
     first_seen: 第1章（海に浮かんでいるところを少年が引き上げる）
     secret: 第6章で羊を吐き出す。最後は4人の少年に井戸へ投げ込まれる
-    spoiler: 第6章・エンディング
     appears_in: [main]
     evidence: ingame
+    looks_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
+    looks_label: kamigame
+    ref_image: { thumb: kamigame/04-少女.png, wide: kamigame/17-少女.png }
     sources:
       - { label: THQ Nordic 公式（brother & sister）, url: "https://reanimal.thqnordic.com" }
       - { label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }
@@ -40,6 +44,9 @@ characters:
     first_seen: 第1章
     appears_in: [main]
     evidence: ingame
+    looks_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
+    looks_label: kamigame
+    ref_image: { thumb: kamigame/07-フード.png, wide: kamigame/22-フード.png }
     sources:
       - { label: kamigame 登場キャラ一覧と考察, url: "https://kamigame.jp/reanimal/page/409383509522651637.html" }
   - id: bandage
@@ -51,9 +58,11 @@ characters:
     looks: 顔に包帯を巻いている
     first_seen: 第3章（ホテルで巨大な鳥にさらわれる）
     secret: のちに羊に呑み込まれる。火事で亡くなったのでは、という考察がある
-    spoiler: 第7章以降と棺桶の映像
     appears_in: [main]
     evidence: ingame
+    looks_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
+    looks_label: kamigame
+    ref_image: { thumb: kamigame/05-バンデージ.png, wide: kamigame/18-バンテージ.png }
     sources:
       - { label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }
       - { label: kamigame 登場キャラ一覧と考察, url: "https://kamigame.jp/reanimal/page/409383509522651637.html" }
@@ -66,9 +75,11 @@ characters:
     looks: 頭にバケツをかぶった、少しふくよかな男の子
     first_seen: 第4〜5章（孤児院の穴に下ろされる）
     secret: 羊に最初に呑み込まれる。崖から落とされたのでは、という考察がある
-    spoiler: 第7章以降と棺桶の映像
     appears_in: [main]
     evidence: ingame
+    looks_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
+    looks_label: kamigame
+    ref_image: { thumb: kamigame/06-バケット.png, wide: kamigame/21-バケット.png }
     sources:
       - { label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }
       - { label: kamigame 登場キャラ一覧と考察, url: "https://kamigame.jp/reanimal/page/409383509522651637.html" }
@@ -106,6 +117,9 @@ characters:
     first_seen: 第5章
     appears_in: [main]
     evidence: ingame
+    looks_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
+    looks_label: kamigame
+    ref_image: { thumb: kamigame/14-マザー.png, wide: kamigame/33-マザー.png }
     sources:
       - { label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }
       - { label: kamigame 登場キャラ一覧と考察, url: "https://kamigame.jp/reanimal/page/409383509522651637.html" }
@@ -118,6 +132,9 @@ characters:
     first_seen: 第6章
     appears_in: [main]
     evidence: ingame
+    looks_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
+    looks_label: kamigame
+    ref_image: { thumb: kamigame/12-クジラ.png, wide: kamigame/30-クジラ.png }
     sources:
       - { label: kamigame 登場キャラ一覧と考察, url: "https://kamigame.jp/reanimal/page/409383509522651637.html" }
   - id: horse
@@ -129,6 +146,9 @@ characters:
     first_seen: 第6章
     appears_in: [main]
     evidence: ingame
+    looks_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
+    looks_label: kamigame
+    ref_image: { thumb: kamigame/13-馬.png, wide: kamigame/32-ホース.png }
     sources:
       - { label: kamigame 登場キャラ一覧と考察, url: "https://kamigame.jp/reanimal/page/409383509522651637.html" }
   - id: sheep
@@ -140,7 +160,6 @@ characters:
     looks: 子どもを呑み込むたびに大きくなり、人の手足が生える
     first_seen: 第6章（少女が吐き出す）
     secret: 少女から生まれ、バケット・バンデージ・少年・少女の順に呑み込む
-    spoiler: 第6章〜第9章
     appears_in: [main]
     evidence: ingame
     sources:
@@ -153,6 +172,9 @@ characters:
     first_seen: 第7章
     appears_in: [main]
     evidence: ingame
+    looks_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
+    looks_label: kamigame
+    ref_image: { thumb: kamigame/11-兵士.png, wide: kamigame/29-兵士.png }
     sources:
       - { label: gamerch チャプター7 攻略チャート, url: "https://gamerch.com/reanimal/965663" }
   - id: prisoner
@@ -165,6 +187,9 @@ characters:
     first_seen: DLC「The Prisoner」
     appears_in: [dlc1]
     evidence: official
+    looks_url: "https://reanimal.thqnordic.com"
+    looks_label: THQ Nordic 公式サイト
+    ref_image: { wide: official-dlc-the-prisoner.jpg }
     sources:
       - { label: THQ Nordic 公式サイト, url: "https://reanimal.thqnordic.com" }
       - { label: "AUTOMATON「大型DLC第1弾ついに配信」", url: "https://automaton-media.com/articles/newsjp/20260810-459465/" }
@@ -178,6 +203,9 @@ characters:
     first_seen: DLC「The Prisoner」
     appears_in: [dlc1]
     evidence: official
+    looks_url: "https://reanimal.thqnordic.com"
+    looks_label: THQ Nordic 公式サイト
+    ref_image: { wide: official-dlc-the-prisoner.jpg }
     sources:
       - { label: THQ Nordic 公式サイト, url: "https://reanimal.thqnordic.com" }
       - { label: "AUTOMATON「大型DLC第1弾ついに配信」", url: "https://automaton-media.com/articles/newsjp/20260810-459465/" }
@@ -191,3 +219,31 @@ characters:
     evidence: ingame
     sources:
       - { label: "Waytoomany Games「DLC Review – Reanimal: The Prisoner」", url: "https://waytoomany.games/2026/08/07/dlc-review-reanimal-the-prisoner/" }
+  - id: piggy
+    name: ピギー
+    kind: creature
+    icon: gi:pig
+    role: 第3章の養豚場にいる巨大な豚。ほかの豚を食べる
+    looks: 腹に縫い目があり、内臓が少し出ている
+    first_seen: 第3章
+    appears_in: [main]
+    evidence: ingame
+    looks_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
+    looks_label: kamigame
+    ref_image: { thumb: kamigame/09-ピギー.png, wide: kamigame/24-ピギー.png }
+    sources:
+      - { label: kamigame 登場キャラ一覧と考察, url: "https://kamigame.jp/reanimal/page/409383509522651637.html" }
+  - id: skin
+    name: スキン
+    kind: creature
+    icon: gi:clothes
+    role: 序盤から出てくる、人の見た目をした怪物（kamigame の呼び名）
+    looks: 人の皮のような姿で、服のように着られる場面がある。第2章のスニッファーとの関係は資料によって書き方が違う
+    first_seen: 第1章
+    appears_in: [main]
+    evidence: ingame
+    looks_url: "https://kamigame.jp/reanimal/page/409383509522651637.html"
+    looks_label: kamigame
+    ref_image: { thumb: kamigame/10-スキン.png, wide: kamigame/27-スキン.png }
+    sources:
+      - { label: kamigame 登場キャラ一覧と考察, url: "https://kamigame.jp/reanimal/page/409383509522651637.html" }

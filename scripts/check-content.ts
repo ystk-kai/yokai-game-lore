@@ -100,7 +100,7 @@ for (const game of targetGames) {
     }
   }
 
-  // 5. ページ: 題名と説明にネタバレの範囲語を書かない、Diagram の id が実在する
+  // 5. ページ: <Diagram> の id が実在する
   const pageDir = join(dir, 'pages');
   if (existsSync(pageDir)) for (const name of readdirSync(pageDir)) {
     const f = join(pageDir, name);

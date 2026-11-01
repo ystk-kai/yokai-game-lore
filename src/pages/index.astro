@@ -1,5 +1,5 @@
 ---
-// トップはゲーム名の一覧だけ（作者の決定。キャッチコピーや説明文を置かない）
+// トップはゲームの一覧（名前と一言説明）だけ（作者の決定。サイトのキャッチコピーや説明文は置かない）
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import { gamesSorted } from '../lib/content';
@@ -13,19 +13,23 @@ const games = await gamesSorted();
       <li class={`lane-${g.data.color}`}>
         <a href={url(`games/${g.id}`)}>
           <Icon icon={g.data.icon} size="2rem" />
-          <span class="name">{g.data.title}</span>
-          {g.data.title_ja && <span class="ja">{g.data.title_ja}</span>}
+          <span class="text">
+            <span class="name">{g.data.title}{g.data.title_ja && <span class="ja">{g.data.title_ja}</span>}</span>
+            <span class="tagline">{g.data.tagline}</span>
+          </span>
         </a>
       </li>
     ))}
   </ul>
 </Base>
 <style>
-  .games { list-style: none; padding: 0; margin: 0; max-width: 40rem; }
+  .games { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr)); column-gap: var(--space-8); }
   .games li { border-bottom: 1px solid var(--color-rule); }
   .games a { display: flex; align-items: center; gap: var(--space-4); padding: var(--space-4) var(--space-2); color: var(--color-ink); text-decoration: none; }
   .games a:hover .name { color: var(--color-accent); }
   .games :global(.icon) { color: var(--lane); }
   .name { font-size: var(--text-h3); font-weight: 700; }
-  .ja { font-size: var(--text-small); color: var(--color-muted); }
+  .text { display: flex; flex-direction: column; gap: var(--space-1); min-width: 0; }
+  .ja { margin-left: var(--space-3); font-size: var(--text-small); font-weight: 400; color: var(--color-muted); }
+  .tagline { font-size: var(--text-small); color: var(--color-muted); line-height: 1.6; line-break: strict; }
 </style>

@@ -3,8 +3,8 @@ import '../styles/global.css';
 import { url } from '../lib/url';
 import { iconSvg } from '../lib/icons';
 
-interface Props { title: string; description?: string; spoilerToggle?: boolean }
-const { title, description = 'ゲームの物語と考察を、路線図・相関図・年表で整理する非公式のファンサイト', spoilerToggle = false } = Astro.props;
+interface Props { title: string; description?: string }
+const { title, description = 'ゲームの物語と考察を、流れ図・相関図・年表で整理する非公式のファンサイト' } = Astro.props;
 const site = 'Yokai Game Lore';
 const full = title === site ? site : `${title} | ${site}`;
 ---
@@ -20,58 +20,34 @@ const full = title === site ? site : `${title} | ${site}`;
     <meta property="og:title" content={full} />
     <meta property="og:description" content={description} />
     <link rel="icon" href={`${import.meta.env.BASE_URL}favicon.svg`} type="image/svg+xml" />
-    <script is:inline>
-      // ネタバレの表示設定を描画前に反映する（ちらつき防止）
-      if (localStorage.getItem('ygl-spoilers') === 'show') document.documentElement.dataset.spoilers = 'show';
-    </script>
   </head>
   <body>
     <a class="skip" href="#main">本文へ</a>
     <header class="site">
-      <a class="brand" href={url()}><span class="mark" set:html={iconSvg('gi:railway', '1.4em')} />Yokai Game Lore</a>
+      <a class="brand" href={url()}><span class="mark" set:html={iconSvg('gi:scroll-unfurled', '1.4em')} />Yokai Game Lore</a>
       <nav aria-label="サイト">
         <a href={url('guide')}>図の読み方</a>
         <a href={url('credits')}>クレジット</a>
       </nav>
-      {spoilerToggle && (
-        <label class="spoiler-switch"><input type="checkbox" data-spoiler-all /> ネタバレをすべて表示</label>
-      )}
     </header>
     <main id="main"><slot /></main>
     <footer class="site">
-      <p>このサイトは非公式のファンサイトです。各ゲームの権利者による運営・承認・後援を受けていません。ゲームの名称・画像の権利は各権利者に帰属します。</p>
-      <p><a href={url('credits')}>アイコンと素材のクレジット</a> ・ <a href="https://github.com/ystk-kai/yokai-game-lore">GitHub</a></p>
+      <span>非公式ファンサイト</span>
+      <a href={url('credits')}>クレジット</a>
+      <a href="https://github.com/ystk-kai/yokai-game-lore">GitHub</a>
     </footer>
-    <script>
-      const root = document.documentElement;
-      const all = document.querySelector<HTMLInputElement>('[data-spoiler-all]');
-      if (all) {
-        all.checked = root.dataset.spoilers === 'show';
-        all.addEventListener('change', () => {
-          root.dataset.spoilers = all.checked ? 'show' : '';
-          localStorage.setItem('ygl-spoilers', all.checked ? 'show' : 'hide');
-        });
-      }
-      document.addEventListener('click', (ev) => {
-        const btn = (ev.target as Element).closest('[data-spoiler-open]');
-        if (!btn) return;
-        ev.preventDefault();
-        btn.parentElement?.classList.add('is-open');
-      });
-    </script>
   </body>
 </html>
 <style>
   .skip { position: absolute; left: -999px; } .skip:focus { left: var(--space-4); top: var(--space-2); z-index: 10; background: var(--color-surface); padding: var(--space-2); }
-  header.site { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-6); padding: var(--space-3) var(--space-6); border-bottom: 1px solid var(--color-rule); background: var(--color-surface); }
+  header.site { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-6); padding: var(--space-3) var(--page-pad); border-bottom: 1px solid var(--color-rule); background: var(--color-surface); }
   .brand { display: inline-flex; align-items: center; gap: var(--space-2); font-weight: 700; color: var(--color-ink); text-decoration: none; letter-spacing: 0.02em; }
   .mark { color: var(--color-accent); line-height: 0; }
   nav { display: flex; gap: var(--space-4); font-size: var(--text-small); }
   nav a { color: var(--color-muted); text-decoration: none; } nav a:hover { color: var(--color-ink); }
-  .spoiler-switch { margin-left: auto; font-size: var(--text-small); display: inline-flex; gap: var(--space-2); align-items: center; cursor: pointer; }
-  .spoiler-switch input { width: 1.1em; height: 1.1em; accent-color: var(--color-accent); }
-  main { padding: var(--space-8) var(--space-6) var(--space-16); max-width: 72rem; margin: 0 auto; }
-  footer.site { border-top: 1px solid var(--color-rule); padding: var(--space-6); font-size: var(--text-small); color: var(--color-muted); }
-  footer.site p { margin: 0 0 var(--space-2); max-width: var(--measure); }
-  @media (max-width: 40rem) { main { padding: var(--space-6) var(--space-4) var(--space-12); } header.site { padding: var(--space-3) var(--space-4); } }
+  main { padding: var(--space-8) var(--page-pad) calc(var(--footer-h) + var(--space-12)); max-width: var(--page-max); margin: 0 auto; }
+  /* フッターは1行で画面の下に固定（作者の決定） */
+  footer.site { position: fixed; inset: auto 0 0 0; z-index: 20; height: var(--footer-h); display: flex; align-items: center; gap: var(--space-6);
+    padding: 0 var(--page-pad); background: var(--color-surface); border-top: 1px solid var(--color-rule); font-size: var(--text-small); color: var(--color-muted); }
+  footer.site a { color: var(--color-muted); text-decoration: none; } footer.site a:hover { color: var(--color-ink); }
 </style>

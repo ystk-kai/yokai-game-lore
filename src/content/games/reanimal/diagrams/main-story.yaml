@@ -1,8 +1,8 @@
 # 本編の流れ（全9章）。章名は gamerch の章別攻略チャートの日本語表記に合わせた
-# 並び: 1段目 左→右、2段目 右→左、3段目 左→右（路線図の折り返し）
+# 並び: 3列で折り返す（1段目 左→右、2段目 右→左、3段目 左→右、4段目 右→左）。矢印が進む向きを示す
 type: flow
 title: 本編の流れ（全9章）
-caption: 線の色は舞台。章の順に、上の段から折り返して読む
+caption: カード上辺の色は舞台。番号の順に、矢印をたどって読む
 lanes:
   - { id: well, label: 井戸（始まりと結末）, color: l6, icon: gi:well }
   - { id: sea, label: 海と水没した町, color: l2, icon: gi:boat-fishing }
@@ -44,7 +44,7 @@ nodes:
   - id: ch3
     label: 洪水の後で
     sub: 第3章
-    at: [3, 0]
+    at: [2, 1]
     lane: sea
     icon: gi:lighthouse
     detail: 砂浜に戻り、ボートで水没した町へ。ホテルでバンデージが巨大な鳥にさらわれ、灯台まで追って助け出す。養豚場を抜け、最後はバスで次の場所へ向かう。
@@ -54,7 +54,7 @@ nodes:
   - id: ch4
     label: 宿なし
     sub: 第4章
-    at: [3, 1]
+    at: [1, 1]
     lane: orphanage
     icon: gi:puppet
     detail: バスを降りて孤児院へ。人形のような敵がいる廊下を抜け、奥の舞台の部屋で仲間に近づくと、兄妹は縛られて穴に落とされる。
@@ -63,7 +63,7 @@ nodes:
   - id: ch5
     label: 穴の中へ
     sub: 第5章
-    at: [2, 1]
+    at: [0, 1]
     lane: orphanage
     kind: boss
     icon: gi:long-legged-spider
@@ -74,10 +74,9 @@ nodes:
   - id: ch6
     label: 誰も置き去りにしない
     sub: 第6章
-    at: [1, 1]
+    at: [0, 2]
     lane: sea
     icon: gi:sperm-whale
-    spoiler: 第6章の終盤
     detail: トンネルから砲台の島へ。沈んだ軍艦の中で目のないクジラに出会い、馬のような海の怪物から取った目をクジラに渡すと道が開く。終盤、少女が羊を吐き出し、羊は走り去る。
     sources:
       - { label: gamerch チャプター6 攻略チャート, url: "https://gamerch.com/reanimal/965458" }
@@ -85,7 +84,7 @@ nodes:
   - id: ch7
     label: 戦利品
     sub: 第7章
-    at: [0, 1]
+    at: [1, 2]
     lane: war
     icon: gi:barbed-wire
     detail: 塹壕・防空壕・野戦病院。近づくと自爆する兵士や、後ろから迫る怪物から逃げる。
@@ -94,7 +93,7 @@ nodes:
   - id: ch8
     label: 監視者
     sub: 第8章
-    at: [0, 2]
+    at: [2, 2]
     lane: war
     icon: gi:eye-target
     detail: 廃屋、処刑場、駐車場、市街の廃墟。時計塔の狙撃手を倒し、最後は戦車と戦う。
@@ -103,34 +102,31 @@ nodes:
   - id: ch9
     label: すべてを焼き尽くす過去
     sub: 第9章
-    at: [1, 2]
+    at: [2, 3]
     lane: war
     kind: boss
     icon: gi:sheep
-    spoiler: 第9章（最終章）
     detail: 奪った戦車で進むと、巨大になった羊が現れる。少年が呑み込まれ、操作は少女に移るが、少女も呑まれる。羊の体内で、少女は小屋で死んだ白いウサギを見つける。
     sources:
       - { label: gamerch チャプター9 攻略チャート, url: "https://gamerch.com/reanimal/966038" }
       - { label: "Into Indie Games「Chapter 9 - All Consuming Past」", url: "https://intoindiegames.com/walkthroughs/reanimal-walkthrough-chapter-9-all-consuming-past/" }
   - id: ending
-    label: 井戸へ（通常エンディング）
+    label: 通常エンディング
     sub: 結末
-    at: [2, 2]
+    at: [1, 3]
     lane: well
     kind: ending
     icon: gi:well
-    spoiler: エンディング
     detail: 4人の少年が少女を袋に入れて井戸まで引きずり、投げ込む。井戸があふれる。
     sources:
       - { label: "Into Indie Games「Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }
   - id: hidden
-    label: 井戸の底（隠しエンディング）
+    label: 隠しエンディング
     sub: 結末
-    at: [3, 2]
+    at: [0, 3]
     lane: well
     kind: ending
     icon: gi:coffin
-    spoiler: 隠しエンディング
     detail: 各章に散らばる棺桶5つをすべて確認すると、通常エンディングに映像が加わる。白い仮面の黒い影たちが、井戸の底の少女に静かに近づく。1周目でも条件を満たせる。
     sources:
       - { label: kamigame 隠しエンディングの解放条件, url: "https://kamigame.jp/reanimal/page/409554313107497530.html" }

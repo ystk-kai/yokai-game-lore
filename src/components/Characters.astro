@@ -4,7 +4,7 @@ import { getEntry } from 'astro:content';
 import Icon from './Icon.astro';
 import Evidence from './Evidence.astro';
 import Sources from './Sources.astro';
-import Spoiler from './Spoiler.astro';
+import { refUrl } from '../lib/refs';
 
 interface Props { game: string; kind?: 'protagonist' | 'ally' | 'creature' | 'other'; only?: string[] }
 const { game, kind, only } = Astro.props;
@@ -14,29 +14,47 @@ const list = entry.data.characters.filter((c) => (!kind || c.kind === kind) && (
 const kindLabel = { protagonist: '主人公', ally: '仲間', creature: 'クリーチャー', other: 'その他' } as const;
 ---
 <ul class="cards">
-  {list.map((c) => (
-    <li class={`card kind-${c.kind}`} id={`ch-${c.id}`}>
-      <div class="head">
-        {c.icon ? <Icon icon={c.icon} game={game} size="3.5rem" class="pic" label={c.name} /> : <span class="pic-empty" aria-hidden="true"></span>}
-        <div>
-          <div class="kind">{kindLabel[c.kind]}</div>
-          <h3>{c.name}{c.name_en && <span class="en">{c.name_en}</span>}</h3>
-          <div class="role">{c.role}</div>
+  {list.map((c) => {
+    const thumb = refUrl(game, c.ref_image?.thumb);
+    const wide = refUrl(game, c.ref_image?.wide);
+    return (
+      <li class={`card kind-${c.kind}`} id={`ch-${c.id}`}>
+        {wide && (
+          <figure class="wide">
+            <img src={wide} alt={`${c.name}の見た目`} loading="lazy" />
+            <figcaption>手元の参照画像（公開サイトには出ません）・{c.looks_label}</figcaption>
+          </figure>
+        )}
+        <div class="head">
+          {thumb
+            ? <img class="pic-img" src={thumb} alt={c.name} loading="lazy" />
+            : c.icon ? <Icon icon={c.icon} game={game} size="3.5rem" class="pic" label={c.name} /> : <span class="pic-empty" aria-hidden="true"></span>}
+          <div>
+            <div class="kind">{kindLabel[c.kind]}</div>
+            <h3>{c.name}{c.name_en && <span class="en">{c.name_en}</span>}</h3>
+            <div class="role">{c.role}</div>
+          </div>
         </div>
-      </div>
-      {c.looks && <p><span class="k">見た目</span>{c.looks}</p>}
-      {c.first_seen && <p><span class="k">初登場</span>{c.first_seen}</p>}
-      {c.secret && <Spoiler scope={c.spoiler}><p><span class="k">正体・結末</span>{c.secret}</p></Spoiler>}
-      <div class="foot"><Evidence level={c.evidence} /><Sources sources={c.sources} /></div>
-    </li>
-  ))}
+        {c.looks && <p><span class="k">見た目</span>{c.looks}</p>}
+        {c.looks_url && <p class="looks-link"><a href={c.looks_url} rel="noopener" target="_blank">実際の見た目を見る（{c.looks_label ?? '外部サイト'}）↗</a></p>}
+        {c.first_seen && <p><span class="k">初登場</span>{c.first_seen}</p>}
+        {c.secret && <p><span class="k">正体・結末</span>{c.secret}</p>}
+        <div class="foot"><Evidence level={c.evidence} /><Sources sources={c.sources} /></div>
+      </li>
+    );
+  })}
 </ul>
 <style>
   .cards { list-style: none; padding: 0; margin: var(--space-6) 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: var(--space-4); }
-  .card { background: var(--color-surface); border: 1px solid var(--color-rule); border-top: 6px solid var(--k); border-radius: var(--radius); padding: var(--space-4); font-size: var(--text-small); line-height: 1.65; }
+  .card { overflow: hidden; background: var(--color-surface); border: 1px solid var(--color-rule); border-top: 6px solid var(--k); border-radius: var(--radius); padding: var(--space-4); font-size: var(--text-small); line-height: 1.65; }
   .kind-protagonist { --k: var(--lane-l2); } .kind-ally { --k: var(--lane-l3); } .kind-creature { --k: var(--lane-l1); } .kind-other { --k: var(--color-muted); }
   .head { display: flex; gap: var(--space-3); align-items: center; margin-bottom: var(--space-2); }
   :global(.pic) { color: var(--k); }
+  .wide { margin: calc(var(--space-4) * -1) calc(var(--space-4) * -1) var(--space-3); }
+  .wide img { width: 100%; aspect-ratio: 3 / 1; object-fit: cover; }
+  .wide figcaption { font-size: 0.75rem; color: var(--color-muted); padding: var(--space-1) var(--space-4) 0; }
+  .pic-img { width: 3.5rem; height: 3.5rem; border-radius: 50%; object-fit: cover; flex: none; border: 2px solid var(--k); }
+  .looks-link { font-weight: 700; }
   .pic-empty { width: 3.5rem; height: 3.5rem; border-radius: 50%; border: 2px dashed var(--color-rule); flex: none; }
   .kind { font-size: 0.75rem; color: var(--k); font-weight: 700; }
   h3 { margin: 0; font-size: var(--text-body); line-height: 1.35; }

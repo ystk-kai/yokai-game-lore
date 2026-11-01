@@ -2,7 +2,7 @@
 // 形を変えたら AGENTS.md の「データの形」と DESIGN.md の図解文法も確かめる。
 import { z } from 'astro/zod';
 
-/** 根拠の強さ。図では線の種類と駅の形で描き分ける（DESIGN.md「根拠の描き分け」） */
+/** 根拠の強さ。図では線の種類と枠の形で描き分ける（DESIGN.md「根拠の描き分け」） */
 export const evidence = z.enum(['official', 'ingame', 'speculation']);
 export type Evidence = z.infer<typeof evidence>;
 
@@ -23,9 +23,6 @@ export const source = z
  */
 export const iconRef = z.string().regex(/^(gi|lucide|asset):[a-z0-9-]+$/, 'icon は gi:名前 / lucide:名前 / asset:ID');
 
-/** ネタバレの範囲。「第3章クリア後」のように、どこまで進めた人向けかを書く */
-export const spoiler = z.string().min(2).optional();
-
 const lane = z.object({
   id: z.string(),
   label: z.string(),
@@ -35,11 +32,11 @@ const lane = z.object({
 
 /* ---------- 図解 ---------- */
 
-/** 物語の流れ（路線図）。駅を at:[列, 段] に置き、線で結ぶ */
+/** 物語の流れ（フローチャート）。場面のカードを at:[列, 段] に置き、矢印で結ぶ */
 const flowNode = z.object({
   id: z.string(),
-  /** 駅の札は幅固定で2行まで。長い説明は detail に */
-  label: z.string().max(16, 'ラベルは16字まで（駅の札は2行）。詳しくは detail に'),
+  /** カードの見出し。2行に収まる長さ。あらすじは detail に（カードに6行まで出る） */
+  label: z.string().max(20, '見出しは20字まで。あらすじは detail に'),
   sub: z.string().max(12).optional(),
   detail: z.string().optional(),
   at: z.tuple([z.number().int().min(0), z.number().int().min(0)]),
@@ -47,13 +44,12 @@ const flowNode = z.object({
   kind: z.enum(['scene', 'boss', 'ending', 'branch', 'start']).default('scene'),
   icon: iconRef.optional(),
   evidence: evidence.default('ingame'),
-  spoiler,
   sources: z.array(source).default([]),
 });
 const flowEdge = z.object({
   from: z.string(),
   to: z.string(),
-  /** 駅の間に2行で収まる長さ（1行6字ほど） */
+  /** カードの間に2行で収まる長さ（1行5字ほど） */
   label: z.string().max(12).optional(),
   evidence: evidence.default('ingame'),
 });
@@ -74,7 +70,6 @@ const relNode = z.object({
   at: z.tuple([z.number().int().min(0), z.number().int().min(0)]),
   group: z.string().optional(),
   icon: iconRef.optional(),
-  spoiler,
 });
 const relEdge = z.object({
   from: z.string(),
@@ -83,7 +78,6 @@ const relEdge = z.object({
   kind: z.enum(['bond', 'family', 'hostile', 'unknown']).default('bond'),
   directed: z.boolean().default(false),
   evidence: evidence.default('ingame'),
-  spoiler,
 });
 export const relationsDiagram = z.object({
   type: z.literal('relations'),
@@ -110,7 +104,6 @@ export const timelineDiagram = z.object({
         detail: z.string().optional(),
         icon: iconRef.optional(),
         evidence: evidence.default('ingame'),
-        spoiler,
         sources: z.array(source).default([]),
       }),
     )
@@ -147,7 +140,9 @@ export const game = z.object({
   developer: z.string(),
   publisher: z.string(),
   released: z.string(),
-  summary: z.string().max(120, '概要は120字まで。ネタバレを入れない'),
+  /** トップの一覧に出す一言説明。どんなゲームかが1行で分かるように */
+  tagline: z.string().max(40, '一言説明は40字まで'),
+  summary: z.string().max(120, '概要は120字まで'),
   icon: iconRef,
   color: z.enum(['l1', 'l2', 'l3', 'l4', 'l5', 'l6']).default('l1'),
   /** 権利の扱い。公開サイトに公式素材を載せる根拠をここに残す */
@@ -175,12 +170,11 @@ export const assetsFile = z.object({ assets: z.array(asset).default([]) });
 
 export const analysis = z.object({
   title: z.string().max(40),
-  /** 一覧と OGP に出る。題名と同じくネタバレを入れない（Zelda Universe の方針に倣う） */
+  /** ゲームの目次と OGP に出る */
   description: z.string().max(100),
   order: z.number().default(100),
-  /** このページを読む前提。例「本編クリア後」。none はネタバレなし */
-  spoiler_scope: z.string(),
-  kind: z.enum(['overview', 'story', 'characters', 'theory', 'timeline']),
+  /** サイドメニューの区分。物語の本筋（本編・DLC）と考察を分ける（作者の決定） */
+  section: z.enum(['story', 'characters', 'theory']),
   updated: z.coerce.date(),
 });
 
@@ -196,13 +190,20 @@ export const charactersFile = z.object({
       role: z.string().max(40),
       looks: z.string().optional(),
       first_seen: z.string().optional(),
-      /** 正体や結末など。必ず spoiler で範囲を書く */
+      /** 正体や結末など */
       secret: z.string().optional(),
-      spoiler,
       /** 登場する作品（本編・DLC）の id。pages の chapter と揃える */
       appears_in: z.array(z.string()).default([]),
       evidence: evidence.default('ingame'),
       sources: z.array(source).default([]),
-    }).refine((c) => !c.secret || c.spoiler, { message: 'secret を書くときは spoiler（範囲）も書く' }),
+      /** 見た目の画像がある公開ページ（攻略サイト・公式）。公開サイトではこのリンクを出す */
+      looks_url: z.url().optional(),
+      looks_label: z.string().optional(),
+      /**
+       * 手元の参照画像（refs/<game>/images/ からの相対パス）。dev サーバーでだけ表示し、build には入らない。
+       * thumb は顔のアイコン（正方形）、wide は見た目の横長画像
+       */
+      ref_image: z.object({ thumb: z.string().optional(), wide: z.string().optional() }).optional(),
+    }),
   ),
 });
