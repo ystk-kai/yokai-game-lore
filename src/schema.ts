@@ -96,6 +96,8 @@ export const relationsDiagram = z.object({
   title: z.string(),
   caption: z.string().optional(),
   groups: z.array(lane).default([]),
+  /** 段の間隔（px）。段の間の線にラベルが多いときに広げる */
+  row_height: z.number().int().min(140).max(320).default(168),
   nodes: z.array(relNode).min(1),
   edges: z.array(relEdge).default([]),
 });

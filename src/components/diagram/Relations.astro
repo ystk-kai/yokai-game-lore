@@ -10,7 +10,7 @@ import { getCollection } from 'astro:content';
 interface Props { data: z.infer<typeof relationsDiagram>; game: string; id: string; bare?: boolean }
 const { data, game, id, bare = false } = Astro.props;
 
-const COL = 200, ROW = 168, W = 148, H = 104, PAD = 28;
+const COL = 200, ROW = data.row_height, W = 148, H = 104, PAD = 28;
 const cols = Math.max(...data.nodes.map((n) => n.at[0])) + 1;
 const rows = Math.max(...data.nodes.map((n) => n.at[1])) + 1;
 const width = PAD * 2 + (cols - 1) * COL + W;

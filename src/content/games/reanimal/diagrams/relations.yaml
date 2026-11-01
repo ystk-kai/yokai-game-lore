@@ -2,6 +2,7 @@
 type: relations
 title: 子どもたちと怪物
 caption: 少年・少女以外の呼び名はプレイヤーの通称
+row_height: 232
 groups:
   - { id: kids, label: 5人の子ども, color: l2 }
   - { id: creatures, label: 怪物, color: l1 }
@@ -18,8 +19,8 @@ nodes:
 edges:
   - { from: boy, to: girl, label: 兄と妹, kind: family, evidence: official }
   - { from: bandage, to: girl, label: 気づかう, kind: bond, directed: true }
-  - { from: sniffer, to: boy, label: 追う, kind: hostile, directed: true }
+  - { from: sniffer, to: boy, label: 追う, kind: hostile, directed: true, label_at: 0.22 }
   - { from: bird, to: bandage, label: さらう, kind: hostile, directed: true }
   - { from: mother, to: bucket, label: 穴の底で捕らえる, kind: hostile, directed: true }
   - { from: girl, to: sheep, label: 吐き出す, kind: unknown, directed: true}
-  - { from: sheep, to: bucket, label: 呑み込む, kind: hostile, directed: true}
+  - { from: sheep, to: bucket, label: 呑み込む, kind: hostile, directed: true, label_at: 0.32 }
