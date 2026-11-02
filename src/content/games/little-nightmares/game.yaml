@@ -25,6 +25,7 @@ titles:
   - id: vln
     label: ベリーリトルナイトメア
     released: "2019-05"
+    cover: title-vln
     synopsis: "黄色いレインコートの少女が「巣」と呼ばれる屋敷から逃げます。公式は、シックスの過去の謎を明かす作品と説明しています。"
     sources:
       - { label: "Bandai Namco Europe", url: "https://en.bandainamcoent.eu/news/very-little-nightmares-very-little-still-deadly" }

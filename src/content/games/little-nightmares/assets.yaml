@@ -387,3 +387,11 @@ assets:
     source_name: Steam（バックステージ）
     source_url: "https://store.steampowered.com/app/2088781/"
     credit: "© Bandai Namco Entertainment Europe S.A.S.。Steam のストアページのヘッダー画像"
+  - id: title-vln
+    file: titles/vln.jpg
+    alt: ベリーリトルナイトメアの黄色いレインコートの少女
+    kind: official-art
+    self_captured: false
+    source_name: Bandai Namco Europe（発表記事）
+    source_url: "https://en.bandainamcoent.eu/news/very-little-nightmares-very-little-still-deadly"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。公式の発表記事の画像を切り出して縮小"
