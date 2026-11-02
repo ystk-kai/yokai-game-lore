@@ -83,6 +83,20 @@ const schedule = scheduleDiagram.parse({
     { id: 'e3', lane: 'dlc', date: '2026-09', label: '第3章（予定）', planned: true },
   ],
 });
+
+// 架空のシリーズ（本編2作と DLC）の登場作品の表
+const appearances = {
+  titles: [
+    { id: 'g1', label: '第1作', released: '2020' },
+    { id: 'g1-dlc', label: '第1作の DLC', released: '2021' },
+    { id: 'g2', label: '第2作', released: '2023' },
+  ],
+  characters: [
+    { id: 'boy', name: '少年', kind: 'protagonist' as const, icon: 'gi:person', appears_in: ['g1', 'g2'] },
+    { id: 'girl', name: '少女', kind: 'protagonist' as const, icon: 'gi:woman-elf-face', appears_in: ['g1-dlc', 'g2'] },
+    { id: 'monster', name: '怪物', kind: 'other' as const, icon: 'gi:spiked-dragon-head', appears_in: ['g1', 'g1-dlc'] },
+  ],
+};
 ---
 <Base title="図の読み方" description="このサイトの図（流れ図・相関図・配信スケジュール・登場作品の表）の読み方">
   <h1>図の読み方</h1>
@@ -130,8 +144,8 @@ const schedule = scheduleDiagram.parse({
 
   <section>
     <h2>登場作品の表</h2>
-    <p class="intro">シリーズや DLC がある作品では、人物がどの作品に出るかを表にします。丸の付いた列が、その人物の登場する作品です。名前を押すと、人物のカードへ移ります。下は『リトルナイトメア』の主人公の例です。</p>
-    <div class="example"><Appearances game="little-nightmares" kinds={['protagonist']} title="例: 人物の登場作品" /></div>
+    <p class="intro">シリーズや DLC がある作品では、人物がどの作品に出るかを表にします。列の並びは発売順で、丸の付いた列が、その人物の登場する作品です。実際のページでは、名前を押すと人物のカードへ移ります。</p>
+    <div class="example"><Appearances game={G} sample={appearances} title="例: 人物の登場作品" /></div>
   </section>
 
   <section>

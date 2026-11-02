@@ -5,11 +5,14 @@ import { getCollection, getEntry } from 'astro:content';
 import Icon from '../Icon.astro';
 import { url, file } from '../../lib/url';
 
-interface Props { game: string; title?: string; caption?: string; kinds?: ('protagonist' | 'ally' | 'creature' | 'other')[] }
-const { game, title = '人物の登場作品', caption, kinds } = Astro.props;
-const g = await getEntry('games', game);
-const chars = ((await getEntry('characters', game))?.data.characters ?? []).filter((c) => !kinds || kinds.includes(c.kind));
-const titles = g?.data.titles ?? [];
+type Kind = 'protagonist' | 'ally' | 'creature' | 'other';
+/** sample: 図の読み方のページで、架空のゲームの例を直接渡す（コンテンツを読まない・リンクと顔の画像を出さない） */
+interface Sample { titles: { id: string; label: string; released?: string }[]; characters: { id: string; name: string; kind: Kind; icon?: string; appears_in: string[] }[] }
+interface Props { game: string; title?: string; caption?: string; kinds?: Kind[]; sample?: Sample }
+const { game, title = '人物の登場作品', caption, kinds, sample } = Astro.props;
+const g = sample ? undefined : await getEntry('games', game);
+const chars = ((sample?.characters ?? (await getEntry('characters', game))?.data.characters ?? []) as Array<{ id: string; name: string; kind: Kind; icon?: string; appears_in: string[]; image?: { thumb?: string } }>).filter((c) => !kinds || kinds.includes(c.kind));
+const titles = sample?.titles ?? g?.data.titles ?? [];
 if (!titles.length) throw new Error(`${game}: game.yaml に titles が無いので登場作品の表を作れない`);
 // 顔の画像（assets.yaml の image.thumb）があれば使い、なければアイコン。名鑑のカード・相関図と同じ画像
 const assets = new Map(((await getEntry('assets', game))?.data.assets ?? []).map((a) => [a.id, a]));
@@ -17,7 +20,7 @@ const faceOf = (thumb?: string) => { const a = thumb ? assets.get(thumb) : undef
 const kindLabel = { protagonist: '主人公', ally: '仲間', creature: '怪物', other: 'その他' } as const;
 const colors = ['l1', 'l2', 'l3', 'l4', 'l5', 'l6'];
 // 名前は名鑑のカードへのリンクにする（名鑑の無いゲームではリンクにしない）
-const charPage = (await getCollection('pages', (p) => p.id.startsWith(`${game}/`) && !!p.body?.includes('<Characters'))).at(0);
+const charPage = sample ? undefined : (await getCollection('pages', (p) => p.id.startsWith(`${game}/`) && !!p.body?.includes('<Characters'))).at(0);
 const hrefOf = (id: string) => (charPage ? `${url(`games/${charPage.id}`)}#ch-${id}` : undefined);
 ---
 <figure class="appear">
@@ -78,7 +81,8 @@ const hrefOf = (id: string) => (charPage ? `${url(`games/${charPage.id}`)}#ch-${
   /* 横にスクロールしても人物の列は左に残す */
   thead th.corner, tbody th { position: sticky; left: 0; z-index: 1; background: var(--color-surface); }
   .who { display: inline-flex; align-items: center; gap: var(--space-2); color: var(--color-ink); text-decoration: underline dotted; text-decoration-color: var(--color-accent); text-underline-offset: 0.25em; font-weight: 700; }
-  .who:hover { color: var(--color-accent); }
+  .who[href]:hover { color: var(--color-accent); }
+  .who:not([href]) { text-decoration: none; }
   .face { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; flex: none; background: var(--color-muted); }
   .who :global(.face-icon) { color: var(--color-muted); }
   .kind { margin-left: var(--space-2); color: var(--color-muted); font-size: 0.8125rem; }
