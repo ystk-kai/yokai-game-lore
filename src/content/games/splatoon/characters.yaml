@@ -16,45 +16,65 @@ characters:
   - id: agent3
     name: 3号
     autolink: false
-    aliases: [3号（スプラトゥーン）]
+    aliases: [3号（スプラトゥーン）, 初代3号]
     name_en: Agent 3
     image: { thumb: agent3-face }
     kind: protagonist
-    role: 『スプラトゥーン』のヒーローモードの主人公。New!カラストンビ部隊の3号
-    first_seen: スプラトゥーン（ヒーローモード）
-    appears_in: [splatoon1, splatoon2, octoexp]
+    role: 『スプラトゥーン』のヒーローモードの主人公。『3』では部隊の司令
+    looks: 見た目はプレイヤーが決めるインクリング。『オクト・エキスパンション』では、物語の途中で3号の見た目を設定する
+    first_seen: スプラトゥーン（ヒーローモード。ハイカラシティに越してきた若者が、アタリメ司令についてマンホールに入る）
+    secret: 『1』でアタリメ司令にNew!カラストンビ部隊の3号に任命され、タコツボバレーでデンチナマズを取り戻し、DJタコワサ将軍を倒す。『2』ではアタリメ司令と調査に出て行方が分からなくなる。『オクト・エキスパンション』では深海メトロに現れ、タルタル総帥に操られて8号と戦い、倒されて正気に戻る。『3』ではアタリメから司令の座を継ぎ、新3号を指揮する。とても無口で、気持ちはホタルが通訳する
+    appears_in: [splatoon1, splatoon2, octoexp, splatoon3]
     evidence: ingame
-    sources: [{ label: "Wikipedia「スプラトゥーン」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B3" }, { label: "Inkipedia「Timeline」（英語のファン wiki）", url: "https://splatoonwiki.org/wiki/Timeline" }]
+    sources: [{ label: "Wikipedia「スプラトゥーン」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B3" }, { label: "Wikipedia「スプラトゥーン2」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B32" }, { label: "Wikipedia「スプラトゥーン3」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B33" }, { label: "Inkipedia「Timeline」（英語のファン wiki）", url: "https://splatoonwiki.org/wiki/Timeline" }]
   - id: agent4
     name: 4号
     name_en: Agent 4
     image: { thumb: agent4-face }
     kind: protagonist
-    role: 『スプラトゥーン2』のヒーローモードの主人公
-    first_seen: スプラトゥーン2（ヒーローモード）
+    role: 『スプラトゥーン2』のヒーローモードの主人公。New!カラストンビ部隊の4号
+    looks: 見た目はプレイヤーが決めるインクリング。着ているヒーロースーツはアオリのおさがり
+    first_seen: スプラトゥーン2（ヒーローモード。ホタルに4号に任命される）
+    secret: ハイカラスクエアから消えたオオデンチナマズと、行方の分からないアオリを探して、タコツボキャニオンでタコ軍団と戦う。最後はDJタコワサ将軍と、洗脳されたアオリに立ち向かう。ホタルがアオリの洗脳を解き、4号がDJタコワサ将軍を倒して、オオデンチナマズを取り戻す
     appears_in: [splatoon2]
     evidence: ingame
-    sources: [{ label: "Wikipedia「スプラトゥーン2」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B32" }]
+    sources: [{ label: "Wikipedia「スプラトゥーン2」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B32" }, { label: "Inkipedia「Timeline」（英語のファン wiki）", url: "https://splatoonwiki.org/wiki/Timeline" }]
   - id: agent8
     name: 8号
     name_en: Agent 8
     image: { thumb: agent8-face }
     kind: protagonist
     role: オクト・エキスパンションとサイド・オーダーの主人公。記憶を失ったタコ
-    first_seen: オクト・エキスパンション
+    looks: タコ（オクトリング）の若者。通称「ハチ」
+    first_seen: オクト・エキスパンション（地下の深海メトロで倒れていたところを、アタリメ司令に起こされる）
+    secret: 自分がタコであること以外の記憶を失っている。登録名「No.10008」から8号と呼ばれ、深海メトロで「実験体」として試験をこなしながら地上を目指す。脱出したあと、正体を現したタルタル総帥のネルス像を、ヒメ・イイダ・アタリメ司令と止める。サイド・オーダーでは、色を失ったハイカラスクエアで目を覚まし、ヒメドローンと秩序の塔を登ってオーダを倒す
     appears_in: [octoexp, sideorder]
     evidence: ingame
-    sources: [{ label: "Wikipedia「スプラトゥーン2」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B32" }, { label: "Wikipedia「スプラトゥーン3」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B33" }]
+    sources: [{ label: "Wikipedia「スプラトゥーン2」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B32" }, { label: "Wikipedia「スプラトゥーン3」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B33" }, { label: "Inkipedia「Timeline」（英語のファン wiki）", url: "https://splatoonwiki.org/wiki/Timeline" }]
   - id: new-agent3
     name: 新3号
     name_en: Agent 3 (Splatoon 3)
     image: { thumb: new-agent3-face }
     kind: protagonist
     role: 『スプラトゥーン3』のヒーローモードの主人公。過去作の3号とは別人
-    first_seen: スプラトゥーン3（ヒーローモード）
+    looks: 見た目はプレイヤーが決めるインクリング。相棒は不思議なコジャケ。最初の装備は司令（初代3号）のおさがり
+    first_seen: スプラトゥーン3（ヒーローモード。バンカラ街の外れでジャンク品を探して暮らす若者）
+    secret: アタリメにスカウトされてNew!カラストンビ部隊の3号になる。消えたオオデンチナマズを追ってクレーターに入り、足元が崩れて地下の「オルタナ」に落ちる。司令・1号・2号と合流してアタリメを探し、すりみ連合とオタカラを争う。最後は宇宙で、黒幕のクマサンをDJタコワサ将軍と協力して倒し、オオデンチナマズをバンカラ街に戻す
     appears_in: [splatoon3]
     evidence: ingame
-    sources: [{ label: "Wikipedia「スプラトゥーン3」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B33" }]
+    sources: [{ label: "Wikipedia「スプラトゥーン3」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B33" }, { label: "Inkipedia「Timeline」（英語のファン wiki）", url: "https://splatoonwiki.org/wiki/Timeline" }]
+  - id: mechanic
+    name: メカニック
+    name_en: Mechanic
+    kind: protagonist
+    icon: gi:spanner
+    role: スプラトゥーン レイダースの主人公。すりみ連合のヘリのパイロット兼技術者
+    looks: インクリングかタコかを選べる（声はインクリングが辻勇旗、タコが山本高久）。物静かな職人肌
+    first_seen: スプラトゥーン レイダース
+    secret: すりみ連合とウズシオ諸島に不時着し、アジト船を直しながら、シャケの縄張りでオタカラと帰り道を探す。最後は玉座の間でサルモン王を倒す。エンディングのあとには、続きの冒険につながる手がかりが示される
+    appears_in: [raiders]
+    evidence: ingame
+    sources: [{ label: "Wikipedia「スプラトゥーン レイダース」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B3_%E3%83%AC%E3%82%A4%E3%83%80%E3%83%BC%E3%82%B9" }, { label: "Splatoon Raiders Guide「Ending Explained」（英語のファンサイト）", url: "https://www.splatoonraiders.net/blog/splatoon-raiders-ending-explained" }]
   - id: callie
     name: アオリ
     name_en: Callie
