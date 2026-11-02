@@ -29,6 +29,9 @@ const { Content } = await render(p);
 const workTitle = p.data.work ? g.data.titles.find((t) => t.id === p.data.work) : undefined;
 const coverAsset = workTitle?.cover ? (await getEntry('assets', g.id))?.data.assets.find((a) => a.id === workTitle.cover) : undefined;
 const cover = coverAsset ? file(`games/${g.id}/${coverAsset.file}`) : undefined;
+// 作品ページのタブ: 同じ作品の「物語の流れ」と「考察」を行き来する
+const sibling = (section: string) => p.data.work ? pages.find((x) => x.data.work === p.data.work && x.data.section === section) : undefined;
+const tabs = p.data.work ? [{ label: '物語の流れ', page: sibling('story') }, { label: '考察', page: sibling('theory') }].filter((x) => x.page) : [];
 ---
 <GameLayout game={g} pages={pages} current={slugOf(p.id)} title={`${p.data.title} - ${g.data.title}`} description={p.data.description}>
   <p class="crumb">{g.data.title}<span aria-hidden="true">／</span>{sectionLabel[p.data.section]}</p>
@@ -36,6 +39,11 @@ const cover = coverAsset ? file(`games/${g.id}/${coverAsset.file}`) : undefined;
     ? <div class="work-head"><img class="work-thumb" src={cover} alt={coverAsset?.alt ?? ''} width="96" height="96" /><h1>{p.data.title}</h1></div>
     : <h1>{p.data.title}</h1>}
   <p class="lead">{p.data.description}</p>
+  {tabs.length > 1 && (
+    <nav class="work-tabs" aria-label="この作品のページ">
+      {tabs.map((tb) => <a href={url(`games/${g.id}/${slugOf(tb.page!.id)}`)} class:list={[tb.page!.id === p.id && 'is-current']} aria-current={tb.page!.id === p.id ? 'page' : undefined}>{tb.label}</a>)}
+    </nav>
+  )}
   <article class="prose-wrap">
     <Content components={{ Diagram, Characters, Theory, Icon, Evidence, Legend, Appearances, Work, p: AutoP, li: AutoLi }} />
   </article>
@@ -50,6 +58,10 @@ const cover = coverAsset ? file(`games/${g.id}/${coverAsset.file}`) : undefined;
   .work-head { display: flex; align-items: center; gap: var(--space-4); }
   .work-head h1 { margin: 0; }
   .work-thumb { flex: none; width: 96px; height: 96px; aspect-ratio: 1; object-fit: cover; border-radius: var(--radius); border: 1px solid var(--color-rule); }
+  .work-tabs { display: flex; gap: var(--space-1); margin: calc(var(--space-4) * -1) 0 var(--space-8); border-bottom: 1px solid var(--color-rule); }
+  .work-tabs a { padding: var(--space-2) var(--space-4); color: var(--color-muted); text-decoration: none; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+  .work-tabs a:hover { color: var(--color-ink); }
+  .work-tabs a.is-current { color: var(--color-ink); font-weight: 700; border-bottom-color: var(--lane); }
   .lead { margin: var(--space-3) 0 var(--space-8); color: var(--color-muted); max-width: var(--measure); line-break: strict; }
   .prose-wrap > :global(p), .prose-wrap > :global(ul), .prose-wrap > :global(ol), .prose-wrap > :global(h2), .prose-wrap > :global(h3) { max-width: var(--measure); line-break: strict; overflow-wrap: anywhere; }
   .prose-wrap > :global(p) { margin: 0 0 var(--space-4); }

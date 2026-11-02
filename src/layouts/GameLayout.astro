@@ -22,8 +22,14 @@ const groups = groupBySection(pages.filter((p) => !p.data.work));
 const hubHref = url(`games/${game.id}`);
 // サイドメニューの「作品」: 考察の下に、作品の正方形のサムネイルと名前を1行ずつ並べる。作品のページがあればそこへ、無ければトップの作品カードへ移る
 const assets = new Map(((await getEntry('assets', game.id))?.data.assets ?? []).map((a) => [a.id, a]));
-const workPage = new Map(pages.filter((p) => p.data.work).map((p) => [p.data.work!, p]));
-const works = game.data.titles.map((t) => { const pg = workPage.get(t.id); return { ...t, img: t.cover ? assets.get(t.cover) : undefined, href: pg ? url(`games/${game.id}/${slugOf(pg.id)}`) : `${hubHref}#work-${t.id}`, here: !!pg && slugOf(pg.id) === current }; });
+// 作品ごとのページは2種類: 物語の流れ（section: story）と考察（section: theory）
+const workPage = (id: string, section: string) => pages.find((p) => p.data.work === id && p.data.section === section);
+const hrefOf = (pg?: (typeof pages)[number]) => (pg ? url(`games/${game.id}/${slugOf(pg.id)}`) : undefined);
+const works = game.data.titles.map((t) => {
+  const story = workPage(t.id, 'story'), theory = workPage(t.id, 'theory');
+  return { ...t, img: t.cover ? assets.get(t.cover) : undefined, href: hrefOf(story) ?? `${hubHref}#work-${t.id}`, theoryHref: hrefOf(theory),
+    here: !!story && slugOf(story.id) === current, hereTheory: !!theory && slugOf(theory.id) === current };
+});
 // サイドメニューの並び。作品ごとの物語は、物語（シリーズ全体）の欄のすぐ下（物語の欄が無ければ先頭）に置く
 const storyIdx = groups.findIndex((g) => g.id === 'story');
 const nav: ((typeof groups)[number] | 'works')[] = works.length ? [...groups.slice(0, storyIdx + 1), 'works', ...groups.slice(storyIdx + 1)] : [...groups];
@@ -38,13 +44,13 @@ const nav: ((typeof groups)[number] | 'works')[] = works.length ? [...groups.sli
       {/* 並び: 物語（シリーズ全体）→ 作品ごとの物語 → 登場人物 → 考察 */}
       {nav.map((item) => item === 'works' ? (
         <div class="side-group side-works">
-          <div class="side-label"><Icon icon="lucide:library" size="1rem" />作品ごとの物語</div>
+          <div class="side-label"><Icon icon="lucide:library" size="1rem" />作品ごとの物語と考察</div>
           <ul>
             {works.map((w) => (
-              <li><a class:list={[w.here && 'is-current']} href={w.href} aria-current={w.here ? 'page' : undefined}>
+              <li class:list={['w-row', (w.here || w.hereTheory) && 'is-open']}><a class:list={['w-main', w.here && 'is-current']} href={w.href} aria-current={w.here ? 'page' : undefined}>
                 {w.img ? <img class="side-thumb" src={file(`games/${game.id}/${w.img.file}`)} alt="" width="28" height="28" loading="lazy" /> : <span class="side-thumb no-img"><Icon icon={game.data.icon} size="1rem" /></span>}
                 <span class="w-label">{w.label}</span>
-              </a></li>
+              </a>{w.theoryHref && <a class:list={['w-chip', w.hereTheory && 'is-current']} href={w.theoryHref} aria-current={w.hereTheory ? 'page' : undefined} aria-label={`${w.label}の考察`}>考察</a>}</li>
             ))}
           </ul>
         </div>
@@ -81,7 +87,10 @@ const nav: ((typeof groups)[number] | 'works')[] = works.length ? [...groups.sli
   .side a.is-current { background: var(--color-surface); font-weight: 700; box-shadow: inset 0 0 0 1px var(--color-rule); }
 
   .side-thumb { flex: none; width: 28px; height: 28px; aspect-ratio: 1; object-fit: cover; border-radius: 4px; border: 1px solid var(--color-rule); }
-  .side-works li a { display: flex; align-items: center; gap: var(--space-2); }
+  .side-works li.w-row { display: flex; align-items: center; gap: var(--space-1); }
+  .side-works li a.w-main { flex: 1; min-width: 0; display: flex; align-items: center; gap: var(--space-2); }
+  .side-works .w-chip { flex: none; padding: 2px var(--space-2) !important; font-size: 0.75rem !important; line-height: 1.4; border: 1px solid var(--color-rule); border-radius: 999px; color: var(--color-muted) !important; }
+  .side-works .w-chip:hover, .side-works .w-chip.is-current { color: var(--color-ink) !important; border-color: var(--lane); }
   .side-works .no-img { display: inline-flex; align-items: center; justify-content: center; background: var(--color-surface); color: var(--lane); }
   .side-works .w-label { line-height: 1.4; }
 

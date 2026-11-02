@@ -21,8 +21,11 @@ if (t.cover && !cover) throw new Error(`Work: assets.yaml に ${t.cover} が無�
 const colors = ['l1', 'l2', 'l3', 'l4', 'l5', 'l6'];
 const link = await makeLinker(game);
 // この作品の物語のページ（frontmatter の work がこの作品の id）があれば、作品名をそのページへのリンクにする
-const page = (await getCollection('pages', (p) => p.id.startsWith(`${game}/`) && p.data.work === id)).at(0);
+const workPages = await getCollection('pages', (p) => p.id.startsWith(`${game}/`) && p.data.work === id);
+const page = workPages.find((p) => p.data.section === 'story');
+const theory = workPages.find((p) => p.data.section === 'theory');
 const pageHref = page ? url(`games/${page.id}`) : undefined;
+const theoryHref = theory ? url(`games/${theory.id}`) : undefined;
 const hasSlot = Astro.slots.has('default');
 const source = cover?.source_url ? { href: cover.source_url, name: cover.source_name ?? new URL(cover.source_url).hostname } : undefined;
 ---
@@ -38,7 +41,7 @@ const source = cover?.source_url ? { href: cover.source_url, name: cover.source_
     <div class="body">
       {hasSlot ? <slot /> : t.synopsis && <p set:html={link(t.synopsis)} />}
       {!hasSlot && <Sources sources={t.sources} />}
-      {pageHref && <p class="more"><a href={pageHref}>物語の流れを見る →</a></p>}
+      {(pageHref || theoryHref) && <p class="more">{pageHref && <a href={pageHref}>物語の流れを見る →</a>}{theoryHref && <a href={theoryHref}>考察を見る →</a>}</p>}
     </div>
   </div>
 </article>
@@ -53,7 +56,7 @@ const source = cover?.source_url ? { href: cover.source_url, name: cover.source_
   .cover figcaption { margin-top: var(--space-1); font-size: 0.8125rem; color: var(--color-muted); }
   h3 { margin: 0 0 var(--space-2); font-size: var(--text-h3); line-height: var(--leading-tight); display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-1) var(--space-3); }
   h3 a { color: var(--color-ink); text-decoration: none; } h3 a:hover { color: var(--color-accent); text-decoration: underline; }
-  .more { margin-top: var(--space-2) !important; font-size: var(--text-small); }
+  .more { margin-top: var(--space-2) !important; font-size: var(--text-small); display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-4); }
   .year { font-size: var(--text-small); font-weight: 400; color: var(--color-muted); }
   .body :global(p) { margin: 0 0 var(--space-2); line-break: strict; }
   .body :global(p:last-child) { margin-bottom: 0; }
