@@ -1,0 +1,7 @@
+# 書き出す調査の話題（~/research/<話題>/）。1行に1つ
+game-lore-diagram-sites
+reanimal-story
+splatoon-story
+little-nightmares
+per-work-story
+per-work-theories

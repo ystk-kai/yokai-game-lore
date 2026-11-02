@@ -18,6 +18,7 @@ Bun（1.4 系）を使う。npm・pnpm・yarn は使わない。
 | 開発サーバー（http://localhost:4321/yokai-game-lore/） | `bun run dev` |
 | コンテンツの検査だけ（速い） | `bun run lint:content` |
 | 完了前の検証（コンテンツ検査 → 型検査 → ビルド） | `bun run check` |
+| 調査の記録を書き出す（~/research → research/） | `bun run research:export` |
 
 ## 構成
 
@@ -31,6 +32,7 @@ src/content/games/<game>/
 public/games/<game>/ assets.yaml に登録した画像の実体
 src/schema.ts        データの形（Astro の検査と scripts/check-content.ts の両方が使う）
 src/components/      図と部品。MDX では Diagram / Characters / Appearances / Theory / Icon / Evidence / Legend を import なしで使える
+research/            調査の記録（問い・論点・出典の一覧・経過）。手元の ~/research/<話題>/ から bun run research:export で書き出す。原文は入れない
 refs/                手元だけの参照資料（集めた画像・メモ）。.gitignore 済みで公開しない
 ```
 
@@ -43,6 +45,7 @@ refs/                手元だけの参照資料（集めた画像・メモ）�
 - 攻略サイト・wiki・動画から集めた画像は、まず `refs/<game>/`（git 管理外）に置き、取得元を `refs/<game>/images/SOURCES.tsv` に書く。サイトに出すものだけを `public/games/<game>/` に写し、`assets.yaml` に出典（`source_url`・`credit`）つきで登録する。枠や透かしなど取得元サイトの装飾は切り落とす
 - 各ゲームのページに、権利者の表記と「非公式で、権利者の承認を受けていない」旨を出す（`rights.notice`。ページの下に自動で出る）
 - 出典のある文章を長く引き写さない。要点を自分の言葉で書き、出典にリンクする
+- 調査で保存した原文（`~/research/<話題>/sources/`）はリポジトリに入れない（他人の記事の写しの再配布になる）。公開するのは `bun run research:export` が書き出す `research/` だけ。新しい調査は `research/topics.txt` に話題を足して書き出す。原文の URL が取得の記録に無いときは `research/source-urls.tsv` に足す
 
 ### 考察の書き方
 

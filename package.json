@@ -8,7 +8,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "lint:content": "bun scripts/check-content.ts",
-    "check": "bun scripts/check-content.ts && astro check && astro build"
+    "check": "bun scripts/check-content.ts && astro check && astro build",
+    "research:export": "bun scripts/export-research.ts"
   },
   "dependencies": {
     "@astrojs/mdx": "^8.1.2",
