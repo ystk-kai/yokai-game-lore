@@ -42,6 +42,7 @@ const hrefOf = (id: string) => (charPage ? `${url(`games/${charPage.id}`)}#ch-${
         {chars.map((c) => (
           <tr>
             <th scope="row">
+              <span class="row-head">
               <a class="who" href={hrefOf(c.id)}>
                 {faceOf(c.image?.thumb)
                   ? <img class="face" src={faceOf(c.image?.thumb)!.src} alt="" width="32" height="32" loading="lazy" />
@@ -49,6 +50,7 @@ const hrefOf = (id: string) => (charPage ? `${url(`games/${charPage.id}`)}#ch-${
                 <span>{c.name}</span>
               </a>
               <span class="kind">{kindLabel[c.kind]}</span>
+              </span>
             </th>
             {titles.map((t, i) => {
               const on = c.appears_in.includes(t.id);
@@ -85,7 +87,9 @@ const hrefOf = (id: string) => (charPage ? `${url(`games/${charPage.id}`)}#ch-${
   .who:not([href]) { text-decoration: none; }
   .face { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; flex: none; background: var(--color-muted); }
   .who :global(.face-icon) { color: var(--color-muted); }
-  .kind { margin-left: var(--space-2); color: var(--color-muted); font-size: 0.8125rem; }
+  /* 名前と「主人公」などの区分を、顔の画像の中央の高さにそろえて1行に並べる */
+  .row-head { display: flex; align-items: center; gap: var(--space-2); }
+  .kind { color: var(--color-muted); font-size: 0.8125rem; line-height: 1; }
   td { text-align: center; }
   .dot { display: inline-block; width: 14px; height: 14px; border-radius: 50%; background: var(--lane); }
   .none { display: inline-block; width: 8px; height: 2px; background: var(--color-rule); vertical-align: middle; }
