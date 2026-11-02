@@ -349,12 +349,12 @@ assets:
     credit: "© Bandai Namco Entertainment Europe S.A.S.。Steam のストアページのヘッダー画像"
   - id: title-ln1-dlc
     file: titles/ln1-dlc.jpg
-    alt: Secrets of The Mawのストア画像
+    alt: Secrets of The Maw のキービジュアル（ランナウェイ・キッドと管理人の腕）
     kind: official-art
     self_captured: false
     source_name: Steam（Secrets of The Maw）
     source_url: "https://store.steampowered.com/app/640920/"
-    credit: "© Bandai Namco Entertainment Europe S.A.S.。Steam のストアページのヘッダー画像"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。Steam のストアページの背景画像（DL マークの無いもの）を切り出して縮小"
   - id: title-ln2
     file: titles/ln2.jpg
     alt: リトルナイトメア2のストア画像
@@ -381,12 +381,12 @@ assets:
     credit: "© Bandai Namco Entertainment Europe S.A.S.。Steam のストアページのヘッダー画像"
   - id: title-ln3-dlc
     file: titles/ln3-dlc.jpg
-    alt: リトルナイトメア3 追加チャプターのストア画像
+    alt: リトルナイトメア3 追加チャプター「バックステージ」のキービジュアル
     kind: official-art
     self_captured: false
-    source_name: Steam（バックステージ）
-    source_url: "https://store.steampowered.com/app/2088781/"
-    credit: "© Bandai Namco Entertainment Europe S.A.S.。Steam のストアページのヘッダー画像"
+    source_name: バンダイナムコエンターテインメントのリリース（PR TIMES）
+    source_url: "https://animeanime.jp/release/prtimes/20260930/316328.html"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。公式リリースのキービジュアルを縮小"
   - id: title-vln
     file: titles/vln.jpg
     alt: ベリーリトルナイトメアの黄色いレインコートの少女
