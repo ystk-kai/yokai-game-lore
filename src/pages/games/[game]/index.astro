@@ -10,7 +10,8 @@ export async function getStaticPaths() {
 }
 const { g } = Astro.props;
 const pages = await pagesOf(g.id);
-const groups = groupBySection(pages);
+// 作品1本のページは下の「作品一覧」のカードから開くので、上のページ一覧にはシリーズ全体のページだけを置く
+const groups = groupBySection(pages.filter((p) => !p.data.work));
 ---
 <GameLayout game={g} pages={pages} title={g.data.title} description={g.data.summary}>
   <header class="game-head">
