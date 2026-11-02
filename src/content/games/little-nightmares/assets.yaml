@@ -1,0 +1,340 @@
+# 掲載の根拠は game.yaml の rights.official_assets_note（規約上の許可ではなく運営者の判断）。原寸は refs/little-nightmares/images/ にある
+# 1) 権利者が Steam のストアページに出している公式のスクリーンショット（2026-11-03 取得）。見た目は 1168x368、顔は 150px に切り出して縮小
+assets:
+  - id: six-look
+    file: characters/six-look.jpg
+    alt: モウの監獄にいるシックス
+    kind: screenshot
+    self_captured: false
+    source_name: Steam（リトルナイトメア）
+    source_url: "https://store.steampowered.com/app/424840/"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。公式のスクリーンショット（Steam のストアページ）から切り出して縮小"
+  - id: six-face
+    file: characters/six-face.png
+    alt: シックスの姿
+    kind: screenshot
+    self_captured: false
+    source_name: Steam（リトルナイトメア）
+    source_url: "https://store.steampowered.com/app/424840/"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。公式のスクリーンショット（Steam のストアページ）から切り出して縮小"
+  - id: runaway-kid-look
+    file: characters/runaway-kid-look.jpg
+    alt: 深淵のソファーに立つランナウェイ・キッド
+    kind: screenshot
+    self_captured: false
+    source_name: Steam（Secrets of The Maw「深淵」）
+    source_url: "https://store.steampowered.com/app/584095/"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。公式のスクリーンショット（Steam のストアページ）から切り出して縮小"
+  - id: runaway-kid-face
+    file: characters/runaway-kid-face.png
+    alt: ランナウェイ・キッドの姿
+    kind: screenshot
+    self_captured: false
+    source_name: Steam（Secrets of The Maw「深淵」）
+    source_url: "https://store.steampowered.com/app/584095/"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。公式のスクリーンショット（Steam のストアページ）から切り出して縮小"
+  - id: mono-look
+    file: characters/mono-look.jpg
+    alt: 浴室のモノとシックス
+    kind: screenshot
+    self_captured: false
+    source_name: Steam（リトルナイトメア2）
+    source_url: "https://store.steampowered.com/app/860510/"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。公式のスクリーンショット（Steam のストアページ）から切り出して縮小"
+  - id: mono-face
+    file: characters/mono-face.png
+    alt: モノの姿
+    kind: screenshot
+    self_captured: false
+    source_name: Steam（リトルナイトメア2）
+    source_url: "https://store.steampowered.com/app/860510/"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。公式のスクリーンショット（Steam のストアページ）から切り出して縮小"
+  - id: low-look
+    file: characters/low-look.jpg
+    alt: ロゥとアローン
+    kind: screenshot
+    self_captured: false
+    source_name: Steam（リトルナイトメア3）
+    source_url: "https://store.steampowered.com/app/1392860/"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。公式のスクリーンショット（Steam のストアページ）から切り出して縮小"
+  - id: low-face
+    file: characters/low-face.png
+    alt: ロゥの姿
+    kind: screenshot
+    self_captured: false
+    source_name: Steam（リトルナイトメア3）
+    source_url: "https://store.steampowered.com/app/1392860/"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。公式のスクリーンショット（Steam のストアページ）から切り出して縮小"
+  - id: alone-look
+    file: characters/alone-look.jpg
+    alt: ロゥとアローン
+    kind: screenshot
+    self_captured: false
+    source_name: Steam（リトルナイトメア3）
+    source_url: "https://store.steampowered.com/app/1392860/"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。公式のスクリーンショット（Steam のストアページ）から切り出して縮小"
+  - id: alone-face
+    file: characters/alone-face.png
+    alt: アローンの姿
+    kind: screenshot
+    self_captured: false
+    source_name: Steam（リトルナイトメア3）
+    source_url: "https://store.steampowered.com/app/1392860/"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。公式のスクリーンショット（Steam のストアページ）から切り出して縮小"
+  - id: nome-look
+    file: characters/nome-look.jpg
+    alt: ひみつのへやのノームたちとキッド
+    kind: screenshot
+    self_captured: false
+    source_name: Steam（Secrets of The Maw「ひみつのへや」）
+    source_url: "https://store.steampowered.com/app/584096/"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。公式のスクリーンショット（Steam のストアページ）から切り出して縮小"
+  - id: nome-face
+    file: characters/nome-face.png
+    alt: ノームの姿
+    kind: screenshot
+    self_captured: false
+    source_name: Steam（Secrets of The Maw「ひみつのへや」）
+    source_url: "https://store.steampowered.com/app/584096/"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。公式のスクリーンショット（Steam のストアページ）から切り出して縮小"
+  - id: dime-look
+    file: characters/dime-look.jpg
+    alt: バックステージのロゥとダイム
+    kind: screenshot
+    self_captured: false
+    source_name: Steam（リトルナイトメア3「バックステージ」）
+    source_url: "https://store.steampowered.com/app/2088781/"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。公式のスクリーンショット（Steam のストアページ）から切り出して縮小"
+  - id: the-janitor-look
+    file: characters/the-janitor-look.jpg
+    alt: シックスに腕を伸ばす管理人
+    kind: screenshot
+    self_captured: false
+    source_name: Steam（リトルナイトメア）
+    source_url: "https://store.steampowered.com/app/424840/"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。公式のスクリーンショット（Steam のストアページ）から切り出して縮小"
+  - id: the-janitor-face
+    file: characters/the-janitor-face.png
+    alt: 管理人の顔
+    kind: screenshot
+    self_captured: false
+    source_name: Steam（リトルナイトメア）
+    source_url: "https://store.steampowered.com/app/424840/"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。公式のスクリーンショット（Steam のストアページ）から切り出して縮小"
+  - id: twin-chefs-look
+    file: characters/twin-chefs-look.jpg
+    alt: 台所のシェフと、梁の上のシックス
+    kind: screenshot
+    self_captured: false
+    source_name: Steam（リトルナイトメア）
+    source_url: "https://store.steampowered.com/app/424840/"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。公式のスクリーンショット（Steam のストアページ）から切り出して縮小"
+  - id: twin-chefs-face
+    file: characters/twin-chefs-face.png
+    alt: シェフの姿
+    kind: screenshot
+    self_captured: false
+    source_name: Steam（リトルナイトメア）
+    source_url: "https://store.steampowered.com/app/424840/"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。公式のスクリーンショット（Steam のストアページ）から切り出して縮小"
+  - id: guests-look
+    file: characters/guests-look.jpg
+    alt: 食卓のゲスト
+    kind: screenshot
+    self_captured: false
+    source_name: Steam（リトルナイトメア）
+    source_url: "https://store.steampowered.com/app/424840/"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。公式のスクリーンショット（Steam のストアページ）から切り出して縮小"
+  - id: guests-face
+    file: characters/guests-face.png
+    alt: ゲストの顔
+    kind: screenshot
+    self_captured: false
+    source_name: Steam（リトルナイトメア）
+    source_url: "https://store.steampowered.com/app/424840/"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。公式のスクリーンショット（Steam のストアページ）から切り出して縮小"
+  - id: hunter-look
+    file: characters/hunter-look.jpg
+    alt: 明かりを持った猟師と、モノ
+    kind: screenshot
+    self_captured: false
+    source_name: Steam（リトルナイトメア2）
+    source_url: "https://store.steampowered.com/app/860510/"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。公式のスクリーンショット（Steam のストアページ）から切り出して縮小"
+  - id: teacher-look
+    file: characters/teacher-look.jpg
+    alt: 本棚の陰から見る先生と、シックス
+    kind: screenshot
+    self_captured: false
+    source_name: Steam（リトルナイトメア2）
+    source_url: "https://store.steampowered.com/app/860510/"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。公式のスクリーンショット（Steam のストアページ）から切り出して縮小"
+  - id: teacher-face
+    file: characters/teacher-face.png
+    alt: 先生の顔
+    kind: screenshot
+    self_captured: false
+    source_name: Steam（リトルナイトメア2）
+    source_url: "https://store.steampowered.com/app/860510/"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。公式のスクリーンショット（Steam のストアページ）から切り出して縮小"
+# 2) Little Nightmares Wiki (Fandom) の画像（作者が 2026-11-03 にブラウザで保存したもの）。アップロードした人は Fandom の API の imageinfo で確かめた
+  - id: dime-face
+    file: characters/dime-face.png
+    alt: ダイムの顔（ライトの付いた鍋の帽子）
+    kind: render
+    self_captured: false
+    source_name: Little Nightmares Wiki (Fandom)
+    source_url: "https://littlenightmares.fandom.com/wiki/File:Dime.png"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。画像: Little Nightmares Wiki (Fandom)、アップロード: VoxelotlAgain。顔の部分を切り抜いて縮小"
+  - id: hunter-face
+    file: characters/hunter-face.png
+    alt: 猟師の顔（袋のような頭とハンチング帽）
+    kind: render
+    self_captured: false
+    source_name: Little Nightmares Wiki (Fandom)
+    source_url: "https://littlenightmares.fandom.com/wiki/File:Hunter_full.png"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。画像: Little Nightmares Wiki (Fandom)、アップロード: GabL2401。顔の部分を切り抜いて縮小"
+  - id: the-lady-face
+    file: characters/the-lady-face.png
+    alt: レディの顔（白い仮面）
+    kind: render
+    self_captured: false
+    source_name: Little Nightmares Wiki (Fandom)
+    source_url: "https://littlenightmares.fandom.com/wiki/File:The-Lady-3.png"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。画像: Little Nightmares Wiki (Fandom)、アップロード: ShieldEgg。顔の部分を切り抜いて縮小"
+  - id: the-lady-look
+    file: characters/the-lady-look.jpg
+    alt: レディと、鏡を掲げるシックス
+    kind: screenshot
+    self_captured: false
+    source_name: Little Nightmares Wiki (Fandom)
+    source_url: "https://littlenightmares.fandom.com/wiki/File:Final_boss_battle.jpg"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。出典: Little Nightmares Wiki (Fandom)（ゲーム画面）、アップロード: МХК46。切り出して縮小"
+  - id: granny-face
+    file: characters/granny-face.png
+    alt: 老婆の顔
+    kind: render
+    self_captured: false
+    source_name: Little Nightmares Wiki (Fandom)
+    source_url: "https://littlenightmares.fandom.com/wiki/File:Granny.png"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。画像: Little Nightmares Wiki (Fandom)、アップロード: Virus3000。顔の部分を切り抜いて縮小"
+  - id: granny-look
+    file: characters/granny-look.jpg
+    alt: 水中から顔を出す老婆
+    kind: screenshot
+    self_captured: false
+    source_name: Little Nightmares Wiki (Fandom)
+    source_url: "https://littlenightmares.fandom.com/wiki/File:Submergedgranny.png"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。出典: Little Nightmares Wiki (Fandom)（ゲーム画面）、アップロード: Elpistachio。切り出して縮小"
+  - id: the-doctor-face
+    file: characters/the-doctor-face.png
+    alt: ドクターの顔
+    kind: render
+    self_captured: false
+    source_name: Little Nightmares Wiki (Fandom)
+    source_url: "https://littlenightmares.fandom.com/wiki/File:Doctor_full.png"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。画像: Little Nightmares Wiki (Fandom)、アップロード: VauntedGuy。顔の部分を切り抜いて縮小"
+  - id: the-doctor-look
+    file: characters/the-doctor-look.jpg
+    alt: 天井から手術台に手を伸ばすドクターと、モノとシックス
+    kind: screenshot
+    self_captured: false
+    source_name: Little Nightmares Wiki (Fandom)
+    source_url: "https://littlenightmares.fandom.com/wiki/File:Doctoroperate.jpg"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。出典: Little Nightmares Wiki (Fandom)（ゲーム画面）、アップロード: VauntedGuy。切り出して縮小"
+  - id: thin-man-face
+    file: characters/thin-man-face.png
+    alt: ノッポ男の顔（帽子をかぶった男）
+    kind: render
+    self_captured: false
+    source_name: Little Nightmares Wiki (Fandom)
+    source_url: "https://littlenightmares.fandom.com/wiki/File:Thinman_full.png"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。画像: Little Nightmares Wiki (Fandom)、アップロード: VoxelotlAgain。顔の部分を切り抜いて縮小"
+  - id: thin-man-look
+    file: characters/thin-man-look.jpg
+    alt: 雨の中でテレビをつかむノッポ男
+    kind: screenshot
+    self_captured: false
+    source_name: Little Nightmares Wiki (Fandom)
+    source_url: "https://littlenightmares.fandom.com/wiki/File:Thinmancatch.jpg"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。出典: Little Nightmares Wiki (Fandom)（ゲーム画面）、アップロード: VauntedGuy。切り出して縮小"
+  - id: monster-baby-face
+    file: characters/monster-baby-face.png
+    alt: モンスターベイビーの顔
+    kind: render
+    self_captured: false
+    source_name: Little Nightmares Wiki (Fandom)
+    source_url: "https://littlenightmares.fandom.com/wiki/File:MonsterBabyNormal.png"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。画像: Little Nightmares Wiki (Fandom)、アップロード: MouseFlash13。顔の部分を切り抜いて縮小"
+  - id: monster-baby-look
+    file: characters/monster-baby-look.jpg
+    alt: のぞき込むモンスターベイビー
+    kind: screenshot
+    self_captured: false
+    source_name: Little Nightmares Wiki (Fandom)
+    source_url: "https://littlenightmares.fandom.com/wiki/File:MonsterBabyLook.jpeg"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。出典: Little Nightmares Wiki (Fandom)（ゲーム画面）、アップロード: GabL2401。切り出して縮小"
+  - id: supervisor-face
+    file: characters/supervisor-face.png
+    alt: 工場長の顔
+    kind: render
+    self_captured: false
+    source_name: Little Nightmares Wiki (Fandom)
+    source_url: "https://littlenightmares.fandom.com/wiki/File:The_Supervisor_alt_render.png"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。画像: Little Nightmares Wiki (Fandom)、アップロード: Virus3000。顔の部分を切り抜いて縮小"
+  - id: supervisor-look
+    file: characters/supervisor-look.jpg
+    alt: 机の上をはって追う工場長
+    kind: screenshot
+    self_captured: false
+    source_name: Little Nightmares Wiki (Fandom)
+    source_url: "https://littlenightmares.fandom.com/wiki/File:Supervisor_chase.png"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。出典: Little Nightmares Wiki (Fandom)（ゲーム画面）、アップロード: Virus3000。切り出して縮小"
+  - id: kin-face
+    file: characters/kin-face.png
+    alt: キンの顔
+    kind: render
+    self_captured: false
+    source_name: Little Nightmares Wiki (Fandom)
+    source_url: "https://littlenightmares.fandom.com/wiki/File:Purple_Suit_Man_and_Dummy_LN3.png"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。画像: Little Nightmares Wiki (Fandom)、アップロード: Virus3000。顔の部分を切り抜いて縮小"
+  - id: kin-look
+    file: characters/kin-look.jpg
+    alt: キン
+    kind: screenshot
+    self_captured: false
+    source_name: Little Nightmares Wiki (Fandom)
+    source_url: "https://littlenightmares.fandom.com/wiki/File:Kin_forcing_kid_to_juggle.png"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。出典: Little Nightmares Wiki (Fandom)（ゲーム画面）、アップロード: GabL2401。切り出して縮小"
+  - id: hypnotist-face
+    file: characters/hypnotist-face.png
+    alt: Hypnotist の顔（眼鏡の老人）
+    kind: render
+    self_captured: false
+    source_name: Little Nightmares Wiki (Fandom)
+    source_url: "https://littlenightmares.fandom.com/wiki/File:Hypnotist_form_1.png"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。画像: Little Nightmares Wiki (Fandom)、アップロード: VoxelotlAgain。顔の部分を切り抜いて縮小"
+  - id: hypnotist-look
+    file: characters/hypnotist-look.jpg
+    alt: 巨大な顔を現した Hypnotist
+    kind: screenshot
+    self_captured: false
+    source_name: Little Nightmares Wiki (Fandom)
+    source_url: "https://littlenightmares.fandom.com/wiki/File:HypnotistFaceReveal.jpg"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。出典: Little Nightmares Wiki (Fandom)（ゲーム画面）、アップロード: GabL2401。切り出して縮小"
+  - id: puppeteer-face
+    file: characters/puppeteer-face.png
+    alt: 人形師の顔
+    kind: render
+    self_captured: false
+    source_name: Little Nightmares Wiki (Fandom)
+    source_url: "https://littlenightmares.fandom.com/wiki/File:Puppeteer.png"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。画像: Little Nightmares Wiki (Fandom)、アップロード: VoxelotlAgain。顔の部分を切り抜いて縮小"
+  - id: puppeteer-look
+    file: characters/puppeteer-look.jpg
+    alt: 子どもを追う人形師
+    kind: screenshot
+    self_captured: false
+    source_name: Little Nightmares Wiki (Fandom)
+    source_url: "https://littlenightmares.fandom.com/wiki/File:PuppeteerChase.png"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。出典: Little Nightmares Wiki (Fandom)（ゲーム画面）、アップロード: Virus3000。切り出して縮小"

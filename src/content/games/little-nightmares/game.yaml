@@ -1,0 +1,30 @@
+title: Little Nightmares
+title_ja: リトルナイトメア
+order: 3
+# 1・2 と DLC は Tarsier Studios、3 は Supermassive Games の単独開発（英語版 Wikipedia「Little Nightmares III」Development and release）
+developer: Tarsier Studios（1・2）／Supermassive Games（3）
+publisher: バンダイナムコエンターテインメント
+released: "2017-04-28"
+# 本編3作と、物語のある DLC・スピンオフ。日付は日本語版・英語版 Wikipedia、バンダイナムコの配信告知による
+titles:
+  - { id: ln1, label: リトルナイトメア, released: "2017-04-28" }
+  - { id: ln1-dlc, label: Secrets of The Maw, released: "2017-07-07" }
+  - { id: vln, label: ベリーリトルナイトメア, released: "2019-05" }
+  - { id: ln2, label: リトルナイトメア2, released: "2021-02-11" }
+  - { id: ln3, label: リトルナイトメア3, released: "2025-10-10" }
+  - { id: vr, label: Altered Echoes（VR）, released: "2026-04-24" }
+  - { id: ln3-dlc, label: リトルナイトメア3 追加チャプター, released: "2026-06-12" }
+tagline: 小さな子どもが、巨大な大人たちの悪夢の世界から逃げ出すシリーズ
+summary: 歪んだ世界「ノーウェア」で、小さな子どもが巨大な住人から隠れて逃げるホラーアドベンチャー。1・2 は Tarsier Studios、3 は Supermassive Games の開発。
+icon: gi:lantern-flame
+color: l3
+rights:
+  # 知的財産はバンダイナムコが持つ（英語版 Wikipedia「Little Nightmares III」）。© 行は公式サイトと配信告知の表記
+  holder: Bandai Namco Entertainment Europe S.A.S.
+  guideline_url: https://en.bandainamcoent.eu/terms-of-use
+  # バンダイナムコ欧州の公式サイトの利用規約「11. Intellectual property」の一文をそのまま写した。ファンサイトや画像の利用を認める規約は見つからなかった（2026-11-03 調べ）
+  guideline_quote: "In particular, the Visitor is prohibited from modifying, copying, reproducing, downloading, broadcasting, transmitting, commercially exploiting and/or distributing in any way whatsoever the services, the pages of the Site and their content, or the computer codes of the elements making up the services and the Site."
+  official_assets: true
+  official_assets_note: バンダイナムコ欧州の公式サイトの利用規約は、サイトの内容の複製や配布を禁じています。ファンサイトでの画像の掲載を認める規約は見つかりませんでした。載せるとしても、物語の説明に要るキャラクターの見た目などに限り、小さく、出典つきにします（運営者の判断）。権利者から求められたら速やかに削除します。画像は、権利者が Steam のストアページに出している公式のスクリーンショットから、人物の写った部分を切り出して載せています。
+  notice: "Little Nightmares™ & © Bandai Namco Entertainment Europe S.A.S. このページは非公式のファン考察で、権利者の承認・後援を受けていません。掲載画像の権利は権利者に帰属します。"
+  checked_at: "2026-11-03"

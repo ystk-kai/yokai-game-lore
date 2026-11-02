@@ -1,0 +1,94 @@
+# 作中の時系列。発売順（1 → 2 → 3）とは違い、『2』は『1』より前の話（Tarsier の David Mervik が GamingBible の取材で明言、2021-03）。
+# 『3』の位置は公式に決まっていない（プロデューサー Coralie Feniello は「物語は完全に独立、世界は 1・2 と同じ」）。根拠のない矢印は引かない
+type: flow
+title: 作中の時系列
+caption: 上から古い順に読む。小見出しは作品の名前、矢印の横は次の出来事とのつながり。破線は推測。『3』はほかの作品との前後が発表されていないので、矢印でつないでいない
+lanes:
+  - { id: six, label: シックスの物語（1・2・スピンオフ）, color: l3, icon: gi:lantern-flame }
+  - { id: other, label: 同じ時期の別の子ども, color: l5, icon: gi:cage }
+  - { id: ln3, label: リトルナイトメア3, color: l4, icon: gi:bird-mask }
+nodes:
+  - id: vln
+    label: 黄色いレインコートの少女と巣
+    short: 巣
+    sub: ベリーリトル
+    at: [0, 0]
+    lane: six
+    kind: start
+    icon: gi:house
+    evidence: official
+    detail: モバイル版『ベリーリトルナイトメア』（2019年）。黄色いレインコートの少女が「巣」と呼ばれる屋敷から逃げる。公式はシックスの過去の謎を明かす作品と説明し、『1』の前日譚と発表された
+    sources:
+      - { label: "Bandai Namco Europe「Very Little Nightmares」", url: "https://en.bandainamcoent.eu/news/very-little-nightmares-very-little-still-deadly" }
+      - { label: "Eurogamer（2019-04）", url: "https://www.eurogamer.net/articles/2019-04-10-darkly-adorable-horror-platformer-little-nightmares-is-getting-a-prequel-on-ios" }
+      - { label: "Wikipedia「Little Nightmares (franchise)」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_(franchise)" }
+  - id: ln2
+    label: モノとシックスが電波塔へ
+    short: 電波塔
+    sub: リトル2
+    at: [1, 0]
+    lane: six
+    icon: gi:radio-tower
+    detail: モノが荒野の小屋でシックスを助け、二人でペイルシティの電波塔を目指す。最後にシックスはモノの手を放して去り、モノは塔の中でノッポ男になる
+    sources:
+      - { label: Wikipedia『リトルナイトメア2』, url: "https://ja.wikipedia.org/wiki/%E3%83%AA%E3%83%88%E3%83%AB%E3%83%8A%E3%82%A4%E3%83%88%E3%83%A1%E3%82%A22" }
+      - { label: "Wikipedia「Little Nightmares II」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_II" }
+  - id: vr
+    label: ダーク・シックスが塔をさまよう
+    short: 影のシックス
+    sub: VR
+    at: [2, 0]
+    lane: other
+    icon: gi:vr-headset
+    detail: 『Altered Echoes』（VR、2026年）。ノッポ男がシックスをさらったとき、シックスから切り離された影「ダーク・シックス」が、電波塔の中でシックスを追う。日本語の名前は未確認
+    sources:
+      - { label: "Wikipedia「Little Nightmares VR: Altered Echoes」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_VR:_Altered_Echoes" }
+  - id: ln2-secret
+    label: シックスがモウのチラシを見る
+    short: チラシ
+    sub: リトル2 隠し
+    at: [3, 0]
+    lane: six
+    icon: gi:newspaper
+    detail: 『2』の隠しエンディング（ゲーム中の残留物をすべて集めると見られる）。テレビから出たシックスの前に影のシックスが現れ、床のモウのチラシを指す。シックスのお腹が鳴る
+    sources:
+      - { label: "Wikipedia「Little Nightmares II」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_II" }
+      - { label: Wikipedia『リトルナイトメア2』, url: "https://ja.wikipedia.org/wiki/%E3%83%AA%E3%83%88%E3%83%AB%E3%83%8A%E3%82%A4%E3%83%88%E3%83%A1%E3%82%A22" }
+  - id: ln1
+    label: シックスがモウから出る
+    short: モウ
+    sub: リトル1
+    at: [4, 0]
+    lane: six
+    icon: gi:lantern-flame
+    detail: シックスが、海を渡る巨大な船「モウ」の奥で目を覚まし、空腹に耐えながら上へ逃げる。最後にレディの首にかみついて力を得て、日の光の中へ出る
+    sources:
+      - { label: Wikipedia『リトルナイトメア』, url: "https://ja.wikipedia.org/wiki/LITTLE_NIGHTMARES-%E3%83%AA%E3%83%88%E3%83%AB%E3%83%8A%E3%82%A4%E3%83%88%E3%83%A1%E3%82%A2-" }
+  - id: dlc
+    label: キッドもモウから逃げる
+    short: キッド
+    sub: Secrets
+    at: [5, 0]
+    lane: other
+    icon: gi:cage
+    detail: DLC「Secrets of The Maw」。ランナウェイ・キッドがシックスと同じ時期にモウを逃げ回る。檻に入ったシックスが映り、最後はシックスが食べたノームがキッドだったと示される
+    sources:
+      - { label: Wikipedia『リトルナイトメア』, url: "https://ja.wikipedia.org/wiki/LITTLE_NIGHTMARES-%E3%83%AA%E3%83%88%E3%83%AB%E3%83%8A%E3%82%A4%E3%83%88%E3%83%A1%E3%82%A2-" }
+  - id: ln3
+    label: ロゥとアローンのスパイラル
+    short: スパイラル
+    sub: リトル3
+    at: [6, 0]
+    lane: ln3
+    icon: gi:spiral-shell
+    evidence: official
+    detail: 『3』と追加チャプター。ノーウェアの中の「スパイラル」が舞台で、シックスもモノも出てこない。プロデューサーは、物語は完全に独立していて、世界は『1』『2』と同じだと話している。ほかの作品との前後は発表されていない
+    sources:
+      - { label: "One More Game（プロデューサーへの取材、2024-10）", url: "https://onemoregame.ph/2024/10/little-nightmares-iii-interview-producer/" }
+      - { label: "Pocket Tactics（プロデューサーへの取材）", url: "https://www.pockettactics.com/little-nightmares-3/interview" }
+edges:
+  - { from: vln, to: ln2, label: 2の前とする記述, evidence: speculation }
+  - { from: ln2, to: vr, label: 2の途中 }
+  - { from: ln2, to: ln2-secret, label: 隠しエンディング }
+  - { from: ln2-secret, to: ln1, label: 2は1の前, evidence: official }
+  - { from: ln1, to: dlc, label: 同じ時期 }

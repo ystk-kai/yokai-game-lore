@@ -1,0 +1,305 @@
+# 名前は日本語版の表記。出典の優先は、バンダイナムコの発表（Game Watch・Gamer・電撃・Xbox Wire 日本版に載った公式の文）→ 日本語版 Wikipedia。
+# 日本語の公式の表記を確かめられなかった名前は、role か secret にそう書く
+characters:
+  # ── 主人公 ──
+  - id: six
+    name: シックス
+    name_en: Six
+    kind: protagonist
+    icon: gi:lantern-flame
+    role: 『1』の主人公。『2』ではモノと旅をする
+    looks: 黄色いレインコートの9歳の少女。『2』の序盤はまだレインコートを着ていない
+    first_seen: リトルナイトメア（モウの奥で目を覚ます）
+    secret: 『1』の結末でレディの首にかみつき、その力を得てモウの外へ出る。『2』ではノッポ男にさらわれて巨大な姿に変わり、モノを救ったあと、落ちかけたモノの手を放す
+    appears_in: [ln1, ln1-dlc, ln2, vr]
+    image: { thumb: six-face, wide: six-look }
+    evidence: ingame
+    sources:
+      - { label: Wikipedia『リトルナイトメア』, url: "https://ja.wikipedia.org/wiki/LITTLE_NIGHTMARES-%E3%83%AA%E3%83%88%E3%83%AB%E3%83%8A%E3%82%A4%E3%83%88%E3%83%A1%E3%82%A2-" }
+      - { label: "Wikipedia「Little Nightmares II」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_II" }
+  - id: runaway-kid
+    name: ランナウェイ・キッド
+    aliases: [キッド]
+    name_en: The Runaway Kid
+    kind: protagonist
+    icon: gi:cage
+    role: DLC「Secrets of The Maw」の主人公の少年
+    looks: 目を覆う長い前髪と、右足の足枷
+    first_seen: Secrets of The Maw（子ども部屋で悪夢から目を覚ます）
+    secret: 最後はレディにノームへ変えられ、ソーセージのそばに立つ。シックスが食べたノームが彼だったと示される
+    appears_in: [ln1-dlc]
+    image: { thumb: runaway-kid-face, wide: runaway-kid-look }
+    evidence: ingame
+    sources:
+      - { label: Game Watch（DLC 第2弾の配信告知）, url: "https://game.watch.impress.co.jp/docs/news/1090109.html" }
+      - { label: Wikipedia『リトルナイトメア』, url: "https://ja.wikipedia.org/wiki/LITTLE_NIGHTMARES-%E3%83%AA%E3%83%88%E3%83%AB%E3%83%8A%E3%82%A4%E3%83%88%E3%83%A1%E3%82%A2-" }
+  - id: mono
+    name: モノ
+    name_en: Mono
+    kind: protagonist
+    icon: gi:tv
+    role: 『2』の主人公。紙袋をかぶった少年
+    looks: 目の部分をくり抜いた紙袋を頭にかぶる
+    first_seen: リトルナイトメア2（荒野で目を覚ます）
+    secret: 電波塔の中に一人残され、夢で見た廊下の奥の部屋で年を取り、ノッポ男になる
+    appears_in: [ln2, vr]
+    image: { thumb: mono-face, wide: mono-look }
+    evidence: ingame
+    sources:
+      - { label: Wikipedia『リトルナイトメア2』, url: "https://ja.wikipedia.org/wiki/%E3%83%AA%E3%83%88%E3%83%AB%E3%83%8A%E3%82%A4%E3%83%88%E3%83%A1%E3%82%A22" }
+      - { label: "Wikipedia「Little Nightmares II」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_II" }
+  - id: low
+    name: ロゥ
+    name_en: Low
+    kind: protagonist
+    icon: gi:bird-mask
+    role: 『3』の主人公の一人。弓を使う
+    looks: カラスの仮面をかぶった少年
+    first_seen: リトルナイトメア3（鏡の中の窓の夢から目を覚ます）
+    secret: 道中で、施設の部屋にいた自分の記憶を思い出す。結末のあと、窓のある部屋で割れた鏡を直そうとしている
+    appears_in: [ln3, ln3-dlc]
+    image: { thumb: low-face, wide: low-look }
+    evidence: ingame
+    sources:
+      - { label: Xbox Wire 日本版, url: "https://news.xbox.com/ja-jp/2025/10/16/little-nightmares-iii-spooky-locations/" }
+      - { label: "Wikipedia「Little Nightmares III」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_III" }
+  - id: alone
+    name: アローン
+    name_en: Alone
+    kind: protagonist
+    icon: gi:wrench
+    role: 『3』の主人公の一人。レンチを使う
+    looks: 緑のつなぎと飛行帽の少女
+    first_seen: リトルナイトメア3（スパイラルでロゥに加わる）
+    secret: 最後の鏡を通り抜けられずに外へはじき出され、服と紙だけを残して消える。紙にはロゥとアローンが並ぶ絵が描かれていた
+    appears_in: [ln3, ln3-dlc]
+    image: { thumb: alone-face, wide: alone-look }
+    evidence: ingame
+    sources:
+      - { label: Xbox Wire 日本版, url: "https://news.xbox.com/ja-jp/2025/10/16/little-nightmares-iii-spooky-locations/" }
+      - { label: "Wikipedia「Little Nightmares III」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_III" }
+  # ── 仲間 ──
+  - id: nome
+    name: ノーム
+    name_en: Nome
+    kind: ally
+    icon: gi:dwarf-face
+    role: モウにひそむ小さく臆病な住人。シックスが抱きしめると仲良くなる
+    looks: 三角錐の被り物をしたような姿
+    first_seen: リトルナイトメア
+    secret: 『3』の見世物小屋にも小さな集団で住んでいる（Xbox Wire 日本版）
+    appears_in: [ln1, ln1-dlc, ln3]
+    image: { thumb: nome-face, wide: nome-look }
+    evidence: ingame
+    sources:
+      - { label: Gamer（『1』の日本語版の紹介）, url: "https://www.gamer.ne.jp/news/201704130001/" }
+      - { label: Xbox Wire 日本版, url: "https://news.xbox.com/ja-jp/2025/10/16/little-nightmares-iii-spooky-locations/" }
+  - id: dime
+    name: ダイム
+    name_en: Dime
+    kind: ally
+    icon: gi:torch
+    role: 追加チャプター「バックステージ」でロゥを導く少女
+    looks: 光のトーチ帽をかぶる
+    first_seen: 追加チャプター 第1弾 バックステージ
+    secret: 鏡を通り抜けられず、鏡の浮かぶ空間に取り残される。第2弾「海岸」では怪物の姿で現れ、ロゥになだめられる
+    appears_in: [ln3-dlc]
+    image: { thumb: dime-face, wide: dime-look }
+    evidence: ingame
+    sources:
+      - { label: 電撃オンライン（第1弾の配信告知）, url: "https://dengekionline.com/article/202606/78141" }
+      - { label: "Wikipedia「Little Nightmares III」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_III" }
+  # ── 『1』とDLC の住人 ──
+  - id: the-janitor
+    name: 管理人
+    name_en: The Janitor
+    kind: other
+    icon: gi:cage
+    role: 『1』の監獄と隠れ家にいる、目の見えない長い腕の男
+    first_seen: リトルナイトメア
+    secret: シックスを追い詰めるが、閉まる扉に両腕を切り落とされる
+    appears_in: [ln1, ln1-dlc]
+    image: { thumb: the-janitor-face, wide: the-janitor-look }
+    evidence: ingame
+    sources:
+      - { label: Gamer（『1』の日本語版の紹介）, url: "https://www.gamer.ne.jp/news/201704130001/" }
+      - { label: Wikipedia『リトルナイトメア』, url: "https://ja.wikipedia.org/wiki/LITTLE_NIGHTMARES-%E3%83%AA%E3%83%88%E3%83%AB%E3%83%8A%E3%82%A4%E3%83%88%E3%83%A1%E3%82%A2-" }
+  - id: twin-chefs
+    name: 双子のシェフ
+    name_en: The Twin Chefs
+    kind: other
+    icon: gi:chef-toque
+    role: モウの台所で、ゲストのごちそうを作る二人組
+    first_seen: リトルナイトメア
+    appears_in: [ln1]
+    image: { thumb: twin-chefs-face, wide: twin-chefs-look }
+    evidence: ingame
+    sources:
+      - { label: Gamer（『1』の日本語版の紹介）, url: "https://www.gamer.ne.jp/news/201704130001/" }
+  - id: guests
+    name: ゲスト
+    name_en: The Guests
+    kind: other
+    icon: gi:knife-fork
+    role: 船でモウに乗り込み、ごちそうを食べ続ける肥満体の客
+    first_seen: リトルナイトメア
+    secret: レディの力を得たシックスがゲストエリアを歩くと、近くのゲストは倒れていく
+    appears_in: [ln1]
+    image: { thumb: guests-face, wide: guests-look }
+    evidence: ingame
+    sources:
+      - { label: Gamer（『1』の日本語版の紹介）, url: "https://www.gamer.ne.jp/news/201704130001/" }
+      - { label: Wikipedia『リトルナイトメア』, url: "https://ja.wikipedia.org/wiki/LITTLE_NIGHTMARES-%E3%83%AA%E3%83%88%E3%83%AB%E3%83%8A%E3%82%A4%E3%83%88%E3%83%A1%E3%82%A2-" }
+  - id: the-lady
+    name: レディ
+    name_en: The Lady
+    kind: other
+    icon: gi:mirror-mirror
+    role: 白い仮面のモウの主。シックスの夢に出てくる
+    looks: 着物と能面のような仮面。鏡に映る素顔は崩れている（DLC）
+    first_seen: リトルナイトメア
+    secret: 割れていない鏡に映った自分の姿で弱ったところを、シックスに首をかまれて死ぬ。DLC ではキッドをノームに変える
+    appears_in: [ln1, ln1-dlc]
+    image: { thumb: the-lady-face, wide: the-lady-look }
+    evidence: ingame
+    sources:
+      - { label: Wikipedia『リトルナイトメア』, url: "https://ja.wikipedia.org/wiki/LITTLE_NIGHTMARES-%E3%83%AA%E3%83%88%E3%83%AB%E3%83%8A%E3%82%A4%E3%83%88%E3%83%A1%E3%82%A2-" }
+      - { label: "Wikipedia「Little Nightmares」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares" }
+  - id: granny
+    name: 老婆
+    name_en: The Granny
+    kind: other
+    icon: gi:ship-wreck
+    role: DLC の水没した深淵で水中を泳ぐ住人。日本語の公式の名前は未確認
+    first_seen: Secrets of The Maw（The Depths-深淵-）
+    secret: キッドが水に押し込んだテレビの電気で感電して死ぬ
+    appears_in: [ln1-dlc]
+    image: { thumb: granny-face, wide: granny-look }
+    evidence: ingame
+    sources:
+      - { label: Wikipedia『リトルナイトメア』, url: "https://ja.wikipedia.org/wiki/LITTLE_NIGHTMARES-%E3%83%AA%E3%83%88%E3%83%AB%E3%83%8A%E3%82%A4%E3%83%88%E3%83%A1%E3%82%A2-" }
+  # ── 『2』の住人 ──
+  - id: hunter
+    name: 猟師
+    aliases: [ハンター]
+    name_en: The Hunter
+    kind: other
+    icon: gi:shotgun
+    role: 荒野の小屋に住み、散弾銃で子どもを追う仮面の男
+    first_seen: リトルナイトメア2
+    secret: 小屋に追い詰めた二人に、散弾銃で撃ち返される
+    appears_in: [ln2]
+    image: { thumb: hunter-face, wide: hunter-look }
+    evidence: ingame
+    sources:
+      - { label: Game*Spark（『2』の序盤の紹介）, url: "https://www.gamespark.jp/article/2021/02/15/106081.html" }
+      - { label: Wikipedia『リトルナイトメア2』, url: "https://ja.wikipedia.org/wiki/%E3%83%AA%E3%83%88%E3%83%AB%E3%83%8A%E3%82%A4%E3%83%88%E3%83%A1%E3%82%A22" }
+  - id: teacher
+    name: 先生
+    name_en: The Teacher
+    kind: other
+    icon: gi:teacher
+    autolink: false
+    role: 学校の教師。首を長く伸ばして子どもを探す
+    first_seen: リトルナイトメア2
+    appears_in: [ln2, vr]
+    image: { thumb: teacher-face, wide: teacher-look }
+    evidence: ingame
+    sources:
+      - { label: Wikipedia『リトルナイトメア2』, url: "https://ja.wikipedia.org/wiki/%E3%83%AA%E3%83%88%E3%83%AB%E3%83%8A%E3%82%A4%E3%83%88%E3%83%A1%E3%82%A22" }
+  - id: doctor
+    name: ドクター
+    name_en: The Doctor
+    kind: other
+    icon: gi:hospital-cross
+    role: 病院の天井をはう医者
+    first_seen: リトルナイトメア2
+    secret: モノに焼却炉へ誘い込まれる。焼くか閉じ込めたままにするかをプレイヤーが選べる
+    appears_in: [ln2]
+    image: { thumb: the-doctor-face, wide: the-doctor-look }
+    evidence: ingame
+    sources:
+      - { label: Wikipedia『リトルナイトメア2』, url: "https://ja.wikipedia.org/wiki/%E3%83%AA%E3%83%88%E3%83%AB%E3%83%8A%E3%82%A4%E3%83%88%E3%83%A1%E3%82%A22" }
+      - { label: "Wikipedia「Little Nightmares II」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_II" }
+  - id: thin-man
+    name: ノッポ男
+    name_en: The Thin Man
+    kind: other
+    icon: gi:radio-tower
+    role: テレビを通り抜けて子どもを追う背の高い男。日本語版 Wikipedia の表記
+    first_seen: リトルナイトメア2
+    secret: 正体は、電波塔の中で年を取ったモノ。『1』の DLC の最後に映るテレビにも、似た姿が出る
+    appears_in: [ln1-dlc, ln2, vr]
+    image: { thumb: thin-man-face, wide: thin-man-look }
+    evidence: ingame
+    sources:
+      - { label: Wikipedia『リトルナイトメア2』, url: "https://ja.wikipedia.org/wiki/%E3%83%AA%E3%83%88%E3%83%AB%E3%83%8A%E3%82%A4%E3%83%88%E3%83%A1%E3%82%A22" }
+      - { label: "Wikipedia「Little Nightmares II」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_II" }
+  # ── 『3』の住人 ──
+  - id: monster-baby
+    name: モンスターベイビー
+    name_en: Monster Baby
+    kind: other
+    icon: gi:eye-target
+    role: ネクロポリスの巨大な人形。目で見た相手を石に変える
+    first_seen: リトルナイトメア3
+    appears_in: [ln3]
+    image: { thumb: monster-baby-face, wide: monster-baby-look }
+    evidence: ingame
+    sources:
+      - { label: 電撃オンライン, url: "https://dengekionline.com/article/202510/54945" }
+      - { label: "Wikipedia「Little Nightmares III」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_III" }
+  - id: supervisor
+    name: 工場長
+    name_en: The Supervisor
+    kind: other
+    icon: gi:factory
+    role: キャンディ工場を監視カメラで見張る、6本腕の女
+    first_seen: リトルナイトメア3
+    secret: 下半身を脱ぎ捨てて虫のような姿で追ってくるが、油圧プレスでつぶされる
+    appears_in: [ln3]
+    image: { thumb: supervisor-face, wide: supervisor-look }
+    evidence: ingame
+    sources:
+      - { label: Xbox Wire 日本版, url: "https://news.xbox.com/ja-jp/2025/10/16/little-nightmares-iii-spooky-locations/" }
+      - { label: "Wikipedia「Little Nightmares III」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_III" }
+  - id: kin
+    name: キン
+    name_en: The Kin
+    kind: other
+    icon: gi:puppet
+    role: カルネヴァーレの見世物の座長。子どもを捕らえて芸をさせる
+    first_seen: リトルナイトメア3
+    appears_in: [ln3]
+    image: { thumb: kin-face, wide: kin-look }
+    evidence: ingame
+    sources:
+      - { label: Xbox Wire 日本版, url: "https://news.xbox.com/ja-jp/2025/10/16/little-nightmares-iii-spooky-locations/" }
+      - { label: "Wikipedia「Little Nightmares III」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_III" }
+  - id: hypnotist
+    name: Hypnotist
+    autolink: false
+    name_en: The Hypnotist
+    kind: other
+    icon: gi:snake
+    role: 精神病院の巨人。手のひらに目がある。日本語の公式の名前は未確認
+    first_seen: リトルナイトメア3
+    secret: ロゥとアローンが力を合わせて倒し、建物が崩れる
+    appears_in: [ln3]
+    image: { thumb: hypnotist-face, wide: hypnotist-look }
+    evidence: ingame
+    sources:
+      - { label: "Wikipedia「Little Nightmares III」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_III" }
+  - id: puppeteer
+    name: 人形師
+    name_en: The Puppeteer
+    kind: other
+    icon: gi:puppet
+    role: 追加チャプター「バックステージ」でアローンをさらう、生きたマネキン
+    first_seen: 追加チャプター 第1弾 バックステージ
+    appears_in: [ln3-dlc]
+    image: { thumb: puppeteer-face, wide: puppeteer-look }
+    evidence: ingame
+    sources:
+      - { label: 電撃オンライン（第1弾の配信告知）, url: "https://dengekionline.com/article/202606/78141" }
+      - { label: "Wikipedia「Little Nightmares III」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_III" }

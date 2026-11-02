@@ -1,0 +1,284 @@
+# 作品ごとの物語の流れ（発売順）。作品の中だけを矢印でつなぎ、作品のあいだはつながない（作中の時系列は world-timeline.yaml）。
+# 舞台の日本語名: 『1』は日本語版 Wikipedia の「舞台・ステージ」、DLC は Game Watch と日本語版 Wikipedia、『3』は Xbox Wire 日本版と電撃・PR TIMES の配信告知。
+# 『2』の章の日本語の公式名は確かめられなかったので、英語版の章名（Wilderness など）を併記する
+type: flow
+title: 作品ごとの物語の流れ（発売順）
+caption: 作品の中は矢印でつながり、作品のあいだは切れている。色の四角とその横の名前が作品。作中の順番は「作中の時系列」の図を見る
+lanes:
+  - { id: ln1, label: リトルナイトメア, color: l3, icon: gi:lantern-flame }
+  - { id: dlc, label: Secrets of The Maw（DLC）, color: l5, icon: gi:cage }
+  - { id: ln2, label: リトルナイトメア2, color: l2, icon: gi:radio-tower }
+  - { id: ln3, label: リトルナイトメア3, color: l4, icon: gi:spiral-shell }
+  - { id: ln3dlc, label: 3の追加チャプター, color: l6, icon: gi:torch }
+nodes:
+  # ── リトルナイトメア ──
+  - id: ln1-prison
+    label: 監獄で目を覚ます
+    short: 目覚め
+    sub: 監獄
+    at: [0, 0]
+    lane: ln1
+    kind: start
+    icon: gi:lantern-flame
+    detail: シックスがレディの夢から目を覚ます。持ち物はライターだけ。ヒルや、見た者を石にする目をよけて進む。空腹で動けなくなり、他の子どもにもらったパンを食べる
+    sources:
+      - { label: Wikipedia『リトルナイトメア』, url: "https://ja.wikipedia.org/wiki/LITTLE_NIGHTMARES-%E3%83%AA%E3%83%88%E3%83%AB%E3%83%8A%E3%82%A4%E3%83%88%E3%83%A1%E3%82%A2-" }
+  - id: ln1-lair
+    label: 管理人の腕を断つ
+    short: 管理人
+    sub: 隠れ家
+    at: [1, 0]
+    lane: ln1
+    kind: boss
+    icon: gi:cage
+    detail: 罠の生肉を食べて管理人に捕まるが、檻を倒して逃げる。追い詰めてきた管理人の両腕を、閉まる扉で切り落とす
+    sources:
+      - { label: Wikipedia『リトルナイトメア』, url: "https://ja.wikipedia.org/wiki/LITTLE_NIGHTMARES-%E3%83%AA%E3%83%88%E3%83%AB%E3%83%8A%E3%82%A4%E3%83%88%E3%83%A1%E3%82%A2-" }
+  - id: ln1-kitchen
+    label: 双子のシェフから逃げる
+    short: 双子
+    sub: 台所
+    at: [2, 0]
+    lane: ln1
+    icon: gi:chef-toque
+    detail: 空腹で生きたネズミを食べる。包まれた子どもが送られてくる台所で、ごちそうを作る双子のシェフから逃げる
+    sources:
+      - { label: Wikipedia『リトルナイトメア』, url: "https://ja.wikipedia.org/wiki/LITTLE_NIGHTMARES-%E3%83%AA%E3%83%88%E3%83%AB%E3%83%8A%E3%82%A4%E3%83%88%E3%83%A1%E3%82%A2-" }
+  - id: ln1-guest
+    label: ゲストの宴とノーム
+    short: ノーム
+    sub: ゲストエリア
+    at: [3, 0]
+    lane: ln1
+    icon: gi:knife-fork
+    detail: 船でやってくるゲストの行列を見る。和風のゲストエリアで、ゲストはごちそうを食べ続ける。空腹のシックスは、ソーセージを差し出したノームを食べる
+    sources:
+      - { label: Wikipedia『リトルナイトメア』, url: "https://ja.wikipedia.org/wiki/LITTLE_NIGHTMARES-%E3%83%AA%E3%83%88%E3%83%AB%E3%83%8A%E3%82%A4%E3%83%88%E3%83%A1%E3%82%A2-" }
+  - id: ln1-lady
+    label: レディを鏡で退け、食べる
+    short: レディ
+    sub: レディの部屋
+    at: [4, 0]
+    lane: ln1
+    kind: boss
+    icon: gi:mirror-mirror
+    detail: レディを割れていない鏡で退ける。弱ったレディの首にかみついて殺し、黒いオーラをまとう
+    sources:
+      - { label: Wikipedia『リトルナイトメア』, url: "https://ja.wikipedia.org/wiki/LITTLE_NIGHTMARES-%E3%83%AA%E3%83%88%E3%83%AB%E3%83%8A%E3%82%A4%E3%83%88%E3%83%A1%E3%82%A2-" }
+  - id: ln1-end
+    label: 日の光の中へ
+    short: 脱出
+    sub: 結末
+    at: [5, 0]
+    lane: ln1
+    kind: ending
+    icon: gi:lantern-flame
+    detail: ゲストエリアを歩くと、近くのゲストは倒れていく。シックスは階段を上って日の光の中へ出る。クレジットのあと、遠くで霧笛が鳴るなか、シックスがモウの上に立つ
+    sources:
+      - { label: Wikipedia『リトルナイトメア』, url: "https://ja.wikipedia.org/wiki/LITTLE_NIGHTMARES-%E3%83%AA%E3%83%88%E3%83%AB%E3%83%8A%E3%82%A4%E3%83%88%E3%83%A1%E3%82%A2-" }
+      - { label: "Wikipedia「Little Nightmares」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares" }
+  # ── Secrets of The Maw ──
+  - id: dlc-depths
+    label: 深淵で老婆を倒す
+    short: 老婆
+    sub: 深淵
+    at: [6, 0]
+    lane: dlc
+    kind: start
+    icon: gi:ship-wreck
+    detail: ランナウェイ・キッドが子ども部屋から逃げ、水没した深淵へ落ちる。水中を泳ぐ老婆を、テレビの電気で感電させる。最後は管理人に捕まり、シックスのいる檻の隣に入れられる
+    sources:
+      - { label: Wikipedia『リトルナイトメア』, url: "https://ja.wikipedia.org/wiki/LITTLE_NIGHTMARES-%E3%83%AA%E3%83%88%E3%83%AB%E3%83%8A%E3%82%A4%E3%83%88%E3%83%A1%E3%82%A2-" }
+  - id: dlc-hideaway
+    label: 動力室のノームたち
+    short: 動力室
+    sub: ひみつのへや
+    at: [7, 0]
+    lane: dlc
+    icon: gi:dwarf-face
+    detail: 包まれて台所へ運ばれる途中で逃げ、モウの動力室へ落ちる。ノームの力を借りて炉を動かす。炉の光が映すノームの影は、子どもの形をしていた
+    sources:
+      - { label: Game Watch（DLC 第2弾の配信告知）, url: "https://game.watch.impress.co.jp/docs/news/1090109.html" }
+      - { label: Wikipedia『リトルナイトメア』, url: "https://ja.wikipedia.org/wiki/LITTLE_NIGHTMARES-%E3%83%AA%E3%83%88%E3%83%AB%E3%83%8A%E3%82%A4%E3%83%88%E3%83%A1%E3%82%A2-" }
+  - id: dlc-residence
+    label: ノームに変えられる
+    short: ノーム化
+    sub: アトリエ
+    at: [8, 0]
+    lane: dlc
+    kind: ending
+    icon: gi:mirror-mirror
+    detail: 「静寂のアトリエ」。レディの住まいで、鏡に映るレディの崩れた素顔を見る。レディに気づかれてノームに変えられ、シックスが通るゲストエリアのソーセージのそばに立つ。クレジットの最後のテレビに、ノッポ男に似た姿が映る
+    sources:
+      - { label: Wikipedia『リトルナイトメア』, url: "https://ja.wikipedia.org/wiki/LITTLE_NIGHTMARES-%E3%83%AA%E3%83%88%E3%83%AB%E3%83%8A%E3%82%A4%E3%83%88%E3%83%A1%E3%82%A2-" }
+      - { label: "Wikipedia「Little Nightmares」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares" }
+  # ── リトルナイトメア2 ──
+  - id: ln2-wild
+    label: 猟師の小屋でシックスと出会う
+    short: 猟師
+    sub: 荒野
+    at: [9, 0]
+    lane: ln2
+    kind: start
+    icon: gi:shotgun
+    detail: モノが、目の印のある扉の夢から目を覚ます。猟師の小屋に捕らわれていたシックスを助け、追ってきた猟師を散弾銃で撃ち返す。扉を筏にしてペイルシティへ流れ着く
+    sources:
+      - { label: Game*Spark（『2』の序盤の紹介）, url: "https://www.gamespark.jp/article/2021/02/15/106081.html" }
+      - { label: "Wikipedia「Little Nightmares II」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_II" }
+  - id: ln2-school
+    label: 学校で先生から逃げる
+    short: 先生
+    sub: 学校
+    at: [10, 0]
+    lane: ln2
+    icon: gi:teacher
+    detail: シックスがいじめっこに捕まり、モノが助け出す。首を伸ばす先生から二人で逃げる
+    sources:
+      - { label: Wikipedia『リトルナイトメア2』, url: "https://ja.wikipedia.org/wiki/%E3%83%AA%E3%83%88%E3%83%AB%E3%83%8A%E3%82%A4%E3%83%88%E3%83%A1%E3%82%A22" }
+  - id: ln2-hospital
+    label: 病院でドクターを焼却炉へ
+    short: ドクター
+    sub: 病院
+    at: [11, 0]
+    lane: ln2
+    kind: boss
+    icon: gi:hospital-cross
+    detail: 途中でシックスの黄色いレインコートを見つける。病院の患者とドクターをかわし、ドクターを焼却炉に誘い込む
+    sources:
+      - { label: Wikipedia『リトルナイトメア2』, url: "https://ja.wikipedia.org/wiki/%E3%83%AA%E3%83%88%E3%83%AB%E3%83%8A%E3%82%A4%E3%83%88%E3%83%A1%E3%82%A22" }
+  - id: ln2-city
+    label: ノッポ男がシックスをさらう
+    short: ノッポ男
+    sub: ペイルシティ
+    at: [12, 0]
+    lane: ln2
+    icon: gi:tv
+    detail: 電波塔の電波でテレビに釘付けの視聴者たちの街。モノがテレビの中の廊下の扉を開くと、ノッポ男が現れてシックスをさらう。モノはノッポ男と同じ力に目覚めて彼を退ける
+    sources:
+      - { label: Wikipedia『リトルナイトメア2』, url: "https://ja.wikipedia.org/wiki/%E3%83%AA%E3%83%88%E3%83%AB%E3%83%8A%E3%82%A4%E3%83%88%E3%83%A1%E3%82%A22" }
+      - { label: "Wikipedia「Little Nightmares II」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_II" }
+  - id: ln2-tower
+    label: 電波塔でシックスを取り戻す
+    short: シックス
+    sub: 電波塔
+    at: [13, 0]
+    lane: ln2
+    kind: boss
+    icon: gi:radio-tower
+    detail: 塔の中のシックスは巨大な姿に変わっていた。モノがオルゴールを壊すと元に戻る。崩れる塔の中を、目と肉の塊に追われて逃げる
+    sources:
+      - { label: "Wikipedia「Little Nightmares II」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_II" }
+  - id: ln2-end
+    label: 手を放され、ノッポ男になる
+    short: 手を放す
+    sub: 結末
+    at: [14, 0]
+    lane: ln2
+    kind: ending
+    icon: gi:door
+    detail: シックスは落ちかけたモノの手を放し、テレビを通って去る。塔に残されたモノは椅子に座り、夢の廊下の奥の部屋で年を取ってノッポ男になる。隠しエンディングでは、シックスがモウのチラシを見る
+    sources:
+      - { label: "Wikipedia「Little Nightmares II」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_II" }
+      - { label: Wikipedia『リトルナイトメア2』, url: "https://ja.wikipedia.org/wiki/%E3%83%AA%E3%83%88%E3%83%AB%E3%83%8A%E3%82%A4%E3%83%88%E3%83%A1%E3%82%A22" }
+  # ── リトルナイトメア3 ──
+  - id: ln3-necro
+    label: モンスターベイビーの砂漠
+    short: ベイビー
+    sub: ネクロポリス
+    at: [15, 0]
+    lane: ln3
+    kind: start
+    icon: gi:desert
+    detail: ロゥが鏡の中の窓の夢から目を覚まし、アローンと出会う。砂漠の古代都市で、見た相手を石にするモンスターベイビーから逃げる。ロゥは施設の部屋にいた自分の記憶を見る
+    sources:
+      - { label: Xbox Wire 日本版, url: "https://news.xbox.com/ja-jp/2025/10/16/little-nightmares-iii-spooky-locations/" }
+      - { label: "Wikipedia「Little Nightmares III」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_III" }
+  - id: ln3-candy
+    label: 工場長をプレスでつぶす
+    short: 工場長
+    sub: キャンディ工場
+    at: [16, 0]
+    lane: ln3
+    kind: boss
+    icon: gi:factory
+    detail: 鏡を通ってキャンディ工場へ。監視カメラで見張る工場長から隠れ、カメラを止める。虫の姿になって追ってきた工場長を油圧プレスでつぶす
+    sources:
+      - { label: Xbox Wire 日本版, url: "https://news.xbox.com/ja-jp/2025/10/16/little-nightmares-iii-spooky-locations/" }
+      - { label: "Wikipedia「Little Nightmares III」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_III" }
+  - id: ln3-carne
+    label: キンの見世物から逃げる
+    short: キン
+    sub: カルネヴァーレ
+    at: [17, 0]
+    lane: ln3
+    icon: gi:balloons
+    detail: 飛行船の上の遊園地。パペットとキンから逃げ、熱気球で飛び立つ。雷で気球が落ち、ロゥはまた記憶を見る。部屋にはアローンそっくりの人形があった
+    sources:
+      - { label: Xbox Wire 日本版, url: "https://news.xbox.com/ja-jp/2025/10/16/little-nightmares-iii-spooky-locations/" }
+      - { label: "Wikipedia「Little Nightmares III」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_III" }
+  - id: ln3-institute
+    label: 精神病院の巨人を倒す
+    short: 巨人
+    sub: 精神病院
+    at: [18, 0]
+    lane: ln3
+    kind: boss
+    icon: gi:snake
+    detail: ロゥの記憶の場所に似た廃墟の施設。アローン人形の力で周りを元の姿に戻しながら進み、手のひらに目のある巨人（英語名 Hypnotist）を二人で倒す
+    sources:
+      - { label: Xbox Wire 日本版, url: "https://news.xbox.com/ja-jp/2025/10/16/little-nightmares-iii-spooky-locations/" }
+      - { label: "Wikipedia「Little Nightmares III」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_III" }
+  - id: ln3-end
+    label: アローンが消える
+    short: 鏡
+    sub: 結末
+    at: [19, 0]
+    lane: ln3
+    kind: ending
+    icon: gi:mirror-mirror
+    detail: ロゥがアローンを引いて夢の鏡を通る。アローンだけがはじき出され、服と紙を残して消える。紙にはロゥとアローンが並ぶ絵。クレジットのあと、ロゥは窓のある部屋で割れた鏡を直そうとし、そばにアローン人形がある
+    sources:
+      - { label: "Wikipedia「Little Nightmares III」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_III" }
+  # ── 3の追加チャプター ──
+  - id: ln3dlc-back
+    label: ダイムと人形師からアローンを救う
+    short: ダイム
+    sub: バックステージ
+    at: [20, 0]
+    lane: ln3dlc
+    kind: start
+    icon: gi:torch
+    detail: カルネヴァーレの舞台裏。ロゥはトーチ帽の少女ダイムと組み、人形師にさらわれたアローンを助ける。鏡を通ると、ダイムだけが鏡の浮かぶ空間に取り残される
+    sources:
+      - { label: 電撃オンライン（第1弾の配信告知）, url: "https://dengekionline.com/article/202606/78141" }
+      - { label: "Wikipedia「Little Nightmares III」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_III" }
+  - id: ln3dlc-shores
+    label: 海岸の町と灯台
+    short: 灯台
+    sub: 海岸
+    at: [21, 0]
+    lane: ln3dlc
+    kind: ending
+    icon: gi:lighthouse
+    detail: 潜水服の子ども（英語名 Spare）を追って霧の海岸の町へ。ヒルに操られた死体から逃げ、灯台の鏡を通る。怪物の姿になったダイムをロゥがなだめ、ダイムは黙って二人を見送る
+    sources:
+      - { label: "PR TIMES（第2弾の配信告知）", url: "https://animeanime.jp/release/prtimes/20260930/316328.html" }
+      - { label: "Wikipedia「Little Nightmares III」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_III" }
+edges:
+  - { from: ln1-prison, to: ln1-lair }
+  - { from: ln1-lair, to: ln1-kitchen }
+  - { from: ln1-kitchen, to: ln1-guest }
+  - { from: ln1-guest, to: ln1-lady }
+  - { from: ln1-lady, to: ln1-end }
+  - { from: dlc-depths, to: dlc-hideaway }
+  - { from: dlc-hideaway, to: dlc-residence }
+  - { from: ln2-wild, to: ln2-school }
+  - { from: ln2-school, to: ln2-hospital }
+  - { from: ln2-hospital, to: ln2-city }
+  - { from: ln2-city, to: ln2-tower }
+  - { from: ln2-tower, to: ln2-end }
+  - { from: ln3-necro, to: ln3-candy }
+  - { from: ln3-candy, to: ln3-carne }
+  - { from: ln3-carne, to: ln3-institute }
+  - { from: ln3-institute, to: ln3-end }
+  - { from: ln3dlc-back, to: ln3dlc-shores }
