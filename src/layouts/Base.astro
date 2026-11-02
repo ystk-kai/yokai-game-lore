@@ -26,15 +26,13 @@ const full = title === site ? site : `${title} | ${site}`;
     <header class="site">
       <a class="brand" href={url()}><span class="mark" set:html={iconSvg('gi:scroll-unfurled', '1.4em')} />Yokai Game Lore</a>
       <nav aria-label="サイト">
-        <a href={url('guide')}>図の読み方</a>
-        <a href={url('credits')}>クレジット</a>
+        <a href={url('about')}>About</a>
       </nav>
     </header>
     <main id="main"><slot /></main>
     <footer class="site">
-      <span>非公式ファンサイト</span>
-      <a href={url('credits')}>クレジット</a>
-      <a href="https://github.com/ystk-kai/yokai-game-lore">GitHub</a>
+      <a href={url('credits')}><span class="fi" set:html={iconSvg('lucide:copyright')} />クレジット</a>
+      <a href="https://github.com/ystk-kai/yokai-game-lore" rel="noopener"><span class="fi" set:html={iconSvg('lucide:github')} />GitHub</a>
     </footer>
   </body>
 </html>
@@ -55,4 +53,6 @@ const full = title === site ? site : `${title} | ${site}`;
   footer.site { position: fixed; inset: auto 0 0 0; z-index: 20; height: var(--footer-h); display: flex; align-items: center; gap: var(--space-6);
     padding: 0 var(--page-pad); background: var(--color-surface); border-top: 1px solid var(--color-rule); font-size: var(--text-small); color: var(--color-muted); }
   footer.site a { color: var(--color-muted); text-decoration: none; } footer.site a:hover { color: var(--color-ink); }
+  footer.site a { display: inline-flex; align-items: center; gap: var(--space-1); }
+  .fi { line-height: 0; }
 </style>
