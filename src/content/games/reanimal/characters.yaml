@@ -200,9 +200,9 @@ characters:
     name_en: The Prisoner
     kind: protagonist
     icon: gi:photo-camera
-    role: DLC「The Prisoner」の主人公の1人
+    role: DLC - The Prisoner の主人公の1人
     looks: カメラを持ち、フラッシュで敵をひるませる
-    first_seen: DLC「The Prisoner」
+    first_seen: DLC - The Prisoner
     appears_in: [dlc1]
     evidence: official
     looks_url: "https://reanimal.thqnordic.com"
@@ -217,9 +217,9 @@ characters:
     name_en: The Soldier
     kind: protagonist
     icon: gi:battle-axe
-    role: DLC「The Prisoner」の主人公の1人。女の子
+    role: DLC - The Prisoner の主人公の1人。女の子
     looks: 錆びた鉄のヘルメットで顔の上半分が隠れ、金髪を2本の三つ編みにしている。斧で敵にとどめを刺す
-    first_seen: DLC「The Prisoner」
+    first_seen: DLC - The Prisoner
     appears_in: [dlc1]
     evidence: official
     looks_url: "https://reanimal.thqnordic.com"
@@ -234,7 +234,7 @@ characters:
     kind: creature
     icon: gi:flamethrower-soldier
     role: DLC 第1章で2人を追う。燃料タンクを撃ち抜かれて倒れる
-    first_seen: DLC「The Prisoner」
+    first_seen: DLC - The Prisoner
     appears_in: [dlc1]
     evidence: ingame
     image: { thumb: flamethrower-render, wide: flamethrower-look }
@@ -277,7 +277,7 @@ characters:
     icon: gi:bird-mask
     role: DLC 第1章でたびたび姿を見せる、謎の子ども
     looks: 鳥のくちばしのような形の暗い緑のフードで頭を覆い、血のしみのついた白い服を着ている
-    first_seen: DLC「The Prisoner」
+    first_seen: DLC - The Prisoner
     secret: 最後に、気を失った兵士のそばで、囚人に「彼女は知っているのか」と問いかけ、兵士が目を覚ます前に消える
     appears_in: [dlc1]
     evidence: ingame
@@ -306,7 +306,7 @@ characters:
     icon: gi:horse-head
     role: DLC 第1章の戦場にいる馬。襲ってこない
     looks: やせた茶色の馬
-    first_seen: DLC「The Prisoner」
+    first_seen: DLC - The Prisoner
     secret: もう1人の囚人になだめられた直後、空から落ちた爆弾で焼かれる。のちにマザーが馬を呑み込む
     appears_in: [dlc1]
     evidence: ingame

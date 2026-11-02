@@ -173,21 +173,21 @@ assets:
     credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。出典: kamigame（ゲーム画面のキャプチャ）"
   - id: prisoner-render
     file: characters/prisoner-render.png
-    alt: DLC「The Prisoner」の囚人の顔
+    alt: DLC - The Prisoner の囚人の顔
     kind: render
     source_name: REANIMAL Wiki (Fandom)
     source_url: "https://reanimal.fandom.com/wiki/File:ThePrisoner.png"
     credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。レンダー: VoxelotlAgain（REANIMAL Wiki / Fandom）"
   - id: soldier-dlc-render
     file: characters/soldier-dlc-render.png
-    alt: DLC「The Prisoner」の兵士の顔
+    alt: DLC - The Prisoner の兵士の顔
     kind: render
     source_name: REANIMAL Wiki (Fandom)
     source_url: "https://reanimal.fandom.com/wiki/File:TheSoldier.png"
     credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。レンダー: VoxelotlAgain（REANIMAL Wiki / Fandom）"
   - id: dlc-the-prisoner
     file: characters/dlc-the-prisoner.jpg
-    alt: DLC「The Prisoner」の兵士と囚人
+    alt: DLC - The Prisoner の兵士と囚人
     kind: official-art
     source_name: THQ Nordic 公式サイト
     source_url: "https://reanimal.thqnordic.com"

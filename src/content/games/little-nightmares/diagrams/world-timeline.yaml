@@ -71,7 +71,7 @@ nodes:
     at: [5, 0]
     lane: other
     icon: gi:cage
-    detail: DLC「Secrets of The Maw」。ランナウェイ・キッドがシックスと同じ時期にモウを逃げ回る。檻に入ったシックスが映り、最後はシックスが食べたノームがキッドだったと示される
+    detail: DLC - Secrets of The Maw。ランナウェイ・キッドがシックスと同じ時期にモウを逃げ回る。檻に入ったシックスが映り、最後はシックスが食べたノームがキッドだったと示される
     sources:
       - { label: Wikipedia『リトルナイトメア』, url: "https://ja.wikipedia.org/wiki/LITTLE_NIGHTMARES-%E3%83%AA%E3%83%88%E3%83%AB%E3%83%8A%E3%82%A4%E3%83%88%E3%83%A1%E3%82%A2-" }
   - id: ln3
