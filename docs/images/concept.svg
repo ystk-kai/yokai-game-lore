@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600" role="img" aria-labelledby="t d">
+  <title id="t">Yokai Game Lore の考え方</title>
+  <desc id="d">散らばった情報から要点を選び、図にまとめる。根拠の強さは公式・作中・推測の3段階で描き分ける。</desc>
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#a3aab8"/></marker>
+  </defs>
+  <style>
+    text { font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Noto Sans CJK JP", "Yu Gothic", Meiryo, sans-serif; fill: #e8eaef; }
+    .muted { fill: #a3aab8; }
+    .h { font-size: 30px; font-weight: 700; }
+    .lead { font-size: 18px; }
+    .bt { font-size: 22px; font-weight: 700; }
+    .bs { font-size: 15px; }
+    .sm { font-size: 15px; }
+    .card { fill: #1a1d24; stroke: #363b47; stroke-width: 1.5; }
+  </style>
+  <rect width="1200" height="600" fill="#111318"/>
+  <!-- ロゴ（favicon と同じ図形）と題 -->
+  <g transform="translate(60 44) scale(1.5)">
+    <rect width="32" height="32" rx="6" fill="#191c22"/>
+    <path d="M6 24 C12 24 12 8 18 8 L26 8" fill="none" stroke="#ff7a5c" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="6" cy="24" r="3.5" fill="#fff" stroke="#ff7a5c" stroke-width="2"/>
+    <circle cx="26" cy="8" r="3.5" fill="#fff" stroke="#ff7a5c" stroke-width="2"/>
+  </g>
+  <text x="120" y="82" class="h">Yokai Game Lore の考え方</text>
+  <text x="60" y="140" class="lead muted">ゲームの物語と考察を、少ない文字と簡単な図で整理する</text>
+
+  <!-- 3段の流れ -->
+  <g>
+    <rect x="60" y="180" width="320" height="200" rx="10" class="card"/>
+    <text x="90" y="226" class="bt">散らばった情報</text>
+    <text x="90" y="264" class="bs muted">作中の描写</text>
+    <text x="90" y="292" class="bs muted">公式の発表・開発者の発言</text>
+    <text x="90" y="320" class="bs muted">解説記事・攻略サイト・wiki</text>
+    <text x="90" y="356" class="sm" fill="#ff7a5c" style="fill:#ff7a5c">原文を保存して確かめる</text>
+  </g>
+  <line x1="384" y1="280" x2="436" y2="280" stroke="#a3aab8" stroke-width="2" marker-end="url(#ar)"/>
+  <g>
+    <rect x="440" y="180" width="320" height="200" rx="10" class="card"/>
+    <text x="470" y="226" class="bt">要点だけを選ぶ</text>
+    <text x="470" y="264" class="bs muted">物語の流れ</text>
+    <text x="470" y="292" class="bs muted">人物の関係</text>
+    <text x="470" y="320" class="bs muted">作品をまたぐ順番</text>
+    <text x="470" y="356" class="sm" style="fill:#ff7a5c">細部より全体を優先する</text>
+  </g>
+  <line x1="764" y1="280" x2="816" y2="280" stroke="#a3aab8" stroke-width="2" marker-end="url(#ar)"/>
+  <g>
+    <rect x="820" y="180" width="320" height="200" rx="10" class="card"/>
+    <text x="850" y="226" class="bt">図にまとめる</text>
+    <!-- 小さな流れ図 -->
+    <rect x="850" y="250" width="70" height="40" rx="6" fill="#111318" stroke="#6aa6ff" stroke-width="2"/>
+    <rect x="950" y="250" width="70" height="40" rx="6" fill="#111318" stroke="#45c993" stroke-width="2"/>
+    <rect x="1050" y="250" width="60" height="40" rx="6" fill="#111318" stroke="#bb93ff" stroke-width="2" stroke-dasharray="6 4"/>
+    <line x1="922" y1="270" x2="946" y2="270" stroke="#a3aab8" stroke-width="2" marker-end="url(#ar)"/>
+    <line x1="1022" y1="270" x2="1046" y2="270" stroke="#a3aab8" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#ar)"/>
+    <text x="850" y="320" class="bs muted">流れ図・相関図・登場作品の表</text>
+    <text x="850" y="356" class="sm" style="fill:#ff7a5c">ひと目で全体がつかめる</text>
+  </g>
+
+  <!-- 根拠の強さ -->
+  <rect x="60" y="420" width="1080" height="130" rx="10" class="card"/>
+  <text x="90" y="462" class="bt">根拠の強さを描き分ける</text>
+  <circle cx="102" cy="507" r="9" fill="#e8eaef"/>
+  <text x="122" y="513" class="bs">公式：開発元の発表・インタビュー</text>
+  <circle cx="452" cy="507" r="8" fill="none" stroke="#e8eaef" stroke-width="2.5"/>
+  <text x="472" y="513" class="bs">作中：ゲームの中の描写</text>
+  <line x1="752" y1="507" x2="800" y2="507" stroke="#e8eaef" stroke-width="2.5" stroke-dasharray="7 5"/>
+  <text x="814" y="513" class="bs">推測：破線で描き、誰の説かを書く</text>
+</svg>
