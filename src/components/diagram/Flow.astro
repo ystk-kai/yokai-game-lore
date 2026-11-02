@@ -12,7 +12,8 @@ interface Props { data: z.infer<typeof flowDiagram>; game: string; id: string; b
 const { data, game, id, bare = false } = Astro.props;
 
 // カードの横の間（COL - W）は矢印のラベル用に 96px 空ける。横の矢印のラベルは2行まで、縦の矢印のラベルは1行
-const [COL, ROW, W, H] = data.compact ? [304, 256, 232, 188] : [352, 296, 256, 240];
+// 高さは、見出しが2行のときも、あらすじの最終行（compact は3行目、ほかは5行目）が切れずに入る値（上下の余白 28 + 番号の行 24 + 見出し2行 48 + 舞台の行 23 + 間 26 + あらすじ）
+const [COL, ROW, W, H] = data.compact ? [304, 288, 232, 220] : [352, 328, 256, 266];
 const PAD = 24;
 const isGrid = data.layout === 'grid';
 const isStrip = data.layout === 'strip';
@@ -231,7 +232,7 @@ const kindTag = (n: (typeof data.nodes)[number]) => (kindLabel[n.kind] && kindLa
   :global(.sc-icon) { color: var(--lane); }
   .sc-sub { font-size: var(--text-small); color: var(--color-muted); }
   .sc-kind { margin-left: auto; font-size: 0.8125rem; line-height: 1; padding: 4px 8px; border: 1px solid var(--lane); border-radius: 999px; color: var(--color-ink); }
-  .sc-lane { margin: 0; display: flex; align-items: center; gap: var(--space-2); font-size: 0.8125rem; color: var(--color-muted); }
+  .sc-lane { margin: 0; display: flex; align-items: center; gap: var(--space-2); font-size: 0.8125rem; color: var(--color-muted); line-height: 1.75; }
   .sq { width: 0.7em; height: 0.7em; border-radius: 2px; background: var(--lane); flex: none; }
   h4 { margin: 0; font-size: 1.0625rem; font-weight: 700; line-height: 1.4; }
   .sc-detail { margin: 2px 0 0; font-size: 0.875rem; line-height: 1.65; color: var(--color-muted); line-break: strict;

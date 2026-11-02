@@ -4,7 +4,7 @@ import { url } from '../lib/url';
 import { iconSvg } from '../lib/icons';
 
 interface Props { title: string; description?: string }
-const { title, description = 'ゲームの物語と考察を、流れ図・相関図・年表で整理する非公式のファンサイト' } = Astro.props;
+const { title, description = 'ゲームの物語と考察を、少ない文字と簡単な図で整理するサイト' } = Astro.props;
 const site = 'Yokai Game Lore';
 const full = title === site ? site : `${title} | ${site}`;
 ---

@@ -18,7 +18,7 @@ nodes:
     lane: dlc
     icon: gi:photo-camera
     evidence: official
-    detail: 兵士と囚人が「戦争で荒れた、かつて馴染み深かった場所」を生き延び、運命を変える穴に落ちていく（公式の説明）
+    detail: 兵士と囚人が戦争で荒れた土地を生き延び、運命を変える穴に落ちていく（公式）
     sources:
       - { label: THQ Nordic 公式サイト, url: "https://reanimal.thqnordic.com" }
       - { label: "Waytoomany Games のレビュー", url: "https://waytoomany.games/2026/08/07/dlc-review-reanimal-the-prisoner/" }
