@@ -71,6 +71,7 @@ const kindLabel = { protagonist: '主人公', ally: '仲間', creature: '怪物'
   .en { color: var(--color-muted); font-size: var(--text-small); line-height: 1.3; }
   .role { color: var(--color-muted); }
   p { margin: var(--space-1) 0; line-break: strict; }
-  .k { display: inline-block; font-weight: 700; margin-right: var(--space-2); color: var(--color-muted); }
+  /* 項目名（見た目・初登場など）は1行に置き、本文は次の行から始める（本文が項目名の下に回り込まないように） */
+  .k { display: block; font-size: 0.8125rem; font-weight: 700; color: var(--color-muted); margin-bottom: 2px; }
   .foot { margin-top: var(--space-2); display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: baseline; }
 </style>
