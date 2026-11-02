@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" width="1200" height="640" role="img" aria-labelledby="t d">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 740" width="1200" height="740" role="img" aria-labelledby="t d">
   <title id="t">サイトの作りと、ページができるまで</title>
-  <desc id="d">ゲームごとに、シリーズ全体のページと、作品ごとの物語・考察のページがある。原文の調査からコンテンツを書き、検査を通して静的サイトにする。</desc>
+  <desc id="d">ゲームごとに、シリーズ全体のページと、作品ごとの物語・考察のページがある。原文の調査からコンテンツを書き、検査を通して静的サイトにする。調べた経過と出典の一覧は research/ に書き出してリポジトリで管理し、原文は入れない。</desc>
   <defs>
     <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#a3aab8"/></marker>
   </defs>
@@ -13,7 +13,7 @@
     .code { font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; font-size: 13px; fill: #a3aab8; }
     .card { fill: #1a1d24; stroke: #363b47; stroke-width: 1.5; }
   </style>
-  <rect width="1200" height="640" fill="#111318"/>
+  <rect width="1200" height="740" fill="#111318"/>
 
   <!-- 上段: サイトの作り -->
   <text x="60" y="64" class="h">1つのゲームのページ</text>
@@ -65,4 +65,12 @@
     <text x="924" y="522" class="bs muted">静的サイトとして配信</text>
     <text x="924" y="556" class="code">GitHub Pages</text>
   </g>
+
+  <!-- 調査の記録 -->
+  <line x1="180" y1="596" x2="180" y2="636" stroke="#a3aab8" stroke-width="2" marker-end="url(#ar)"/>
+  <rect x="60" y="640" width="1080" height="72" rx="10" class="card" stroke="#e3a640"/>
+  <text x="84" y="672" class="bt">調査の記録をリポジトリで管理</text>
+  <text x="84" y="698" class="code">research/&lt;話題&gt;/README.md</text>
+  <text x="430" y="672" class="bs muted">問い・調査の論点・出典の一覧（URL と取得日）・調べた経過</text>
+  <text x="430" y="698" class="bs muted">保存した原文は他人の記事の写しなので入れない（bun run research:export）</text>
 </svg>
