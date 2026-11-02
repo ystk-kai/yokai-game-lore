@@ -1,20 +1,160 @@
 ---
+// 図の読み方。実際の図の部品に、架空の短い例を流し込んで見せる（作者の指示 2026-11-03: 図解を交えて読み方を示す）
 import Base from '../layouts/Base.astro';
-import Legend from '../components/Legend.astro';
+import Evidence from '../components/Evidence.astro';
+import Theory from '../components/Theory.astro';
+import Flow from '../components/diagram/Flow.astro';
+import Relations from '../components/diagram/Relations.astro';
+import Schedule from '../components/diagram/Schedule.astro';
+import Appearances from '../components/diagram/Appearances.astro';
+import { flowDiagram, relationsDiagram, scheduleDiagram } from '../schema';
+
+// 例の図はどのゲームにも属さない。game に存在しない id を渡し、人物名の自動リンクと顔の画像を出さない
+const G = 'guide';
+
+const flow = flowDiagram.parse({
+  type: 'flow',
+  title: '例: 物語の流れ',
+  caption: '上から順に読む',
+  lanes: [
+    { id: 'town', label: '町', color: 'l2', icon: 'gi:village' },
+    { id: 'forest', label: '森', color: 'l3', icon: 'gi:pine-tree' },
+  ],
+  nodes: [
+    { id: 'a', label: '目を覚ます', sub: '第1章', at: [0, 0], lane: 'town', kind: 'start', icon: 'gi:village', detail: '主人公が町の外れで目を覚まします。' },
+    { id: 'b', label: '森で怪物に追われる', sub: '第2章', at: [0, 1], lane: 'forest', kind: 'boss', icon: 'gi:pine-tree', detail: '森に入ると怪物が現れ、主人公は逃げます。' },
+    { id: 'c', label: '町へ戻る', sub: '結末', at: [0, 2], lane: 'town', kind: 'ending', icon: 'gi:village', evidence: 'speculation', detail: '最後に町へ戻ったと読む人がいます（推測）。' },
+  ],
+  edges: [
+    { from: 'a', to: 'b', label: '橋を渡る' },
+    { from: 'b', to: 'c', label: '戻った', evidence: 'speculation' },
+  ],
+});
+
+const grid = flowDiagram.parse({
+  type: 'flow',
+  layout: 'grid',
+  compact: true,
+  title: '例: 分かれる・繰り返す流れ',
+  caption: '矢印の向きに読む。破線は推測',
+  lanes: [
+    { id: 'main', label: '本編', color: 'l2' },
+    { id: 'dlc', label: '追加の物語', color: 'l5' },
+  ],
+  nodes: [
+    { id: 'a', label: '旅に出る', sub: '始まり', at: [0, 0], lane: 'main', kind: 'start', icon: 'gi:footprint', detail: '本編の始まり。' },
+    { id: 'b', label: '城に着く', sub: '結末', at: [2, 0], lane: 'main', kind: 'ending', icon: 'gi:castle', detail: '本編の終わり。' },
+    { id: 'c', label: '追加の物語', sub: 'DLC', at: [1, 1], lane: 'dlc', icon: 'gi:scroll-unfurled', evidence: 'official', detail: '本編のどこに入るかは公式に示されていない。' },
+  ],
+  edges: [
+    { from: 'a', to: 'b' },
+    { from: 'a', to: 'c', label: '途中', evidence: 'speculation' },
+    { from: 'b', to: 'c', label: '結末の後', evidence: 'speculation' },
+  ],
+});
+
+const rel = relationsDiagram.parse({
+  type: 'relations',
+  title: '例: 人物の関係',
+  col_width: 280,
+  groups: [{ id: 'kids', label: '子どもたち', color: 'l2' }],
+  nodes: [
+    { id: 'a', label: '少年', role: '主人公', at: [0, 0], group: 'kids', icon: 'gi:person' },
+    { id: 'b', label: '少女', role: '主人公', at: [1, 0], group: 'kids', icon: 'gi:woman-elf-face' },
+    { id: 'c', label: '怪物', role: '追ってくる', at: [0, 1], icon: 'gi:spiked-dragon-head' },
+    { id: 'd', label: '母親', role: '正体は不明', at: [1, 1], icon: 'gi:hood' },
+  ],
+  edges: [
+    { from: 'a', to: 'b', label: '一緒に逃げる', kind: 'bond' },
+    { from: 'c', to: 'a', label: '追う', kind: 'hostile', directed: true },
+    { from: 'b', to: 'd', label: '親子', kind: 'family' },
+    { from: 'd', to: 'c', label: '同じ者', kind: 'unknown', evidence: 'speculation' },
+  ],
+});
+
+const schedule = scheduleDiagram.parse({
+  type: 'schedule',
+  title: '例: 配信スケジュール',
+  now: '2026-06-01',
+  lanes: [{ id: 'dlc', label: '追加の物語', color: 'l5' }],
+  events: [
+    { id: 'e1', lane: 'dlc', date: '2026-01', label: '第1章を配信' },
+    { id: 'e2', lane: 'dlc', date: '2026-04', label: '第2章を配信' },
+    { id: 'e3', lane: 'dlc', date: '2026-09', label: '第3章（予定）', planned: true },
+  ],
+});
 ---
-<Base title="図の読み方">
+<Base title="図の読み方" description="このサイトの図（流れ図・相関図・配信スケジュール・登場作品の表）の読み方">
   <h1>図の読み方</h1>
   <div class="prose">
-    <h2>5種類の図</h2>
-    <ul>
-      <li><strong>物語の流れ</strong>：場面をカード、話の進む向きを矢印で表します。カードには舞台や系統の名前を、色の四角と一緒に書きます。色の意味は図ごとの凡例にあります。カードの番号は、図の下の「場面ごとの全文と出典」と対応しています。</li>
-      <li><strong>相関図</strong>（人物の関係）：線の色が関係の種類（青＝絆・協力、緑＝家族、朱＝敵対、灰の破線＝不明）、矢印が向きです。</li>
-      <li><strong>年表</strong>：出来事を上から順に並べ、系統ごとに列を分けます。途中で分かれる系統は、分岐元から横に線を引きます。</li>
-      <li><strong>発売順と作中の時系列</strong>：左に発売順、右に作中の順を並べ、同じ作品を線で結びます。線が交差するほど、発売順と物語の順がずれています。</li>
-      <li><strong>配信スケジュール</strong>：横軸が実際の時間です。塗りつぶした点は配信・発表済み、破線の白抜きの点は予定、縦の破線は調べた日（現在）です。</li>
-    </ul>
+    <p>このサイトの図は、どのゲームでも同じ決まりで描いています。ここでは架空の短い例で、図の読み方を説明します。</p>
+
     <h2>根拠の強さ</h2>
-    <p>考察サイトでは、公式の情報とファンの推測が混ざりやすくなります。このサイトでは、どの図でも根拠の強さを次の3段階で描き分けます。推測は破線で描きます。</p>
-    <Legend />
+    <p>図の場面・矢印・人物の関係には、それが何を根拠にしているかを3段階で付けています。推測は、カードの枠や矢印を<strong>破線</strong>で描きます。</p>
   </div>
+  <ul class="points">
+    <li><Evidence level="official" /><span><strong>公式</strong>：開発元の発表、公式サイト、インタビューなど</span></li>
+    <li><Evidence level="ingame" /><span><strong>作中</strong>：ゲームの中の描写や文章</span></li>
+    <li><Evidence level="speculation" /><span><strong>推測</strong>：レビューやファンの読み。誰の読みかを書き添えます</span></li>
+  </ul>
+
+  <section>
+    <h2>物語の流れ</h2>
+    <p class="intro">本編やDLCのあらすじを、場面ごとのカードにして上から順に並べます。</p>
+    <ul class="points">
+      <li><span class="no">1</span><span>最上段の帯は全体の地図です。番号を押すと、その場面のカードへ移ります</span></li>
+      <li><span class="sq l2"></span><span>色の四角は舞台（場所や系統）です。色の意味は図の上の凡例にあります</span></li>
+      <li><span class="tag">橋を渡る</span><span>矢印の札は、場面と場面のあいだに起きたことです</span></li>
+      <li><span class="tag dashed">戻った</span><span>破線の矢印と札は推測です</span></li>
+    </ul>
+    <div class="example"><Flow data={flow} game={G} id="guide/flow" /></div>
+  </section>
+
+  <section>
+    <h2>分かれる・繰り返す流れ</h2>
+    <p class="intro">物語が分かれたり、結末が冒頭に戻ったり、DLC の位置が決まっていなかったりするときは、カードを格子に並べて矢印で結びます。読みが分かれるときは、どれか1つに決めず、破線の矢印を両方引きます。</p>
+    <div class="example"><Flow data={grid} game={G} id="guide/grid" /></div>
+  </section>
+
+  <section>
+    <h2>人物の関係</h2>
+    <p class="intro">人物を札にして、関係を線で結びます。線の色が関係の種類、矢印が向き、線の上の札が関係の中身です。同じ枠に入った人物は、同じ集団に属します。</p>
+    <div class="example"><Relations data={rel} game={G} id="guide/relations" /></div>
+  </section>
+
+  <section>
+    <h2>配信スケジュール</h2>
+    <p class="intro">横軸は実際の日付です。塗りつぶした点は配信・発表済み、破線の白抜きの点はまだ先の予定、縦の破線は調べた日（現在）です。</p>
+    <div class="example"><Schedule data={schedule} game={G} id="guide/schedule" /></div>
+  </section>
+
+  <section>
+    <h2>登場作品の表</h2>
+    <p class="intro">シリーズや DLC がある作品では、人物がどの作品に出るかを表にします。丸の付いた列が、その人物の登場する作品です。名前を押すと、人物のカードへ移ります。下は『リトルナイトメア』の主人公の例です。</p>
+    <div class="example"><Appearances game="little-nightmares" kinds={['protagonist']} title="例: 人物の登場作品" /></div>
+  </section>
+
+  <section>
+    <h2>考察のカード</h2>
+    <p class="intro">考察のページでは、1つの説を1枚のカードにします。見出しの横の印が根拠の強さで、推測のカードは枠が破線になり、誰の説かを書き添えます。</p>
+    <div class="cards">
+      <Theory title="例: 第2作は第1作より前の話" level="official"><p>開発者がインタビューで答えている、というように、公式の根拠があるもの。</p></Theory>
+      <Theory title="例: 怪物の正体は母親" level="speculation" who="あるレビューの読み"><p>作中ではっきり示されていない読み。誰の説かを見出しの横に書きます。</p></Theory>
+    </div>
+  </section>
 </Base>
+<style>
+  section { margin-top: var(--space-12); }
+  section h2, .prose h2 { font-size: var(--text-h2); line-height: var(--leading-tight); margin: var(--space-12) 0 var(--space-3); }
+  section h2 { margin-top: 0; }
+  .intro { max-width: var(--measure); margin: 0 0 var(--space-3); }
+  .example { margin-top: var(--space-4); }
+  .points { list-style: none; padding: 0; margin: var(--space-3) 0; display: grid; gap: var(--space-2); max-width: var(--measure); }
+  .points li { display: flex; align-items: center; gap: var(--space-3); }
+  .points li > :first-child { flex: none; }
+  .no { min-width: 1.6em; height: 1.6em; display: inline-grid; place-items: center; background: var(--color-ink); color: var(--color-bg); border-radius: 999px; font-size: 0.8125rem; }
+  .sq { width: 0.8em; height: 0.8em; border-radius: 2px; background: var(--lane-l2); }
+  .tag { font-size: 0.8125rem; border: 1px solid var(--color-rule); border-radius: 4px; padding: 0 var(--space-2); white-space: nowrap; }
+  .tag.dashed { border-style: dashed; border-color: var(--color-muted); }
+  .cards { display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fill, minmax(min(100%, 24rem), 1fr)); }
+</style>

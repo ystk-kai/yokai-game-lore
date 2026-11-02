@@ -31,6 +31,7 @@ const full = title === site ? site : `${title} | ${site}`;
     </header>
     <main id="main"><slot /></main>
     <footer class="site">
+      <a href={url('guide')}><span class="fi" set:html={iconSvg('lucide:book-open')} />図の読み方</a>
       <a href={url('credits')}><span class="fi" set:html={iconSvg('lucide:copyright')} />クレジット</a>
       <a href="https://github.com/ystk-kai/yokai-game-lore" rel="noopener"><span class="fi" set:html={iconSvg('lucide:github')} />GitHub</a>
     </footer>
