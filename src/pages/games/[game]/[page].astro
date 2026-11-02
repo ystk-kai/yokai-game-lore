@@ -12,7 +12,8 @@ import Work from '../../../components/Work.astro';
 import AutoP from '../../../components/AutoP.astro';
 import AutoLi from '../../../components/AutoLi.astro';
 import { gamesSorted, pagesOf, slugOf, sectionLabel } from '../../../lib/content';
-import { url } from '../../../lib/url';
+import { url, file } from '../../../lib/url';
+import { getEntry } from 'astro:content';
 
 export async function getStaticPaths() {
   const out = [];
@@ -24,10 +25,16 @@ export async function getStaticPaths() {
 }
 const { g, p, pages, prev, next } = Astro.props;
 const { Content } = await render(p);
+// 作品1本のページなら、見出しの横にその作品の画像を正方形に切り取って出す
+const workTitle = p.data.work ? g.data.titles.find((t) => t.id === p.data.work) : undefined;
+const coverAsset = workTitle?.cover ? (await getEntry('assets', g.id))?.data.assets.find((a) => a.id === workTitle.cover) : undefined;
+const cover = coverAsset ? file(`games/${g.id}/${coverAsset.file}`) : undefined;
 ---
 <GameLayout game={g} pages={pages} current={slugOf(p.id)} title={`${p.data.title} - ${g.data.title}`} description={p.data.description}>
   <p class="crumb">{g.data.title}<span aria-hidden="true">／</span>{sectionLabel[p.data.section]}</p>
-  <h1>{p.data.title}</h1>
+  {cover
+    ? <div class="work-head"><img class="work-thumb" src={cover} alt={coverAsset?.alt ?? ''} width="96" height="96" /><h1>{p.data.title}</h1></div>
+    : <h1>{p.data.title}</h1>}
   <p class="lead">{p.data.description}</p>
   <article class="prose-wrap">
     <Content components={{ Diagram, Characters, Theory, Icon, Evidence, Legend, Appearances, Work, p: AutoP, li: AutoLi }} />
@@ -40,6 +47,9 @@ const { Content } = await render(p);
 <style>
   .crumb { margin: 0 0 var(--space-2); font-size: var(--text-small); color: var(--color-muted); }
   .crumb span { margin: 0 var(--space-1); }
+  .work-head { display: flex; align-items: center; gap: var(--space-4); }
+  .work-head h1 { margin: 0; }
+  .work-thumb { flex: none; width: 96px; height: 96px; aspect-ratio: 1; object-fit: cover; border-radius: var(--radius); border: 1px solid var(--color-rule); }
   .lead { margin: var(--space-3) 0 var(--space-8); color: var(--color-muted); max-width: var(--measure); line-break: strict; }
   .prose-wrap > :global(p), .prose-wrap > :global(ul), .prose-wrap > :global(ol), .prose-wrap > :global(h2), .prose-wrap > :global(h3) { max-width: var(--measure); line-break: strict; overflow-wrap: anywhere; }
   .prose-wrap > :global(p) { margin: 0 0 var(--space-4); }
