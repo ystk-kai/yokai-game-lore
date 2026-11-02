@@ -71,9 +71,12 @@ const hrefOf = (id: string) => (charPage ? `${url(`games/${charPage.id}`)}#ch-${
   th, td { padding: var(--space-2) var(--space-3); border-bottom: 1px solid var(--color-rule); }
   thead th { vertical-align: bottom; text-align: center; font-weight: 700; color: var(--lane); border-bottom: 2px solid var(--lane); }
   thead th.corner { text-align: left; color: var(--color-muted); border-bottom-color: var(--color-rule); }
-  .t-label { display: block; line-height: 1.35; word-break: auto-phrase; }
+  /* 作品名は折り返さない（狭い画面で「2」だけが次の行に落ちるため）。はみ出す分は表を横にスクロールする */
+  .t-label { display: block; line-height: 1.35; white-space: nowrap; }
   .t-year { display: block; font-weight: 400; color: var(--color-muted); font-size: 0.8125rem; }
   tbody th { text-align: left; font-weight: 400; white-space: nowrap; }
+  /* 横にスクロールしても人物の列は左に残す */
+  thead th.corner, tbody th { position: sticky; left: 0; z-index: 1; background: var(--color-surface); }
   .who { display: inline-flex; align-items: center; gap: var(--space-2); color: var(--color-ink); text-decoration: underline dotted; text-decoration-color: var(--color-accent); text-underline-offset: 0.25em; font-weight: 700; }
   .who:hover { color: var(--color-accent); }
   .face { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; flex: none; background: var(--color-muted); }
