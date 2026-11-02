@@ -1,0 +1,57 @@
+# 作品1本の物語の流れ。原文は ~/research/per-work-story/sources/（log.md に一覧）
+type: flow
+title: "リトルナイトメア3 追加チャプター の流れ"
+caption: "上から順に読む"
+lanes:
+  - { id: main, label: "リトルナイトメア3 追加チャプター", color: l1, icon: "gi:spiral-shell" }
+nodes:
+  - id: n1
+    label: "ダイムと人形師の住みかへ"
+    sub: "第1弾 バックステージ"
+    short: "ダイム"
+    at: [0, 0]
+    lane: main
+    kind: start
+    evidence: ingame
+    detail: "カルネヴァーレの舞台裏で、ロゥはアローンがさらわれる夢から目を覚まします。トーチ帽の少女ダイムと組み、さらった人形師の住みかへ入ります。"
+    sources:
+      - { label: "Wikipedia「Little Nightmares III」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_III" }
+      - { label: "電撃オンライン（バックステージ配信）", url: "https://dengekionline.com/article/202606/78141" }
+  - id: n2
+    label: "アローンを助け、ダイムが残る"
+    sub: "第1弾 バックステージ"
+    short: "鏡"
+    at: [0, 1]
+    lane: main
+    kind: boss
+    evidence: ingame
+    detail: "アローンを助け、エレベーターで人形師の首を落とします。ロゥは鏡を通って2人を連れ出そうとしますが、出られたのはアローンだけで、ダイムは鏡の浮かぶ空間に取り残されます。"
+    sources:
+      - { label: "Wikipedia「Little Nightmares III」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_III" }
+  - id: n3
+    label: "潜水服の子どもと霧の町"
+    sub: "第2弾 海岸"
+    short: "海岸"
+    at: [0, 2]
+    lane: main
+    kind: scene
+    evidence: ingame
+    detail: "荒れた海岸の町で、潜水服の子ども（英語名 Spare）を追います。ヒルに操られた死体に追われますが、潜水服の子どもに助けられます。"
+    sources:
+      - { label: "Wikipedia「Little Nightmares III」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_III" }
+      - { label: "PR TIMES（海岸の配信）", url: "https://animeanime.jp/release/prtimes/20260930/316328.html" }
+  - id: n4
+    label: "灯台の鏡で、怪物のダイムと会う"
+    sub: "第2弾 海岸"
+    short: "灯台"
+    at: [0, 3]
+    lane: main
+    kind: ending
+    evidence: ingame
+    detail: "灯台から鏡を通ると、怪物の姿になったダイムが立ちはだかります。ロゥがなだめると、ダイムは黙って二人が去るのを見送ります。"
+    sources:
+      - { label: "Wikipedia「Little Nightmares III」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_III" }
+edges:
+  - { from: n1, to: n2 }
+  - { from: n2, to: n3 }
+  - { from: n3, to: n4 }

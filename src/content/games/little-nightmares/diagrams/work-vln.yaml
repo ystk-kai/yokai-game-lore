@@ -1,0 +1,32 @@
+# 作品1本の物語の流れ。原文は ~/research/per-work-story/sources/（log.md に一覧）
+type: flow
+title: "ベリーリトルナイトメア の流れ"
+caption: "上から順に読む"
+lanes:
+  - { id: main, label: "ベリーリトルナイトメア", color: l3, icon: "gi:spider-web" }
+nodes:
+  - id: n1
+    label: "少女が「巣」に迷い込む"
+    sub: "始まり"
+    short: "巣"
+    at: [0, 0]
+    lane: main
+    kind: start
+    evidence: official
+    detail: "黄色いレインコートの少女が、危険な屋敷「巣」を進みます。公式は、シックスの過去の謎を明かす作品と説明しています。"
+    sources:
+      - { label: "Wikipedia「Little Nightmares (series)」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_(series)" }
+      - { label: "Bandai Namco Europe（発表記事）", url: "https://en.bandainamcoent.eu/news/very-little-nightmares-very-little-still-deadly" }
+  - id: n2
+    label: "屋敷の部屋を抜けていく"
+    sub: "レベル1〜18"
+    short: "屋敷"
+    at: [0, 1]
+    lane: main
+    kind: scene
+    evidence: ingame
+    detail: "全18レベルで、檻や箱を動かし、住人の目を避けながら屋敷の部屋を抜けていきます。"
+    sources:
+      - { label: "AppUnwrapper の攻略（英語）", url: "https://www.appunwrapper.com/2019/05/29/very-little-nightmares-walkthrough-guide/" }
+edges:
+  - { from: n1, to: n2 }

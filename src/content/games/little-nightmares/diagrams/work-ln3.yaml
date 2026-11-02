@@ -1,0 +1,59 @@
+# 作品1本の物語の流れ。原文は ~/research/per-work-story/sources/（log.md に一覧）
+type: flow
+title: "リトルナイトメア3 の流れ"
+caption: "上から順に読む"
+lanes:
+  - { id: main, label: "リトルナイトメア3", color: l5, icon: "gi:spiral-shell" }
+nodes:
+  - id: n1
+    label: "砂漠の街でモンスターベイビーに追われる"
+    sub: "ネクロポリス"
+    short: "ネクロ"
+    at: [0, 0]
+    lane: main
+    kind: start
+    evidence: ingame
+    detail: "目で見た相手を石に変える巨大な人形、モンスターベイビーに追われます。つかまれて落とされたロゥは、詰め物の壁の部屋にいた自分の記憶を見ます。二人は鏡を通って次の土地へ移ります。"
+    sources:
+      - { label: "Wikipedia「Little Nightmares III」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_III" }
+      - { label: "kamigame『リトルナイトメア3』ストーリー攻略チャート", url: "https://kamigame.jp/littlenightmares3/page/390358621004761209.html" }
+  - id: n2
+    label: "工場長に追われる"
+    sub: "キャンディ工場"
+    short: "工場"
+    at: [0, 1]
+    lane: main
+    kind: boss
+    evidence: ingame
+    detail: "太った住人が働く巨大な工場で、監視カメラで見張る6本腕の工場長に追われます。カメラを止めると、工場長は怒って下半身を捨てて追ってきます。"
+    sources:
+      - { label: "Wikipedia「Little Nightmares III」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_III" }
+      - { label: "kamigame『リトルナイトメア3』ストーリー攻略チャート", url: "https://kamigame.jp/littlenightmares3/page/390358621004761209.html" }
+  - id: n3
+    label: "キンから気球で逃げる"
+    sub: "カルネヴァーレ"
+    short: "カルネ"
+    at: [0, 2]
+    lane: main
+    kind: scene
+    evidence: ingame
+    detail: "飛行船の上の見世物小屋では、人形たちに襲われます。ひびの入った鏡は通れません。子どもに芸をさせるキンの住みかから、気球で逃げます。気球は雷に打たれて落ちます。"
+    sources:
+      - { label: "Wikipedia「Little Nightmares III」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_III" }
+      - { label: "kamigame『リトルナイトメア3』ストーリー攻略チャート", url: "https://kamigame.jp/littlenightmares3/page/390358621004761209.html" }
+  - id: n4
+    label: "鏡を通れたのはロゥだけ"
+    sub: "精神病院"
+    short: "病院"
+    at: [0, 3]
+    lane: main
+    kind: ending
+    evidence: ingame
+    detail: "ロゥの記憶に似た施設で、アローンそっくりの人形を使って進み、Hypnotist を二人で倒します。夢で見た鏡を通れたのはロゥだけで、アローンは服と絵を残して消えます。"
+    sources:
+      - { label: "Wikipedia「Little Nightmares III」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_III" }
+      - { label: "kamigame『リトルナイトメア3』ストーリー攻略チャート", url: "https://kamigame.jp/littlenightmares3/page/390358621004761209.html" }
+edges:
+  - { from: n1, to: n2 }
+  - { from: n2, to: n3 }
+  - { from: n3, to: n4 }

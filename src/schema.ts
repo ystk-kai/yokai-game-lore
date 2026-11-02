@@ -234,6 +234,8 @@ export const analysis = z.object({
   order: z.number().default(100),
   /** サイドメニューの区分。物語の本筋（本編・DLC）と考察を分ける（作者の決定） */
   section: z.enum(['story', 'characters', 'theory']),
+  /** 作品1本の物語のページなら、その作品の id（game.yaml の titles の id）。トップの作品カードからこのページへリンクする */
+  work: z.string().optional(),
   updated: z.coerce.date(),
 });
 

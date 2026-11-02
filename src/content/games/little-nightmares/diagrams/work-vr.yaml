@@ -1,0 +1,68 @@
+# 作品1本の物語の流れ。原文は ~/research/per-work-story/sources/（log.md に一覧）
+type: flow
+title: "Little Nightmares VR: Altered Echoes の流れ"
+caption: "上から順に読む"
+lanes:
+  - { id: main, label: "Little Nightmares VR: Altered Echoes", color: l6, icon: "gi:vr-headset" }
+nodes:
+  - id: n1
+    label: "電波塔の中へ落ちる"
+    sub: "始まり"
+    short: "電波塔"
+    at: [0, 0]
+    lane: main
+    kind: start
+    evidence: ingame
+    detail: "シックスを追って電波の中に入ったダーク・シックスは、電波塔の肉のような内部に落ちます。子どもたちの捕らわれた部屋を抜け、オルゴールの音を追います。"
+    sources:
+      - { label: "Wikipedia「Little Nightmares VR: Altered Echoes」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_VR:_Altered_Echoes" }
+  - id: n2
+    label: "ゆがんだ学校で先生を避ける"
+    sub: "学校"
+    short: "学校"
+    at: [0, 1]
+    lane: main
+    kind: scene
+    evidence: ingame
+    detail: "闇に飲まれて、旅の途中の場所をゆがめた空間へ飛ばされます。学校で動かないいじめっ子たちと先生を避け、壊れたオルゴールを見つけます。"
+    sources:
+      - { label: "Wikipedia「Little Nightmares VR: Altered Echoes」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_VR:_Altered_Echoes" }
+  - id: n3
+    label: "ゲストの乗る列車"
+    sub: "駅と列車"
+    short: "列車"
+    at: [0, 2]
+    lane: main
+    kind: scene
+    evidence: ingame
+    detail: "駅の電気を戻して列車に乗ります。乗客はゲストで、車掌が見回っています。車掌を避けて、石炭車を機関車から切り離します。"
+    sources:
+      - { label: "Wikipedia「Little Nightmares VR: Altered Echoes」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_VR:_Altered_Echoes" }
+  - id: n4
+    label: "ナチュラリストをかごに閉じ込める"
+    sub: "屋敷"
+    short: "屋敷"
+    at: [0, 3]
+    lane: main
+    kind: boss
+    evidence: ingame
+    detail: "フラッシュでノームを撮るナチュラリストのいる屋敷を抜け、ナチュラリストをかごに閉じ込めます。"
+    sources:
+      - { label: "Wikipedia「Little Nightmares VR: Altered Echoes」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_VR:_Altered_Echoes" }
+  - id: n5
+    label: "シックスに届かず、扉へ向かう"
+    sub: "オルゴールの中"
+    short: "扉"
+    at: [0, 4]
+    lane: main
+    kind: ending
+    evidence: ingame
+    detail: "大きなオルゴールの中で、怪物の姿のシックスを追いますが届きません。最後はオルゴールから抜け出し、シックスが通った扉へ向かいます。"
+    sources:
+      - { label: "Wikipedia「Little Nightmares VR: Altered Echoes」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_VR:_Altered_Echoes" }
+      - { label: "UploadVR のレビュー", url: "https://uploadvr.com/little-nightmares-altered-echoes-vr-review" }
+edges:
+  - { from: n1, to: n2 }
+  - { from: n2, to: n3 }
+  - { from: n3, to: n4 }
+  - { from: n4, to: n5 }

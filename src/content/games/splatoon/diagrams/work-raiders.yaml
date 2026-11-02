@@ -1,0 +1,72 @@
+# 作品1本の物語の流れ。原文は ~/research/per-work-story/sources/（log.md に一覧）
+type: flow
+title: "スプラトゥーン レイダース の流れ"
+caption: "上から順に読む"
+lanes:
+  - { id: main, label: "スプラトゥーン レイダース", color: l6, icon: "gi:spanner" }
+nodes:
+  - id: n1
+    label: "ウズシオ諸島に落ちる"
+    sub: "不時着"
+    short: "不時着"
+    at: [0, 0]
+    lane: main
+    kind: start
+    evidence: ingame
+    detail: "すりみ連合とメカニックはヘリでウズシオ諸島に不時着し、アジト船を拠点にします。"
+    sources:
+      - { label: "Wikipedia「スプラトゥーン レイダース」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B3_%E3%83%AC%E3%82%A4%E3%83%80%E3%83%BC%E3%82%B9" }
+      - { label: "Splatoon Raiders Guide「Ending Explained」（英語のファンサイト）", url: "https://www.splatoonraiders.net/blog/splatoon-raiders-ending-explained" }
+  - id: n2
+    label: "アジト船を直し、島をめぐる"
+    sub: "島めぐり"
+    short: "島"
+    at: [0, 1]
+    lane: main
+    kind: scene
+    evidence: ingame
+    detail: "アジト船の設備を直しながら、シャケの縄張りの島へ入り、オタカラと帰り道の手がかりを探します。"
+    sources:
+      - { label: "Game8『スプラトゥーン レイダース』島の名前", url: "https://game8.jp/splatoon-raiders/801840" }
+      - { label: "Splatoon Raiders Guide「Ending Explained」（英語のファンサイト）", url: "https://www.splatoonraiders.net/blog/splatoon-raiders-ending-explained" }
+  - id: n3
+    label: "サルモン王を倒す"
+    sub: "玉座の間"
+    short: "サルモン王"
+    at: [0, 2]
+    lane: main
+    kind: boss
+    evidence: ingame
+    detail: "サルモン大食堂の玉座の間でサルモン王と戦います。倒すと通常のエンディングです。"
+    sources:
+      - { label: "Game8『スプラトゥーン レイダース』ラスボス", url: "https://game8.jp/splatoon-raiders/800624" }
+      - { label: "Game8『スプラトゥーン レイダース』エンディング", url: "https://game8.jp/splatoon-raiders/801007" }
+  - id: n4
+    label: "隠れ遺跡と無限食堂"
+    sub: "クリア後"
+    short: "遺跡"
+    at: [0, 3]
+    lane: main
+    kind: scene
+    evidence: ingame
+    detail: "エンディングのあとに3つの隠れ遺跡が現れ、集めた部品で玉座の間の下の「無限食堂」への道が開きます。"
+    sources:
+      - { label: "Splatoon Raiders Guide「Ending Explained」（英語のファンサイト）", url: "https://www.splatoonraiders.net/blog/splatoon-raiders-ending-explained" }
+      - { label: "Game8『スプラトゥーン レイダース』エンディング", url: "https://game8.jp/splatoon-raiders/801007" }
+  - id: n5
+    label: "裏ボスを倒すと真エンディング"
+    sub: "無限食堂100階"
+    short: "真エンド"
+    at: [0, 4]
+    lane: main
+    kind: ending
+    evidence: ingame
+    detail: "無限食堂の100階に出る裏ボスを倒すと、真エンディングを見られます。"
+    sources:
+      - { label: "Game8『スプラトゥーン レイダース』エンディング", url: "https://game8.jp/splatoon-raiders/801007" }
+      - { label: "Splatoon Raiders Guide「Ending Explained」（英語のファンサイト）", url: "https://www.splatoonraiders.net/blog/splatoon-raiders-ending-explained" }
+edges:
+  - { from: n1, to: n2 }
+  - { from: n2, to: n3 }
+  - { from: n3, to: n4 }
+  - { from: n4, to: n5 }

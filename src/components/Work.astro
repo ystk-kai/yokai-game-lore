@@ -1,10 +1,10 @@
 ---
 // 作品1本のカード。パッケージやキービジュアルの画像（game.yaml の titles[].cover）、作品名、発売年、あらすじを並べる。
 // あらすじは titles[].synopsis と sources から出す（中身を渡したときは中身を出す）。ゲームのトップの作品一覧で使う
-import { getEntry } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 import Icon from './Icon.astro';
 import Sources from './Sources.astro';
-import { file } from '../lib/url';
+import { file, url } from '../lib/url';
 import { makeLinker } from '../lib/autolink';
 
 interface Props { game: string; id: string }
@@ -20,6 +20,9 @@ const cover = t.cover ? assets.find((a) => a.id === t.cover) : undefined;
 if (t.cover && !cover) throw new Error(`Work: assets.yaml に ${t.cover} が無い（${game} / ${id}）`);
 const colors = ['l1', 'l2', 'l3', 'l4', 'l5', 'l6'];
 const link = await makeLinker(game);
+// この作品の物語のページ（frontmatter の work がこの作品の id）があれば、作品名をそのページへのリンクにする
+const page = (await getCollection('pages', (p) => p.id.startsWith(`${game}/`) && p.data.work === id)).at(0);
+const pageHref = page ? url(`games/${page.id}`) : undefined;
 const hasSlot = Astro.slots.has('default');
 const source = cover?.source_url ? { href: cover.source_url, name: cover.source_name ?? new URL(cover.source_url).hostname } : undefined;
 ---
@@ -31,10 +34,11 @@ const source = cover?.source_url ? { href: cover.source_url, name: cover.source_
     {source && <figcaption title={cover?.credit}>画像: <a href={source.href} rel="noopener">{source.name}</a></figcaption>}
   </figure>
   <div class="text">
-    <h3>{t.label}{t.released && <span class="year num">{t.released.slice(0, 4)}年</span>}</h3>
+    <h3>{pageHref ? <a href={pageHref}>{t.label}</a> : t.label}{t.released && <span class="year num">{t.released.slice(0, 4)}年</span>}</h3>
     <div class="body">
       {hasSlot ? <slot /> : t.synopsis && <p set:html={link(t.synopsis)} />}
       {!hasSlot && <Sources sources={t.sources} />}
+      {pageHref && <p class="more"><a href={pageHref}>物語の流れを見る →</a></p>}
     </div>
   </div>
 </article>
@@ -48,6 +52,8 @@ const source = cover?.source_url ? { href: cover.source_url, name: cover.source_
   .placeholder span { font-size: var(--text-small); color: var(--color-muted); }
   .cover figcaption { margin-top: var(--space-1); font-size: 0.8125rem; color: var(--color-muted); }
   h3 { margin: 0 0 var(--space-2); font-size: var(--text-h3); line-height: var(--leading-tight); display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-1) var(--space-3); }
+  h3 a { color: var(--color-ink); text-decoration: none; } h3 a:hover { color: var(--color-accent); text-decoration: underline; }
+  .more { margin-top: var(--space-2) !important; font-size: var(--text-small); }
   .year { font-size: var(--text-small); font-weight: 400; color: var(--color-muted); }
   .body :global(p) { margin: 0 0 var(--space-2); line-break: strict; }
   .body :global(p:last-child) { margin-bottom: 0; }

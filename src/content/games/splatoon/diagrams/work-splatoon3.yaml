@@ -1,0 +1,85 @@
+# 作品1本の物語の流れ。原文は ~/research/per-work-story/sources/（log.md に一覧）
+type: flow
+title: "スプラトゥーン3（ヒーローモード） の流れ"
+caption: "上から順に読む"
+lanes:
+  - { id: main, label: "スプラトゥーン3（ヒーローモード）", color: l4, icon: "gi:squid" }
+nodes:
+  - id: n1
+    label: "DJタコワサ将軍と戦う"
+    sub: "クレーター"
+    short: "クレーター"
+    at: [0, 0]
+    lane: main
+    kind: start
+    evidence: ingame
+    detail: "アタリメにスカウトされた新3号は、相棒のコジャケとクレーターでDJタコワサ将軍と戦います。足元が崩れ、地下へ落ちます。"
+    sources:
+      - { label: "Game8『スプラトゥーン3』ヒーローモード攻略", url: "https://game8.jp/splatoon3/478657" }
+      - { label: "Inkipedia「Timeline」（英語のファン wiki）", url: "https://splatoonwiki.org/wiki/Timeline" }
+  - id: n2
+    label: "オルタナで司令と合流"
+    sub: "サイト1"
+    short: "サイト1"
+    at: [0, 1]
+    lane: main
+    kind: scene
+    evidence: ingame
+    detail: "舞台はみらいユートピアランドです。目を覚ますと地下のオルタナで、司令（初代3号）・1号・2号と合流し、アタリメを探し始めます。"
+    sources:
+      - { label: "Game8『スプラトゥーン3』ヒーローモード攻略", url: "https://game8.jp/splatoon3/478657" }
+      - { label: "Inkipedia「Timeline」（英語のファン wiki）", url: "https://splatoonwiki.org/wiki/Timeline" }
+  - id: n3
+    label: "ウツホと宝を争う"
+    sub: "サイト2"
+    short: "サイト2"
+    at: [0, 2]
+    lane: main
+    kind: boss
+    evidence: ingame
+    detail: "舞台はあんしんライフファクトリーです。オタカラを狙うすりみ連合が現れ、ボスとして「ウツホ」と戦います。"
+    sources:
+      - { label: "Game8『スプラトゥーン3』ヒーローモード攻略", url: "https://game8.jp/splatoon3/478657" }
+      - { label: "Inkipedia「Timeline」（英語のファン wiki）", url: "https://splatoonwiki.org/wiki/Timeline" }
+  - id: n4
+    label: "フウカと戦い、黒幕の声"
+    sub: "サイト3・4"
+    short: "サイト4"
+    at: [0, 3]
+    lane: main
+    kind: boss
+    evidence: ingame
+    detail: "サイト4（うめたてドリームランド）のボス「フウカ」を倒すと、アタリメを捕らえているのがクマサンだと分かります。"
+    sources:
+      - { label: "Game8『スプラトゥーン3』ヒーローモード攻略", url: "https://game8.jp/splatoon3/478657" }
+      - { label: "Inkipedia「Timeline」（英語のファン wiki）", url: "https://splatoonwiki.org/wiki/Timeline" }
+  - id: n5
+    label: "マンタローを倒し、宝が揃う"
+    sub: "サイト5・6"
+    short: "サイト6"
+    at: [0, 4]
+    lane: main
+    kind: boss
+    evidence: ingame
+    detail: "サイト6（しあわせリサーチラボ）のボス「マンタロー」を倒して最後のオタカラを手に入れます。オタカラで宇宙センターの毛を切り開き、すりみ連合も味方になります。"
+    sources:
+      - { label: "Game8『スプラトゥーン3』ヒーローモード攻略", url: "https://game8.jp/splatoon3/478657" }
+      - { label: "Inkipedia「Timeline」（英語のファン wiki）", url: "https://splatoonwiki.org/wiki/Timeline" }
+  - id: n6
+    label: "宇宙でクマサンを倒す"
+    sub: "オルタナ宇宙センター"
+    short: "宇宙"
+    at: [0, 5]
+    lane: main
+    kind: ending
+    evidence: ingame
+    detail: "ロケットの上でクマサンと戦います。宇宙へ飛ばされた新3号とコジャケを、DJタコワサ将軍が助けます。クマサンを倒し、オオデンチナマズをバンカラ街に戻します。"
+    sources:
+      - { label: "Game8『スプラトゥーン3』ヒーローモード攻略", url: "https://game8.jp/splatoon3/478657" }
+      - { label: "Inkipedia「Timeline」（英語のファン wiki）", url: "https://splatoonwiki.org/wiki/Timeline" }
+edges:
+  - { from: n1, to: n2 }
+  - { from: n2, to: n3 }
+  - { from: n3, to: n4 }
+  - { from: n4, to: n5 }
+  - { from: n5, to: n6 }

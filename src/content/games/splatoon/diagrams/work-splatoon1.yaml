@@ -1,0 +1,85 @@
+# 作品1本の物語の流れ。原文は ~/research/per-work-story/sources/（log.md に一覧）
+type: flow
+title: "スプラトゥーン（ヒーローモード） の流れ"
+caption: "上から順に読む"
+lanes:
+  - { id: main, label: "スプラトゥーン（ヒーローモード）", color: l1, icon: "gi:squid" }
+nodes:
+  - id: n1
+    label: "3号に任命される"
+    sub: "始まり"
+    short: "任命"
+    at: [0, 0]
+    lane: main
+    kind: start
+    evidence: ingame
+    detail: "ハイカラシティに越してきた若者が、アタリメ司令についてマンホールに入り、New!カラストンビ部隊の3号に任命されます。"
+    sources:
+      - { label: "Wikipedia「スプラトゥーン」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B3" }
+      - { label: "Inkipedia「Timeline」（英語のファン wiki）", url: "https://splatoonwiki.org/wiki/Timeline" }
+  - id: n2
+    label: "タコツボックスを倒す"
+    sub: "エリア1"
+    short: "エリア1"
+    at: [0, 1]
+    lane: main
+    kind: boss
+    evidence: ingame
+    detail: "タコツボバレーでデンチナマズを取り戻しながら進み、最初のボス「タコツボックス」を倒します。"
+    sources:
+      - { label: "スプラトゥーン攻略 wiki「ヒーローモード」", url: "https://wikiwiki.jp/splatoonshun/%E3%83%92%E3%83%BC%E3%83%AD%E3%83%BC%E3%83%A2%E3%83%BC%E3%83%89" }
+      - { label: "Inkipedia「Octo Valley (mode)」（英語のファン wiki）", url: "https://splatoonwiki.org/wiki/Octo_Valley_(mode)" }
+  - id: n3
+    label: "タコツボドラムを倒す"
+    sub: "エリア2"
+    short: "エリア2"
+    at: [0, 2]
+    lane: main
+    kind: boss
+    evidence: ingame
+    detail: "2体目のボス「タコツボドラム」を倒します。"
+    sources:
+      - { label: "スプラトゥーン攻略 wiki「ヒーローモード」", url: "https://wikiwiki.jp/splatoonshun/%E3%83%92%E3%83%BC%E3%83%AD%E3%83%BC%E3%83%A2%E3%83%BC%E3%83%89" }
+      - { label: "Inkipedia「Octo Valley (mode)」（英語のファン wiki）", url: "https://splatoonwiki.org/wiki/Octo_Valley_(mode)" }
+  - id: n4
+    label: "アタリメ司令がさらわれる"
+    sub: "エリア3"
+    short: "エリア3"
+    at: [0, 3]
+    lane: main
+    kind: boss
+    evidence: ingame
+    detail: "3体目のボス「タコツボール」を倒したあと、アタリメ司令がタコワサ将軍にさらわれます。案内役は1号（アオリ）と2号（ホタル）に替わります。"
+    sources:
+      - { label: "スプラトゥーン攻略 wiki「ヒーローモード」", url: "https://wikiwiki.jp/splatoonshun/%E3%83%92%E3%83%BC%E3%83%AD%E3%83%BC%E3%83%A2%E3%83%BC%E3%83%89" }
+      - { label: "Inkipedia「Timeline」（英語のファン wiki）", url: "https://splatoonwiki.org/wiki/Timeline" }
+  - id: n5
+    label: "タコツボファングを倒す"
+    sub: "エリア4"
+    short: "エリア4"
+    at: [0, 4]
+    lane: main
+    kind: boss
+    evidence: ingame
+    detail: "4体目のボス「タコツボファング」を倒します。"
+    sources:
+      - { label: "スプラトゥーン攻略 wiki「ヒーローモード」", url: "https://wikiwiki.jp/splatoonshun/%E3%83%92%E3%83%BC%E3%83%AD%E3%83%BC%E3%83%A2%E3%83%BC%E3%83%89" }
+      - { label: "Inkipedia「Octo Valley (mode)」（英語のファン wiki）", url: "https://splatoonwiki.org/wiki/Octo_Valley_(mode)" }
+  - id: n6
+    label: "タコツボキングとの決戦"
+    sub: "エリア5"
+    short: "エリア5"
+    at: [0, 5]
+    lane: main
+    kind: ending
+    evidence: ingame
+    detail: "DJタコワサ将軍の乗る「タコツボキング」と戦います。途中で1号と2号が電波を乗っ取って歌い、3号は将軍を倒して、オオデンチナマズを取り戻します。"
+    sources:
+      - { label: "スプラトゥーン攻略 wiki「ヒーローモード」", url: "https://wikiwiki.jp/splatoonshun/%E3%83%92%E3%83%BC%E3%83%AD%E3%83%BC%E3%83%A2%E3%83%BC%E3%83%89" }
+      - { label: "Inkipedia「Timeline」（英語のファン wiki）", url: "https://splatoonwiki.org/wiki/Timeline" }
+edges:
+  - { from: n1, to: n2 }
+  - { from: n2, to: n3 }
+  - { from: n3, to: n4 }
+  - { from: n4, to: n5 }
+  - { from: n5, to: n6 }
