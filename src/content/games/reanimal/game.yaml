@@ -5,8 +5,22 @@ developer: Tarsier Studios
 publisher: THQ Nordic
 released: "2026-02-13"
 titles:
-  - { id: main, label: 本編, released: "2026-02-13" }
-  - { id: dlc1, label: DLC 第1章「The Prisoner」, released: "2026-08-07" }
+  - id: main
+    label: REANIMAL（本編）
+    released: "2026-02-13"
+    cover: title-main
+    synopsis: "兄と妹が、行方不明になった友だちを助け、故郷の島から逃げ出そうとします。全9章で、2人は海や水没した町、孤児院、戦場を抜けていきます。結末には通常のエンディングと隠しエンディングがあります。"
+    sources:
+      - { label: "Steam「REANIMAL」", url: "https://store.steampowered.com/app/2129530/" }
+      - { label: "Into Indie Games「Reanimal: Story Explained」", url: "https://intoindiegames.com/features/reanimal-story-explained/" }
+  - id: dlc1
+    label: DLC - The Prisoner
+    released: "2026-08-07"
+    cover: title-dlc1
+    synopsis: "追加ストーリー「The Expanded World」の第1章です。兵士と囚人が、戦争で荒れた街から地下鉄、砂の町を抜けて、謎の巨大な建物にたどり着きます。遊ぶ時間は1〜2時間ほどです。"
+    sources:
+      - { label: "Steam「REANIMAL: The Prisoner」", url: "https://store.steampowered.com/app/4733900/" }
+      - { label: "AUTOMATON", url: "https://automaton-media.com/articles/newsjp/20260810-459465/" }
 tagline: 兄と妹が、行方不明の友だちを救いに悪夢の島を進む2人協力ホラー
 summary: 『リトルナイトメア』1・2の開発元が手がける協力型ホラーアドベンチャー。兄と妹が、行方不明の友だちを救うために地獄のような島を進む。
 icon: gi:rabbit-head

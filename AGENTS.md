@@ -23,7 +23,7 @@ Bun（1.4 系）を使う。npm・pnpm・yarn は使わない。
 
 ```
 src/content/games/<game>/
-  game.yaml          ゲームの基本情報、作品の一覧（titles。シリーズや DLC を1つのゲームで扱う）、権利の扱い（rights）
+  game.yaml          ゲームの基本情報、作品の一覧（titles。シリーズや DLC を1つのゲームで扱う。cover・synopsis・sources はトップの作品一覧とサイドメニューに出る）、権利の扱い（rights）
   assets.yaml        掲載する画像の登録。kind（screenshot / official-art / render / logo / original）と出典を書く
   characters.yaml    人物・怪物の名鑑
   diagrams/*.yaml    図のデータ（type: flow / relations / timeline / order / schedule）

@@ -255,3 +255,21 @@ assets:
     source_name: REANIMAL Wiki (Fandom)
     source_url: "https://reanimal.fandom.com/wiki/File:SpiderKids.png"
     credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。レンダー: VoxelotlAgain（REANIMAL Wiki / Fandom）"
+
+  # 作品一覧の画像（Steam のストアページのヘッダー画像。2026-11-03 取得）
+  - id: title-main
+    file: titles/main.jpg
+    alt: REANIMAL のストア画像
+    kind: official-art
+    self_captured: false
+    source_name: Steam（REANIMAL）
+    source_url: "https://store.steampowered.com/app/2129530/"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。Steam のストアページのヘッダー画像"
+  - id: title-dlc1
+    file: titles/dlc1.jpg
+    alt: "REANIMAL: The Prisoner のストア画像"
+    kind: official-art
+    self_captured: false
+    source_name: "Steam（REANIMAL: The Prisoner）"
+    source_url: "https://store.steampowered.com/app/4733900/"
+    credit: "© TARSIER STUDIOS AB / THQ Nordic GmbH。Steam のストアページのヘッダー画像"

@@ -188,7 +188,7 @@ export const game = z.object({
    * 作品の一覧（シリーズや DLC を1つのゲームで扱うとき）。名鑑の appears_in はこの id で書く（検査で照合する）。
    * 例: REANIMAL は main（本編）と dlc1（DLC 第1章）、スプラトゥーンは splatoon1 / splatoon2 / octoexp …
    */
-  titles: z.array(z.object({ id: z.string().regex(/^[a-z0-9-]+$/), label: z.string(), released: z.string().optional(), /** パッケージやキービジュアルの画像（assets.yaml の id）。物語のページの作品カード（<Work>）に出す */ cover: z.string().optional() })).default([]),
+  titles: z.array(z.object({ id: z.string().regex(/^[a-z0-9-]+$/), label: z.string(), released: z.string().optional(), /** パッケージやキービジュアルの画像（assets.yaml の id）。ゲームのトップの作品一覧とサイドメニューに出す */ cover: z.string().optional(), /** 作品のあらすじ（2〜3文）。トップの作品一覧のカードに出す */ synopsis: z.string().optional(), sources: z.array(source).default([]) })).default([]),
   /** トップの一覧に出す一言説明。どんなゲームかが1行で分かるように */
   tagline: z.string().max(40, '一言説明は40字まで'),
   summary: z.string().max(120, '概要は120字まで'),

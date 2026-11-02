@@ -1,9 +1,11 @@
 ---
-// 作品1本のカード。パッケージやキービジュアルの画像（game.yaml の titles[].cover）、作品名、発売年、あらすじ（中身）を並べる。
-// 物語のページの「作品ごとのあらすじ」で、作品ごとに1枚置く: <Work game="splatoon" id="splatoon2">あらすじ</Work>
+// 作品1本のカード。パッケージやキービジュアルの画像（game.yaml の titles[].cover）、作品名、発売年、あらすじを並べる。
+// あらすじは titles[].synopsis と sources から出す（中身を渡したときは中身を出す）。ゲームのトップの作品一覧で使う
 import { getEntry } from 'astro:content';
 import Icon from './Icon.astro';
+import Sources from './Sources.astro';
 import { file } from '../lib/url';
+import { makeLinker } from '../lib/autolink';
 
 interface Props { game: string; id: string }
 const { game, id } = Astro.props;
@@ -17,6 +19,8 @@ const assets = (await getEntry('assets', game))?.data.assets ?? [];
 const cover = t.cover ? assets.find((a) => a.id === t.cover) : undefined;
 if (t.cover && !cover) throw new Error(`Work: assets.yaml に ${t.cover} が無い（${game} / ${id}）`);
 const colors = ['l1', 'l2', 'l3', 'l4', 'l5', 'l6'];
+const link = await makeLinker(game);
+const hasSlot = Astro.slots.has('default');
 const source = cover?.source_url ? { href: cover.source_url, name: cover.source_name ?? new URL(cover.source_url).hostname } : undefined;
 ---
 <article class:list={['work', `lane-${colors[index % 6]}`]} id={`work-${id}`}>
@@ -28,7 +32,10 @@ const source = cover?.source_url ? { href: cover.source_url, name: cover.source_
   </figure>
   <div class="text">
     <h3>{t.label}{t.released && <span class="year num">{t.released.slice(0, 4)}年</span>}</h3>
-    <div class="body"><slot /></div>
+    <div class="body">
+      {hasSlot ? <slot /> : t.synopsis && <p set:html={link(t.synopsis)} />}
+      {!hasSlot && <Sources sources={t.sources} />}
+    </div>
   </div>
 </article>
 <style>

@@ -7,13 +7,58 @@ publisher: バンダイナムコエンターテインメント
 released: "2017-04-28"
 # 本編3作と、物語のある DLC・スピンオフ。日付は日本語版・英語版 Wikipedia、バンダイナムコの配信告知による
 titles:
-  - { id: ln1, label: リトルナイトメア, released: "2017-04-28", cover: title-ln1 }
-  - { id: ln1-dlc, label: Secrets of The Maw, released: "2017-07-07", cover: title-ln1-dlc }
-  - { id: vln, label: ベリーリトルナイトメア, released: "2019-05" }
-  - { id: ln2, label: リトルナイトメア2, released: "2021-02-11", cover: title-ln2 }
-  - { id: ln3, label: リトルナイトメア3, released: "2025-10-10", cover: title-ln3 }
-  - { id: vr, label: Altered Echoes（VR）, released: "2026-04-24", cover: title-vr }
-  - { id: ln3-dlc, label: リトルナイトメア3 追加チャプター, released: "2026-06-12", cover: title-ln3-dlc }
+  - id: ln1
+    label: リトルナイトメア
+    released: "2017-04-28"
+    cover: title-ln1
+    synopsis: "舞台は、海を渡る巨大な船「モウ」です。黄色いレインコートの少女シックスが、監獄・隠れ家・台所・ゲストエリアを抜けて上へ逃げます。空腹に襲われるたびにパン、生肉、ネズミを食べ、最後にはノームとレディまで食べます。レディの力を得たシックスは、日の光の中へ出ます。"
+    sources:
+      - { label: "Wikipedia「LITTLE NIGHTMARES-リトルナイトメア-」", url: "https://ja.wikipedia.org/wiki/LITTLE_NIGHTMARES-%E3%83%AA%E3%83%88%E3%83%AB%E3%83%8A%E3%82%A4%E3%83%88%E3%83%A1%E3%82%A2-" }
+  - id: ln1-dlc
+    label: Secrets of The Maw
+    released: "2017-07-07"
+    cover: title-ln1-dlc
+    synopsis: "全3弾です。同じ時期にモウに捕らわれた少年ランナウェイ・キッドが、深淵・動力室・レディの住まいを逃げます。キッドは最後にレディにノームへ変えられ、本編でシックスが食べたノームがキッドだったと示されます。"
+    sources:
+      - { label: "Wikipedia「LITTLE NIGHTMARES-リトルナイトメア-」", url: "https://ja.wikipedia.org/wiki/LITTLE_NIGHTMARES-%E3%83%AA%E3%83%88%E3%83%AB%E3%83%8A%E3%82%A4%E3%83%88%E3%83%A1%E3%82%A2-" }
+      - { label: "Game Watch", url: "https://game.watch.impress.co.jp/docs/news/1090109.html" }
+  - id: vln
+    label: ベリーリトルナイトメア
+    released: "2019-05"
+    synopsis: "黄色いレインコートの少女が「巣」と呼ばれる屋敷から逃げます。公式は、シックスの過去の謎を明かす作品と説明しています。"
+    sources:
+      - { label: "Bandai Namco Europe", url: "https://en.bandainamcoent.eu/news/very-little-nightmares-very-little-still-deadly" }
+  - id: ln2
+    label: リトルナイトメア2
+    released: "2021-02-11"
+    cover: title-ln2
+    synopsis: "紙袋をかぶった少年モノが、猟師の小屋に捕らわれていたシックスを助け、二人で電波塔を目指します。舞台はテレビの電波に支配された街ペイルシティです。最後にシックスはモノの手を放し、塔に残されたモノは年を取ってノッポ男になります。隠しエンディングでは、シックスがモウのチラシを見たあとでお腹が鳴ります。"
+    sources:
+      - { label: "Wikipedia「リトルナイトメア2」", url: "https://ja.wikipedia.org/wiki/%E3%83%AA%E3%83%88%E3%83%AB%E3%83%8A%E3%82%A4%E3%83%88%E3%83%A1%E3%82%A22" }
+      - { label: "Wikipedia「Little Nightmares II」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_II" }
+  - id: ln3
+    label: リトルナイトメア3
+    released: "2025-10-10"
+    cover: title-ln3
+    synopsis: "開発は Supermassive Games に変わりました。舞台はノーウェアの中の「スパイラル」です。カラスの仮面の少年ロゥと、飛行帽の少女アローンが、ネクロポリス・キャンディ工場・カルネヴァーレ・精神病院を進みます。道中でロゥは、施設の部屋にいた自分の記憶と、アローンそっくりの人形を思い出します。最後の鏡を通れたのはロゥだけで、アローンは服と絵を残して消えます。"
+    sources:
+      - { label: "Xbox Wire 日本版", url: "https://news.xbox.com/ja-jp/2025/10/16/little-nightmares-iii-spooky-locations/" }
+      - { label: "Wikipedia「Little Nightmares III」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_III" }
+  - id: vr
+    label: Altered Echoes（VR）
+    released: "2026-04-24"
+    cover: title-vr
+    synopsis: "『2』でノッポ男がシックスをさらったときに切り離された影「ダーク・シックス」が、電波塔の中でシックスを追います。日本語版の名前は確かめられていません。"
+    sources:
+      - { label: "Wikipedia「Little Nightmares VR: Altered Echoes」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_VR:_Altered_Echoes" }
+  - id: ln3-dlc
+    label: リトルナイトメア3 追加チャプター
+    released: "2026-06-12"
+    cover: title-ln3-dlc
+    synopsis: "第1弾「バックステージ」では、ロゥがトーチ帽の少女ダイムと組んで、人形師にさらわれたアローンを助けます。第2弾「海岸」では、ロゥとアローンが霧の海岸の町から灯台へ向かいます。"
+    sources:
+      - { label: "電撃オンライン", url: "https://dengekionline.com/article/202606/78141" }
+      - { label: "PR TIMES", url: "https://animeanime.jp/release/prtimes/20260930/316328.html" }
 tagline: 小さな子どもが、巨大な大人たちの悪夢の世界から逃げ出すシリーズ
 summary: 歪んだ世界「ノーウェア」で、小さな子どもが巨大な住人から隠れて逃げるホラーアドベンチャー。1・2 は Tarsier Studios、3 は Supermassive Games の開発。
 icon: gi:lantern-flame

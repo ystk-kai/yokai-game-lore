@@ -6,7 +6,8 @@ import Base from './Base.astro';
 import Icon from '../components/Icon.astro';
 import RightsNotice from '../components/RightsNotice.astro';
 import { groupBySection, slugOf } from '../lib/content';
-import { url } from '../lib/url';
+import { url, file } from '../lib/url';
+import { getEntry } from 'astro:content';
 
 interface Props {
   game: CollectionEntry<'games'>;
@@ -18,6 +19,9 @@ interface Props {
 const { game, pages, current, title, description } = Astro.props;
 const groups = groupBySection(pages);
 const hubHref = url(`games/${game.id}`);
+// サイドメニューの「作品」: 考察の下に、作品の画像（titles[].cover）を並べる。押すとトップの作品一覧のカードへ移る
+const assets = new Map(((await getEntry('assets', game.id))?.data.assets ?? []).map((a) => [a.id, a]));
+const works = game.data.titles.map((t) => ({ ...t, img: t.cover ? assets.get(t.cover) : undefined }));
 ---
 <Base title={title} description={description}>
   <div class={`game-shell lane-${game.data.color}`}>
@@ -37,6 +41,19 @@ const hubHref = url(`games/${game.id}`);
           </ul>
         </div>
       ))}
+      {works.length > 0 && (
+        <div class="side-group side-works">
+          <div class="side-label"><Icon icon="lucide:library" size="1rem" />作品</div>
+          <ul>
+            {works.map((w) => (
+              <li><a href={`${hubHref}#work-${w.id}`} title={w.label}>
+                {w.img ? <img src={file(`games/${game.id}/${w.img.file}`)} alt="" width="230" height="108" loading="lazy" /> : <span class="no-img"><Icon icon={game.data.icon} size="1.25rem" /></span>}
+                <span class="w-label">{w.label}</span>
+              </a></li>
+            ))}
+          </ul>
+        </div>
+      )}
     </nav>
     <div class="main-col">
       <slot />
@@ -58,6 +75,12 @@ const hubHref = url(`games/${game.id}`);
   .side a:hover { background: var(--color-surface); }
   .side a.is-current { background: var(--color-surface); font-weight: 700; box-shadow: inset 0 0 0 1px var(--color-rule); }
 
+  .side-works ul { gap: var(--space-2); }
+  .side-works li a { display: flex; flex-direction: column; gap: var(--space-1); padding: var(--space-1) var(--space-3) var(--space-2); }
+  .side-works img, .side-works .no-img { display: block; width: 100%; height: auto; aspect-ratio: 460 / 215; object-fit: cover; border-radius: 4px; border: 1px solid var(--color-rule); }
+  .side-works .no-img { display: flex; align-items: center; justify-content: center; background: var(--color-surface); color: var(--lane); }
+  .side-works .w-label { font-size: 0.8125rem; color: var(--color-muted); line-height: 1.4; }
+
   /* スマホ・狭い画面: サイドメニューを上部の横スクロールのタブにする */
   @media (max-width: 60rem) {
     :global(main) { padding-top: 0; }
@@ -72,5 +95,8 @@ const hubHref = url(`games/${game.id}`);
     .side-group, .side ul { display: contents; }
     .side-game, .side li a { flex: none; white-space: nowrap; padding: var(--space-2) var(--space-3); border-radius: var(--radius); }
     .side li { display: contents; }
+    .side-works img, .side-works .no-img { display: none; }
+    .side-works li a { flex-direction: row; padding: var(--space-2) var(--space-3); }
+    .side-works .w-label { font-size: var(--text-small); color: var(--color-ink); }
   }
 </style>
