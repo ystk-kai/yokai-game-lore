@@ -338,3 +338,52 @@ assets:
     source_name: Little Nightmares Wiki (Fandom)
     source_url: "https://littlenightmares.fandom.com/wiki/File:PuppeteerChase.png"
     credit: "© Bandai Namco Entertainment Europe S.A.S.。出典: Little Nightmares Wiki (Fandom)（ゲーム画面）、アップロード: Virus3000。切り出して縮小"
+# 3) 作品カードの画像（Steam のストアページのヘッダー画像。2026-11-03 取得）
+  - id: title-ln1
+    file: titles/ln1.jpg
+    alt: リトルナイトメアのストア画像
+    kind: official-art
+    self_captured: false
+    source_name: Steam（リトルナイトメア）
+    source_url: "https://store.steampowered.com/app/424840/"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。Steam のストアページのヘッダー画像"
+  - id: title-ln1-dlc
+    file: titles/ln1-dlc.jpg
+    alt: Secrets of The Mawのストア画像
+    kind: official-art
+    self_captured: false
+    source_name: Steam（Secrets of The Maw）
+    source_url: "https://store.steampowered.com/app/640920/"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。Steam のストアページのヘッダー画像"
+  - id: title-ln2
+    file: titles/ln2.jpg
+    alt: リトルナイトメア2のストア画像
+    kind: official-art
+    self_captured: false
+    source_name: Steam（リトルナイトメア2）
+    source_url: "https://store.steampowered.com/app/860510/"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。Steam のストアページのヘッダー画像"
+  - id: title-ln3
+    file: titles/ln3.jpg
+    alt: リトルナイトメア3のストア画像
+    kind: official-art
+    self_captured: false
+    source_name: Steam（リトルナイトメア3）
+    source_url: "https://store.steampowered.com/app/1392860/"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。Steam のストアページのヘッダー画像"
+  - id: title-vr
+    file: titles/vr.jpg
+    alt: "Little Nightmares VR: Altered Echoes のストア画像"
+    kind: official-art
+    self_captured: false
+    source_name: Steam（Altered Echoes）
+    source_url: "https://store.steampowered.com/app/2482940/"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。Steam のストアページのヘッダー画像"
+  - id: title-ln3-dlc
+    file: titles/ln3-dlc.jpg
+    alt: リトルナイトメア3 追加チャプターのストア画像
+    kind: official-art
+    self_captured: false
+    source_name: Steam（バックステージ）
+    source_url: "https://store.steampowered.com/app/2088781/"
+    credit: "© Bandai Namco Entertainment Europe S.A.S.。Steam のストアページのヘッダー画像"

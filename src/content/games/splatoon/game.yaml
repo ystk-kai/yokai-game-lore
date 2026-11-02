@@ -5,12 +5,12 @@ developer: Nintendo EPD
 publisher: 任天堂
 released: "2015-05-28"
 titles:
-  - { id: splatoon1, label: スプラトゥーン, released: "2015-05-28" }
-  - { id: splatoon2, label: スプラトゥーン2, released: "2017-07-21" }
-  - { id: octoexp, label: オクト・エキスパンション, released: "2018-06-13" }
-  - { id: splatoon3, label: スプラトゥーン3, released: "2022-09-09" }
-  - { id: sideorder, label: サイド・オーダー, released: "2024-02-22" }
-  - { id: raiders, label: スプラトゥーン レイダース, released: "2026-07-23" }
+  - { id: splatoon1, label: スプラトゥーン, released: "2015-05-28", cover: title-splatoon1 }
+  - { id: splatoon2, label: スプラトゥーン2, released: "2017-07-21", cover: title-splatoon2 }
+  - { id: octoexp, label: オクト・エキスパンション, released: "2018-06-13", cover: title-octoexp }
+  - { id: splatoon3, label: スプラトゥーン3, released: "2022-09-09", cover: title-splatoon3 }
+  - { id: sideorder, label: サイド・オーダー, released: "2024-02-22", cover: title-sideorder }
+  - { id: raiders, label: スプラトゥーン レイダース, released: "2026-07-23", cover: title-raiders }
 tagline: イカとタコがインクでナワバリを争うシリーズ
 summary: イカやタコの姿の若者がインクを塗り合う、任天堂のアクションシューティングのシリーズ。人類が滅んだあとの世界を舞台に、作品ごとに一人用の物語（ヒーローモード）がある。
 icon: gi:squid

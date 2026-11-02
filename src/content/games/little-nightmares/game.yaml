@@ -7,13 +7,13 @@ publisher: バンダイナムコエンターテインメント
 released: "2017-04-28"
 # 本編3作と、物語のある DLC・スピンオフ。日付は日本語版・英語版 Wikipedia、バンダイナムコの配信告知による
 titles:
-  - { id: ln1, label: リトルナイトメア, released: "2017-04-28" }
-  - { id: ln1-dlc, label: Secrets of The Maw, released: "2017-07-07" }
+  - { id: ln1, label: リトルナイトメア, released: "2017-04-28", cover: title-ln1 }
+  - { id: ln1-dlc, label: Secrets of The Maw, released: "2017-07-07", cover: title-ln1-dlc }
   - { id: vln, label: ベリーリトルナイトメア, released: "2019-05" }
-  - { id: ln2, label: リトルナイトメア2, released: "2021-02-11" }
-  - { id: ln3, label: リトルナイトメア3, released: "2025-10-10" }
-  - { id: vr, label: Altered Echoes（VR）, released: "2026-04-24" }
-  - { id: ln3-dlc, label: リトルナイトメア3 追加チャプター, released: "2026-06-12" }
+  - { id: ln2, label: リトルナイトメア2, released: "2021-02-11", cover: title-ln2 }
+  - { id: ln3, label: リトルナイトメア3, released: "2025-10-10", cover: title-ln3 }
+  - { id: vr, label: Altered Echoes（VR）, released: "2026-04-24", cover: title-vr }
+  - { id: ln3-dlc, label: リトルナイトメア3 追加チャプター, released: "2026-06-12", cover: title-ln3-dlc }
 tagline: 小さな子どもが、巨大な大人たちの悪夢の世界から逃げ出すシリーズ
 summary: 歪んだ世界「ノーウェア」で、小さな子どもが巨大な住人から隠れて逃げるホラーアドベンチャー。1・2 は Tarsier Studios、3 は Supermassive Games の開発。
 icon: gi:lantern-flame

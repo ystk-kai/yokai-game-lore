@@ -1,0 +1,48 @@
+---
+// 作品1本のカード。パッケージやキービジュアルの画像（game.yaml の titles[].cover）、作品名、発売年、あらすじ（中身）を並べる。
+// 物語のページの「作品ごとのあらすじ」で、作品ごとに1枚置く: <Work game="splatoon" id="splatoon2">あらすじ</Work>
+import { getEntry } from 'astro:content';
+import Icon from './Icon.astro';
+import { file } from '../lib/url';
+
+interface Props { game: string; id: string }
+const { game, id } = Astro.props;
+const g = await getEntry('games', game);
+if (!g) throw new Error(`Work: ゲームが無い: ${game}`);
+const titles = g.data.titles;
+const index = titles.findIndex((t) => t.id === id);
+if (index < 0) throw new Error(`Work: ${game} の titles に ${id} が無い`);
+const t = titles[index];
+const assets = (await getEntry('assets', game))?.data.assets ?? [];
+const cover = t.cover ? assets.find((a) => a.id === t.cover) : undefined;
+if (t.cover && !cover) throw new Error(`Work: assets.yaml に ${t.cover} が無い（${game} / ${id}）`);
+const colors = ['l1', 'l2', 'l3', 'l4', 'l5', 'l6'];
+const source = cover?.source_url ? { href: cover.source_url, name: cover.source_name ?? new URL(cover.source_url).hostname } : undefined;
+---
+<article class:list={['work', `lane-${colors[index % 6]}`]} id={`work-${id}`}>
+  <figure class="cover">
+    {cover
+      ? <img src={file(`games/${game}/${cover.file}`)} alt={cover.alt} width="480" height="225" loading="lazy" />
+      : <span class="placeholder"><Icon icon={g.data.icon} size="2.5rem" /><span>画像なし</span></span>}
+    {source && <figcaption title={cover?.credit}>画像: <a href={source.href} rel="noopener">{source.name}</a></figcaption>}
+  </figure>
+  <div class="text">
+    <h3>{t.label}{t.released && <span class="year num">{t.released.slice(0, 4)}年</span>}</h3>
+    <div class="body"><slot /></div>
+  </div>
+</article>
+<style>
+  .work { display: grid; grid-template-columns: minmax(0, 18rem) minmax(0, 1fr); gap: var(--space-4) var(--space-6); align-items: start;
+          margin: 0 0 var(--space-4); padding: var(--space-4); background: var(--color-surface); border: 1px solid var(--color-rule); border-left: 4px solid var(--lane); border-radius: var(--radius); max-width: var(--measure); }
+  .cover { margin: 0; }
+  .cover img { display: block; width: 100%; height: auto; aspect-ratio: 460 / 215; object-fit: cover; border-radius: 4px; background: var(--color-bg); }
+  .placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-2); aspect-ratio: 460 / 215; border-radius: 4px;
+                 background: var(--color-bg); border: 1px dashed var(--color-rule); color: var(--lane); }
+  .placeholder span { font-size: var(--text-small); color: var(--color-muted); }
+  .cover figcaption { margin-top: var(--space-1); font-size: 0.8125rem; color: var(--color-muted); }
+  h3 { margin: 0 0 var(--space-2); font-size: var(--text-h3); line-height: var(--leading-tight); display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-1) var(--space-3); }
+  .year { font-size: var(--text-small); font-weight: 400; color: var(--color-muted); }
+  .body :global(p) { margin: 0 0 var(--space-2); line-break: strict; }
+  .body :global(p:last-child) { margin-bottom: 0; }
+  @media (max-width: 40rem) { .work { grid-template-columns: 1fr; } }
+</style>

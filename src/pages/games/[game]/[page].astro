@@ -8,6 +8,7 @@ import Icon from '../../../components/Icon.astro';
 import Evidence from '../../../components/Evidence.astro';
 import Legend from '../../../components/Legend.astro';
 import Appearances from '../../../components/diagram/Appearances.astro';
+import Work from '../../../components/Work.astro';
 import AutoP from '../../../components/AutoP.astro';
 import AutoLi from '../../../components/AutoLi.astro';
 import { gamesSorted, pagesOf, slugOf, sectionLabel } from '../../../lib/content';
@@ -29,7 +30,7 @@ const { Content } = await render(p);
   <h1>{p.data.title}</h1>
   <p class="lead">{p.data.description}</p>
   <article class="prose-wrap">
-    <Content components={{ Diagram, Characters, Theory, Icon, Evidence, Legend, Appearances, p: AutoP, li: AutoLi }} />
+    <Content components={{ Diagram, Characters, Theory, Icon, Evidence, Legend, Appearances, Work, p: AutoP, li: AutoLi }} />
   </article>
   <nav class="pager" aria-label="前後のページ">
     {prev ? <a href={url(`games/${g.id}/${slugOf(prev.id)}`)}><small>前へ</small>{prev.data.title}</a> : <span />}

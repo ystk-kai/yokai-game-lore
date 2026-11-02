@@ -152,3 +152,53 @@ assets:
     source_name: Inkipedia
     source_url: "https://splatoonwiki.org/wiki/File:Raiders_Salmonarch.jpg"
     credit: "© Nintendo。画像: Inkipedia（英語のファン wiki）、アップロード: Shiver101。顔の部分を切り抜いて縮小"
+
+  # 作品カードの画像（公式サイトの SNS 共有用の画像。2026-11-03 取得。480x225 に切り出して縮小）
+  - id: title-splatoon1
+    file: titles/splatoon1.jpg
+    alt: スプラトゥーンのキービジュアル
+    kind: official-art
+    self_captured: false
+    source_name: 任天堂 スプラトゥーン公式サイト
+    source_url: "https://www.nintendo.co.jp/wiiu/agmj/index.html"
+    credit: "© Nintendo。公式サイトの共有用画像を縮小"
+  - id: title-splatoon2
+    file: titles/splatoon2.jpg
+    alt: スプラトゥーン2のキービジュアル
+    kind: official-art
+    self_captured: false
+    source_name: 任天堂 スプラトゥーン2公式サイト
+    source_url: "https://www.nintendo.com/jp/switch/aab6a/index.html"
+    credit: "© Nintendo。公式サイトの共有用画像を縮小"
+  - id: title-octoexp
+    file: titles/octoexp.jpg
+    alt: オクト・エキスパンションのキービジュアル
+    kind: official-art
+    self_captured: false
+    source_name: 任天堂 スプラトゥーン2公式サイト
+    source_url: "https://www.nintendo.com/jp/switch/aab6a/dlc/index.html"
+    credit: "© Nintendo。公式サイトの共有用画像を縮小"
+  - id: title-splatoon3
+    file: titles/splatoon3.jpg
+    alt: スプラトゥーン3のキービジュアル
+    kind: official-art
+    self_captured: false
+    source_name: 任天堂 スプラトゥーン3公式サイト
+    source_url: "https://www.nintendo.com/jp/switch/av5ja/index.html"
+    credit: "© Nintendo。公式サイトの共有用画像を縮小"
+  - id: title-sideorder
+    file: titles/sideorder.jpg
+    alt: サイド・オーダーのキービジュアル
+    kind: official-art
+    self_captured: false
+    source_name: 任天堂 スプラトゥーン3公式サイト
+    source_url: "https://www.nintendo.com/jp/switch/av5ja/sideorder/index.html"
+    credit: "© Nintendo。公式サイトの共有用画像を縮小"
+  - id: title-raiders
+    file: titles/raiders.jpg
+    alt: スプラトゥーン レイダースのキービジュアル
+    kind: official-art
+    self_captured: false
+    source_name: 任天堂 スプラトゥーン レイダース公式サイト
+    source_url: "https://www.nintendo.com/jp/games/switch2/aadla/index.html"
+    credit: "© Nintendo。公式サイトの共有用画像を縮小"
