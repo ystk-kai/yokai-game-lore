@@ -1,0 +1,19 @@
+# 『3』のプロデューサーは「物語は完全に独立している」と話し、前後を示していない（One More Game 2024）。
+# 『2』の後とする説と、ノーウェアの起源（より前）とする説は Nerdschalk の紹介
+type: flow
+layout: grid
+compact: true
+title: 『3』はいつの話か
+caption: 上の段は公式に示された順。下の段の『3』の位置は、どちらも推測
+lanes:
+  - { id: six, label: シックスの物語, color: l3 }
+  - { id: ln3, label: リトルナイトメア3, color: l4 }
+nodes:
+  - { id: ln2, label: リトルナイトメア2, sub: 2021年, at: [1, 0], lane: six, icon: gi:radio-tower, evidence: official }
+  - { id: ln1, label: リトルナイトメア, sub: 2017年, at: [2, 0], lane: six, icon: gi:ship-bow, evidence: official }
+  - { id: before, label: ノーウェアの起源とする説, sub: 『3』, at: [0, 1], lane: ln3, icon: gi:spiral-shell, evidence: speculation, detail: 『3』は、ほかの作品より古い時代の話 }
+  - { id: after, label: 『2』の後とする説, sub: 『3』, at: [2, 1], lane: ln3, icon: gi:spiral-shell, evidence: speculation, detail: モノがノッポ男になった後の、別の場所の話 }
+edges:
+  - { from: ln2, to: ln1, label: 2は1の前, evidence: official }
+  - { from: before, to: ln2, label: 2より前, evidence: speculation }
+  - { from: ln2, to: after, label: 2の後, evidence: speculation }

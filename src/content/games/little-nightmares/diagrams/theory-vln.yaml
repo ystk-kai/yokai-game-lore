@@ -1,0 +1,26 @@
+# ベリーリトルナイトメアの位置は出典で食い違う。Eurogamer は『1』の前日譚、英語版 Wikipedia は『1』と『2』の両方の前日譚と書く。公式は「シックスの過去の謎を明かす」まで
+type: flow
+layout: grid
+compact: true
+title: ベリーリトルナイトメアの位置
+caption: 破線は出典ごとの読み。公式は「シックスの過去」としか書いていない
+lanes:
+  - { id: six, label: シックスの物語, color: l3 }
+  - { id: vln, label: ベリーリトルナイトメア, color: l2 }
+nodes:
+  - { id: ln2, label: リトルナイトメア2, sub: 2021年, at: [0, 0], lane: six, icon: gi:radio-tower, evidence: official }
+  - { id: ln1, label: リトルナイトメア, sub: 2017年, at: [2, 0], lane: six, icon: gi:ship-bow, evidence: official }
+  - id: vln
+    label: ベリーリトルナイトメア
+    sub: 2019年
+    at: [1, 1]
+    lane: vln
+    icon: gi:spider-web
+    evidence: official
+    detail: 公式は「シックスの過去の謎を明かす」作品と説明
+    sources:
+      - { label: Bandai Namco Europe, url: "https://en.bandainamcoent.eu/news/very-little-nightmares-very-little-still-deadly" }
+edges:
+  - { from: ln2, to: ln1, label: 2は1の前, evidence: official }
+  - { from: vln, to: ln1, label: 1の前, evidence: speculation }
+  - { from: vln, to: ln2, label: 2の前, evidence: speculation }

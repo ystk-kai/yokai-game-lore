@@ -1,0 +1,18 @@
+# モノがノッポ男になるのは『2』の結末の描写。繰り返しか役目の継承かは、ライターの David Mervik が「It's all of that」と答え、決めていない（GamingBible 2021）
+type: flow
+layout: grid
+compact: true
+title: モノとノッポ男
+caption: 実線は作中の描写、破線は2通りの読み。ライターは「そのすべて」と答えている
+lanes:
+  - { id: mono, label: モノ, color: l4, icon: gi:paper-bag-open }
+  - { id: read, label: 読み, color: l5 }
+nodes:
+  - { id: mono, label: モノ, sub: 『2』の主人公, at: [0, 0], lane: mono, icon: gi:paper-bag-open, detail: シックスと電波塔を目指す少年 }
+  - { id: thin, label: ノッポ男になる, sub: 『2』の結末, at: [1, 0], lane: mono, kind: ending, icon: gi:radio-tower, detail: 電波塔に残され、年を取ってノッポ男になる, sources: [{ label: "Wikipedia「Little Nightmares II」（英語）", url: "https://en.wikipedia.org/wiki/Little_Nightmares_II" }] }
+  - { id: loop, label: 同じ人物の繰り返し, sub: 読み1, at: [0, 1], lane: read, icon: gi:cycle, evidence: speculation, detail: ノッポ男になったモノが、過去のモノを呼び寄せる }
+  - { id: role, label: 役目の受け継ぎ, sub: 読み2, at: [1, 1], lane: read, icon: gi:relic-blade, evidence: speculation, detail: ノッポ男という役目を、次の子どもが継いでいく }
+edges:
+  - { from: mono, to: thin, label: 塔で年を取る }
+  - { from: thin, to: loop, label: 繰り返し, evidence: speculation }
+  - { from: thin, to: role, label: 継承, evidence: speculation }

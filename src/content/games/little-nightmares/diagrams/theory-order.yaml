@@ -1,0 +1,9 @@
+# 発売順と作中の順のずれ。『2』が『1』の前日譚であることは開発元のライターが取材で答えている（GamingBible 2021）。
+# ベリーリトルナイトメアを『2』より前に置くのは英語版 Wikipedia の記述で、公式の説明は「シックスの過去」までなので推測
+type: order
+title: 発売順と作中の順
+caption: 左が発売順、右が作中の順。『3』は前後が示されていないので入れていない
+items:
+  - { id: ln1, label: リトルナイトメア, release: 1, story: 3, evidence: official }
+  - { id: vln, label: ベリーリトルナイトメア, release: 2, story: 1, evidence: speculation }
+  - { id: ln2, label: リトルナイトメア2, release: 3, story: 2, evidence: official }
