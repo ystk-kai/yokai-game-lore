@@ -4,7 +4,7 @@ title: 本編と DLC の配信
 caption: DLC は「The Expanded World」として全3章。日付は報道ごとに1日ずれることがある（時差）
 now: "2026-11-01"
 lanes:
-  - { id: main, label: 本編, color: l2, icon: gi:rabbit-head }
+  - { id: main, label: 本編, color: l2, icon: site:reanimal-girl }
   - { id: dlc, label: "DLC：The Expanded World", color: l5, icon: gi:photo-camera }
 events:
   - id: reveal

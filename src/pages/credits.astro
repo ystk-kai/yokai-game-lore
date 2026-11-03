@@ -8,7 +8,7 @@ import { gamesSorted } from '../lib/content';
 const raw = import.meta.glob(['/src/content/**/*.{yaml,mdx}', '/src/components/**/*.astro', '/src/layouts/**/*.astro'], { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
 const used = new Map<string, Set<string>>();
 for (const text of Object.values(raw)) {
-  for (const m of text.matchAll(/\b(gi|lucide):([a-z0-9-]+)/g)) {
+  for (const m of text.matchAll(/\b(gi|lucide|site):([a-z0-9-]+)/g)) {
     if (!used.has(m[1])) used.set(m[1], new Set());
     used.get(m[1])!.add(m[2]);
   }
@@ -24,9 +24,11 @@ const assets = await getCollection('assets');
       const s = ICON_SETS[set as keyof typeof ICON_SETS];
       return (
         <div class="set">
-          <p><a href={s.url}>{s.name}</a> ・ ライセンス <a href={s.licenseUrl}>{s.license}</a>
-            {set === 'gi' && <>。Icons made by Lorc, Delapouite and other contributors. Available on <a href="https://game-icons.net">https://game-icons.net</a></>}
-          </p>
+          {set === 'site'
+            ? <p>{s.name}。ゲームの人物の見た目をもとに、Codex の画像生成（gpt-image）で下絵を作り、SVG に変換しました。人物の意匠の権利は各ゲームの権利者にあります。</p>
+            : <p><a href={s.url}>{s.name}</a> ・ ライセンス <a href={s.licenseUrl}>{s.license}</a>
+                {set === 'gi' && <>。Icons made by Lorc, Delapouite and other contributors. Available on <a href="https://game-icons.net">https://game-icons.net</a></>}
+              </p>}
           <ul class="icons">
             {[...names].sort().map((n) => {
               let svg = '';

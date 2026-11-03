@@ -6,7 +6,7 @@ groups:
   - { id: well, label: 井戸の底, color: l6 }
 nodes:
   - { id: shadows, label: 白い仮面の黒い影, role: タールのような姿, at: [0, 0], group: well, icon: gi:ghost }
-  - { id: girl, label: 少女, role: 投げ込まれた, at: [2, 0], group: well, icon: gi:rabbit-head }
+  - { id: girl, label: 少女, role: 投げ込まれた, at: [2, 0], group: well, icon: site:reanimal-girl }
   - { id: past, label: 前に投げ込まれた子ども, role: 影の正体？, at: [0, 1], icon: gi:hood }
 edges:
   - { from: shadows, to: girl, label: 静かに近づく, kind: bond, directed: true, evidence: ingame }

@@ -5,7 +5,7 @@ type: flow
 title: 作品ごとの物語の流れ（発売順）
 caption: 作品の中は矢印でつながり、作品のあいだは切れている。色の四角とその横の名前が作品。作中の順番は「作中の時系列」の図を見る
 lanes:
-  - { id: ln1, label: リトルナイトメア, color: l3, icon: gi:lantern-flame }
+  - { id: ln1, label: リトルナイトメア, color: l3, icon: site:little-nightmares-six }
   - { id: dlc, label: Secrets of The Maw（DLC）, color: l5, icon: gi:cage }
   - { id: ln2, label: リトルナイトメア2, color: l2, icon: gi:radio-tower }
   - { id: ln3, label: リトルナイトメア3, color: l4, icon: gi:spiral-shell }
@@ -19,7 +19,7 @@ nodes:
     at: [0, 0]
     lane: ln1
     kind: start
-    icon: gi:lantern-flame
+    icon: site:little-nightmares-six
     detail: シックスがレディの夢から目を覚ます。持ち物はライターだけ。ヒルや、見た者を石にする目をよけて進む。空腹で動けなくなり、他の子どもにもらったパンを食べる
     sources:
       - { label: Wikipedia『リトルナイトメア』, url: "https://ja.wikipedia.org/wiki/LITTLE_NIGHTMARES-%E3%83%AA%E3%83%88%E3%83%AB%E3%83%8A%E3%82%A4%E3%83%88%E3%83%A1%E3%82%A2-" }
@@ -72,7 +72,7 @@ nodes:
     at: [5, 0]
     lane: ln1
     kind: ending
-    icon: gi:lantern-flame
+    icon: site:little-nightmares-six
     detail: ゲストエリアを歩くと、近くのゲストは倒れていく。シックスは階段を上って日の光の中へ出る。クレジットのあと、遠くで霧笛が鳴るなか、シックスがモウの上に立つ
     sources:
       - { label: Wikipedia『リトルナイトメア』, url: "https://ja.wikipedia.org/wiki/LITTLE_NIGHTMARES-%E3%83%AA%E3%83%88%E3%83%AB%E3%83%8A%E3%82%A4%E3%83%88%E3%83%A1%E3%82%A2-" }

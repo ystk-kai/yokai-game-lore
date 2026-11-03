@@ -9,13 +9,14 @@ import { parse } from 'yaml';
 import { getIconData } from '@iconify/utils';
 import gameIcons from '@iconify-json/game-icons/icons.json' with { type: 'json' };
 import lucide from '@iconify-json/lucide/icons.json' with { type: 'json' };
+import site from '../src/icons/site.json' with { type: 'json' };
 import type { IconifyJSON } from '@iconify/types';
 import { analysis, assetsFile as assetsSchema, charactersFile, diagram, game as gameSchema } from '../src/schema';
 import type { ZodType } from 'astro/zod';
 
 const ROOT = resolve(import.meta.dir, '..');
 const GAMES = join(ROOT, 'src/content/games');
-const sets: Record<string, IconifyJSON> = { gi: gameIcons as IconifyJSON, lucide: lucide as IconifyJSON };
+const sets: Record<string, IconifyJSON> = { gi: gameIcons as IconifyJSON, lucide: lucide as IconifyJSON, site: site as IconifyJSON };
 const errors: string[] = [];
 const rel = (p: string) => relative(ROOT, p);
 const err = (file: string, msg: string) => errors.push(`${rel(file)}: ${msg}`);
@@ -37,7 +38,7 @@ const targetGames = new Set(
 
 /** 文字列中の icon 指定をすべて集める */
 function iconRefs(text: string) {
-  return [...text.matchAll(/\b(gi|lucide|asset):([a-z0-9-]+)/g)].map((m) => ({ set: m[1], name: m[2], ref: m[0] }));
+  return [...text.matchAll(/\b(gi|lucide|site|asset):([a-z0-9-]+)/g)].map((m) => ({ set: m[1], name: m[2], ref: m[0] }));
 }
 
 for (const game of targetGames) {
@@ -81,7 +82,7 @@ for (const game of targetGames) {
     const text = readFileSync(f, 'utf8');
     for (const r of iconRefs(text)) {
       if (r.set === 'asset') { if (!assetIds.has(r.name)) err(f, `${r.ref}: assets.yaml に無い`); continue; }
-      if (!getIconData(sets[r.set], r.name)) err(f, `${r.ref}: アイコンが無い（https://icon-sets.iconify.design/${r.set === 'gi' ? 'game-icons' : 'lucide'}/ で名前を確かめる）`);
+      if (!getIconData(sets[r.set], r.name)) err(f, `${r.ref}: アイコンが無い（${r.set === 'site' ? 'src/icons/site.json' : `https://icon-sets.iconify.design/${r.set === 'gi' ? 'game-icons' : 'lucide'}/`} で名前を確かめる）`);
     }
     // 3. YAML の日付は文字列で書く（YAML は 2026-02-13 を Date にする）
     if (f.endsWith('.yaml')) {

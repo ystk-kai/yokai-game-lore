@@ -4,7 +4,7 @@ layout: strip
 title: 少女の記憶に出てくる場面
 caption: 1〜4は作中の場面。5は記事の筆者の読み（破線）
 lanes:
-  - { id: memory, label: 少女の記憶（第9章・羊の体内）, color: l5, icon: gi:rabbit-head }
+  - { id: memory, label: 少女の記憶（第9章・羊の体内）, color: l5, icon: site:reanimal-girl }
   - { id: well, label: 井戸, color: l6, icon: gi:well }
   - { id: reading, label: 読み（推測）, color: l4 }
 nodes:

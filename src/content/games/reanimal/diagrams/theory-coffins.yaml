@@ -11,7 +11,7 @@ nodes:
   - { id: bandage, label: バンデージ, role: 仲間, at: [1, 2], group: kids, icon: gi:bandage-roll }
   - { id: bucket, label: バケット, role: 仲間, at: [2, 2], group: kids, icon: gi:empty-metal-bucket }
   - { id: hood, label: フード, role: 仲間, at: [3, 2], group: kids, icon: gi:hood }
-  - { id: girl, label: 少女, role: 主人公, at: [4, 2], group: kids, icon: gi:rabbit-head }
+  - { id: girl, label: 少女, role: 主人公, at: [4, 2], group: kids, icon: site:reanimal-girl }
 edges:
   - { from: coffins, to: boy, label: 首を吊られた, kind: unknown, directed: true, evidence: speculation, label_at: 0.8 }
   - { from: coffins, to: bandage, label: 火事で亡くなった, kind: unknown, directed: true, evidence: speculation, label_at: 0.8 }

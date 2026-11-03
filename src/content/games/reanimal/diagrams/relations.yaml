@@ -8,7 +8,7 @@ groups:
   - { id: creatures, label: 怪物, color: l1 }
 nodes:
   - { id: boy, label: 少年, role: 主人公, at: [1, 0], group: kids, icon: gi:scarecrow }
-  - { id: girl, label: 少女, role: 主人公, at: [2, 0], group: kids, icon: gi:rabbit-head }
+  - { id: girl, label: 少女, role: 主人公, at: [2, 0], group: kids, icon: site:reanimal-girl }
   - { id: hood, label: フード, role: 仲間, at: [0, 1], group: kids, icon: gi:hood }
   - { id: bandage, label: バンデージ, role: 仲間, at: [1, 1], group: kids, icon: gi:bandage-roll }
   - { id: bucket, label: バケット, role: 仲間, at: [3, 1], group: kids, icon: gi:empty-metal-bucket }

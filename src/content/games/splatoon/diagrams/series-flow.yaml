@@ -4,7 +4,7 @@ type: flow
 title: 作品ごとの一人用の物語（発売順）
 caption: 作品の中は矢印でつながり、作品のあいだは切れている。色の四角とその横の名前が作品。小見出しの「スプラ1」はスプラトゥーン、「オクト」はオクト・エキスパンション、「サイド」はサイド・オーダーの略
 lanes:
-  - { id: s1, label: スプラトゥーン, color: l1, icon: gi:squid }
+  - { id: s1, label: スプラトゥーン, color: l1, icon: site:splatoon-squid }
   - { id: s2, label: スプラトゥーン2, color: l2, icon: gi:paint-roller }
   - { id: oe, label: オクト・エキスパンション, color: l3, icon: gi:subway }
   - { id: s3, label: スプラトゥーン3, color: l4, icon: gi:spray }
@@ -18,7 +18,7 @@ nodes:
     at: [0, 0]
     lane: s1
     kind: start
-    icon: gi:squid
+    icon: site:splatoon-squid
     detail: 3号が、アタリメ司令の指揮のもとで、タコの軍団に奪われた街のシンボル「オオデンチナマズ」を取り返しに向かう
     sources: [{ label: "Wikipedia「スプラトゥーン」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B3" }]
   - id: s1-boss

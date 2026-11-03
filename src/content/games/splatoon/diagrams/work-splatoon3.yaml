@@ -3,7 +3,7 @@ type: flow
 title: "スプラトゥーン3（ヒーローモード） の流れ"
 caption: "上から順に読む"
 lanes:
-  - { id: main, label: "スプラトゥーン3（ヒーローモード）", color: l4, icon: "gi:squid" }
+  - { id: main, label: "スプラトゥーン3（ヒーローモード）", color: l4, icon: "site:splatoon-squid" }
 nodes:
   - id: n1
     label: "DJタコワサ将軍と戦う"

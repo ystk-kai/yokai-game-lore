@@ -4,7 +4,7 @@ type: flow
 title: 作中の時系列
 caption: 上から古い順に読む。小見出しは作品の名前、矢印の横は次の出来事とのつながり。破線は推測。『3』はほかの作品との前後が発表されていないので、矢印でつないでいない
 lanes:
-  - { id: six, label: シックスの物語（1・2・スピンオフ）, color: l3, icon: gi:lantern-flame }
+  - { id: six, label: シックスの物語（1・2・スピンオフ）, color: l3, icon: site:little-nightmares-six }
   - { id: other, label: 同じ時期の別の子ども, color: l5, icon: gi:cage }
   - { id: ln3, label: リトルナイトメア3, color: l4, icon: gi:bird-mask }
 nodes:
@@ -60,7 +60,7 @@ nodes:
     sub: リトル1
     at: [4, 0]
     lane: six
-    icon: gi:lantern-flame
+    icon: site:little-nightmares-six
     detail: シックスが、海を渡る巨大な船「モウ」の奥で目を覚まし、空腹に耐えながら上へ逃げる。最後にレディの首にかみついて力を得て、日の光の中へ出る
     sources:
       - { label: Wikipedia『リトルナイトメア』, url: "https://ja.wikipedia.org/wiki/LITTLE_NIGHTMARES-%E3%83%AA%E3%83%88%E3%83%AB%E3%83%8A%E3%82%A4%E3%83%88%E3%83%A1%E3%82%A2-" }

@@ -5,7 +5,7 @@ title: 作中の時系列
 caption: 上から古い順に読む。小見出しは作中の時期、矢印の横は次の出来事までの間隔。色の四角とその横の名前が、世界の歴史・本編・DLC とスピンオフの区別
 lanes:
   - { id: world, label: 世界の歴史, color: l6, icon: gi:ship-wreck }
-  - { id: main, label: 本編のヒーローモード, color: l2, icon: gi:squid }
+  - { id: main, label: 本編のヒーローモード, color: l2, icon: site:splatoon-squid }
   - { id: extra, label: DLC とスピンオフ, color: l5, icon: gi:octopus }
 nodes:
   - id: human-end
@@ -42,7 +42,7 @@ nodes:
     sub: スプラ1
     at: [3, 0]
     lane: main
-    icon: gi:squid
+    icon: site:splatoon-squid
     detail: 『スプラトゥーン』（2015年発売）。タコの軍団が街のシンボル「オオデンチナマズ」を奪う。3号がアタリメ司令の指揮のもとで取り返す
     sources: [{ label: "Wikipedia「スプラトゥーン」", url: "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B3" }]
   - id: s2

@@ -19,9 +19,10 @@ export const source = z
  * アイコン指定。
  *  - "gi:<name>"      game-icons.net（CC BY 3.0・クレジットはサイトが自動で出す）
  *  - "lucide:<name>"  Lucide（ISC）
+ *  - "site:<name>"    このサイトで作ったアイコン（src/icons/site.json。作り方は src/icons/README.md）
  *  - "asset:<id>"     そのゲームの assets.yaml に登録した画像
  */
-export const iconRef = z.string().regex(/^(gi|lucide|asset):[a-z0-9-]+$/, 'icon は gi:名前 / lucide:名前 / asset:ID');
+export const iconRef = z.string().regex(/^(gi|lucide|site|asset):[a-z0-9-]+$/, 'icon は gi:名前 / lucide:名前 / site:名前 / asset:ID');
 
 const lane = z.object({
   id: z.string(),

@@ -23,7 +23,7 @@ characters:
     autolink: false
     name_en: Girl
     kind: protagonist
-    icon: gi:rabbit-head
+    icon: site:reanimal-girl
     role: 少年の相棒。1人プレイでは自動で動く
     looks: ウサギの仮面。ほかの子より質素な服で素足
     first_seen: 第1章（海に浮かんでいるところを少年が引き上げる）
