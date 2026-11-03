@@ -98,4 +98,14 @@ const hrefOf = (id: string) => (charPage ? `${url(`games/${charPage.id}`)}#ch-${
   .dot { display: inline-block; width: 14px; height: 14px; border-radius: 50%; background: var(--lane); }
   .none { display: inline-block; width: 8px; height: 2px; background: var(--color-rule); vertical-align: middle; }
   tbody tr:hover { background: color-mix(in srgb, var(--color-ink) 4%, transparent); }
+  /* スマホ: 固定した人物の列が画面の半分以上を取り、作品の列が見えなくなる。顔の下に名前を折り返して列を細くし、区分（主人公など）は出さない */
+  @media (max-width: 40rem) {
+    th, td { padding: var(--space-2); }
+    tbody th { white-space: normal; min-width: 6.5rem; max-width: 7.5rem; }
+    .row-head { display: block; }
+    .who { flex-direction: column; align-items: flex-start; gap: var(--space-1); font-size: 0.8125rem; line-height: 1.35; word-break: auto-phrase; overflow-wrap: anywhere; }
+    .face { width: 24px; height: 24px; }
+    .kind { display: none; }
+    table { min-width: 0; }
+  }
 </style>

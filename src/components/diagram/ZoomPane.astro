@@ -1,0 +1,137 @@
+---
+// 図の表示枠。最初は枠の幅に収まるよう図を縮めて出し、図の中だけを拡大・縮小できるようにする
+// （スマホは2本指のピンチ、パソコンはトラックパッドのピンチか Ctrl+ホイール、どちらもボタンでも）。ページ全体は拡大しない。
+// 中身は大きさの決まった要素1つ（.canvas など）をスロットで渡す。JS が動かないときは従来どおり枠の中の横スクロールで見せる
+import { iconSvg } from '../../lib/icons';
+
+interface Props { label: string; /** 枠の内側に余白を取る（発売順の図など、中身が枠に接するもの） */ padded?: boolean }
+const { label, padded = false } = Astro.props;
+---
+<div class="zoom" data-zoom>
+  <div class="zp-bar" hidden>
+    <span class="zp-hint">2本指で拡大・縮小</span>
+    <button type="button" data-act="out" aria-label="縮小" title="縮小" set:html={iconSvg('lucide:zoom-out', '1.1rem')} />
+    <output class="zp-level num" aria-live="polite">100%</output>
+    <button type="button" data-act="in" aria-label="拡大" title="拡大" set:html={iconSvg('lucide:zoom-in', '1.1rem')} />
+    <button type="button" data-act="fit" aria-label="全体を表示" title="全体を表示" set:html={iconSvg('lucide:maximize', '1.1rem')} />
+  </div>
+  <div class:list={['zp', padded && 'is-padded']} tabindex="0" aria-label={label}>
+    <div class="zp-sizer"><slot /></div>
+  </div>
+</div>
+
+<script>
+  const MAX = 2;
+  const STEP = 1.25;
+
+  function setup(root: HTMLElement) {
+    const pane = root.querySelector<HTMLElement>('.zp')!;
+    const sizer = pane.firstElementChild as HTMLElement;
+    const content = sizer.firstElementChild as HTMLElement | null;
+    const bar = root.querySelector<HTMLElement>('.zp-bar')!;
+    const level = bar.querySelector('output')!;
+    if (!content) return;
+
+    let base = { w: 0, h: 0 };
+    let scale = 1, min = 1, fitted = true, lastWidth = 0;
+    // 図にもともと書かれている幅（流れ図・相関図は固定の幅）。合わせ直すときはこれに戻してから測る
+    const ownWidth = content.style.width;
+    const clamp = (s: number) => Math.min(MAX, Math.max(min, s));
+    const avail = () => {
+      const cs = getComputedStyle(pane);
+      return pane.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    };
+
+    /** 倍率を s にする。枠の中の (ox, oy) の位置にある図の点が、拡大・縮小のあとも同じ位置に残るように送る */
+    function apply(s: number, ox = pane.clientWidth / 2, oy = pane.clientHeight / 2) {
+      s = clamp(s);
+      const cx = (pane.scrollLeft + ox) / scale, cy = (pane.scrollTop + oy) / scale;
+      scale = s;
+      sizer.style.width = `${base.w * s}px`;
+      sizer.style.height = `${base.h * s}px`;
+      content!.style.width = `${base.w}px`;
+      content!.style.transform = s === 1 ? '' : `scale(${s})`;
+      pane.scrollLeft = cx * s - ox;
+      pane.scrollTop = cy * s - oy;
+      level.textContent = `${Math.round(s * 100)}%`;
+      root.classList.toggle('is-zoomed', s > min + 0.001);
+    }
+
+    /** 枠の幅に収まる倍率に戻す（図が枠より小さいときは等倍） */
+    function fit() {
+      sizer.style.width = sizer.style.height = '';
+      content!.style.width = ownWidth;
+      content!.style.transform = '';
+      base = { w: content!.offsetWidth, h: content!.offsetHeight };
+      if (!base.w) return;
+      min = Math.min(1, avail() / base.w);
+      fitted = true;
+      scale = min;
+      apply(min, 0, 0);
+      pane.scrollLeft = pane.scrollTop = 0;
+    }
+    const zoomTo = (s: number, ox?: number, oy?: number) => { fitted = false; apply(s, ox, oy); };
+
+    bar.addEventListener('click', (e) => {
+      const act = (e.target as HTMLElement).closest('button')?.dataset.act;
+      if (act === 'in') zoomTo(scale * STEP);
+      else if (act === 'out') zoomTo(scale / STEP);
+      else if (act === 'fit') fit();
+    });
+
+    // スマホ: 2本指のピンチ。枠の touch-action でページ全体の拡大を止め、ここで図だけを拡大する
+    let pinch: { d: number; s: number } | null = null;
+    const dist = (t: TouchList) => Math.hypot(t[0].clientX - t[1].clientX, t[0].clientY - t[1].clientY);
+    pane.addEventListener('touchstart', (e) => { if (e.touches.length === 2) pinch = { d: dist(e.touches), s: scale }; }, { passive: true });
+    pane.addEventListener('touchmove', (e) => {
+      if (e.touches.length !== 2 || !pinch) return;
+      e.preventDefault();
+      const r = pane.getBoundingClientRect();
+      const mx = (e.touches[0].clientX + e.touches[1].clientX) / 2 - r.left;
+      const my = (e.touches[0].clientY + e.touches[1].clientY) / 2 - r.top;
+      zoomTo(pinch.s * (dist(e.touches) / pinch.d), mx, my);
+    }, { passive: false });
+    pane.addEventListener('touchend', (e) => { if (e.touches.length < 2) pinch = null; });
+    // iOS Safari の独自のジェスチャーでページが拡大されないようにする
+    pane.addEventListener('gesturestart', (e) => e.preventDefault());
+    // パソコン: トラックパッドのピンチ（ブラウザは Ctrl 付きのホイールとして送る）と Ctrl+ホイール
+    pane.addEventListener('wheel', (e) => {
+      if (!e.ctrlKey) return;
+      e.preventDefault();
+      const r = pane.getBoundingClientRect();
+      zoomTo(scale * Math.exp(-e.deltaY * 0.01), e.clientX - r.left, e.clientY - r.top);
+    }, { passive: false });
+
+    // 画面の幅が変わったら、拡大していなければ合わせ直す。拡大中は下限だけ直す
+    new ResizeObserver(() => {
+      const w = root.clientWidth;
+      if (w === lastWidth) return;
+      lastWidth = w;
+      if (fitted) fit();
+      else { min = Math.min(1, avail() / base.w); apply(scale); }
+    }).observe(root);
+
+    bar.hidden = false;
+    fit();
+    document.fonts?.ready.then(() => { if (fitted) fit(); });
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-zoom]').forEach(setup);
+</script>
+
+<style>
+  .zoom { position: relative; }
+  .zp-bar { display: flex; align-items: center; justify-content: flex-end; gap: var(--space-1); margin-bottom: var(--space-2); font-size: 0.8125rem; color: var(--color-muted); }
+  .zp-bar[hidden] { display: none; }
+  .zp-hint { margin-right: auto; }
+  @media (hover: hover) and (pointer: fine) { .zp-hint { visibility: hidden; } }
+  .zp-bar button { display: inline-grid; place-items: center; width: 2rem; height: 2rem; padding: 0; border: 1px solid var(--color-rule); border-radius: var(--radius);
+                   background: var(--color-surface); color: var(--color-ink); cursor: pointer; line-height: 0; }
+  .zp-bar button:hover { border-color: var(--color-accent); color: var(--color-accent); }
+  .zp-level { min-width: 3.25em; text-align: center; }
+  /* 縦に長い図を拡大しても、枠が画面より高くならないようにする。pan-x pan-y でページ全体のピンチ拡大を止める */
+  .zp { overflow: auto; max-height: 85vh; touch-action: pan-x pan-y;
+        background: var(--color-surface); border: 1px solid var(--color-rule); border-radius: var(--radius); }
+  .zp.is-padded { padding: var(--space-3); }
+  .zp-sizer > :global(*) { transform-origin: 0 0; }
+</style>

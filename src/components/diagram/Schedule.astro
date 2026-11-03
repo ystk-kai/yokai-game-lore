@@ -2,6 +2,7 @@
 // 配信・発売のスケジュール。横軸は実際の時間に比例させ、系統（本編・DLC など）ごとに行を分ける。
 // 済んだ出来事は塗りつぶしの点、予定は破線の白抜きの点。調べた日に「現在」の縦線を引く。
 // 位置は割合（%）で決めるので、画面幅が変わっても崩れない。狭い画面では横にスクロールする
+import ZoomPane from './ZoomPane.astro';
 import type { z } from 'astro/zod';
 import type { scheduleDiagram } from '../../schema';
 import Icon from '../Icon.astro';
@@ -35,7 +36,7 @@ for (const l of data.lanes) data.events.filter((e) => e.lane === l.id).sort((a, 
       <span class="keys"><span class="key done" aria-hidden="true"></span>配信・発表済み<span class="key planned" aria-hidden="true"></span>予定</span>
     </figcaption>
   )}
-  <div class="scroller" tabindex="0" aria-label={`${data.title}（横にスクロールできます）`}>
+  <ZoomPane label={data.title}>
     <div class="chart">
       {data.lanes.map((l) => (
         <div class={`row lane-${l.color}`}>
@@ -61,7 +62,7 @@ for (const l of data.lanes) data.events.filter((e) => e.lane === l.id).sort((a, 
         <div class="now-wrap" aria-hidden="true"><div class="row-label"></div><div class="track"><span class="now" style={`left:${pct(toM(data.now))}%`}><span>現在（{data.now}）</span></span></div></div>
       )}
     </div>
-  </div>
+  </ZoomPane>
   <ol class="notes">
     {sorted.map((e) => (
       <li id={`${anchor}-${e.id}`} class:list={[`lane-${laneOf.get(e.lane)!.color}`, e.planned && 'is-planned']}>
@@ -86,7 +87,6 @@ for (const l of data.lanes) data.events.filter((e) => e.lane === l.id).sort((a, 
   .key.done { background: var(--color-ink); }
   .key.planned { border: 2px dashed var(--color-muted); }
 
-  .scroller { overflow-x: auto; background: var(--color-surface); border: 1px solid var(--color-rule); border-radius: var(--radius); }
   .chart { position: relative; min-width: 56rem; padding: var(--space-4) var(--space-12) var(--space-2) var(--space-6); }
   .row, .axis, .now-wrap { display: grid; grid-template-columns: 11rem minmax(0, 1fr); }
   .now-wrap { position: absolute; inset: 0 var(--space-12) 0 var(--space-6); pointer-events: none; z-index: 0; }

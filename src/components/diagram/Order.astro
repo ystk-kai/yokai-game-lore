@@ -1,5 +1,6 @@
 ---
 // 発売順と作中の時系列の対応（Kim ら 2017 Story Curves の考え方を、2列の対応線にしたもの）
+import ZoomPane from './ZoomPane.astro';
 import type { z } from 'astro/zod';
 import type { orderDiagram } from '../../schema';
 interface Props { data: z.infer<typeof orderDiagram>; id: string }
@@ -14,7 +15,7 @@ const colors = ['l1', 'l2', 'l3', 'l4', 'l5', 'l6'];
 ---
 <figure class="order">
   <figcaption><span class="title">{data.title}</span>{data.caption && <span class="caption">{data.caption}</span>}</figcaption>
-  <div class="scroller" tabindex="0">
+  <ZoomPane label={data.title} padded>
     <div class="canvas" style={`width:${LW * 2 + GAP}px;height:${h + 28}px`}>
       <div class="colhead" style="left:0">発売順</div>
       <div class="colhead" style={`left:${LW + GAP}px`}>作中の時系列</div>
@@ -31,14 +32,13 @@ const colors = ['l1', 'l2', 'l3', 'l4', 'l5', 'l6'];
         </>
       ))}
     </div>
-  </div>
+  </ZoomPane>
 </figure>
 <style>
   .order { margin: var(--space-8) 0; }
   figcaption { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-4); align-items: baseline; margin-bottom: var(--space-3); }
   .title { font-weight: 700; font-size: var(--text-h3); }
   .caption { color: var(--color-muted); font-size: var(--text-small); }
-  .scroller { overflow-x: auto; background: var(--color-surface); border: 1px solid var(--color-rule); border-radius: var(--radius); padding: var(--space-3); }
   .canvas { position: relative; }
   svg { position: absolute; left: 0; max-width: none; }
   .colhead { position: absolute; top: 0; font-size: var(--text-small); color: var(--color-muted); font-weight: 700; }

@@ -1,5 +1,6 @@
 ---
 // 相関図。人物を格子に置き、関係を線で結ぶ。線の色＝関係の種類、破線＝推測。
+import ZoomPane from './ZoomPane.astro';
 import type { z } from 'astro/zod';
 import type { relationsDiagram } from '../../schema';
 import { getEntry } from 'astro:content';
@@ -57,7 +58,7 @@ const thumbOf = (nid: string) => { const a = assetMap.get(chars.get(nid)?.image?
     {data.caption && <span class="caption">{data.caption}</span>}
     <span class="kinds">{Object.entries(kindName).map(([k, v]) => <span class={`kind kind-${k}`}><span class="swatch" aria-hidden="true"></span>{v}</span>)}</span>
   </figcaption>
-  <div class="scroller" tabindex="0" aria-label={`${data.title}（横にスクロールできます）`}>
+  <ZoomPane label={data.title}>
     <div class="canvas" style={`width:${width}px;height:${height}px`}>
       {groupBoxes.map((g) => (
         <div class={`group lane-${g.color}`} style={`left:${g.x}px;top:${g.y}px;width:${g.w}px;height:${g.h}px`}><span>{g.label}</span></div>
@@ -96,7 +97,7 @@ const thumbOf = (nid: string) => { const a = assetMap.get(chars.get(nid)?.image?
         );
       })}
     </div>
-  </div>
+  </ZoomPane>
   <details class="list">
     <summary>関係を文章で読む</summary>
     <ul>
@@ -118,7 +119,6 @@ const thumbOf = (nid: string) => { const a = assetMap.get(chars.get(nid)?.image?
   .kind-bond { --k: var(--lane-l2); } .kind-family { --k: var(--lane-l3); } .kind-hostile { --k: var(--lane-l1); } .kind-unknown { --k: var(--color-muted); }
   .kind-unknown .swatch { background: repeating-linear-gradient(90deg, var(--k) 0 4px, transparent 4px 8px); }
 
-  .scroller { overflow-x: auto; background: var(--color-surface); border: 1px solid var(--color-rule); border-radius: var(--radius); }
   .canvas { position: relative; }
   svg { position: absolute; inset: 0; max-width: none; z-index: 1; }
   .link { stroke: var(--k); stroke-width: var(--line-link); }
